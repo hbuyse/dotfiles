@@ -46,7 +46,7 @@ set cmdheight=2
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=100
 
-"
+" Show physical tabulations define by tabstop
 set list lcs=tab:\|\ 
 
 if !has('gui_running')
@@ -112,8 +112,8 @@ let g:indentLine_color_gui = '#A6A6A6'
 let NERDTreeShowHidden=1
 
 " How can I open a NERDTree automatically when vim starts up if no files were specified?
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " How can I open NERDTree automatically when vim starts up on opening a directory?
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
