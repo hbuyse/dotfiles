@@ -125,7 +125,11 @@ export PATH="$PATH:$HOME/.local/bin:$HOME/.local/diff-so-fancy:$HOME/.config/arc
 export JDK_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [[ $HOSTNAME == "T480" || $HOSTNAME == "CG8250" ]]; then
+	[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+else
+	[[ ! -f ~/.p10kwork.zsh ]] || source ~/.p10kwork.zsh
+fi
 
 # Handle the dotfiles configuration
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
