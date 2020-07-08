@@ -1,0 +1,35 @@
+; Gruvbox colors
+[colors]
+; No transparency
+; bg0 = #ff282828
+; With transparency
+bg0 = #aa282828
+bg0_h = #ff1d2021
+bg0_s = #ff32302f
+bg1 = #ff3c3836
+bg2 = #ff504945
+bg3 = #ff665c54
+bg4 = #ff7c6f64
+fg0 = #fffbf1c7
+fg1 = #ffebdbb2
+fg2 = #ffd5c4a1
+fg3 = #ffbdae93
+fg4 = #ffa89984
+aqua1 = #ff689d6a
+aqua2 = #ff8ec07c
+blue1 = #ff458588
+blue2 = #ff83a598
+gray1 = #ffa89984
+gray2 = #ff928374
+green1 = #ff98971a
+green2 = #ffb8bb26
+orange1 = #ffd65d0e
+orange2 = #fffe8019
+purple1 = #ffb16286
+purple2 = #ffd3869b
+red1 = #ffcc241d
+red2 = #fffb4934
+yellow1 = #ffd79921
+yellow2 = #fffabd2f
+
+;  vim: set ts=4 sw=4 tw=0 et ft=dosini :

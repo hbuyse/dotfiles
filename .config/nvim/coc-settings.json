@@ -1,0 +1,36 @@
+{
+    "diagnostic.displayByAle": true,
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": [
+                "c",
+                "cpp",
+                "objc",
+                "objcpp"
+            ],
+            "rootPatterns": [
+                ".ccls",
+                "compile_commands.json",
+                ".vim/",
+                ".git/",
+                ".hg/"
+            ],
+            "initializationOptions": {
+                "cache": {
+                    "directory": "/tmp/ccls"
+                },
+                "clang": {
+                    "extraArgs": [
+                        "-I",
+                        "include/",
+                        "-I",
+                        "build",
+                        "-I",
+                        "/usr/lib/clang/10.0.1/include/"
+                    ]
+                }
+            }
+        }
+    }
+}

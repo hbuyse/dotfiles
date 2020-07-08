@@ -1,0 +1,11 @@
+#! /usr/bin/bash
+
+# Load the Xresources if xrdb is found
+# Can not unset readonly variable
+if command -v xrdb > /dev/null; then
+    readonly XRESOURCES_FILE="$HOME/.Xresources"
+    if [ -f "$XRESOURCES_FILE" ] && [ -r "$XRESOURCES_FILE" ]; then
+        xrdb -merge -load "$XRESOURCES_FILE"
+    fi
+fi
+# vim: set ts=4 sw=4 tw=0 et ft=sh :
