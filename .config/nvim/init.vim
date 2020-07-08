@@ -67,7 +67,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
 " Fuzzy file finder
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
 Plug 'w0rp/ale'
