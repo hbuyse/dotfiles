@@ -69,9 +69,6 @@ Plug 'tpope/vim-surround'
 " Fuzzy file finder
 Plug 'ctrlpvim/ctrlp.vim'
 
-" Auto complete brackets, quotes
-"Plug 'jiangmiao/auto-pairs'
-
 " Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
 Plug 'w0rp/ale'
 
