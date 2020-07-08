@@ -1,0 +1,33 @@
+conky.config = {
+	alignment = 'bottom_left',
+	background = false,
+	default_color = 'BDAE93',
+	color2 = 'EBDBB2',
+	cpu_avg_samples = 2,
+	double_buffer = true,
+	font = 'Hack Regular Nerd Font Complete Mono:size=9',
+	gap_x = 20,
+	gap_y = 50,
+	minimum_width = 250,
+	no_buffers = true,
+	own_window = true,
+	own_window_type = 'override',
+	own_window_transparent = true,
+	update_interval = 1.0,
+	use_xft = true,
+	xinerama_head = 2,
+}
+conky.text = [[
+${color}${font Hack:bold:size=9}Processes ${hr}
+${voffset 5}${font}${color2}${top name 1}$alignr$color${top cpu 1}%
+$color2${top name 2}$alignr$color${top cpu 2}%
+$color2${top name 3}$alignr$color${top cpu 3}%
+$color2${top name 4}$alignr$color${top cpu 4}%
+#
+# Memory
+${voffset 10}${color}${font Hack:bold:size=9}RAM${font Hack:bold:size=9} ${hr}
+${voffset 5}${font}${color2}${top_mem name 1}$alignr$color${top_mem mem_res 1}
+$color2${top_mem name 2}$alignr$color${top_mem mem_res 2}
+$color2${top_mem name 3}$alignr$color${top_mem mem_res 3}
+$color2${top_mem name 4}$alignr$color${top_mem mem_res 4}
+]]
