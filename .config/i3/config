@@ -178,3 +178,4 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 for_window [class="Firefox"] $ws5
+for_window [class="Spotify"] $ws4
