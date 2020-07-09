@@ -135,7 +135,8 @@ let g:ale_set_quickfix = 1
 let g:ale_fixers = {
 \   '*': ['trim_whitespace'],
 \   'c': ['clang-format', 'trim_whitespace'],
-\   'markdown': ['trim_whitespace']
+\   'markdown': ['trim_whitespace'],
+\   'shell': ['shellcheck']
 \}
 
 let g:ale_linters = {
