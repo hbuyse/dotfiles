@@ -27,8 +27,8 @@ font pango:monospace 8
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 #locking the screen ( should be the exact size of the screen )
-bindsym $mod+p exec i3lock -i "$HOME/.config/i3/locker.png"
-exec xautolock -time 15 -locker i3lock -i "$HOME/.config/i3/locker.png"
+bindsym $mod+p exec $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
+exec xautolock -time 5 -locker $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
 
 #screenshot
 bindsym --release Print exec scrot -m "$HOME/Pictures/%s_%H%M_%d.%m.%Y_$wx$h.png"
