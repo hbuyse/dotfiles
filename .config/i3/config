@@ -18,6 +18,9 @@ font pango:monospace 8
 # Should be a symbolic link to a file in the same directory
 exec --no-startup-id "$HOME/.screenlayout/layout"
 
+# Add background wallpaper
+exec --no-startup-id feh --bg-fill "$HOME/.config/i3/locker.png"
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
