@@ -426,7 +426,7 @@ type = custom/script
 interval = 1
 format-suffix = "  "
 format = <label>
-exec = python $HOME/.config/polybar/spotify_status.py --font=2 -f '{play_pause} {artist} : {song}' -t 70
+exec = python $HOME/.config/polybar/spotify_status.py -f '{play_pause} {artist} - {song}' -t 70
 format-underline = #1db954
 
 [settings]
