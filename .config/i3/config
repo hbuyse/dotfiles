@@ -16,7 +16,7 @@ set $mod Mod4
 font pango:monospace 8
 
 # Should be a symbolic link to a file in the same directory
-exec "$HOME/.screenlayout/layout"
+exec --no-startup-id "$HOME/.screenlayout/layout"
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -30,11 +30,11 @@ exec "$HOME/.screenlayout/layout"
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 #locking the screen ( should be the exact size of the screen )
-bindsym $mod+p exec $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
-exec xautolock -time 5 -locker $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
+bindsym $mod+p exec --no-startup-id $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
+exec --no-startup-id xautolock -time 5 -locker $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
 
 #screenshot
-bindsym --release Print exec scrot -m "$HOME/Pictures/%s_%H%M_%d.%m.%Y_$wx$h.png"
+bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%s_%H%M_%d.%m.%Y_$wx$h.png"
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -48,7 +48,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Set default output sink to the internal
-exec pactl set-default-sink $(pactl list short sinks | grep analog | awk '{print $2}')
+exec --no-startup-id pactl set-default-sink $(pactl list short sinks | grep analog | awk '{print $2}')
 
 # Spotify related key bindings
 bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
