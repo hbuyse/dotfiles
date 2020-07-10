@@ -139,6 +139,10 @@ enable-scroll = true
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
 
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
 label-mode-padding = 2
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
@@ -170,11 +174,11 @@ label-urgent-padding = 2
 ; ws-icon-[0-9]+ = <label>;<icon>
 ; NOTE: The <label> needs to match the name of the i3 workspace
 ; Neither <label> nor <icon> can contain a semicolon (;)
-ws-icon-0 = 1;
-ws-icon-1 = 2;
-ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
+ws-icon-0 = term;
+ws-icon-1 = dev;
+ws-icon-2 = spotify;
+ws-icon-3 = web;
+ws-icon-4 = mail;
 ws-icon-default = ♟
 
 [module/mpd]
