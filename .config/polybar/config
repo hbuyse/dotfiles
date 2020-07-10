@@ -51,9 +51,9 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = FontAwesome:pixelsize=10;1
-font-1 = MesloLGM Nerd Font Mono:pixelsize=10;1
-font-2 = UbuntuMono:pixelsize=10;1
+font-0 = Hack Nerd Font:pixelsize=9;1
+font-1 = FontAwesome:size=9;1
+font-2 = UbuntuMono:size=9;1
 
 modules-left = i3
 modules-center = mpd spotify
