@@ -127,12 +127,12 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
+set $ws1 "1 term"
 set $ws2 "2 dev"
-set $ws3 "3 term"
-set $ws4 "4 spotify"
-set $ws5 "5 web"
-set $ws6 "6 mail"
+set $ws3 "3 spotify"
+set $ws4 "4 web"
+set $ws5 "5 mail"
+set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
@@ -213,6 +213,6 @@ bindsym $mod+o mode "$mode_launcher"
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-for_window [class="(?i)firefox"] move container to workspace $ws5
-for_window [class="(?i)spotify"] move container to workspace $ws4
-for_window [class="(?i)thunderbird"] move container to workspace $ws6
+for_window [class="(?i)firefox"] move container to workspace $ws4
+for_window [class="(?i)spotify"] move container to workspace $ws3
+for_window [class="(?i)thunderbird"] move container to workspace $ws5
