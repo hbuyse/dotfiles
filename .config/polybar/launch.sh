@@ -7,9 +7,9 @@ killall -q polybar
 # polybar-msg cmd quit
 if [[ -n "$(which xrandr)" ]]; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload example &
+    MONITOR=$m polybar --reload work 2> /tmp/polybar-$m.log &
   done
 else
-  polybar --reload example &
+  polybar --reload work 2> /tmp/polybar.log &
 fi
 # vim: set ts=2 sw=2 tw=0 et :
