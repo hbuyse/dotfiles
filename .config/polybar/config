@@ -421,9 +421,9 @@ menu-2-1-exec = menu-open-0
 [module/spotify]
 type = custom/script
 interval = 1
-format-prefix = " "
+format-suffix = " "
 format = <label>
-exec = python $HOME/.config/polybar/spotify_status.py -f '{artist}: {song}'
+exec = python $HOME/.config/polybar/spotify_status.py -f '{play_pause} {artist} : {song}' -t 70 
 format-underline = #1db954
 
 [settings]
