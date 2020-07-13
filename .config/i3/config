@@ -15,34 +15,6 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:Hack Nerd Font 8
 
-# Should be a symbolic link to a file in the same directory
-exec --no-startup-id "$HOME/.screenlayout/layout"
-
-# Add background wallpaper
-exec --no-startup-id feh --bg-fill "$HOME/.config/i3/locker.png"
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-#locking the screen ( should be the exact size of the screen )
-bindsym $mod+p exec --no-startup-id $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
-exec --no-startup-id xautolock -time 5 -locker $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
-
-#screenshot
-bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%s_%H%M_%d.%m.%Y_$wx$h.png"
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -225,9 +197,6 @@ mode "$mode_launcher" {
 set $mode_launcher Launch: [f]irefox [t]hunderbird [s]potify
 bindsym $mod+o mode "$mode_launcher"
 
-# Start polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 # GAPS
 gaps inner 10
 gaps outer 10
@@ -238,6 +207,37 @@ for_window [class="^.*"] border pixel 2
 for_window [class="(?i)firefox"] move container to workspace $ws3
 for_window [class="(?i)spotify"] move container to workspace $ws5
 for_window [class="(?i)thunderbird"] move container to workspace $ws4
+
+# Should be a symbolic link to a file in the same directory
+exec --no-startup-id "$HOME/.screenlayout/layout"
+
+# Add background wallpaper
+exec --no-startup-id feh --bg-fill "$HOME/.config/i3/locker.png"
+
+# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# text rendering and scalability on retina/hidpi displays (thanks to pango).
+#font pango:DejaVu Sans Mono 8
+
+# The combination of xss-lock, nm-applet and pactl is a popular choice, so
+# they are included here as an example. Modify as you see fit.
+
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+#locking the screen ( should be the exact size of the screen )
+bindsym $mod+p exec --no-startup-id $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
+exec --no-startup-id xautolock -time 5 -locker $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
+
+#screenshot
+bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%s_%H%M_%d.%m.%Y_$wx$h.png"
+
+# NetworkManager is the most popular way to manage wireless networks on Linux,
+# and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id nm-applet
+
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start compton at startup to get some transparency
 exec_always --no-startup-id $HOME/.config/compton/launch.sh
