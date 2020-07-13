@@ -21,6 +21,9 @@ exec --no-startup-id "$HOME/.screenlayout/layout"
 # Add background wallpaper
 exec --no-startup-id feh --bg-fill "$HOME/.config/i3/locker.png"
 
+# Start compton at startup to get some transparency
+exec --no-startup-id compton
+
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
