@@ -57,7 +57,7 @@ font-2 = UbuntuMono:size=9;1
 
 modules-left = i3
 modules-center = spotify
-modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -456,6 +456,16 @@ format-suffix = "  "
 format = <label>
 exec = python $HOME/.config/polybar/spotify_status.py -f '{play_pause} {artist} - {song}' -t 70
 format-underline = #1db954
+
+[module/bluetooth]
+type = custom/script
+exec = $HOME/.config/polybar/bluetooth.sh
+interval = 2
+click-left = exec blueberry
+click-right = exec $HOME/.config/polybar/toggle_bluetooth.sh
+format-padding = 1
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
 
 [settings]
 screenchange-reload = true
