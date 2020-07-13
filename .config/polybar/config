@@ -317,10 +317,10 @@ label = %date% %time%
 type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+label-volume = "%{A1:pavucontrol:}VOL %percentage%%{A}"
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
+label-muted =   muted
 label-muted-foreground = #666
 
 bar-volume-width = 10
