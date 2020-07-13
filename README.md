@@ -17,6 +17,8 @@ https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository
 - oh-my-zsh
 - powerlevel10k
 - feh
+- compton
+- dunst
 
 ### Suggested
 
