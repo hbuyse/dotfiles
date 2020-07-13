@@ -148,23 +148,23 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %name% %icon%
+label-focused = %icon% %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %name% %icon%
+label-unfocused = %icon% %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %name% %icon%
+label-visible =  %icon% %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %name% %icon%
+label-urgent = %icon% %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -174,12 +174,12 @@ label-urgent-padding = 2
 ; ws-icon-[0-9]+ = <label>;<icon>
 ; NOTE: The <label> needs to match the name of the i3 workspace
 ; Neither <label> nor <icon> can contain a semicolon (;)
-ws-icon-0 = term;
-ws-icon-1 = dev;
-ws-icon-2 = spotify;
-ws-icon-3 = web;
-ws-icon-4 = mail;
-ws-icon-default = ♟
+ws-icon-0 = 1:term;
+ws-icon-1 = 2:dev;
+ws-icon-2 = 3:spotify;
+ws-icon-3 = 4:web;
+ws-icon-4 = 5:mail;
+;ws-icon-default = ♟
 
 [module/mpd]
 type = internal/mpd
