@@ -232,8 +232,8 @@ bindsym $mod+o mode "$mode_launcher"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # GAPS
-gaps inner 5
-gaps outer 5
+gaps inner 10
+gaps outer 10
 
 for_window [class="^.*"] border pixel 2
 
