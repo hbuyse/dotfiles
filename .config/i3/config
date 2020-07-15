@@ -208,15 +208,17 @@ for_window [class="(?i)firefox"] move container to workspace $ws3
 for_window [class="(?i)spotify"] move container to workspace $ws5
 for_window [class="(?i)thunderbird"] move container to workspace $ws4
 
+# Set the different keyboard layouts
+# us-intl: US international layout
+# fr-latin9: french keyboard layout
+# synch: Force synchronization for X requests
+exec --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9" -synch
+
 # Should be a symbolic link to a file in the same directory
 exec --no-startup-id "$HOME/.screenlayout/layout"
 
 # Add background wallpaper
 exec --no-startup-id feh --bg-fill "$HOME/.config/i3/locker.png"
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
