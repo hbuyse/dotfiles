@@ -1,4 +1,7 @@
 [global_config]
+  title_transmit_bg_color = "#fb4934"
+  title_receive_bg_color = "#83a598"
+  title_inactive_bg_color = "#928374"
   enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
   always_split_with_profile = True
 [keybindings]
