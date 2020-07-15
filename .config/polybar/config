@@ -88,7 +88,7 @@ font-2 = UbuntuMono:size=9;1
 
 modules-left = i3
 modules-center = spotify
-modules-right = filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = vpn-nordvpn-status filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -464,6 +464,11 @@ click-right = exec $HOME/.config/polybar/toggle_bluetooth.sh
 format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
+
+[module/vpn-nordvpn-status]
+type = custom/script
+exec = $HOME/.config/polybar/vpn-nordvpn-status.sh
+interval = 5
 
 [settings]
 screenchange-reload = true
