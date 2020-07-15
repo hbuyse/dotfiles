@@ -17,21 +17,45 @@
 ;==========================================================
 
 [colors]
-background = #282828
-background-alt = #3c3836
-foreground = #fbf1c7
-foreground-alt = #ebdbb2
-primary = #d65d0e
-secondary = #d79921
-alert = #cc241d
-red = #fb4934
-green = #b8bb26
-yellow = #fabd2f
-blue = #83a598
-purple = #d3869b
-teal = #8ec07c
-orange = #fe8019
-gray = #a89984
+; Gruvbox colors
+bg0 = #282828
+bg0_h = #1d2021
+bg0_s = #32302f
+bg1 = #3c3836
+bg2 = #504945
+bg3 = #665c54
+bg4 = #7c6f64
+fg0 = #fbf1c7
+fg1 = #ebdbb2
+fg2 = #d5c4a1
+fg3 = #bdae93
+fg4 = #a89984
+aqua1 = #689d6a
+aqua2 = #8ec07c
+blue1 = #458588
+blue2 = #83a598
+gray1 = #a89984
+gray2 = #928374
+green1 = #98971a
+green2 = #b8bb26
+orange1 = #d65d0e
+orange2 = #fe8019
+purple1 = #b16286
+purple2 = #d3869b
+red1 = #cc241d
+red2 = #fb4934
+yellow1 = #d79921
+yellow2 = #fabd2f
+
+fg = ${colors.fg1}
+bg = ${colors.bg0}
+background = ${colors.bg}
+background-alt = ${colors.bg1}
+foreground = ${colors.fg}
+foreground-alt = ${colors.fg1}
+primary = ${colors.orange2}
+secondary = ${colors.yellow2}
+alert = ${colors.red2}
 
 
 [bar/work]
@@ -213,7 +237,7 @@ bar-indicator-foreground = #fff
 bar-indicator-font = 2
 bar-fill = ─
 bar-fill-font = 2
-bar-fill-foreground = #9f78e1
+bar-fill-foreground = ${colors.purple2}
 bar-empty = ─
 bar-empty-font = 2
 bar-empty-foreground = ${colors.foreground-alt}
@@ -228,7 +252,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline = ${colors.red2}
 label = %percentage:2%%
 
 [module/memory]
@@ -236,7 +260,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline = ${colors.green2}
 label = %percentage_used%%
 format = <label>
 
@@ -247,7 +271,7 @@ interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
 format-connected-prefix = " "
-format-connected-underline = #9f78e1
+format-connected-underline = ${colors.purple2}
 label-connected = %essid%
 
 format-disconnected =
@@ -270,7 +294,7 @@ type = internal/network
 interface = enx3448edd37bc8
 interval = 3.0
 
-format-connected-underline = #55aa55
+format-connected-underline = ${colors.aqua2}
 format-connected-prefix = " "
 format-disconnected-underline = ${self.format-connected-underline}
 label-connected = %local_ip%
@@ -293,7 +317,7 @@ time-alt = %H:%M:%S
 
 format-prefix =  
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline = ${colors.blue2}
 
 label = %date% %time%
 
@@ -305,7 +329,7 @@ label-volume = "%{A1:pavucontrol:}VOL %percentage%%{A}"
 label-volume-foreground = ${root.foreground}
 
 label-muted =   muted
-label-muted-foreground = #666
+label-muted-foreground = ${colors.gray2}
 
 [module/alsa]
 type = internal/alsa
@@ -319,13 +343,13 @@ format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
 bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
+bar-volume-foreground-0 = ${colors.green2}
+bar-volume-foreground-1 = ${colors.green2}
+bar-volume-foreground-2 = ${colors.green2}
+bar-volume-foreground-3 = ${colors.green2}
+bar-volume-foreground-4 = ${colors.green2}
+bar-volume-foreground-5 = ${colors.orange2}
+bar-volume-foreground-6 = ${colors.red2}
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
@@ -342,7 +366,7 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline = ${colors.orange2}
 
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
@@ -374,7 +398,7 @@ thermal-zone = 6
 warn-temperature = 70
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.red2}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -422,7 +446,7 @@ interval = 1
 format-suffix = "  "
 format = <label>
 exec = python $HOME/.config/polybar/spotify_status.py -f '{play_pause} {artist} - {song}' -t 70
-format-underline = ${colors.green}
+format-underline = ${colors.green2}
 
 [module/bluetooth]
 type = custom/script
