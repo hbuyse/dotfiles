@@ -323,11 +323,19 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = false
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
 format-volume = <label-volume>
-label-volume = "%{A1:pavucontrol:}VOL %percentage%%{A}"
+label-volume = "%{A1:pactl set-sink-mute @DEFAULT_SINK@ toggle &:}%{A3:pavucontrol&:}VOL %percentage%%{A}"
 label-volume-foreground = ${root.foreground}
 
-label-muted =   muted
+label-muted = %{A1:pactl set-sink-mute @DEFAULT_SINK@ toggle &:}%{A3:pavucontrol&:} muted%{A}
 label-muted-foreground = ${colors.gray2}
 
 [module/alsa]
