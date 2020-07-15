@@ -272,14 +272,13 @@ interval = 3.0
 format-connected = <ramp-signal> <label-connected>
 format-connected-prefix = " "
 format-connected-underline = ${colors.purple2}
-label-connected = %essid%
+label-connected = %{A1:i3-sensible-terminal -e nmtui &:}%essid%%{A}
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
+format-disconnected = <label-disconnected>
 ;format-disconnected-prefix = " "
 ;format-disconnected-prefix-foreground = ${colors.foreground-alt}
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
+format-disconnected-underline = ${self.format-connected-underline}
+label-disconnected = %{A1:i3-sensible-terminal -e nmtui &:}%ifname% down%{A}
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
