@@ -296,7 +296,7 @@ interval = 3.0
 format-connected-underline = ${colors.aqua2}
 format-connected-prefix = " "
 format-disconnected-underline = ${self.format-connected-underline}
-label-connected = %local_ip%
+label-connected = %{A1:i3-sensible-terminal -e nmtui &:}%local_ip%%{A}
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
