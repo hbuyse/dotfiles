@@ -212,7 +212,7 @@ for_window [class="(?i)thunderbird"] move container to workspace $ws4
 # us-intl: US international layout
 # fr-latin9: french keyboard layout
 # synch: Force synchronization for X requests
-exec --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9" -synch
+#exec --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9" -synch
 
 # Should be a symbolic link to a file in the same directory
 exec --no-startup-id "$HOME/.screenlayout/layout"
