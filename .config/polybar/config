@@ -393,8 +393,8 @@ animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 6
-warn-temperature = 70
+thermal-zone = 5
+warn-temperature = 73
 
 format = <ramp> <label>
 format-underline = ${colors.red2}
@@ -405,9 +405,9 @@ label = %temperature-c%
 label-warn = %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
