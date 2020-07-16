@@ -1,8 +1,8 @@
-#!/bin/sh
+#! /usr/bin/env sh
 
 DAEMON=nordvpn
 
-if [ "$(command -v $DAEMON)" = "$DAEMON" ]; then
+if [ -n "$(command -v $DAEMON)" ]; then
 	STATUS=$($DAEMON status | grep Status | tr -d ' ' | cut -d ':' -f2)
 
 	if [ "$STATUS" = "Connected" ]; then
