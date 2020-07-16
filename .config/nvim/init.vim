@@ -53,6 +53,9 @@ if !has('gui_running')
   set t_Co=256
 endif
 
+" Encoding
+set encoding=UTF-8
+
 call plug#begin(stdpath('data') . '/plugged')
 "Plug 'powerline/powerline'
 
@@ -83,6 +86,9 @@ Plug 'yggdroot/indentline'
 
 " Vim plugin that displays tags in a window, ordered by scope
 Plug 'majutsushi/tagbar'
+
+" Icon
+Plug 'ryanoasis/vim-devicons'
 
 " Colorschemes
 Plug 'flazz/vim-colorschemes'
