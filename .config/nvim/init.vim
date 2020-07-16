@@ -133,6 +133,7 @@ let g:tagbar_autofocus = 1
 
 "  How can I show errors or warnings in my statusline?
 let g:airline#extensions#ale#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " Write this in your vimrc file
 let g:ale_set_loclist = 0
