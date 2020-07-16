@@ -459,9 +459,7 @@ format-underline = ${colors.green2}
 type = custom/script
 exec = $HOME/.config/polybar/bluetooth.sh
 interval = 2
-click-left = exec blueberry
-click-right = exec $HOME/.config/polybar/toggle_bluetooth.sh
-format-padding = 1
+;format-padding = 1
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 
