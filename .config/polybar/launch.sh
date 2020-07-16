@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
 
-# Terminate already running bar instances
-killall -q polybar
+POLYBAR="$(command -v polybar)"
+XRANDR="$(command -v xrandr)"
 
-# If all your bars have ipc enabled, you can also use 
-# polybar-msg cmd quit
-if [[ -n "$(which xrandr)" ]]; then
-  for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m polybar --reload work 2> /tmp/polybar-$m.log &
-  done
-else
-  polybar --reload work 2> /tmp/polybar.log &
+# Check that the commands exists
+if [[ -z "$POLYBAR" ]]; then
+    exit 1
 fi
-# vim: set ts=2 sw=2 tw=0 et :
+
+# Terminate already running bar instances
+killall -q "$POLYBAR"
+
+# If all your bars have ipc enabled, you can also use polybar-msg cmd quit
+if [[ -n "$XRANDR" ]]; then
+    for m in $($XRANDR --query | grep -w "connected" | cut -d" " -f1); do
+        MONITOR="$m" $POLYBAR --reload work 2> "/tmp/polybar-$m.log" &
+    done
+else
+    $POLYBAR --reload work 2> /tmp/polybar.log &
+fi
+# vim: set ts=4 sw=4 tw=0 et :
