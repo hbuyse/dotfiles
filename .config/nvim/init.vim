@@ -47,7 +47,7 @@ set cmdheight=2
 set updatetime=100
 
 " Show physical tabulations define by tabstop
-set list lcs=tab:\|\ 
+set list lcs=tab:\|\ ,space:·
 
 if !has('gui_running')
   set t_Co=256
