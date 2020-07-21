@@ -6,6 +6,12 @@ All my dotfiles used at work or at home
 
 https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html
 
+## Set upstrean branch
+
+```sh
+dotfiles for-each-ref --format='%(refname:short)' refs/heads | xargs -n1 -I{} git --git-dir=/home/hbuyse/.dotfiles.git/ --work-tree=/home/hbuyse branch --set-upstream-to=origin/{} {}
+```
+
 ## Requirements
 
 ### Mandatory
