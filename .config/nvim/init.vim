@@ -21,7 +21,8 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set termguicolors
+set notermguicolors
+set t_Co=256
 set scrolloff=8
 
 " Always enable the statusline
@@ -48,10 +49,6 @@ set updatetime=100
 
 " Show physical tabulations define by tabstop
 set list lcs=tab:\|\ ,space:·
-
-if !has('gui_running')
-  set t_Co=256
-endif
 
 " Encoding
 set encoding=UTF-8
