@@ -45,6 +45,7 @@ class Spotify:
         return self._properties.Get('org.mpris.MediaPlayer2.Player', 'Position')
 
 def main():
+    """Main program"""
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '-t',
@@ -112,9 +113,11 @@ def main():
 
         metadata = spotify.metadata
         status = spotify.status
-
+    except dbus.exceptions.DBusException as expt:
+        return
     except Exception as expt:
         print(expt)
+        sys.exit(1)
 
     # Handle play/pause label
     play_pause = play_pause.split(',')
