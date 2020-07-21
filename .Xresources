@@ -66,7 +66,7 @@ URxvt.depth:                      32
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
-URxvt*saveLines:                  5000
+URxvt*saveLines:                  999999
 
 ! for 'fake' transparency (without Compton) uncomment the following three lines
 ! URxvt*inheritPixmap:            true
