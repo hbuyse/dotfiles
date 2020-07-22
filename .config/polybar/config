@@ -58,7 +58,7 @@ secondary = ${colors.yellow2}
 alert = ${colors.red2}
 
 
-[bar/work]
+[bar/general]
 monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 32
@@ -86,10 +86,6 @@ font-0 = Hack Nerd Font:pixelsize=9;1
 font-1 = FontAwesome:size=9;1
 font-2 = UbuntuMono:size=9;1
 
-modules-left = i3
-modules-center = spotify
-modules-right = vpn-nordvpn-status filesystem bluetooth xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
-
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
@@ -107,6 +103,27 @@ scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[bar/henrib-latitude-5400]
+inherit = bar/general
+
+modules-left = i3
+modules-center = spotify
+modules-right = filesystem bluetooth xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+
+[bar/t480]
+inherit = bar/general
+
+modules-left = i3
+modules-center = spotify
+modules-right = vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan eth battery temperature date powermenu
+
+[bar/cg8250]
+inherit = bar/general
+
+modules-left = i3
+modules-center = spotify
+modules-right = vpn-nordvpn-status filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 [module/xwindow]
 type = internal/xwindow

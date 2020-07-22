@@ -2,6 +2,7 @@
 
 POLYBAR="$(command -v polybar)"
 XRANDR="$(command -v xrandr)"
+BAR="$(hostname | tr '[:upper:]' '[:lower:]')"
 
 # Check that the commands exists
 if [[ -z "$POLYBAR" ]]; then
@@ -14,9 +15,9 @@ killall -q "$POLYBAR"
 # If all your bars have ipc enabled, you can also use polybar-msg cmd quit
 if [[ -n "$XRANDR" ]]; then
     for m in $($XRANDR --query | grep -w "connected" | cut -d" " -f1); do
-        MONITOR="$m" $POLYBAR --reload work 2> "/tmp/polybar-$m.log" &
+        MONITOR="$m" $POLYBAR --reload "$BAR" 2> "/tmp/polybar-$m.log" &
     done
 else
-    $POLYBAR --reload work 2> /tmp/polybar.log &
+    $POLYBAR --reload "$BAR" 2> /tmp/polybar.log &
 fi
 # vim: set ts=4 sw=4 tw=0 et :
