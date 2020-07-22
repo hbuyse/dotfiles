@@ -48,7 +48,7 @@ set cmdheight=2
 set updatetime=100
 
 " Show physical tabulations define by tabstop
-set list lcs=tab:\|\ ,space:·
+set list lcs=tab:\|\ 
 
 " Encoding
 set encoding=UTF-8
