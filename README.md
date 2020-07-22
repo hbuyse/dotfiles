@@ -8,8 +8,11 @@ https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository
 
 ## Set upstrean branch
 
+One of those commands:
+
 ```sh
-dotfiles for-each-ref --format='%(refname:short)' refs/heads | xargs -n1 -I{} git --git-dir=/home/hbuyse/.dotfiles.git/ --work-tree=/home/hbuyse branch --set-upstream-to=origin/{} {}
+dotfiles fetch --tags origin
+dotfiles config --local --add remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"\n
 ```
 
 ## Requirements
