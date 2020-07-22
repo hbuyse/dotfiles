@@ -88,7 +88,7 @@ font-2 = UbuntuMono:size=9;1
 
 modules-left = i3
 modules-center = spotify
-modules-right = vpn-nordvpn-status filesystem bluetooth alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = vpn-nordvpn-status filesystem bluetooth xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -243,7 +243,8 @@ label-song-ellipsis = true
 [module/xbacklight]
 type = internal/xbacklight
 
-format = <label> <bar>
+format = <bar>
+format-prefix = " "
 label = BL
 
 bar-width = 10
