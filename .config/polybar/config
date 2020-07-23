@@ -116,7 +116,7 @@ inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan eth battery battery2 temperature date powermenu
 
 [bar/cg8250]
 inherit = bar/general
@@ -405,6 +405,11 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.orange2}
 
@@ -414,6 +419,58 @@ format-discharging-underline = ${self.format-charging-underline}
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-discharging = %percentage%% %time%
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
+
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
+
+[module/battery2]
+type = internal/battery
+battery = BAT1
+adapter = AC
+full-at = 98
+
+; see "man date" for details on how to format the time string
+; NOTE: if you want to use syntax tags here you need to use %%{...}
+; Default: %H:%M:%S
+time-format = %H:%M
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.orange2}
+
+format-discharging = <animation-discharging> <label-discharging>
+format-discharging-underline = ${self.format-charging-underline}
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+; Available tokens:
+;   %percentage% (default) - is set to 100 if full-at is reached
+;   %percentage_raw%
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-discharging = %percentage%% %time%
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
