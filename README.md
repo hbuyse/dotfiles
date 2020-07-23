@@ -6,13 +6,10 @@ All my dotfiles used at work or at home
 
 https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html
 
-## Set upstrean branch
-
-One of those commands:
+## Set upstrean branches
 
 ```sh
 dotfiles fetch --tags origin
-dotfiles config --local --add remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"\n
 ```
 
 ## Requirements
