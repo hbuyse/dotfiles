@@ -238,8 +238,8 @@ bindsym $mod+p exec --no-startup-id $HOME/.config/i3/i3lock-multi -i "$HOME/.con
 exec --no-startup-id xautolock -time 5 -locker $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
 
 #screenshot
-bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%s_%H%M_%d.%m.%Y_$wx$h.png"
-bindsym --release Mod1+Sys_Req exec --no-startup-id scrot -u "$HOME/Pictures/%s_%H%M_%d.%m.%Y_$wx$h.png"
+bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%Y%m%d_%H%M%S.png"
+bindsym --release Mod1+Sys_Req exec --no-startup-id scrot -u "$HOME/Pictures/%Y%m%d_%H%M%S.png"
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
