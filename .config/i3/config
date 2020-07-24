@@ -229,13 +229,9 @@ exec --no-startup-id feh --bg-fill "$HOME/.config/i3/locker.png"
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
 #locking the screen ( should be the exact size of the screen )
-bindsym $mod+p exec --no-startup-id $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
-exec --no-startup-id xautolock -time 5 -locker $HOME/.config/i3/i3lock-multi -i "$HOME/.config/i3/locker.png"
+bindsym $mod+p exec --no-startup-id xautolock -locknow -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png" 
+exec --no-startup-id xautolock -time 5 -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png"
 
 #screenshot
 bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%Y%m%d_%H%M%S.png"
