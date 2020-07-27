@@ -116,14 +116,14 @@ inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = updates-pacman vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan eth battery battery2 temperature date powermenu
+modules-right = updates vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan eth battery battery2 temperature date powermenu
 
 [bar/cg8250]
 inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = updates-pacman vpn-nordvpn-status filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = updates vpn-nordvpn-status filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 [module/xwindow]
 type = internal/xwindow
@@ -558,7 +558,7 @@ type = custom/script
 exec = $HOME/.config/polybar/vpn-nordvpn-status.sh
 interval = 5
 
-[module/updates-pacman]
+[module/updates]
 type = custom/script
 exec = ~/.config/polybar/updates.sh
 interval = 600
