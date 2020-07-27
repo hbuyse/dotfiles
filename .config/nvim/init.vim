@@ -1,6 +1,7 @@
 " Enable syntax highlighting
 syntax on
 
+set mouse=a
 set guicursor=
 set noshowmatch
 set noshowmode
