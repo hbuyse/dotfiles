@@ -1,11 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-OPTIONS="\tLock\n\tLogout\n\tShutdown\n\tReboot"
+OPTIONS="\tLock\n\tLogout\n\tShutdown\n\tReboot\n\tCaffeinate\n\tUncaffeinate"
 
-option=`echo -e $OPTIONS | awk '{print $1}' | tr -d '\r\n\t'`
 if [ "$@" ]
 then
 	case $@ in
+		*Uncaffeinate)
+			xset +dpms
+			;;
+		*Caffeinate)
+			xset -dpms
+			;;
 		*Lock)
 			xautolock -locknow -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png"
 			;;
@@ -22,6 +27,3 @@ then
 else
 	echo -e $OPTIONS
 fi
-
-
-
