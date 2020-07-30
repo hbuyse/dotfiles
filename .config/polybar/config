@@ -109,7 +109,7 @@ inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = filesystem bluetooth xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = updates filesystem bluetooth xbacklight pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
 
 [bar/t480]
 inherit = bar/general
