@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 OS_RELEASE="/usr/lib/os-release"
 
