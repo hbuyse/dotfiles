@@ -15,7 +15,7 @@ XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 
 ! hard contrast: *background: #1d2021
-*background: #282828
+*background: [97]#282828
 
 ! soft contrast: *background: #32302f
 *foreground: #ebdbb2
@@ -162,7 +162,7 @@ URxvt.keysym.Shift-Control-Down:  \033[1;6B
 ! URxvt*title:                      string
 ! URxvt*iconName:                   string
 ! URxvt*buffered:                   boolean
-! URxvt*depth:                      number
+URxvt*depth:                        32
 ! URxvt*visual:                     number
 ! URxvt*transient-for:              windowid
 ! URxvt*override-redirect:          boolean
