@@ -6,5 +6,5 @@ then
 	echo "$pid"
 	kill -15 "$pid"
 else
-	ps -U $UID --no-headers -o "%p: %c"
+	ps -U $UID --no-headers -o "%p: %a"
 fi
