@@ -512,7 +512,7 @@ ramp-foreground = ${colors.foreground-alt}
 type = custom/script
 exec = echo " ⏻ "
 format-foreground = ${colors.red2}
-click-left = rofi -show Power -modi Power:$HOME/.config/rofi/power.sh
+click-left = $HOME/.config/rofi/powermenu.sh
 
 [module/spotify]
 type = custom/script
