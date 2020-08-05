@@ -47,9 +47,9 @@ bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
 # Notes: The I3 Window manager does not like commas in the command when specifying an exec command.
 # For that case ´#´ can be used as a separator.
-bindsym $mod+d exec rofi -show combi -combi-modi "window#drun#ssh#run" -modi combi
-bindsym $mod+x exec $HOME/.config/rofi/killmenu.sh
-bindsym $mod+F4 exec $HOME/.config/rofi/powermenu.sh
+bindsym --release $mod+d exec rofi -sidebar-mode -show drun -combi-modi "drun#run#ssh#window"
+bindsym --release $mod+x exec $HOME/.config/rofi/killmenu.sh
+bindsym --release $mod+F4 exec $HOME/.config/rofi/powermenu.sh
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
