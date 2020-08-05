@@ -1,9 +1,9 @@
 configuration {
-	modi: "window,drun,ssh,run";
+	modi: "drun,run,ssh,window";
 	width: 40;
-	lines: 15;
+	lines: 20;
 	columns: 1;
-	font: "Hack Nerd Font Mono 12";
+	font: "Hack Nerd Font Mono 10";
 /*	bw: 1;*/
 /*	location: 0;*/
 /*	padding: 5;*/
@@ -34,7 +34,7 @@ configuration {
 /*	auto-select: false;*/
 /*	parse-hosts: false;*/
 /*	parse-known-hosts: true;*/
-	combi-modi: "window,drun,ssh,run";
+	combi-modi: "drun,run,ssh,window";
 /*	matching: "normal";*/
 /*	tokenize: true;*/
 /*	m: "-5";*/
@@ -143,3 +143,4 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
+/* vim:ft=css
