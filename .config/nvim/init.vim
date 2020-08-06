@@ -105,6 +105,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
+" CTRL-L will mute highlighted search results
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 "Add ruler to 120 characters
 set colorcolumn=120
 highlight ColorColumn ctermbg=235 guibg=#262626
