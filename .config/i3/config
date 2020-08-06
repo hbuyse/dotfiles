@@ -242,3 +242,6 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start compton at startup to get some transparency
 exec_always --no-startup-id $HOME/.config/compton/launch.sh
+
+# Start Redshift
+exec_always --no-startup-id redshift
