@@ -77,6 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=()
 plugins+=(git)
+plugins+=(fzf)
 plugins+=(colorize)
 plugins+=(sudo)
 plugins+=(pyenv)
