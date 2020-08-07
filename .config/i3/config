@@ -203,13 +203,44 @@ mode "$mode_launcher" {
 set $mode_launcher Launch: [f]irefox [t]hunderbird [s]potify
 bindsym $mod+o mode "$mode_launcher"
 
-# GAPS
+##########
+# COLORS #
+##########
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+
+# start of window title bars & borders section
+
+# green gruvbox
+# class                 border|backgr|text|indicator|child_border
+#client.focused          $green $green $darkgray $purple $darkgray
+#client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+#client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+#client.urgent           $red $red $white $red $red
+
+# blue gruvbox
+# class                 border|backgr|text|indicator|child_border
+client.focused          $blue $blue $darkgray $purple $darkgray
+client.focused_inactive $darkgray $darkgray $yellow $purple $darkgray
+client.unfocused        $darkgray $darkgray $yellow $purple $darkgray
+client.urgent           $red $red $white $red $red
+
+#end of window title bars & borders section
+
+########
+# GAPS #
+########
 gaps inner 10
 gaps outer 10
 
 for_window [class="^.*"] border pixel 2
-
-
 for_window [class="(?i)firefox"] move container to workspace $ws3
 for_window [class="(?i)spotify"] move container to workspace $ws5
 for_window [class="(?i)thunderbird"] move container to workspace $ws4
