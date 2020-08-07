@@ -82,6 +82,7 @@ plugins+=(colorize)
 plugins+=(common-aliases)
 plugins+=(command-not-found)
 plugins+=(direnv)
+plugins+=(dotfiles)
 plugins+=(fzf)
 plugins+=(history-substring-search)
 plugins+=(pyenv)
@@ -133,5 +134,3 @@ else
 	[[ ! -f ~/.p10kwork.zsh ]] || source ~/.p10kwork.zsh
 fi
 
-# Handle the dotfiles configuration
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
