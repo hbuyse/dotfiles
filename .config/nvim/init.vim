@@ -294,3 +294,13 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
+
+function! IsOnSomeParticularMachine(hostname)
+    return match(system("echo -n $HOST"), a:hostname) >= 0
+endfunction
+
+if IsOnSomeParticularMachine("T480") || IsOnSomeParticularMachine("CG8250")
+	source $HOME/.config/nvim/home.vim
+else
+	source $HOME/.config/nvim/work.vim
+endif
