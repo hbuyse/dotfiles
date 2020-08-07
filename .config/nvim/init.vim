@@ -85,6 +85,9 @@ Plug 'w0rp/ale'
 " Autocompletion for Vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Management ctags
+Plug 'ludovicchabant/vim-gutentags'
+
 " Cscope
 Plug 'brookhong/cscope.vim'
 
