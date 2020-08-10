@@ -21,7 +21,7 @@ set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set incsearch
-set termguicolors
+set notermguicolors
 set scrolloff=8
 
 " Always enable the statusline
