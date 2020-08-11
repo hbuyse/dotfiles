@@ -116,7 +116,7 @@ inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = updates vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan eth battery battery2 temperature date powermenu
+modules-right = updates vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan eth battery-combined temperature date powermenu
 
 [bar/cg8250]
 inherit = bar/general
@@ -550,6 +550,11 @@ format-foreground = ${colors.foreground}
 type = custom/script
 exec = $HOME/.config/polybar/vpn-nordvpn-status.sh
 interval = 5
+
+[module/battery-combined]
+type = custom/script
+exec = ~/.config/polybar/battery-combined-tlp.sh
+interval = 60
 
 [module/updates]
 type = custom/script
