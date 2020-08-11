@@ -109,14 +109,14 @@ inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = updates filesystem bluetooth xbacklight pulseaudio xkeyboard memory cpu wlan eth eth-hub battery temperature date powermenu
+modules-right = updates filesystem bluetooth xbacklight pulseaudio xkeyboard memory cpu wlan-latitude-5400 eth eth-hub battery temperature date powermenu
 
 [bar/t480]
 inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = updates vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan eth battery-combined temperature date powermenu
+modules-right = updates vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan-t480 eth battery-combined temperature date powermenu
 
 [bar/cg8250]
 inherit = bar/general
@@ -297,9 +297,33 @@ format-underline = ${colors.green2}
 label = %percentage_used%%
 format = <label>
 
-[module/wlan]
+[module/wlan-latitude-5400]
 type = internal/network
 interface = wlp2s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+;format-connected-prefix = " "
+format-connected-underline = ${colors.purple2}
+label-connected = %{A1:i3-sensible-terminal -e nmtui &:}%essid%%{A}
+
+format-disconnected = <label-disconnected>
+;format-disconnected-prefix = " "
+;format-disconnected-prefix-foreground = ${colors.foreground-alt}
+format-disconnected-underline = ${colors.purple1}
+label-disconnected = %{A1:i3-sensible-terminal -e nmtui &:}%ifname% down%{A}
+label-disconnected-foreground = ${colors.gray2}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
+[module/wlan-t480]
+type = internal/network
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
