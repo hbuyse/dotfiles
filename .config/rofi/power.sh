@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-OPTIONS="\tLock\n\tLogout\n\tShutdown\n\tReboot\n\tCaffeinate\n\tUncaffeinate"
+OPTIONS="\tLock\n\tLogout\n\tShutdown\n\tReboot\n\tCaffeinate\n\tUncaffeinate\n\tRestart_i3"
 
 if [ "$@" ]
 then
@@ -22,6 +22,9 @@ then
 			;;
 		*Reboot)
 			reboot
+			;;
+		*Restart_i3)
+			i3-msg restart
 			;;
 	esac
 else
