@@ -52,7 +52,7 @@ bg = ${colors.bg0}
 background = ${colors.bg}
 background-alt = ${colors.bg1}
 foreground = ${colors.fg}
-foreground-alt = ${colors.fg1}
+foreground-alt = ${colors.fg2}
 primary = ${colors.orange2}
 secondary = ${colors.yellow2}
 alert = ${colors.red2}
@@ -310,9 +310,9 @@ label-connected = %{A1:i3-sensible-terminal -e nmtui &:}%essid%%{A}
 format-disconnected = <label-disconnected>
 ;format-disconnected-prefix = " "
 ;format-disconnected-prefix-foreground = ${colors.foreground-alt}
-format-disconnected-underline = ${self.format-connected-underline}
+format-disconnected-underline = ${colors.purple1}
 label-disconnected = %{A1:i3-sensible-terminal -e nmtui &:}%ifname% down%{A}
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.gray2}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -332,10 +332,10 @@ label-connected = %{A1:i3-sensible-terminal -e nmtui &:}%local_ip%%{A}
 
 ;format-disconnected =
 format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
+format-disconnected-underline = ${colors.aqua1}
 format-disconnected-prefix = " "
 label-disconnected = %ifname% down
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.gray2}
 
 [module/eth-hub]
 type = internal/network
@@ -348,10 +348,10 @@ label-connected = %{A1:i3-sensible-terminal -e nmtui &:}%local_ip%%{A}
 
 ;format-disconnected =
 format-disconnected = <label-disconnected>
-format-disconnected-underline = ${self.format-connected-underline}
+format-disconnected-underline = ${colors.aqua1}
 format-disconnected-prefix = " "
 label-disconnected = %ifname% down
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.gray2}
 
 [module/date]
 type = internal/date
