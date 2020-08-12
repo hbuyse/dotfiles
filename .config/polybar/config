@@ -561,6 +561,7 @@ format-suffix = "  "
 format = <label>
 exec = python $HOME/.config/polybar/spotify_status.py -f '{play_pause} {artist} - {song}' -t 70
 format-underline = ${colors.green2}
+click-left = i3-msg "[class=Spotify] focus"
 
 [module/bluetooth]
 type = custom/script
