@@ -2,7 +2,7 @@
 
 POLYBAR="$(command -v polybar)"
 XRANDR="$(command -v xrandr)"
-BAR="$(hostname | tr '[:upper:]' '[:lower:]')"
+BAR="$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
 # Check that the commands exists
 if [[ -z "$POLYBAR" ]]; then
@@ -16,6 +16,7 @@ killall -q "$POLYBAR"
 if [[ -n "$XRANDR" ]]; then
     for m in $($XRANDR --query | grep -w "connected" | cut -d" " -f1); do
         MONITOR="$m" $POLYBAR --reload "$BAR" 2> "/tmp/polybar-$m.log" &
+        MONITOR="$m" $POLYBAR --reload "$BAR-bottom" 2> "/tmp/polybar-$m-bottom.log" &
     done
 else
     $POLYBAR --reload "$BAR" 2> /tmp/polybar.log &
