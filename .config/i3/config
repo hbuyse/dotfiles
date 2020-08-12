@@ -239,8 +239,9 @@ client.urgent           $red $red $white $red $red
 ########
 # GAPS #
 ########
-gaps inner 10
-gaps outer 10
+gaps inner 5
+gaps outer 5
+gaps top 52
 
 for_window [class="^.*"] border pixel 2
 for_window [class="(?i)firefox"] move container to workspace $ws3
