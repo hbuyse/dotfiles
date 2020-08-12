@@ -122,6 +122,12 @@ modules-right = filesystem memory cpu battery temperature
 [bar/t480]
 inherit = bar/general
 
+override-redirect = true
+width = 99%
+height = 32
+offset-x = 10
+offset-y = 10
+
 modules-left = i3
 modules-center = spotify
 modules-right = updates vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan-t480 eth battery-combined temperature date powermenu
