@@ -108,8 +108,16 @@ cursor-scroll = ns-resize
 inherit = bar/general
 
 modules-left = i3
+modules-right = updates filesystem bluetooth xbacklight pulseaudio xkeyboard wlan-latitude-5400 eth eth-hub date powermenu
+
+[bar/henrib-latitude-5400-bottom]
+inherit = bar/general
+bottom=true
+height=30
+font-0 = Hack Nerd Font:pixelsize=8;1
+
 modules-center = spotify
-modules-right = updates filesystem bluetooth xbacklight pulseaudio xkeyboard memory cpu wlan-latitude-5400 eth eth-hub battery temperature date powermenu
+modules-right = filesystem memory cpu battery temperature
 
 [bar/t480]
 inherit = bar/general
