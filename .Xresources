@@ -48,7 +48,7 @@ XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 
 ! hard contrast: *background: #1d2021
-*background: [97]#282828
+*background: [97]bg0
 
 ! soft contrast: *background: #32302f
 *foreground: fg1 
