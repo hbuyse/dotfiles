@@ -287,12 +287,8 @@ client.urgent           $red $red $white $red $red
 
 # i3-gaps specific
 
-# General gaps
 gaps inner 5
 gaps outer 5
-
-# Add gaps at the top in order to make polybar sexier
-gaps top 47
 
 for_window [class="^.*"] border pixel 2
 
