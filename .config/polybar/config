@@ -108,7 +108,7 @@ cursor-scroll = ns-resize
 inherit = bar/general
 
 modules-left = i3
-modules-right = updates filesystem bluetooth xbacklight pulseaudio xkeyboard wlan-latitude-5400 eth eth-hub date powermenu
+modules-right = updates bluetooth xbacklight pulseaudio xkeyboard wlan-latitude-5400 eth eth-hub date powermenu
 
 [bar/henrib-latitude-5400-bottom]
 inherit = bar/general
@@ -122,10 +122,18 @@ modules-right = filesystem memory cpu battery temperature
 [bar/t480]
 inherit = bar/general
 
+modules-left = i3 xwindow
+modules-right = bluetooth xbacklight pulseaudio xkeyboard memory cpu wlan-t480 eth powermenu
 
-modules-left = i3
+[bar/t480-bottom]
+inherit = bar/general
+bottom=true
+
+padding-left = 2
+
+modules-left = filesystem
 modules-center = spotify
-modules-right = updates vpn-nordvpn-status filesystem bluetooth xbacklight alsa xkeyboard memory cpu wlan-t480 eth battery-combined temperature date powermenu
+modules-right = updates vpn-nordvpn-status battery-combined temperature
 
 [bar/cg8250]
 inherit = bar/general
@@ -151,6 +159,7 @@ label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
+label-indicator-foreground = ${colors.bg2}
 label-indicator-background = ${colors.secondary}
 label-indicator-underline = ${colors.secondary}
 
