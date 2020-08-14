@@ -403,40 +403,11 @@ use-ui-max = false
 ;   <ramp-volume>
 ;   <bar-volume>
 format-volume = <label-volume>
-label-volume = "%{A1:pactl set-sink-mute @DEFAULT_SINK@ toggle &:}%{A3:pavucontrol&:}VOL %percentage%%{A}"
+label-volume = "%{A1:pactl set-sink-mute @DEFAULT_SINK@ toggle &:}%{A3:pavucontrol&:}墳 %percentage%%{A}"
 label-volume-foreground = ${root.foreground}
 
-label-muted = %{A1:pactl set-sink-mute @DEFAULT_SINK@ toggle &:}%{A3:pavucontrol&:} muted%{A}
+label-muted = %{A1:pactl set-sink-mute @DEFAULT_SINK@ toggle &:}%{A3:pavucontrol&:}婢 muted%{A}
 label-muted-foreground = ${colors.gray2}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume-prefix = "墳 "
-format-volume = <label-volume>
-label-volume = %percentage%
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = "婢 "
-format-muted-foreground = ${colors.gray2}
-label-muted = muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = ${colors.green2}
-bar-volume-foreground-1 = ${colors.green2}
-bar-volume-foreground-2 = ${colors.green2}
-bar-volume-foreground-3 = ${colors.green2}
-bar-volume-foreground-4 = ${colors.green2}
-bar-volume-foreground-5 = ${colors.orange2}
-bar-volume-foreground-6 = ${colors.red2}
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
