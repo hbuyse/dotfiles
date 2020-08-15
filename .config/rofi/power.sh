@@ -2,6 +2,8 @@
 
 OPTIONS="\tLock\n\tLogout\n\tShutdown\n\tReboot\n鈴\tSuspend\n\tCaffeinate\n\tUncaffeinate\n"
 
+LOCK_CMD="xautolock -locknow -locker \"$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png\""
+
 if [ "$@" ]
 then
 	case $@ in
@@ -12,19 +14,19 @@ then
 			xset -dpms && notify-send "Screen suspend" "Disabled"
 			;;
 		*Lock)
-			xautolock -locknow -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png"
+			$LOCK_CMD
 			;;
 		*Logout)
 			i3-msg exit
 			;;
 		*Shutdown)
-			systemctl poweroff
+			$LOCK_CMD && systemctl poweroff
 			;;
 		*Reboot)
-			systemctl reboot
+			$LOCK_CMD && systemctl reboot
 			;;
 		*Suspend)
-			xautolock -locknow -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png" && systemctl suspend
+			$LOCK_CMD && systemctl suspend
 			;;
 	esac
 else
