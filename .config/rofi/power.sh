@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-OPTIONS="\tLock\n\tLogout\n\tShutdown\n\tReboot\n\tCaffeinate\n\tUncaffeinate\n\tRestart_i3"
+OPTIONS="\tLock\n\tLogout\n\tShutdown\n\tReboot\n鈴\tSuspend\n\tCaffeinate\n\tUncaffeinate\n"
 
 if [ "$@" ]
 then
 	case $@ in
 		*Uncaffeinate)
-			xset +dpms
+			xset +dpms && notify-send "Screen suspend" "Enabled"
 			;;
 		*Caffeinate)
-			xset -dpms
+			xset -dpms && notify-send "Screen suspend" "Disabled"
 			;;
 		*Lock)
 			xautolock -locknow -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png"
@@ -18,13 +18,13 @@ then
 			i3-msg exit
 			;;
 		*Shutdown)
-			shutdown now
+			systemctl poweroff
 			;;
 		*Reboot)
-			reboot
+			systemctl reboot
 			;;
-		*Restart_i3)
-			i3-msg restart
+		*Suspend)
+			xautolock -locknow -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png" && systemctl suspend
 			;;
 	esac
 else
