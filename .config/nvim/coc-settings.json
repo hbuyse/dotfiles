@@ -25,7 +25,9 @@
                         "-I",
                         "./include/",
                         "-I",
-                        "./build"
+                        "./build",
+                        "-I",
+                        "/usr/lib/clang/10.0.1/include/"
                     ]
                 }
             }
