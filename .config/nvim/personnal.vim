@@ -1,5 +1,14 @@
 " Trim whitespaces before saving
-autocmd BufWritePre * %s/\s\+$//e
+function! StripTrailingWhitespace()
+    " Don't strip on these filetypes
+    " if &ft =~ 'ruby\|javascript\|perl'
+    if &ft =~ 'vim'
+        echo "Hello World"
+        return
+    endif
+    %s/\s\+$//e
+endfun
+autocmd BufWritePre * call StripTrailingWhitespace()
 
 "Add ruler to 120 characters
 set colorcolumn=120
