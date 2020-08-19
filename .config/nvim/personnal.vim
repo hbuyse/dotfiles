@@ -3,7 +3,6 @@ function! StripTrailingWhitespace()
     " Don't strip on these filetypes
     " if &ft =~ 'ruby\|javascript\|perl'
     if &ft =~ 'vim'
-        echo "Hello World"
         return
     endif
     %s/\s\+$//e
@@ -19,7 +18,7 @@ colorscheme gruvbox
 set background=dark
 
 " Change the color of the indentLine
-let g:indentLine_color_term= 236
+let g:indentLine_color_term= 248
 " Change the character of the indentLine
 "let g:indentLine_char = '▏'
 

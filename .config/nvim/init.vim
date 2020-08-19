@@ -123,7 +123,7 @@ set background=dark
 colorscheme gruvbox
 
 " Change the color of the indentLine
-let g:indentLine_color_gui = '#A6A6A6'
+let g:indentLine_color_gui = 236
 " Change the character of the indentLine
 "let g:indentLine_char = '▏'
 
