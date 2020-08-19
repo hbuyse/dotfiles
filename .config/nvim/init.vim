@@ -130,10 +130,6 @@ let g:indentLine_color_gui = '#A6A6A6'
 "Show hidden files in NerdTree by default
 let NERDTreeShowHidden=1
 
-" How can I open a NERDTree automatically when vim starts up if no files were specified?
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 " How can I open NERDTree automatically when vim starts up on opening a directory?
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
@@ -174,71 +170,8 @@ let g:ale_c_build_dir_names = ['build']
 let g:ale_c_parse_compile_commands = 1
 let g:ale_c_gcc_options = '-std=c11 -Wall -Wextra -Ibuild -Iinclude'
 
-
-
-""""""""""""
-" COC.NVIM "
-""""""""""""
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" COC
+source $HOME/.config/nvim/coc.vim
 
 """""""""""""""""""""
 " REMAPPING Alt+j/k "
@@ -268,17 +201,6 @@ elseif has('python3')
   imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
 endif
 
-" Format C/C++ files using clang-format
-" function Formatonsave()
-"   let l:lines="all"
-"   if has('python')
-"     pyf /usr/share/clang/clang-format-10/clang-format.py
-"   elseif has('python3')
-"     py3f /usr/share/clang/clang-format-10/clang-format.py
-"   endif
-" endfunction
-" autocmd BufWritePre *.h,*.cc,*.cpp,*.c call Formatonsave()
-
 " Append modeline after last line in buffer.
 " Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
 " files.
@@ -300,7 +222,7 @@ function! IsOnSomeParticularMachine(hostname)
 endfunction
 
 if IsOnSomeParticularMachine("T480") || IsOnSomeParticularMachine("CG8250")
-	source $HOME/.config/nvim/home.vim
+	source $HOME/.config/nvim/personnal.vim
 else
 	source $HOME/.config/nvim/work.vim
 endif

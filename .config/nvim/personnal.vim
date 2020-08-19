@@ -1,96 +1,3 @@
-" Enable syntax highlighting
-syntax on
-
-set guicursor=
-set noshowmatch
-set noshowmode
-set nohlsearch
-set hidden
-set noerrorbells
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-set expandtab
-set smartindent
-set number " Show line numbers
-set relativenumber " Show relative line numbersr
-set nowrap
-set smartcase
-set noswapfile
-set nobackup
-set undodir=~/.vim/undodir
-set undofile
-set incsearch
-set termguicolors
-set scrolloff=8
-
-" Always enable the statusline
-set laststatus=2
-
-" Show current line
-set cursorline
-
-" Open new split panes to right and bottom, which feels more natural than Vim’s default:
-set splitbelow
-set splitright
-
-" Folding
-set foldmethod=indent
-set foldnestmax=10
-set nofoldenable
-set foldlevel=2
-
-" Better display for messages
-set cmdheight=2
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=100
-
-if !has('gui_running')
-  set t_Co=256
-endif
-
-call plug#begin(stdpath('data') . '/plugged')
-"Plug 'powerline/powerline'
-
-" A tree explorer plugin for vim.
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" Git
-Plug 'tpope/vim-fugitive'
-
-" surround.vim: quoting/parenthesizing made simple
-Plug 'tpope/vim-surround'
-
-" Fuzzy file finder
-Plug 'ctrlpvim/ctrlp.vim'
-
-" Auto complete brackets, quotes
-"Plug 'jiangmiao/auto-pairs'
-
-" Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
-Plug 'w0rp/ale'
-
-" Autocompletion for Vim
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Cscope
-Plug 'brookhong/cscope.vim'
-
-" A vim plugin to display the indention levels with thin vertical lines
-Plug 'yggdroot/indentline'
-
-" Colorschemes
-Plug 'flazz/vim-colorschemes'
-Plug 'morhetz/gruvbox'
-Plug 'tomasr/molokai'
-
-" Statusbar
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'drewtempelmeyer/palenight.vim'
-call plug#end()
-
 " Trim whitespaces before saving
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -197,7 +104,19 @@ vnoremap <A-k> :move '<-2<CR>gv=gv
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>l :call ToggleLocationList()<CR>
 
-" CLang format on C/C++ file when saving
+" Clang-format on save
+source $HOME/.config/nvim/clang-format.vim
+
+" Format file using Ctrl+k and on save
+if has('python')
+  map <C-K> :pyf /usr/share/clang/clang-format-10/clang-format.py<cr>
+  imap <C-K> <c-o>:pyf /usr/share/clang/clang-format-10/clang-format.py<cr>
+elseif has('python3')
+  map <C-K> :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
+  imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
+endif
+
+" Clang format on C/C++ file when saving
 function! Formatonsave()
   let l:formatdiff = 1
   pyf ~/llvm/tools/clang/tools/clang-format/clang-format.py
