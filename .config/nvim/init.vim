@@ -114,108 +114,21 @@ call plug#end()
 " CTRL-L will mute highlighted search results
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-"Add ruler to 120 characters
-set colorcolumn=120
-highlight ColorColumn ctermbg=235 guibg=#262626
-
-" Colorscheme
-set background=dark
-colorscheme gruvbox
-
-" Change the color of the indentLine
-let g:indentLine_color_gui = 236
-" Change the character of the indentLine
-"let g:indentLine_char = '▏'
-
-"Show hidden files in NerdTree by default
-let NERDTreeShowHidden=1
-
-" How can I open NERDTree automatically when vim starts up on opening a directory?
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
-
-" How can I map a specific key or shortcut to open NERDTree?
-map <F2> :NERDTreeToggle<CR>
-
-" Tagbar configuration
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
-"  How can I show errors or warnings in my statusline?
-let g:airline#extensions#ale#enabled = 1
-let g:airline_powerline_fonts = 1
-
-" Write this in your vimrc file
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
-
-let g:ale_fixers = {
-\   '*': ['trim_whitespace'],
-\   'c': ['clang-format', 'trim_whitespace'],
-\   'markdown': ['trim_whitespace'],
-\   'shell': ['shellcheck']
-\}
-
-let g:ale_linters = {
-\   'c' : ['gcc']
-\}
-
-let g:ale_cpp_ccls_init_options = {
-\   'cache': {
-\       'directory': '/tmp/ccls/cache'
-\   }
-\ }
-
-let g:ale_completion_enabled = 0
-let g:ale_c_build_dir_names = ['build']
-let g:ale_c_parse_compile_commands = 1
-let g:ale_c_gcc_options = '-std=c11 -Wall -Wextra -Ibuild -Iinclude'
-
 " COC
+source $HOME/.config/nvim/ruler.vim
+source $HOME/.config/nvim/gruvbox.vim
+source $HOME/.config/nvim/indentline.vim
+source $HOME/.config/nvim/nerdtree.vim
+source $HOME/.config/nvim/tagbar.vim
+source $HOME/.config/nvim/ale.vim
 source $HOME/.config/nvim/coc.vim
-
-"""""""""""""""""""""
-" REMAPPING Alt+j/k "
-"""""""""""""""""""""
-
-" Mappings to move lines
-nnoremap <A-j> :move .+1<CR>==
-nnoremap <A-k> :move .-2<CR>==
-inoremap <A-j> <Esc>:move .+1<CR>==gi
-inoremap <A-k> <Esc>:move .-2<CR>==gi
-vnoremap <A-j> :move '>+1<CR>gv=gv
-vnoremap <A-k> :move '<-2<CR>gv=gv
-
-" Type '//' to search for the visually selected text
-vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+source $HOME/.config/nvim/moveline.vim
+source $HOME/.config/nvim/modeline.vim
+source $HOME/.config/nvim/autojump.vim
 
 " Cscope mappings
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
 nnoremap <leader>l :call ToggleLocationList()<CR>
-
-" Format file using Ctrl+k and on save
-if has('python')
-  map <C-K> :pyf /usr/share/clang/clang-format-10/clang-format.py<cr>
-  imap <C-K> <c-o>:pyf /usr/share/clang/clang-format-10/clang-format.py<cr>
-elseif has('python3')
-  map <C-K> :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
-  imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
-endif
-
-" Append modeline after last line in buffer.
-" Use substitute() instead of printf() to handle '%%s' modeline in LaTeX
-" files.
-function! AppendModeline()
-  let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d %set :",
-        \ &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("$"), l:modeline)
-endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
-
-" Uncomment the following to have Vim jump to the last position when reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 
 function! IsOnSomeParticularMachine(hostname)
     return match(system("echo -n $HOST"), a:hostname) >= 0
