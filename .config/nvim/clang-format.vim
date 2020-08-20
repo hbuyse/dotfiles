@@ -2,18 +2,30 @@
 " CLANG-FORMAT "
 """"""""""""""""
 
-" Format file using Ctrl+k and on save
-if has('python')
-  map <C-K> :pyf /usr/share/clang/clang-format-10/clang-format.py<cr>
-  imap <C-K> <c-o>:pyf /usr/share/clang/clang-format-10/clang-format.py<cr>
-elseif has('python3')
-  map <C-K> :py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
-  imap <C-K> <c-o>:py3f /usr/share/clang/clang-format-10/clang-format.py<cr>
-endif
-
 " Clang format on C/C++ file when saving
 function! Formatonsave()
-  let l:formatdiff = 1
-  pyf ~/llvm/tools/clang/tools/clang-format/clang-format.py
+    let l:lines = "all"
+    let l:files = [
+    \   "/usr/share/clang/clang-format-10/clang-format.py",
+    \   "/usr/share/clang/clang-format.py"
+    \]
+    let l:file = ""
+
+    for i in l:files
+        if filereadable(i)
+            let l:file=i
+            break
+        endif
+    endfor
+
+    if has('python')
+        execute "pyf" l:file
+    elseif has('python3')
+        execute "py3f " l:file
+    endif
 endfunction
-autocmd BufWritePre *.h,*.cc,*.cpp call Formatonsave()
+autocmd BufWritePre *.c,*.h,*.cc,*.cpp call Formatonsave()
+
+map <C-K> :call Formatonsave()<cr>
+imap <C-K> <c-o>:call Formatonsave()<cr>
+" vim: set ts=4 sw=4 tw=78 et :
