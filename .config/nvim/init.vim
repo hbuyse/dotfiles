@@ -9,7 +9,7 @@ set hidden
 set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
 set smartindent
 set number " Show line numbers
 set relativenumber " Show relative line numbersr
