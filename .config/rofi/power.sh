@@ -10,10 +10,14 @@ if [ "$@" ]
 then
 	case $@ in
 		*Uncaffeinate)
-			xset +dpms && notify-send "Screen suspend" "Enabled"
+            xautolock -disable
+			xset +dpms
+           notify-send "Screen suspend" "Enabled"
 			;;
 		*Caffeinate)
-			xset -dpms && notify-send "Screen suspend" "Disabled"
+            xautolock -enable
+			xset -dpms
+            notify-send "Screen suspend" "Disabled"
 			;;
 		*Lock)
 			lock
