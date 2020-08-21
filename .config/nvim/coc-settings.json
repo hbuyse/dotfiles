@@ -23,9 +23,9 @@
                 "clang": {
                     "extraArgs": [
                         "-I",
-                        "./include/",
+                        "include/",
                         "-I",
-                        "./build",
+                        "build",
                         "-I",
                         "/usr/lib/clang/10.0.1/include/"
                     ]
