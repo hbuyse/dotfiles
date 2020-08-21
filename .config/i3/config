@@ -232,7 +232,7 @@ exec_always --no-startup-id $HOME/.config/screenlayout.sh
 # Set the different keyboard layouts
 # us-intl: US international layout
 # fr-latin9: french keyboard layout
-#exec_always --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9"
+exec_always --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9"
 
 #locking the screen ( should be the exact size of the screen )
 bindsym $mod+p exec --no-startup-id xautolock -locknow -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png" 
