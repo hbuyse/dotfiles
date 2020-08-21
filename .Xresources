@@ -1,36 +1,3 @@
-! GRUVBOX COLORS
-
-#define bg0 #282828
-#define bg0_h #1d2021
-#define bg0_s #32302f
-#define bg1 #3c3836
-#define bg2 #504945
-#define bg3 #665c54
-#define bg4 #7c6f64
-#define fg0 #fbf1c7
-#define fg1 #ebdbb2
-#define fg2 #d5c4a1
-#define fg3 #bdae93
-#define fg4 #a89984
-#define aqua1 #689d6a
-#define aqua2 #8ec07c
-#define blue1 #458588
-#define blue2 #83a598
-#define gray1 #a89984
-#define gray2 #928374
-#define green1 #98971a
-#define green2 #b8bb26
-#define orange1 #d65d0e
-#define orange2 #fe8019
-#define purple1 #b16286
-#define purple2 #d3869b
-#define red1 #cc241d
-#define red2 #fb4934
-#define yellow1 #d79921
-#define yellow2 #fabd2f
-
-! END GRUVBOX COLORS
-
 Xft.dpi:       96
 Xft.antialias: true
 Xft.hinting:   true
@@ -48,42 +15,42 @@ XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 
 ! hard contrast: *background: #1d2021
-*background: [97]bg0
+*background: [97]#282828
 
 ! soft contrast: *background: #32302f
-*foreground: fg1 
+*foreground: #ebdbb2
 
 ! Black + DarkGrey
-*color0:  bg0 
-*color8:  gray2
+*color0:  #282828
+*color8:  #928374
 
 ! DarkRed + Red
-*color1:  red1
-*color9:  red2
+*color1:  #cc241d
+*color9:  #fb4934
 
 ! DarkGreen + Green
-*color2:  green1
-*color10: green2
+*color2:  #98971a
+*color10: #b8bb26
 
 ! DarkYellow + Yellow
-*color3:  yellow1
-*color11: yellow2
+*color3:  #d79921
+*color11: #fabd2f
 
 ! DarkBlue + Blue
-*color4:  blue1
-*color12: blue2
+*color4:  #458588
+*color12: #83a598
 
 ! DarkMagenta + Magenta
-*color5:  purple1
-*color13: purple2
+*color5:  #b16286
+*color13: #d3869b
 
 ! DarkCyan + Cyan
-*color6:  aqua1
-*color14: aqua2
+*color6:  #689d6a
+*color14: #8ec07c
 
 ! LightGrey + White
-*color7:  fg4
-*color15: fg1
+*color7:  #a89984
+*color15: #ebdbb2
 
 Xcursor.theme: xcursor-breeze
 Xcursor.size:                     0
