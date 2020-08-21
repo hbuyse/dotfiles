@@ -226,6 +226,9 @@ bindsym --release $mod+F4 exec $HOME/.config/rofi/powermenu.sh
 # AUTOSTART #
 #############
 
+# Set the screenlayout
+exec_always --no-startup-id $HOME/.config/screenlayout.sh
+
 # Set the different keyboard layouts
 # us-intl: US international layout
 # fr-latin9: french keyboard layout
