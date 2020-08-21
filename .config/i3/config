@@ -238,7 +238,7 @@ exec_always --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9"
 bindsym $mod+p exec --no-startup-id xautolock -locknow -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png"
 
 # Start the automatic locker with 5 minutes before locking and 15 before suspending
-exec_always --no-startup-id xautolock -time 5 -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png" -notify 30 -notifier "notify-send -u critical -t 10000 'i3lock' 'Will lock in 30 seconds'"
+exec_always --no-startup-id xautolock -time 5 -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png" -notify 30 -notifier "notify-send -u critical -t 30000 'i3lock' 'Will lock in 30 seconds'"
 
 #screenshot
 bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%Y%m%d_%H%M%S.png"
