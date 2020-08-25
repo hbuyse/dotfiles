@@ -7,3 +7,5 @@ set softtabstop=0               " Let backspace delete indent
 set shiftwidth=4                " Use indents of 4 spaces
 set tabstop=4                   " An indentation every four columns
 set colorcolumn=120             " Hightlight the 120' columns (max line size)
+
+source $HOME/.config/nvim/clang-format-mappings.vim

@@ -6,7 +6,8 @@ source $HOME/.config/nvim/nerdtree.vim
 source $HOME/.config/nvim/ale.vim
 source $HOME/.config/nvim/coc.vim
 source $HOME/.config/nvim/moveline.vim
-source $HOME/.config/nvim/clang-format.vim
+source $HOME/.config/nvim/clang-format-auto.vim
+source $HOME/.config/nvim/clang-format-mappings.vim
 
 " Cscope mappings
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>

@@ -3,7 +3,7 @@
 """"""""""""""""
 
 " Clang format on C/C++ file when saving
-function! Formatonsave()
+function! AutoClangFormatOnSave()
     let l:lines = "all"
     let l:files = [
     \   "/usr/share/clang/clang-format-10/clang-format.py",
@@ -24,8 +24,5 @@ function! Formatonsave()
         execute "py3f " l:file
     endif
 endfunction
-autocmd BufWritePre *.c,*.h,*.cc,*.cpp call Formatonsave()
-
-map <C-K> :call Formatonsave()<cr>
-imap <C-K> <c-o>:call Formatonsave()<cr>
+autocmd BufWritePre *.c,*.h,*.cc,*.cpp call AutoClangFormatOnSave()
 " vim: set ts=4 sw=4 tw=78 et :
