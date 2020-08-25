@@ -265,6 +265,9 @@ exec_always --no-startup-id feh --bg-fill "$HOME/.config/wallpapers/locker.png"
 # Otherwise, polybar will not be able to show the different workspace in the bar.
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# Start conky
+exec_always --no-startup-id $HOME/.config/conky/launch.sh
+
 ##################
 # GRUVBOX COLORS #
 ##################
