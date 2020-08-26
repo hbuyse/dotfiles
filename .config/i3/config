@@ -235,6 +235,9 @@ exec_always --no-startup-id $HOME/.config/screenlayout.sh
 # fr-latin9: french keyboard layout
 exec_always --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9"
 
+# Setup pulseaudio
+exec_always --no-startup-id $HOME/.config/i3/setup_pactl.sh
+
 #locking the screen ( should be the exact size of the screen )
 bindsym $mod+p exec --no-startup-id xautolock -locknow
 
