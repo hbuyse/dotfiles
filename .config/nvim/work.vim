@@ -9,3 +9,4 @@ set tabstop=4                   " An indentation every four columns
 set colorcolumn=120             " Hightlight the 120' columns (max line size)
 
 source $HOME/.config/nvim/clang-format-mappings.vim
+source $HOME/.config/nvim/extra-whitespaces.vim
