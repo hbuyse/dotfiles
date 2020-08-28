@@ -115,8 +115,8 @@ call plug#end()
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " COC
-source $HOME/.config/nvim/ruler.vim
 source $HOME/.config/nvim/gruvbox.vim
+source $HOME/.config/nvim/ruler.vim
 source $HOME/.config/nvim/indentline.vim
 source $HOME/.config/nvim/nerdtree.vim
 source $HOME/.config/nvim/tagbar.vim
