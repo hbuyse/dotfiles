@@ -208,7 +208,7 @@ bindsym $mod+o mode "$mod_launcher"
 
 # Automatically move some applications to dedicated workspaces
 for_window [class="(?i)firefox"] move container to workspace $ws3
-for_window [class="(?i)chromium-browser"] move container to workspace $ws3
+for_window [class="(?i)chromium.*"] move container to workspace $ws3
 for_window [class="(?i)spotify"] move container to workspace $ws5
 for_window [class="(?i)thunderbird"] move container to workspace $ws4
 
@@ -242,7 +242,7 @@ exec_always --no-startup-id $HOME/.config/i3/setup_pactl.sh
 bindsym $mod+p exec --no-startup-id xautolock -locknow
 
 # Start the automatic locker with 5 minutes before locking and 15 before suspending
-exec_always --no-startup-id xautolock -time 5 -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png" -killtime 15 -killer "systemctl suspend" -detectsleep -notify 30 -notifier "notify-send -u critical -t 29000 'i3lock' 'Will lock in 30 seconds'"
+exec_always --no-startup-id killall xautolock && xautolock -time 5 -locker "$HOME/.config/i3/i3lock-multi -i $HOME/.config/i3/locker.png" -killtime 15 -killer "systemctl suspend" -detectsleep -notify 30 -notifier "notify-send -u critical -t 29000 'i3lock' 'Will lock in 30 seconds'"
 
 #screenshot
 bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%Y%m%d_%H%M%S.png"
