@@ -140,7 +140,7 @@ inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = updates vpn-nordvpn-status filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth battery temperature date powermenu
+modules-right = updates vpn-nordvpn-status filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth temperature date powermenu
 
 [module/xwindow]
 type = internal/xwindow
@@ -417,115 +417,6 @@ label-volume-foreground = ${root.foreground}
 
 label-muted = %{A1:pactl set-sink-mute @DEFAULT_SINK@ toggle &:}%{A3:pavucontrol&:}婢 muted%{A}
 label-muted-foreground = ${colors.gray2}
-
-[module/battery]
-type = internal/battery
-battery = BAT0
-adapter = AC
-full-at = 98
-
-; see "man date" for details on how to format the time string
-; NOTE: if you want to use syntax tags here you need to use %%{...}
-; Default: %H:%M:%S
-time-format = %H:%M
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.orange2}
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-; Available tokens:
-;   %percentage% (default) - is set to 100 if full-at is reached
-;   %percentage_raw%
-;   %time%
-;   %consumption% (shows current charge rate in watts)
-label-discharging = %percentage%% %time%
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
-
-[module/battery2]
-type = internal/battery
-battery = BAT1
-adapter = AC
-full-at = 98
-
-; see "man date" for details on how to format the time string
-; NOTE: if you want to use syntax tags here you need to use %%{...}
-; Default: %H:%M:%S
-time-format = %H:%M
-
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.orange2}
-
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
-
-; Available tokens:
-;   %percentage% (default) - is set to 100 if full-at is reached
-;   %percentage_raw%
-;   %time%
-;   %consumption% (shows current charge rate in watts)
-label-discharging = %percentage%% %time%
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
-
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
-
-[module/temperature]
-type = internal/temperature
-thermal-zone = 5
-warn-temperature = 73
-
-format = <ramp> <label>
-format-underline = ${colors.red2}
-format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
-
-label = %temperature-c%
-label-warn = %temperature-c%
-label-warn-foreground = ${colors.secondary}
-
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
 type = custom/script
