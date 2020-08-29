@@ -126,6 +126,7 @@ source $HOME/.config/nvim/moveline.vim
 source $HOME/.config/nvim/modeline.vim
 source $HOME/.config/nvim/autojump.vim
 source $HOME/.config/nvim/clipboard.vim
+source $HOME/.config/nvim/gitcommit.vim
 
 " Cscope mappings
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
