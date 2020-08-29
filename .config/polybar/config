@@ -557,7 +557,7 @@ interval = 5
 
 [module/battery-combined]
 type = custom/script
-exec = ~/.config/polybar/battery-combined-tlp.sh
+exec = ~/.config/polybar/battery-combined.py
 interval = 60
 
 [module/updates]
