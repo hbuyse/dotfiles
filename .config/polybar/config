@@ -468,4 +468,4 @@ screenchange-reload = true
 margin-top = 5
 margin-bottom = 5
 
-; vim:ft=dosini
+; vim: set ts=4 sw=4 tw=0 et ft=dosini :
