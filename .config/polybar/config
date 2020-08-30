@@ -448,7 +448,7 @@ interval = 5
 
 [module/battery-combined]
 type = custom/script
-exec = ~/.config/polybar/battery-combined.py
+exec = ~/.config/polybar/battery_combined.py
 interval = 60
 
 [module/updates]
