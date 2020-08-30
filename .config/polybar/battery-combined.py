@@ -29,11 +29,11 @@ GRUVBOX = {
 
 ICONS = {
     "battery" : {
-        10 : "",  # 00 -> 10
-        33 : "",  # 11 -> 33
-        55 : "",  # 34 -> 55
-        78 : "",  # 56 -> 78
-        100 : ""  # 79 -> 100
+        10 :  "%{{F{color}}} %{{F-}}".format(color=GRUVBOX['red1']),  # 00 -> 10
+        33 :  "%{{F{color}}} %{{F-}}".format(color=GRUVBOX['orange1']),  # 11 -> 33
+        55 :  " ",  # 34 -> 55
+        78 :  " ",  # 56 -> 78
+        100 : " "   # 79 -> 100
     },
     "charging" : ""
 }
@@ -257,7 +257,7 @@ if __name__ == "__main__":
 
     time = powersupplies.time_remaining
 
-    print("{charge_icon} {level_icon}  {percentage}%{time}".format(
+    print("{charge_icon} {level_icon} {percentage}%{time}".format(
         charge_icon=charge_icon,
         level_icon=level_icon,
         percentage=powersupplies.percentage,
