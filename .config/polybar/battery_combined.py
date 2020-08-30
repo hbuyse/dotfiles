@@ -99,24 +99,36 @@ class PowerSupply:
     def energy_full(self):
         """Get data from the file /sys/class/power_supply/*/energy_full"""
         data = 0
-        with open(os.path.join(self._path, "energy_full"), 'r') as fld:
-            data = int(fld.read().strip())
+        try:
+            with open(os.path.join(self._path, "energy_full"), 'r') as fld:
+                data = int(fld.read().strip())
+        except FileNotFoundError:
+            with open(os.path.join(self._path, "charge_full"), 'r') as fld:
+                data = int(fld.read().strip())
         return data
 
     @property
     def energy_full_design(self):
         """Get data from the file /sys/class/power_supply/*/energy_full_design"""
         data = 0
-        with open(os.path.join(self._path, "energy_full_design"), 'r') as fld:
-            data = int(fld.read().strip())
+        try:
+            with open(os.path.join(self._path, "energy_full_design"), 'r') as fld:
+                data = int(fld.read().strip())
+        except FileNotFoundError:
+            with open(os.path.join(self._path, "charge_full_design"), 'r') as fld:
+                data = int(fld.read().strip())
         return data
 
     @property
     def energy_now(self):
         """Get data from the file /sys/class/power_supply/*/energy_now"""
         data = 0
-        with open(os.path.join(self._path, "energy_now"), 'r') as fld:
-            data = int(fld.read().strip())
+        try:
+            with open(os.path.join(self._path, "energy_now"), 'r') as fld:
+                data = int(fld.read().strip())
+        except FileNotFoundError:
+            with open(os.path.join(self._path, "charge_now"), 'r') as fld:
+                data = int(fld.read().strip())
         return data
 
     @property
@@ -139,8 +151,12 @@ class PowerSupply:
     def power_now(self):
         """Get data from the file /sys/class/power_supply/*/power_now"""
         data = 0
-        with open(os.path.join(self._path, "power_now"), 'r') as fld:
-            data = int(fld.read().strip())
+        try:
+            with open(os.path.join(self._path, "power_now"), 'r') as fld:
+                data = int(fld.read().strip())
+        except FileNotFoundError:
+            with open(os.path.join(self._path, "current_now"), 'r') as fld:
+                data = int(fld.read().strip())
         return data
 
     @property
