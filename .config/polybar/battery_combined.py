@@ -307,7 +307,7 @@ def main():
 
     remaining_time_str = ""
     if remaining_time != datetime.timedelta(0):
-        remaining_time_str = " ({}h{})".format(int(remaining_time.seconds/3600),
+        remaining_time_str = " ({:02d}h{:02d})".format(int(remaining_time.seconds/3600),
                                                int(remaining_time.seconds % 3600 / 60))
 
     print("{charge_icon} {level_icon} {percentage}%{time}".format(
