@@ -78,13 +78,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=()
 plugins+=(git)
 plugins+=(fzf)
-plugins+=(colorize)
 plugins+=(sudo)
 plugins+=(pyenv)
 plugins+=(command-not-found)
 plugins+=(django)
 plugins+=(virtualenvwrapper)
 plugins+=(direnv)
+plugins+=(colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
