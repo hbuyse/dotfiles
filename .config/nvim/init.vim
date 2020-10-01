@@ -78,6 +78,7 @@ Plug 'tpope/vim-surround'
 
 " Fuzzy file finder
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Check syntax in Vim asynchronously and fix files, with Language Server Protocol (LSP) support
 Plug 'w0rp/ale'
@@ -127,6 +128,7 @@ source $HOME/.config/nvim/modeline.vim
 source $HOME/.config/nvim/autojump.vim
 source $HOME/.config/nvim/clipboard.vim
 source $HOME/.config/nvim/gitcommit.vim
+source $HOME/.config/nvim/fzf-bindings.vim
 
 " Cscope mappings
 nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
