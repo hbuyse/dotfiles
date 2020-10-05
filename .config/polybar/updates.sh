@@ -14,7 +14,7 @@ if [[ -f "$OS_RELEASE" ]]; then
 	esac
 fi
 
-if [ "$updates" -gt 0 ]; then
+if [[ $updates -gt 0 ]]; then
     echo " $updates"
 else
     echo ""
