@@ -9,36 +9,37 @@ import datetime
 import os
 
 GRUVBOX = {
-    "aqua1" : "#688d6a",
-    "aqua2" : "#8ec07c",
-    "blue1" : "#458588",
-    "blue2" : "#83a598",
-    "gray1" : "#a89984",
-    "gray2" : "#928374",
-    "green1" : "#98971a",
-    "green2" : "#b8bb26",
-    "orange1" : "#d65d0e",
-    "orange2" : "#fe8019",
-    "purple1" : "#b16286",
-    "purple2" : "#d3869b",
-    "red1" : "#cc241d",
-    "red2" : "#fb4934",
-    "yellow1" : "#d79921",
-    "yellow2" : "#fabd2f"
+    "aqua1": "#688d6a",
+    "aqua2": "#8ec07c",
+    "blue1": "#458588",
+    "blue2": "#83a598",
+    "gray1": "#a89984",
+    "gray2": "#928374",
+    "green1": "#98971a",
+    "green2": "#b8bb26",
+    "orange1": "#d65d0e",
+    "orange2": "#fe8019",
+    "purple1": "#b16286",
+    "purple2": "#d3869b",
+    "red1": "#cc241d",
+    "red2": "#fb4934",
+    "yellow1": "#d79921",
+    "yellow2": "#fabd2f"
 }
 
 ICONS = {
-    "battery" : {
-        10 :  "%{{F{color}}} %{{F-}}".format(color=GRUVBOX['red1']),  # 00 -> 10
-        33 :  "%{{F{color}}} %{{F-}}".format(color=GRUVBOX['orange1']),  # 11 -> 33
-        55 :  " ",  # 34 -> 55
-        78 :  " ",  # 56 -> 78
-        100 : " "   # 79 -> 100
+    "battery": {
+        10: "%{{F{color}}} %{{F-}}".format(color=GRUVBOX['red1']),  # 00 -> 10
+        33: "%{{F{color}}} %{{F-}}".format(color=GRUVBOX['orange1']),  # 11 -> 33
+        55: " ",  # 34 -> 55
+        78: " ",  # 56 -> 78
+        100: " "   # 79 -> 100
     },
-    "charging" : ""
+    "charging": ""
 }
 
 POWER_SUPPLIES_PATH = "/sys/class/power_supply"
+
 
 class PowerSupply:
     """Power supply object from the /sys/class/power_supply Linux folder"""
@@ -223,6 +224,7 @@ class PowerSupply:
             data = int(fld.read().strip())
         return data
 
+
 class PowerSupplies:
     """List of PowerSupply"""
 
@@ -307,15 +309,18 @@ def main():
 
     remaining_time_str = ""
     if remaining_time != datetime.timedelta(0):
-        remaining_time_str = " ({:02d}h{:02d})".format(int(remaining_time.seconds/3600),
-                                               int(remaining_time.seconds % 3600 / 60))
+        remaining_time_str = " ({:02d}h{:02d})".format(int(remaining_time.seconds / 3600),
+                                                       int(remaining_time.seconds % 3600 / 60))
 
     print("{charge_icon} {level_icon} {percentage}%{time}".format(
         charge_icon=charge_icon,
         level_icon=level_icon,
         percentage=powersupplies.percentage,
         time=remaining_time_str
-        ))
+    ))
+
 
 if __name__ == "__main__":
     main()
+
+#  vim: set ts=8 sw=4 tw=0 et ft=python :
