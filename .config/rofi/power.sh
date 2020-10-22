@@ -12,12 +12,12 @@ then
     case $@ in
         *Uncaffeinate)
             xautolock -enable
-            xset +dpms
+            xset -dpms
             notify-send "Screen suspend" "Enabled"
             ;;
         *Caffeinate)
             xautolock -disable
-            xset -dpms
+            xset +dpms
             notify-send "Screen suspend" "Disabled"
             ;;
         *Lock)
