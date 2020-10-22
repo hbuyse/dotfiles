@@ -21,7 +21,7 @@ then
             notify-send "Screen suspend" "Disabled"
             ;;
         *Lock)
-            lock
+            lock && xset dpms force off
             ;;
         *Logout)
             i3-msg exit
