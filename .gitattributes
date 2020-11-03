@@ -8,3 +8,4 @@
 .config/wallpapers/volley-ball.png filter=lfs diff=lfs merge=lfs -text
 .config/wallpapers/moodyblue_stock_60_by_moodyblue_ddur1jf.png filter=lfs diff=lfs merge=lfs -text
 .config/wallpapers/moodyblue_stock_62_by_moodyblue_de07pdk.png filter=lfs diff=lfs merge=lfs -text
+.config/wallpapers/tux_gruvboxed.xcf filter=lfs diff=lfs merge=lfs -text
