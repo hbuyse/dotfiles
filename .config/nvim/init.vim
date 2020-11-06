@@ -35,12 +35,6 @@ set cursorline
 set splitbelow
 set splitright
 
-" Folding
-set foldmethod=indent
-set foldnestmax=10
-set nofoldenable
-set foldlevel=2
-
 " Better display for messages
 set cmdheight=2
 
@@ -117,6 +111,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " COC
 source $HOME/.config/nvim/gruvbox.vim
+source $HOME/.config/nvim/folding.vim
 source $HOME/.config/nvim/ruler.vim
 source $HOME/.config/nvim/indentline.vim
 source $HOME/.config/nvim/nerdtree.vim
