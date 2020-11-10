@@ -109,7 +109,6 @@ call plug#end()
 " CTRL-L will mute highlighted search results
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-" COC
 source $HOME/.config/nvim/gruvbox.vim
 source $HOME/.config/nvim/folding.vim
 source $HOME/.config/nvim/ruler.vim
