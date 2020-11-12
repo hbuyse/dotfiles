@@ -258,7 +258,7 @@ bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%Y%m%d_%H%
 bindsym --release Mod1+Sys_Req exec --no-startup-id scrot -u "$HOME/Pictures/%Y%m%d_%H%M%S.png"
 
 # Add background wallpaper
-exec_always --no-startup-id feh --bg-fill "$HOME/.config/wallpapers/locker.png"
+exec_always --no-startup-id feh --bg-fill "$HOME/.config/wallpapers/wallpaper.png"
 
 # Start polybar
 # Polybar must be started through the i3 config file (and not using .xsession)
