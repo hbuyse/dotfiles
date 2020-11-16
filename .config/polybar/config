@@ -140,7 +140,7 @@ inherit = bar/general
 
 modules-left = i3
 modules-center = spotify
-modules-right = updates vpn-nordvpn-status filesystem bluetooth pulseaudio xkeyboard memory cpu wlan eth temperature date powermenu
+modules-right = updates vpn-nordvpn-status filesystem bluetooth pulseaudio xkeyboard memory cpu wlan-cg8250 eth-cg8250 temperature date powermenu
 
 [module/xwindow]
 type = internal/xwindow
@@ -304,6 +304,30 @@ format-underline = ${colors.green2}
 label = %percentage_used%%
 format = <label>
 
+[module/wlan-cg8250]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+;format-connected-prefix = " "
+format-connected-underline = ${colors.purple2}
+label-connected = %{A1:i3-sensible-terminal -e nmtui &:}%essid%%{A}
+
+format-disconnected = <label-disconnected>
+;format-disconnected-prefix = " "
+;format-disconnected-prefix-foreground = ${colors.foreground-alt}
+format-disconnected-underline = ${colors.purple1}
+label-disconnected = %{A1:i3-sensible-terminal -e nmtui &:}%ifname% down%{A}
+label-disconnected-foreground = ${colors.gray2}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = ${colors.foreground-alt}
+
 [module/wlan-latitude-5400]
 type = internal/network
 interface = wlp2s0
@@ -352,6 +376,22 @@ ramp-signal-3 = 
 ramp-signal-4 = 
 ramp-signal-foreground = ${colors.foreground-alt}
 
+[module/eth-cg8250]
+type = internal/network
+interface = enp5s0
+interval = 3.0
+
+format-connected-underline = ${colors.aqua2}
+format-connected-prefix = " "
+label-connected = %{A1:i3-sensible-terminal -e nmtui &:}%local_ip%%{A}
+
+;format-disconnected =
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.aqua1}
+format-disconnected-prefix = " "
+label-disconnected = %ifname% down
+label-disconnected-foreground = ${colors.gray2}
+
 [module/eth]
 type = internal/network
 interface = enp0s31f6
@@ -394,7 +434,7 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix =  
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.blue2}
 
