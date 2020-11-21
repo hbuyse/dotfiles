@@ -5,7 +5,7 @@ conky.config = {
 	color2 = 'EBDBB2',
 	cpu_avg_samples = 2,
 	double_buffer = true,
-	font = 'Hack:size=9',
+	font = 'Hack Regular Nerd Font Complete Mono:size=9',
 	gap_x = 20,
 	gap_y = 50,
 	minimum_width = 250,
