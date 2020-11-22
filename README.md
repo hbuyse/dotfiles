@@ -8,6 +8,14 @@ https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository
 
 ## Set upstrean branches
 
+Add this to the section `[remote "origin"]`:
+
+```
+fetch = +refs/heads/*:refs/remotes/origin/*
+```
+
+Then, fetch all data
+
 ```sh
 dotfiles fetch --tags origin
 ```
