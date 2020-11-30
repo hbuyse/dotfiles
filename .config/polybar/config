@@ -85,6 +85,7 @@ module-margin-right = 2
 font-0 = Hack Nerd Font:pixelsize=9;1
 font-1 = FontAwesome:size=9;1
 font-2 = UbuntuMono:size=9;1
+font-3 = weathericons-regular-webfont:size=12;1
 
 tray-position = right
 tray-padding = 2
@@ -116,6 +117,7 @@ bottom=true
 height=30
 font-0 = Hack Nerd Font:pixelsize=8;1
 
+modules-left = openweathermap-fullfeatured
 modules-center = spotify
 modules-right = filesystem memory cpu battery-combined temperature
 
@@ -495,6 +497,12 @@ interval = 60
 type = custom/script
 exec = ~/.config/polybar/updates.sh
 interval = 600
+
+[module/openweathermap-fullfeatured]
+type = custom/script
+exec = ~/.config/polybar/openweathermap-fullfeatured.sh
+interval = 600
+label-font = 4
 
 [settings]
 screenchange-reload = true
