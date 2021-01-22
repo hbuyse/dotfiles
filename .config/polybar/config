@@ -17,18 +17,16 @@
 ;==========================================================
 
 [global-vm]
-include-file = $HOME/.config/polybar/gruvbox.colors
+include-file = $HOME/.config/polybar/nord.colors
 
 [colors]
-fg = ${colors.fg1}
-bg = ${colors.bg0}
-background = ${colors.bg}
-background-alt = ${colors.bg1}
-foreground = ${colors.fg}
-foreground-alt = ${colors.fg2}
-primary = ${colors.orange2}
-secondary = ${colors.yellow2}
-alert = ${colors.red2}
+background = ${colors.nord0}
+background-alt = ${colors.nord1}
+foreground = ${colors.nord4}
+foreground-alt = ${colors.nord5}
+primary = ${colors.warning}
+secondary = ${colors.notify}
+alert = ${colors.urgent}
 
 
 [bar/general]
