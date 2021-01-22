@@ -100,6 +100,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
 Plug 'altercation/vim-colors-solarized'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Statusbar
 Plug 'vim-airline/vim-airline'

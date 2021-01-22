@@ -1,4 +1,4 @@
-source $HOME/.config/nvim/gruvbox.vim
+source $HOME/.config/nvim/nord.vim
 source $HOME/.config/nvim/trailingwhitespace.vim
 source $HOME/.config/nvim/ruler.vim
 source $HOME/.config/nvim/indentline.vim

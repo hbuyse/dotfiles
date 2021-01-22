@@ -14,7 +14,9 @@ XTerm*faceSize:          11
 XTerm*reverseVideo:      on
 XTerm*selectToClipboard: true
 
-#include ".Xresources.d/gruvbox-dark.xresources"
+!#include ".Xresources.d/gruvbox-dark.xresources"
+!#include ".Xresources.d/gruvbox-light.xresources"
+#include ".Xresources.d/nord.xresources"
 
 Xcursor.theme: xcursor-breeze
 Xcursor.size:                     0
