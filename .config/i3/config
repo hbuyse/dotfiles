@@ -275,15 +275,15 @@ exec_always --no-startup-id $HOME/.config/redshift/launch.sh
 # GRUVBOX COLORS #
 ##################
 
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
+set $bg #2e3440
+set $red #bf616a
+set $green #a3be8c
+set $yellow #ebcb8b
+set $blue #5e81ac
+set $purple #b48ead
+set $aqua #88c0d0
+set $gray #e5e9f0
+set $darkgray #d8dee9
 
 # start of window title bars & borders section
 
