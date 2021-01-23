@@ -142,12 +142,12 @@ configuration {
 }
 
 * {
-	background-color:            #282828;
-	text-color:                  #ebddb2;
-	selbg:                       #d79921;
-	actbg:                       #665c54;
-	urgbg:                       #cc241d;
-	winbg:                       #fbf1c7;
+	background-color:            #2e3440;
+	text-color:                  #eceff4;
+	selbg:                       #4c566a;
+	actbg:                       #434c5e;
+	urgbg:                       #d8dee9;
+	winbg:                       #e5e9f0;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;
