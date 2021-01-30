@@ -29,4 +29,28 @@ red2 = #fb4934
 yellow1 = #d79921
 yellow2 = #fabd2f
 
+aqua = ${colors.aqua2}
+blue = ${colors.blue2}
+gray = ${colors.gray2}
+green = ${colors.green2}
+orange = ${colors.orange2}
+purple = ${colors.purple2}
+red = ${colors.red2}
+yellow = ${colors.yellow2}
+
+buffer = ${colors.nord3}
+urgent = ${colors.red}
+warning = ${colors.orange}
+notify = ${colors.nord13}
+success = ${colors.nord14}
+function = ${colors.nord15}
+
+background = ${colors.nord0}
+background-alt = ${colors.nord1}
+foreground = ${colors.nord4}
+foreground-alt = ${colors.nord5}
+primary = ${colors.warning}
+secondary = ${colors.notify}
+alert = ${colors.urgent}
+
 ;  vim: set ts=4 sw=4 tw=0 et ft=dosini :

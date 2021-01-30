@@ -15,11 +15,29 @@ nord12 = #D08770
 nord13 = #EBCB8B
 nord14 = #A3BE8C
 nord15 = #B48EAD
+
+aqua = ${colors.nord9}
+blue = ${colors.nord10}
+gray = ${colors.nord4}
+green = ${colors.nord14}
+orange = ${colors.nord12}
+purple = ${colors.nord15}
+red = ${colors.nord11}
+yellow = ${colors.nord13}
+
 buffer = ${colors.nord3}
-urgent = ${colors.nord11}
-warning = ${colors.nord12}
-notify = ${colors.nord13}
-success = ${colors.nord14}
-function = ${colors.nord15}
+urgent = ${colors.red}
+warning = ${colors.orange}
+notify = ${colors.yellow}
+success = ${colors.green}
+function = ${colors.purple}
+
+background = ${colors.nord0}
+background-alt = ${colors.nord1}
+foreground = ${colors.nord4}
+foreground-alt = ${colors.nord5}
+primary = ${colors.warning}
+secondary = ${colors.notify}
+alert = ${colors.urgent}
 
 ;  vim: set ts=4 sw=4 tw=0 et ft=dosini :
