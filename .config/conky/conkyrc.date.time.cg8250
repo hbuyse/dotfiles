@@ -1,8 +1,8 @@
 conky.config = {
 	alignment = 'top_left',
 	background = false,
-	default_color = 'BDAE93',
-	color2 = 'EBDBB2',
+	default_color = 'e5e9f0',
+	color2 = 'd8dee9',
 	cpu_avg_samples = 2,
 	double_buffer = true,
 	font = 'Hack Regular Nerd Font Complete Mono:size=9',
