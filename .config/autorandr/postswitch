@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+if command -v notify-send > /dev/null; then
+	notify-send -i display "Autorandr" "Using profile '${AUTORANDR_CURRENT_PROFILE}'"
+fi
