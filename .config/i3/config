@@ -237,7 +237,7 @@ bindsym --release $mod+F4 exec $HOME/.config/rofi/powermenu.sh
 #############
 
 # Set the screenlayout
-exec_always --no-startup-id $HOME/.screenlayout/layout.sh
+exec_always autorandr -c
 
 # Set the different keyboard layouts
 # us-intl: US international layout
@@ -253,9 +253,12 @@ bindsym $mod+p exec --no-startup-id xautolock -locknow
 # Start the automatic locker with 5 minutes before locking and 15 before suspending
 exec_always --no-startup-id $HOME/.config/i3/start_xautolock.sh
 
-#screenshot
+# screenshot
 bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%Y%m%d_%H%M%S.png"
 bindsym --release Mod1+Sys_Req exec --no-startup-id scrot -u "$HOME/Pictures/%Y%m%d_%H%M%S.png"
+
+# Start picom
+exec_always --no-startup-id $HOME/.config/picom/launch.sh
 
 # Add background wallpaper
 exec_always --no-startup-id feh --bg-fill "$HOME/.config/wallpapers/wallpaper.png"
@@ -270,9 +273,6 @@ exec_always --no-startup-id $HOME/.config/conky/launch.sh
 
 # Start redshift
 exec_always --no-startup-id $HOME/.config/redshift/launch.sh
-
-# Start picom
-exec_always --no-startup-id $HOME/.config/picom/launch.sh
 
 ##################
 # GRUVBOX COLORS #
