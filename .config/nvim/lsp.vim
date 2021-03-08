@@ -30,3 +30,4 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy' ]
 lua require'lspconfig'.ccls.setup { on_attach = require'completion'.on_attach }
 lua require'lspconfig'.pyright.setup { on_attach = require'completion'.on_attach }
 lua require'lspconfig'.rls.setup { on_attach = require'completion'.on_attach }
+lua require'lspconfig'.bashls.setup { on_attach = require'completion'.on_attach }
