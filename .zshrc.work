@@ -97,8 +97,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=${PATH}:${HOME}/.cargo/bin
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -106,8 +104,8 @@ export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 export VISUAL='nvim'
-export EDITOR="$VISUAL"
-export GIT_EDITOR="$EDITOR"
+export EDITOR="${VISUAL}"
+export GIT_EDITOR="${EDITOR}"
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
@@ -126,11 +124,7 @@ export GIT_EDITOR="$EDITOR"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$PATH:$HOME/.local/bin:$HOME/.local/diff-so-fancy:$HOME/.config/arcanist/bin"
-
-# JDK_HOME: place where Java Developer Kit is installed
-# Needed by coc-xml
-export JDK_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/.cargo/bin:${HOME}/.local/diff-so-fancy:${HOME}/.config/arcanist/bin"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10kwork.zsh ]] || source ~/.p10kwork.zsh
