@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-OPTIONS="\tLock\n\tLogout\n\tShutdown\n\tReboot\n鈴\tSuspend\n\tCaffeinate\n\tUncaffeinate\n"
-
 lock() {
     xautolock -locknow
     return 0
@@ -13,42 +11,57 @@ list() {
     icon_name="$1"
     size="$2"
 
-    echo -en "Lock\0icon\x1f/usr/share/icons/${icon_name}/${size}x${size}/apps/system-lock-screen.svg\n"
-    echo -en "Logout\0icon\x1f/usr/share/icons/${icon_name}/${size}x${size}/apps/system-log-out.svg\n"
-    echo -en "Shutdown\0icon\x1f/usr/share/icons/${icon_name}/${size}x${size}/apps/system-shutdown.svg\n"
-    echo -en "Reboot\0icon\x1f/usr/share/icons/${icon_name}/${size}x${size}/apps/system-reboot.svg\n"
-    echo -en "Suspend\0icon\x1f/usr/share/icons/${icon_name}/${size}x${size}/apps/system-suspend.svg\n"
-    echo -en "Caffeinate\0icon\x1f/usr/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-full.svg\n"
-    echo -en "Uncaffeinate\0icon\x1f/usr/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-empty.svg\n"
+    echo -en "Lock\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-lock-screen.svg\n"
+    echo -en "Logout\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-log-out.svg\n"
+    echo -en "Shutdown\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-shutdown.svg\n"
+    echo -en "Reboot\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-reboot.svg\n"
+    echo -en "Suspend\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-suspend.svg\n"
+    if [[ "$(xset q | grep "DPMS is " | awk '{ print $3 }' | tr "[:upper:]" "[:lower:]")" == "disabled" ]]; then
+        echo -en "Caffeinate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-full.svg\n"
+    else
+        echo -en "Uncaffeinate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-empty.svg\n"
+    fi
+    if [[ "$(dunstctl is-paused)" == "true" ]]; then
+        echo -en "Do Disturb\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/bell.svg\n"
+    elif [[ "$(dunstctl is-paused)" == "false" ]]; then
+        echo -en "Do Not Disturb\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/bell.svg\n"
+    fi
 }
 
-if [ "$@" ]
+if [[ -n "$@" ]]
 then
-    case $@ in
-        *Uncaffeinate)
+    case "$@" in
+        "Uncaffeinate")
             xautolock -enable
-            xset -dpms
-            notify-send "Screen suspend" "Enabled"
+            xset s 1800 1800 -dpms
+            notify-send "Screen saver" "Enabled"
             ;;
-        *Caffeinate)
+        "Caffeinate")
             xautolock -disable
-            xset +dpms
-            notify-send "Screen suspend" "Disabled"
+            xset s 600 600 +dpms
+            notify-send "Screen saver" "Disabled"
             ;;
-        *Lock)
+        "Lock")
             lock && xset dpms force off
             ;;
-        *Logout)
+        "Logout")
             i3-msg exit
             ;;
-        *Shutdown)
+        "Shutdown")
             lock && systemctl poweroff
             ;;
-        *Reboot)
+        "Reboot")
             lock && systemctl reboot
             ;;
-        *Suspend)
+        "Suspend")
             lock && systemctl suspend
+            ;;
+        "Do Disturb")
+            dunstctl set-paused false
+            notify-send "Do Not Disturb" "Disabled"
+            ;;
+        "Do Not Disturb")
+            dunstctl set-paused true
             ;;
     esac
 else
