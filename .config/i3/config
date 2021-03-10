@@ -235,8 +235,9 @@ bindsym $mod+p exec --no-startup-id xautolock -locknow
 exec_always --no-startup-id $HOME/.config/i3/start_xautolock.sh
 
 # screenshot
-bindsym --release Print exec --no-startup-id scrot -m "$HOME/Pictures/%Y%m%d_%H%M%S.png"
-bindsym --release Mod1+Sys_Req exec --no-startup-id scrot -u "$HOME/Pictures/%Y%m%d_%H%M%S.png"
+bindsym --release Print exec --no-startup-id scrot --multidisp "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
+bindsym --release Mod1+Sys_Req exec --no-startup-id scrot --focused "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
+bindsym --release Control+Print exec --no-startup-id scrot --select --freeze "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
 
 # Start picom
 exec_always --no-startup-id $HOME/.config/picom/launch.sh
