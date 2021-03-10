@@ -1,5 +1,5 @@
 conky.config = {
-	alignment = 'bottom_left',
+	alignment = 'top_left',
 	background = false,
 	default_color = 'BDAE93',
 	color2 = 'EBDBB2',
@@ -7,7 +7,7 @@ conky.config = {
 	double_buffer = true,
 	font = 'Hack Regular Nerd Font Complete Mono:size=9',
 	gap_x = 20,
-	gap_y = 50,
+	gap_y = 850,
 	minimum_width = 250,
 	no_buffers = true,
 	own_window = true,
@@ -15,7 +15,7 @@ conky.config = {
 	own_window_transparent = true,
 	update_interval = 1.0,
 	use_xft = true,
-	xinerama_head = 2,
+	xinerama_head = 0,
 }
 conky.text = [[
 ${color}${font Hack:bold:size=9}Processes ${hr}
