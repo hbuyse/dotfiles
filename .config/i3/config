@@ -192,25 +192,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-################
-# MOD LAUNCHER #
-################
-
-mode "$mod_launcher" {
-    bindsym f exec firefox
-    bindsym t exec thunderbird
-    bindsym s exec spotify
-
-    bindsym Escape mode "default"
-    bindsym Return mode "default"
-    bindsym $mod+o mode "default"
-}
-
-# Press $mod+o followed by either f, t, Escape or Return to launch firefox,
-# thunderbird or return to the default mode, respectively.
-set $mod_launcher Launch: [f]irefox [t]hunderbird [s]potify
-bindsym $mod+o mode "$mod_launcher"
-
 ############
 # AUTOMOVE #
 ############
