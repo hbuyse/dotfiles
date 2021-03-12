@@ -444,13 +444,13 @@ type = custom/script
 interval = 1
 format-suffix = "  "
 format = <label>
-exec = python $HOME/.config/polybar/spotify_status.py -f '{play_pause} {artist} - {song}' -t 70
+exec = python $HOME/.config/polybar/scripts/spotify_status.py -f '{play_pause} {artist} - {song}' -t 70
 format-underline = ${colors.green2}
 click-left = i3-msg "[class=Spotify] focus"
 
 [module/bluetooth]
 type = custom/script
-exec = $HOME/.config/polybar/bluetooth.sh
+exec = $HOME/.config/polybar/scripts/bluetooth.sh
 interval = 2
 ;format-padding = 1
 format-background = ${colors.background}
@@ -458,23 +458,23 @@ format-foreground = ${colors.foreground}
 
 [module/vpn-nordvpn-status]
 type = custom/script
-exec = $HOME/.config/polybar/vpn-nordvpn-status.sh
+exec = $HOME/.config/polybar/scripts/vpn-nordvpn-status.sh
 interval = 5
 
 [module/battery-combined]
 type = custom/script
-exec = ~/.config/polybar/battery_combined.py
+exec = ~/.config/polybar/scripts/battery_combined.py
 interval = 60
 
 [module/updates]
 type = custom/script
-exec = ~/.config/polybar/updates.sh
-click-left = ~/.config/polybar/updates.sh notify
+exec = ~/.config/polybar/scripts/updates.sh
+click-left = ~/.config/polybar/scripts/updates.sh notify
 interval = 600
 
 [module/openweathermap-fullfeatured]
 type = custom/script
-exec = ~/.config/polybar/openweathermap-fullfeatured.sh
+exec = ~/.config/polybar/scripts/openweathermap-fullfeatured.sh
 interval = 600
 label-font = 4
 
