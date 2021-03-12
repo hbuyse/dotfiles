@@ -213,6 +213,15 @@ bindsym --release $mod+d exec rofi -sidebar-mode -show drun -combi-modi "drun#ru
 bindsym --release $mod+x exec $HOME/.config/rofi/killmenu.sh
 bindsym --release $mod+F4 exec $HOME/.config/rofi/powermenu.sh
 
+##############
+# SCREENSHOT #
+##############
+bindsym --release Print exec --no-startup-id scrot --multidisp "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
+bindsym --release Mod1+Sys_Req exec --no-startup-id scrot --focused "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
+bindsym --release Control+Print exec --no-startup-id scrot --select --freeze "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
+
+
+
 #############
 # AUTOSTART #
 #############
@@ -233,11 +242,6 @@ bindsym $mod+p exec --no-startup-id xautolock -locknow
 
 # Start the automatic locker with 5 minutes before locking and 15 before suspending
 exec_always --no-startup-id $HOME/.config/i3/start_xautolock.sh
-
-# screenshot
-bindsym --release Print exec --no-startup-id scrot --multidisp "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
-bindsym --release Mod1+Sys_Req exec --no-startup-id scrot --focused "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
-bindsym --release Control+Print exec --no-startup-id scrot --select --freeze "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
 
 # Start picom
 exec_always --no-startup-id $HOME/.config/picom/launch.sh
