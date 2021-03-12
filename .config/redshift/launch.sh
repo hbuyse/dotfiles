@@ -10,7 +10,7 @@ if ! command -v "${DAEMON}" > /dev/null; then
 fi
 
 # Kill all previous instances of the daemon
-pkill -9 "${DAEMON}"
+killall -q -9 "${DAEMON}"
 
 # Remove adjustment from screen
 ${DAEMON} -x
