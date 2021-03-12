@@ -1,24 +1,29 @@
 #!/usr/bin/env bash
 
-POLYBAR="$(command -v polybar)"
-XRANDR="$(command -v xrandr)"
+POLYBAR="polybar"
+XRANDR="xrandr"
 BAR="$(hostname -s | tr '[:upper:]' '[:lower:]')"
+LOG_DIR="/tmp/polybar"
 
 # Check that the commands exists
-if [[ -z "$POLYBAR" ]]; then
+if ! command -v ${POLYBAR} > /dev/null 2>&1; then
+    echo "${POLYBAR}: not found. Exiting." 1>&2
     exit 1
 fi
 
 # Terminate already running bar instances
-killall -q "$POLYBAR"
+killall -q -9 "${POLYBAR}"
+
+# Create log directory
+mkdir -p ${LOG_DIR}
 
 # If all your bars have ipc enabled, you can also use polybar-msg cmd quit
-if [[ -n "$XRANDR" ]]; then
-    for m in $($XRANDR --query | grep -w "connected" | cut -d" " -f1); do
-        MONITOR="$m" $POLYBAR --reload "$BAR" 2> "/tmp/polybar-$m.log" &
-        MONITOR="$m" $POLYBAR --reload "$BAR-bottom" 2> "/tmp/polybar-$m-bottom.log" &
+if command -v "${XRANDR}" > /dev/null 2>&1; then
+    for m in $(${XRANDR} --query | grep -w "connected" | cut -d" " -f1); do
+        MONITOR="${m}" ${POLYBAR} --reload "${BAR}"        > "${LOG_DIR}/${m}.log"        2>&1 &
+        MONITOR="${m}" ${POLYBAR} --reload "${BAR}-bottom" > "${LOG_DIR}/${m}-bottom.log" 2>&1 &
     done
 else
-    $POLYBAR --reload "$BAR" 2> /tmp/polybar.log &
+    ${POLYBAR} --reload "${BAR}" > ${LOG_DIR}/main.log 2>&1 &
 fi
 # vim: set ts=4 sw=4 tw=0 et :
