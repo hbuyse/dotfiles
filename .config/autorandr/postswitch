@@ -2,3 +2,6 @@
 if command -v notify-send > /dev/null; then
 	notify-send -i display "Autorandr" "Using profile '${AUTORANDR_CURRENT_PROFILE}'"
 fi
+
+# Reset the background
+feh --bg-fill ${HOME}/.config/wallpapers/wallpaper.png
