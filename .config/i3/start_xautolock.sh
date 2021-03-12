@@ -1,22 +1,24 @@
 #! /usr/bin/env bash
 
 DAEMON="xautolock"
+HOSTNAME="$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
-killall $DAEMON
+OPTS=("-time 5")
+OPTS+=("-locker \"$HOME/.config/i3/i3lock-multi -i $HOME/.config/wallpapers/locker.png\"")
+OPTS+=("-notify 30 -notifier \"notify-send -u critical -t 29000 'i3lock' 'Will lock in 30 seconds'\"")
+
 
 if ! command -v $DAEMON; then
     echo "$DAEMON not found. Exiting"
     exit
 fi
 
-DAEMON_ARGS=("-time 5")
-DAEMON_ARGS+=("-locker \"$HOME/.config/i3/i3lock-multi -i $HOME/.config/wallpapers/locker.png\"")
-DAEMON_ARGS+=("-notify 30 -notifier \"notify-send -u critical -t 29000 'i3lock' 'Will lock in 30 seconds'\"")
+killall $DAEMON
 
-if [[ $HOSTNAME == "T480" || $HOSTNAME == "CG8250" ]]; then
-    DAEMON_ARGS+=("-killtime 15 -killer \"systemctl suspend\"")
-    DAEMON_ARGS+=("-detectsleep")
+if [[ $HOSTNAME == "t480" ]] || [[ $HOSTNAME == "cg8250" ]]; then
+    OPTS+=("-killtime 15 -killer \"systemctl suspend\"")
+    OPTS+=("-detectsleep")
 fi
 
-eval "${DAEMON}" "${DAEMON_ARGS[*]}"
+eval "${DAEMON}" "${OPTS[*]}"
 # vim: set ts=4 sw=4 tw=0 et ft=sh :
