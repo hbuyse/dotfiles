@@ -469,6 +469,7 @@ interval = 60
 [module/updates]
 type = custom/script
 exec = ~/.config/polybar/updates.sh
+click-left = ~/.config/polybar/updates.sh notify
 interval = 600
 
 [module/openweathermap-fullfeatured]
