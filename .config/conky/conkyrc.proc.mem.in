@@ -7,7 +7,7 @@ conky.config = {
 	double_buffer = true,
 	font = 'Hack Regular Nerd Font Complete Mono:size=9',
 	gap_x = 20,
-	gap_y = 850,
+	gap_y = CONKY_GAP_Y,
 	minimum_width = 250,
 	no_buffers = true,
 	own_window = true,

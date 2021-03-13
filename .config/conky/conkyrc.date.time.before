@@ -46,7 +46,3 @@ ${font}${color}RAM:${alignr}${font}${color2}${mem} / ${memmax}
 ${font}${color}Swap:${alignr}${font}${color2}${swap} / ${swapfree}
 
 ${color}${font Hack:bold:size=9}File System ${hr}
-$font${color}/:${alignr}${color2}${fs_used /} / ${fs_size /}
-$font${color}/usr/local:${alignr}${color2}${fs_used /usr/local} / ${fs_size /usr/local}
-$font${color}/home:${alignr}${color2}${fs_used /home} / ${fs_size /home}
-]]
