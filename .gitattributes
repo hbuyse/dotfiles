@@ -14,4 +14,5 @@
 .config/wallpapers/tux_eyes_gruvboxed_fractal_breaking_glass.png filter=lfs diff=lfs merge=lfs -text
 .config/wallpapers/tux_eyes_gruvboxed_fractal.png filter=lfs diff=lfs merge=lfs -text
 .config/wallpapers/tux_eyes_1920x1080.xcf filter=lfs diff=lfs merge=lfs -text
+.config/wallpapers/wallhaven-k77jym.jpg filter=lfs diff=lfs merge=lfs -text
 . text !filter !merge !diff
