@@ -7,7 +7,7 @@ fi
 feh --bg-fill ${HOME}/.config/wallpapers/wallpaper.png
 
 # Restart some daemons
-for d in "picom" "polybar" "conky";
+for d in "picom" "conky";
 do
     ${HOME}/.config/${d}/launch.sh
 done
