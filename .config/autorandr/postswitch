@@ -5,3 +5,9 @@ fi
 
 # Reset the background
 feh --bg-fill ${HOME}/.config/wallpapers/wallpaper.png
+
+# Restart some daemons
+for d in "picom" "polybar" "conky";
+do
+    ${HOME}/.config/${d}/launch.sh
+done
