@@ -131,11 +131,11 @@ set $ws2 "2:dev"
 set $ws3 "3:web"
 set $ws4 "4:mail"
 set $ws5 "5:spotify"
-set $ws6 "6"
+set $ws6 "6:message"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10:zoom"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -201,6 +201,8 @@ for_window [class="(?i)firefox"] move container to workspace $ws3
 for_window [class="(?i)chromium.*"] move container to workspace $ws3
 for_window [class="(?i)spotify"] move container to workspace $ws5
 for_window [class="(?i)thunderbird"] move container to workspace $ws4
+for_window [class="(?i)mattermost"] move container to workspace $ws6
+for_window [class="(?i)zoom"] move container to workspace $ws10
 
 ########
 # ROFI #
