@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 readonly DAEMONS=("picom" "compton")
-readonly HOSTNAME="$(hostname | tr '[:upper:]' '[:]')"
+readonly HOSTNAME="$(hostname | tr '[:upper:]' '[:lower:]')"
 DAEMON=""
 OPTS=("--config" "${HOME}/.config/picom/picom.conf")
 
@@ -18,12 +18,18 @@ if [ -z ${DAEMON} ]; then
 	exit 1
 fi
 
-# Kill all processes
-killall -q -9 ${DAEMON}
+if [[ $(pgrep -x -c ${DAEMON}) -ne 0 ]]; then
+	# Reload config
+	if killall -q -USR1 ${DAEMON}; then
+		notify-send -u "low" "Picom" "Configuration reloaded"
+	else
+		notify-send -u "critical" "Picom" "Error while reloading configuration"
+	fi
+else
+	# Launch compton in background, using default config location ~/.config/compton/compton.conf
+	if [[ "${HOSTNAME}" == "cg8250" ]]; then
+		OPTS+=("--backend=xrender")
+	fi
 
-# Launch compton in background, using default config location ~/.config/compton/compton.conf
-if [[ "${HOSTNAME}" == "cg8250" ]]; then
-	OPTS+=("--backend=xrender")
+	eval ${DAEMON} ${OPTS[*]}
 fi
-
-eval ${DAEMON} ${OPTS[*]}
