@@ -24,7 +24,7 @@ local opts = {
   cmdheight = 2,
 
   -- Better experience for diagnostics messages
-  updatetime = 100,
+  updatetime = 400,
 
   -- Encoding
   encoding = 'utf-8',
