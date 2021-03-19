@@ -92,6 +92,16 @@ for opt, val in pairs(bopts) do
   vim.api.nvim_set_option(opt, val)
 end
 
+local gvars = {
+  -- Python programs
+  python3_host_prog = vim.env.HOME .. '/.pyenv/versions/py3nvim/bin/python',
+  python2_host_prog = vim.env.HOME .. '/.pyenv/versions/py2nvim/bin/python'
+}
+
+for var, val in pairs(gvars) do
+  vim.api.nvim_set_var(var, val)
+end
+
 vim.api.nvim_exec([[ filetype plugin on ]], false)
 
 require'config'
