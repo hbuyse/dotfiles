@@ -131,6 +131,7 @@ return require'packer'.startup(function()
     'yggdroot/indentline',
     config = function()
       vim.g.indentLine_color_term = 243
+      vim.g.indentLine_color_gui = '#7c6f64'
       vim.g.indentLine_char_list = {'|', '¦', '┆', '┊'}
     end
   }
