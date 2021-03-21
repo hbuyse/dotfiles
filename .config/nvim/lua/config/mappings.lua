@@ -34,7 +34,7 @@ local setup_mappings = function()
   kmap('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
   kmap('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
   kmap('n', '<leader>fq', ':lua require"telescope.builtin".quickfix()<CR>')
-  kmap('n', '<leader>fd', ':lua require"config.plugins.telescope".search_dotfiles()<CR>')
+  kmap('n', '<leader>fd', ':lua require"config.dotfiles".search_dotfiles({})<CR>')
   kmap('n', '<leader>fm', ':lua require"telescope".extensions.media_files.media_files()<CR>')
 
   -- Nerdtree
