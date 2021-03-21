@@ -1,5 +1,6 @@
 local has_lsp, lspconfig = pcall(require, 'lspconfig')
 local has_completion, completion = pcall(require, 'completion')
+local has_snippets, snippets = pcall(require, 'snippets')
 
 -- If lspconfig is not present, return
 if not has_lsp then
@@ -34,11 +35,35 @@ local on_attach = function(client, bufnr)
     ]], false)
   end
 
-  completion.attach(client, bufnr)
+  -- Attach the completion if the plugin completion-nvim has been found
+  if has_completion then
+    completion.attach(client, bufnr)
+  end
 end
 
-vim.api.nvim_set_var('completion_enable_auto_popup', 0)
-vim.api.nvim_set_var('completion_matching_strategy_list', {'exact', 'substring', 'fuzzy'})
+
+local function t(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
+
+-- If PopUpMenuVISIBLE, we can use the Enter key to validate instead of <C-y>
+function _G.smart_enter()
+  return vim.fn.pumvisible() == 1 and t('<C-y>') or t('<CR>')
+end
+
+-- Load completion config if the plugin completion-nvim has been found
+if has_completion then
+  vim.api.nvim_set_var('completion_enable_auto_popup', 0)
+  vim.api.nvim_set_var('completion_matching_strategy_list', {'exact', 'substring', 'fuzzy', 'all'})
+  vim.api.nvim_set_keymap('i', '<CR>', 'v:lua.smart_enter()', {expr = true, noremap = true})
+
+  -- Load snippet only if snippets.nvim has been found
+  if has_snippets then
+    vim.api.nvim_set_var('completion_enable_snippet', 'snippets.nvim')
+    vim.api.nvim_set_var('completion_confirm_key', '<CR>')
+  end
+end
+
 
 -- Use a loop to conveniently both setup defined servers and map buffer local keybindings when the language server attaches
 local servers = {
@@ -49,10 +74,10 @@ local servers = {
     on_attach = on_attach
   },
   pyright = {
-    on_attach = completion.on_attach
+    on_attach = on_attach
   },
   bashls = {
-    on_attach = completion.on_attach
+    on_attach = on_attach
   }
 }
 for lsp, conf in pairs(servers) do
