@@ -109,9 +109,9 @@ return require'packer'.startup(function()
           lualine_a = { {'mode', upper = true} },
           lualine_b = { {'branch', icon = ''} },
           lualine_c = { {'filename', file_status = true} },
-          lualine_x = { 'encoding', 'fileformat', 'filetype' },
-          lualine_y = { 'progress' },
-          lualine_z = { 'location'  },
+          lualine_x = { {'diagnostics', sources = {'nvim_lsp'}} },
+          lualine_y = { 'encoding', 'fileformat', 'filetype' },
+          lualine_z = { 'progress', 'location'  },
         },
         inactive_sections = {
           lualine_a = {  },
@@ -121,7 +121,7 @@ return require'packer'.startup(function()
           lualine_y = {  },
           lualine_z = {   }
         },
-        extensions = { 'fzf' }
+        extensions = { 'fugitive' }
       }
     end
   }
