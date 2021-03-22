@@ -20,6 +20,10 @@ Then, fetch all data
 dotfiles fetch --tags origin
 ```
 
+## Neovim Lua guide
+
+Go check this excellent guide https://github.com/nanotee/nvim-lua-guide
+
 ## Requirements
 
 ### Mandatory
@@ -33,6 +37,7 @@ dotfiles fetch --tags origin
 - [feh](https://github.com/derf/feh)
 - [compton](https://github.com/chjj/compton)
 - [dunst](https://github.com/dunst-project/dunst)
+- [neovim](https://github.com/neovim/neovim)
 
 ### Suggested
 
