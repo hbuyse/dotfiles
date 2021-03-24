@@ -1,13 +1,13 @@
 #! /usr/bin/env bash
-if command -v notify-send > /dev/null; then
-	notify-send -i display "Autorandr" "Using profile '${AUTORANDR_CURRENT_PROFILE}'"
+
+# Send notification to the user
+if command -v notify-send > "/dev/null"; then
+  notify-send -i display "Autorandr" "Using profile '${AUTORANDR_CURRENT_PROFILE}'"
 fi
 
 # Reset the background
-feh --bg-fill ${HOME}/.config/wallpapers/wallpaper.png
+if command -v feh > "/dev/null"; then
+  feh --bg-fill ${HOME}/.config/wallpapers/wallpaper.png
+fi
 
-# Restart some daemons
-for d in "picom" "conky";
-do
-    ${HOME}/.config/${d}/launch.sh
-done
+# vim: set ts=2 sw=2 tw=0 et ft=sh :
