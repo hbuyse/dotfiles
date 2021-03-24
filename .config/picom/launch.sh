@@ -3,7 +3,7 @@
 readonly DAEMONS=("picom" "compton")
 readonly HOSTNAME="$(hostname | tr '[:upper:]' '[:lower:]')"
 DAEMON=""
-OPTS=("--config" "${HOME}/.config/picom/picom.conf")
+OPTS=("--config" "${HOME}/.config/picom/picom.conf" "-b")
 
 # Check for either picom or compton
 for d in ${DAEMONS[*]}; do
