@@ -21,10 +21,12 @@ list() {
     else
         echo -en "Uncaffeinate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-empty.svg\n"
     fi
-    if [[ "$(dunstctl is-paused)" == "true" ]]; then
-        echo -en "Do Disturb\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/bell.svg\n"
-    elif [[ "$(dunstctl is-paused)" == "false" ]]; then
-        echo -en "Do Not Disturb\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/bell.svg\n"
+    if pgrep dunst > "/dev/null"; then
+        if [[ "$(dunstctl is-paused)" == "true" ]]; then
+            echo -en "Do Disturb\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/bell.svg\n"
+        elif [[ "$(dunstctl is-paused)" == "false" ]]; then
+            echo -en "Do Not Disturb\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/bell.svg\n"
+        fi
     fi
 }
 
