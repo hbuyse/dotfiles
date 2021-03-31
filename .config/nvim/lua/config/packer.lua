@@ -63,19 +63,71 @@ return require'packer'.startup(function()
     end
   }
 
+  -- telescope
   use {
     'nvim-telescope/telescope.nvim',
     requires = {
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
-      {'nvim-telescope/telescope-media-files.nvim'},
       {'jremmen/vim-ripgrep'},
+    },
+    config = function()
+      require('telescope').setup {
+        defaults = {
+          prompt_prefix = ' > ',
+
+          winblend = 0,
+          preview_cutoff = 120,
+
+          layout_strategy = 'horizontal',
+          layout_defaults = {
+            horizontal = {
+              width_padding = 0.1,
+              height_padding = 0.1,
+              preview_width = 0.6,
+            },
+            vertical = {
+              width_padding = 0.05,
+              height_padding = 1,
+              preview_height = 0.5,
+            }
+          },
+
+          selection_strategy = 'reset',
+          sorting_strategy = 'descending',
+          scroll_strategy = 'cycle',
+          prompt_position = 'bottom',
+          color_devicons = true,
+          set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+
+          borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+
+          file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+          grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+          qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+        }
+      }
+    end
+  }
+
+  -- treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function()
+      require'nvim-treesitter.configs'.setup {
+      ensure_installed = {"c", "cpp", "python", "lua", "bash", "json", "rust", "rst"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+      highlight = {
+        enable = true              -- false will disable the whole extension
+      },
     }
+    end
   }
 
   -- gruvbox
   use {
-    'gruvbox-community/gruvbox',
+    "npxbr/gruvbox.nvim",
+    requires = {"rktjmp/lush.nvim"},
     config = function()
       vim.g.gruvbox_contrast_dark = 'medium'
       vim.g.gruvbox_sign_column = 'bg1'
