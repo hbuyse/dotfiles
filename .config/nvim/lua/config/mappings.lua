@@ -1,3 +1,5 @@
+local has_snippets, snippets = pcall(require, 'snippets')
+
 local function kmap(mode, key, result)
   -- TODO: use vim.api.nvim_buf_set_keymap after
   vim.api.nvim_set_keymap(mode, key, result, {noremap = true, silent = true})

@@ -24,12 +24,7 @@ return require'packer'.startup(function()
 
   -- lsp
   use 'neovim/nvim-lspconfig'
-  use {
-    'nvim-lua/completion-nvim',
-    requires = {
-      { 'norcalli/snippets.nvim' },
-    }
-  }
+  use 'nvim-lua/completion-nvim'
   use 'anott03/nvim-lspinstall'
   use {
     'onsails/lspkind-nvim',
@@ -60,6 +55,12 @@ return require'packer'.startup(function()
           --   Struct = ''
           -- },
       })
+    end
+  }
+  use {
+    'norcalli/snippets.nvim',
+    config = function()
+      require'snippets'.use_suggested_mappings()
     end
   }
 
