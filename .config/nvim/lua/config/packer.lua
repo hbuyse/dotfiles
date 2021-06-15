@@ -244,5 +244,8 @@ return require'packer'.startup(function()
       require'colorizer'.setup{'css', 'javascript', 'vim', 'html', 'ini', 'xdefaults'}
     end
   }
+
+  -- file-line
+  use 'bogado/file-line'
 end)
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
