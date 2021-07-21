@@ -237,6 +237,10 @@ exec_always autorandr -c
 # fr-latin9: french keyboard layout
 exec_always --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9"
 
+# Increase keyboard repeat and delay
+# After 250 ms of pressing a key, the OS will put out about 60 times the same key in a second
+exec_always --not-startup-id xset r rate 250 60
+
 # Setup pulseaudio
 exec_always --no-startup-id $HOME/.config/i3/setup_pactl.sh
 
