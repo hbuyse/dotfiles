@@ -30,6 +30,7 @@ local setup_mappings = function()
 
   -- Telescope
   kmap('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
+  kmap('n', '<leader>fr', ':lua require"telescope.builtin".lsp_references()<CR>')
   kmap('n', '<leader>ff', ':lua require"telescope.builtin".file_browser()<CR>')
   kmap('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
   kmap('n', '<leader>fw', ':lua require"telescope.builtin".grep_string(vim.fn.expand("<cword>"))<CR>')
@@ -63,8 +64,9 @@ local setup_mappings = function()
   kmap('n', '<leader>bl', ':BufferLinePick<CR>')
 
   -- nerdcommenter
-  vim.api.nvim_set_keymap('n', '<F7>', '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
-  vim.api.nvim_set_keymap('v', '<F7>', '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
+  -- I do not know why, but Vim/Neovim understands <C-/> as <c-_
+  vim.api.nvim_set_keymap('n', '<C-_>', '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
+  vim.api.nvim_set_keymap('v', '<C-_>', '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
 
   -- moveline
   kmap('n', '<a-j>', ":move .+1<cr>==")
