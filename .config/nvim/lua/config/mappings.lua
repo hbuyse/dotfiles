@@ -58,12 +58,6 @@ local setup_mappings = function()
   kmap('v', '<leader>p', '"+p')
   kmap('n', '<leader>P', ':%p+<CR>')
 
-  -- bufferline
-  kmap('n', '<leader>bn', ':BufferLineCycleNext<CR>')
-  kmap('n', '<leader>bp', ':BufferLineCyclePrev<CR>')
-
-  kmap('n', '<leader>bl', ':BufferLinePick<CR>')
-
   -- Kommentary
   vim.api.nvim_set_keymap("n", "<leader>c<space>", "<Plug>kommentary_line_default", {noremap = false, silent = false})
   vim.api.nvim_set_keymap("x", "<leader>c<space>", "<Plug>kommentary_visual_default<C-c>", {noremap = false, silent = false})
@@ -75,12 +69,6 @@ local setup_mappings = function()
   kmap('n', '<a-k>', ":move .-2<cr>==")
   kmap('i', '<a-k>', "<esc>:move .-2<cr>==gi")
   kmap('v', '<a-k>', ":move '<-2<cr>gv=gv")
-  kmap('n', '<a-Up>', ":move .+1<cr>==")
-  kmap('i', '<a-Up>', "<esc>:move .+1<cr>==gi")
-  kmap('v', '<a-Up>', ":move '>+1<cr>gv=gv")
-  kmap('n', '<a-Down>', ":move .-2<cr>==")
-  kmap('i', '<a-Down>', "<esc>:move .-2<cr>==gi")
-  kmap('v', '<a-Down>', ":move '<-2<cr>gv=gv")
 
   -- Mappings to toggle folds
   -- With the following in your vimrc, you can toggle folds open/closed by pressing F9.
