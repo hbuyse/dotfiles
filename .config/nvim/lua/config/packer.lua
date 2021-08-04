@@ -26,7 +26,6 @@ return require'packer'.startup(function()
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/completion-nvim'
   use 'anott03/nvim-lspinstall'
-  use 'nvim-treesitter/playground'
   use {
     'onsails/lspkind-nvim',
     config = function()
@@ -127,6 +126,9 @@ return require'packer'.startup(function()
   -- treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
+    requires = {
+      {'nvim-treesitter/playground'}
+    },
     run = ':TSUpdate',
     config = function()
       require'nvim-treesitter.configs'.setup {
