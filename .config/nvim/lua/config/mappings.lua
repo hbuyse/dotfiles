@@ -42,7 +42,7 @@ local setup_mappings = function()
   kmap('n', '<leader>fd', ':lua require"config.dotfiles".search_dotfiles({})<CR>')
   kmap('n', '<leader>fm', ':lua require"telescope".extensions.media_files.media_files()<CR>')
 
-  -- Nerdtree
+  -- nvim-tree
   kmap('n', '<F2>', ':NvimTreeToggle<CR>')
 
   -- Misc
