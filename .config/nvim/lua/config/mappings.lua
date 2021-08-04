@@ -64,12 +64,9 @@ local setup_mappings = function()
 
   kmap('n', '<leader>bl', ':BufferLinePick<CR>')
 
-  -- nerdcommenter
-  -- I do not know why, but Vim/Neovim understands <C-/> as <c-_>
-  -- for _, c in ipairs({'<C-_>', '<leader>cc'}) do
-  --   vim.api.nvim_set_keymap('n', c, '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
-  --   vim.api.nvim_set_keymap('v', c, '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
-  -- end
+  -- Kommentary
+  vim.api.nvim_set_keymap("n", "<leader>c<space>", "<Plug>kommentary_line_default", {noremap = false, silent = false})
+  vim.api.nvim_set_keymap("x", "<leader>c<space>", "<Plug>kommentary_visual_default<C-c>", {noremap = false, silent = false})
 
   -- moveline
   kmap('n', '<a-j>', ":move .+1<cr>==")
