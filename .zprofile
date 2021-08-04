@@ -5,6 +5,7 @@ if [ -d "$HOME/.pyenv" ]; then
 	eval "$(pyenv init --path)"
 fi
 
+# set path so it includes npm
 if [ -d "$HOME/.npm-packages/bin" ]; then
 	export PATH="$HOME/.npm-packages/bin:$PATH"
 fi
