@@ -38,6 +38,7 @@ local setup_mappings = function()
   kmap('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
   kmap('n', '<leader>fq', ':lua require"telescope.builtin".quickfix()<CR>')
   kmap('n', '<leader>fg', ':lua require"telescope.builtin".git_files()<CR>')
+  kmap('n', '<leader>ft', ':lua require"telescope.builtin".document_diagnostics()<CR>')
   kmap('n', '<leader>fd', ':lua require"config.dotfiles".search_dotfiles({})<CR>')
   kmap('n', '<leader>fm', ':lua require"telescope".extensions.media_files.media_files()<CR>')
 
@@ -64,9 +65,11 @@ local setup_mappings = function()
   kmap('n', '<leader>bl', ':BufferLinePick<CR>')
 
   -- nerdcommenter
-  -- I do not know why, but Vim/Neovim understands <C-/> as <c-_
-  vim.api.nvim_set_keymap('n', '<C-_>', '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
-  vim.api.nvim_set_keymap('v', '<C-_>', '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
+  -- I do not know why, but Vim/Neovim understands <C-/> as <c-_>
+  -- for _, c in ipairs({'<C-_>', '<leader>cc'}) do
+  --   vim.api.nvim_set_keymap('n', c, '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
+  --   vim.api.nvim_set_keymap('v', c, '<Plug>NERDCommenterToggle', {noremap = false, silent = false})
+  -- end
 
   -- moveline
   kmap('n', '<a-j>', ":move .+1<cr>==")
@@ -89,6 +92,23 @@ local setup_mappings = function()
   kmap('n', '<F9>', 'za')
   kmap('o', '<F9>', '<C-C>za')
   kmap('v', '<F9>', 'zf')
+
+  -- Some good remaps from ThePrimeagen (https://www.youtube.com/watch?v=hSHATqh8svM)
+  kmap('n', 'Y', 'y$')       -- Copy to the end of the line
+  kmap('n', 'n', 'nzzzv')    -- Keep the search centered
+  kmap('n', 'N', 'Nzzzv')    -- Keep the search centered
+
+  -- Undo break points
+  characters = {',', '.', '?', '!', '[', ']', '(', ')'}
+  for _, c in ipairs(characters) do
+    kmap('i', c, c .. '<C-g>u')
+  end
+
+  -- Sadistic mode: remap Arrow keys to force me to use hjkl...
+  characters = {'<Up>', '<Down>', '<Right>', '<Left>'}
+  for _, c in ipairs(characters) do
+    kmap('', c, '<nop>')
+  end
 end
 
 setup_mappings()
