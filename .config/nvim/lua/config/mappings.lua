@@ -94,7 +94,7 @@ local setup_mappings = function()
     '', -- Normal, Visual, Select, Operator-pending
     'i' -- Insert
   }
-  characters = {'<Up>', '<Down>', '<Right>', '<Left>'}
+  characters = {'<Up>', '<Down>', '<Right>', '<Left>', '<PageUp>', '<PageDown>'}
   for _, mode in ipairs(modes) do
     for _, c in ipairs(characters) do
       kmap(mode, c, '<nop>')
