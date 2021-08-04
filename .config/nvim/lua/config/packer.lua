@@ -26,6 +26,7 @@ return require'packer'.startup(function()
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/completion-nvim'
   use 'anott03/nvim-lspinstall'
+  use 'nvim-treesitter/playground'
   use {
     'onsails/lspkind-nvim',
     config = function()
@@ -71,6 +72,7 @@ return require'packer'.startup(function()
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
       {'jremmen/vim-ripgrep'},
+      {'kyazdani42/nvim-web-devicons'},
     },
     config = function()
       require('telescope').setup {
@@ -78,26 +80,28 @@ return require'packer'.startup(function()
           prompt_prefix = ' > ',
 
           winblend = 0,
-          preview_cutoff = 120,
 
           layout_strategy = 'horizontal',
-          layout_defaults = {
+          layout_config = {
             horizontal = {
               width_padding = 0.1,
               height_padding = 0.1,
               preview_width = 0.6,
+              prompt_position = 'bottom',
+              preview_cutoff = 120,
             },
             vertical = {
               width_padding = 0.05,
               height_padding = 1,
               preview_height = 0.5,
+              prompt_position = 'bottom',
+              preview_cutoff = 120,
             }
           },
 
           selection_strategy = 'reset',
           sorting_strategy = 'descending',
           scroll_strategy = 'cycle',
-          prompt_position = 'bottom',
           color_devicons = true,
           set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
 
@@ -106,6 +110,15 @@ return require'packer'.startup(function()
           file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
           grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
           qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case'
+          },
         }
       }
     end
