@@ -102,9 +102,15 @@ local setup_mappings = function()
   end
 
   -- Sadistic mode: remap Arrow keys to force me to use hjkl...
+  modes = {
+    '', -- Normal, Visual, Select, Operator-pending
+    'i' -- Insert
+  }
   characters = {'<Up>', '<Down>', '<Right>', '<Left>'}
-  for _, c in ipairs(characters) do
-    kmap('', c, '<nop>')
+  for _, mode in ipairs(modes) do
+    for _, c in ipairs(characters) do
+      kmap(mode, c, '<nop>')
+    end
   end
 end
 
