@@ -78,7 +78,6 @@ return require'packer'.startup(function()
     requires = {
       {'nvim-lua/popup.nvim'},
       {'nvim-lua/plenary.nvim'},
-      {'jremmen/vim-ripgrep'},
       {'kyazdani42/nvim-web-devicons'},
     },
     config = function()
