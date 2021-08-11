@@ -84,7 +84,7 @@ local setup_mappings = function()
   kmap('n', 'N', 'Nzzzv')    -- Keep the search centered
 
   -- Undo break points
-  characters = {',', '.', '?', '!', '[', ']', '(', ')'}
+  characters = {',', '.', '?', '!', '[', ']', '(', ')', '/', '\'', '"', ' '}
   for _, c in ipairs(characters) do
     kmap('i', c, c .. '<C-g>u')
   end
