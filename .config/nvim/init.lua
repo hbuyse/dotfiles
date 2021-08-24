@@ -63,7 +63,8 @@ local wopts = {
   foldlevel = 2,
 
   -- Show tab delimiter
-  listchars = 'tab:| '
+  listchars = 'tab:| ',
+  scrolloff = 999
 }
 
 -- Buffer options
