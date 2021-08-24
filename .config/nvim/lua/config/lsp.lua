@@ -14,6 +14,8 @@ local on_attach = function(client, bufnr)
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
   buf_set_option('completeopt', 'menuone,noinsert,noselect')
 
+  local opts = { noremap=true, silent=true }
+
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
