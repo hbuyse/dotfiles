@@ -125,6 +125,13 @@ if ( ${1:ptr} == NULL )
 	$0
 }
 ]];
+
+    fori = U.match_indentation [[
+for (size_t ${1:i} = 0; $1 < $2; $1++)
+{
+	$0
+}
+]];
   };
 }
 -- vim: set ts=2 sw=2 tw=0 noet ft=lua :
