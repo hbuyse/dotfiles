@@ -1,6 +1,5 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
-local execute = vim.api.nvim_command
 local fn = vim.fn
 
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'

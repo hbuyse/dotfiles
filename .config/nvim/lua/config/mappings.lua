@@ -1,5 +1,3 @@
-local has_snippets, snippets = pcall(require, 'snippets')
-
 local function kmap(mode, key, result)
   -- TODO: use vim.api.nvim_buf_set_keymap after
   vim.api.nvim_set_keymap(mode, key, result, {noremap = true, silent = true})
@@ -40,7 +38,6 @@ local setup_mappings = function()
   kmap('n', '<leader>fg', ':lua require"telescope.builtin".git_files()<CR>')
   kmap('n', '<leader>ft', ':lua require"telescope.builtin".document_diagnostics()<CR>')
   kmap('n', '<leader>fd', ':lua require"config.dotfiles".search_dotfiles({})<CR>')
-  kmap('n', '<leader>fm', ':lua require"telescope".extensions.media_files.media_files()<CR>')
 
   -- nvim-tree
   kmap('n', '<F2>', ':NvimTreeToggle<CR>')
