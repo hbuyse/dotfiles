@@ -81,17 +81,17 @@ local setup_mappings = function()
   kmap('n', 'N', 'Nzzzv')    -- Keep the search centered
 
   -- Undo break points
-  characters = {',', '.', '?', '!', '[', ']', '(', ')', '/', '\'', '"', ' '}
-  for _, c in ipairs(characters) do
+  local undocharacters = {',', '.', '?', '!', '[', ']', '(', ')', '/', '\'', '"', ' '}
+  for _, c in ipairs(undocharacters) do
     kmap('i', c, c .. '<C-g>u')
   end
 
   -- Sadistic mode: remap Arrow keys to force me to use hjkl...
-  modes = {
+  local modes = {
     '', -- Normal, Visual, Select, Operator-pending
     'i' -- Insert
   }
-  characters = {'<Up>', '<Down>', '<Right>', '<Left>', '<PageUp>', '<PageDown>'}
+  local characters = {'<Up>', '<Down>', '<Right>', '<Left>', '<PageUp>', '<PageDown>'}
   for _, mode in ipairs(modes) do
     for _, c in ipairs(characters) do
       kmap(mode, c, '<nop>')
