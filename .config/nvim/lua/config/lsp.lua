@@ -141,6 +141,9 @@ local servers = {
     on_attach = on_attach
   },
   sumneko_lua = prepare_sumneko_lua_language_server(),
+  perlls = {
+    on_attach = on_attach
+  }
 }
 
 for lsp, conf in pairs(servers) do
