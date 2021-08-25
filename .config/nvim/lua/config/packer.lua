@@ -138,7 +138,7 @@ return require'packer'.startup(function()
     run = ':TSUpdate',
     config = function()
       require'nvim-treesitter.configs'.setup {
-      ensure_installed = {"c", "cpp", "python", "lua", "bash", "json", "rust", "rst"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+      ensure_installed = {"c", "cpp", "python", "lua", "bash", "json", "rust", "rst", "toml"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
       highlight = {
         enable = true              -- false will disable the whole extension
       },
