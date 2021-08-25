@@ -64,6 +64,8 @@ local wopts = {
 
   -- Show tab delimiter
   listchars = 'tab:| ',
+
+  -- Keep the scroll centered
   scrolloff = 999
 }
 
