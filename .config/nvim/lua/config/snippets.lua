@@ -25,5 +25,5 @@ ls.config.set_config({
 	enable_autosnippets = true,
 })
 
-
 require("luasnip.loaders.from_vscode").lazy_load()
+-- vim: set ts=2 sw=2 tw=0 noet ft=lua :
