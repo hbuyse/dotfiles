@@ -202,11 +202,14 @@ return require'packer'.startup(function()
 
   -- indentline
   use {
-    'yggdroot/indentline',
+    'lukas-reineke/indent-blankline.nvim',
     config = function()
-      vim.g.indentLine_color_term = 243
-      vim.g.indentLine_color_gui = '#7c6f64'
-      vim.g.indentLine_char_list = {'|', '¦', '┆', '┊'}
+      vim.cmd [[ highlight IndentBlanklineContextChar guifg=#a89984 guibg=NONE gui=NONE gui=nocombine ]]
+      require('indent_blankline').setup {
+        space_char_blankline = " ",
+        show_current_context = true,
+        char_list = {'|', '¦', '┆', '┊'}
+      }
     end
   }
 
@@ -219,7 +222,6 @@ return require'packer'.startup(function()
       vim.g.DoxygenToolkit_briefTag_pre = "\\brief "
       vim.g.DoxygenToolkit_paramTag_pre = "\\param[in, out] "
       vim.g.DoxygenToolkit_returnTag = "\\return "
-      vim.g.indentLine_char_list = {'|', '¦', '┆', '┊'}
     end
   }
 
