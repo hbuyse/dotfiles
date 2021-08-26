@@ -23,9 +23,8 @@ local setup_mappings = function()
   kmap('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
 
   -- Telescope
-  kmap('n', '<C-p>', ':lua require"telescope.builtin".find_files()<CR>')
+  kmap('n', '<C-p>',      ':lua require"telescope.builtin".find_files()<CR>')
   kmap('n', '<leader>fr', ':lua require"telescope.builtin".lsp_references()<CR>')
-  kmap('n', '<leader>ff', ':lua require"telescope.builtin".file_browser()<CR>')
   kmap('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
   kmap('n', '<leader>fw', ':lua require"telescope.builtin".grep_string({search = vim.fn.expand("<cword>")})<CR>')
   kmap('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
