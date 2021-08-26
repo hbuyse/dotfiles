@@ -63,9 +63,11 @@ local wopts = {
   foldlevel = 2,
 
   -- Show tab delimiter
-  listchars = 'tab:| ',
-
-  -- Keep the scroll centered
+  listchars = {
+    tab = '| ',
+    eol = '↴',
+    space = '⋅'
+  },
   scrolloff = 999
 }
 
@@ -86,6 +88,19 @@ for opt, val in pairs(opts) do
 end
 
 for opt, val in pairs(wopts) do
+  -- Special case of 'listchars' dictionnary
+  if opt == 'listchars' then
+    local tmp = nil
+    for k, v in pairs(val) do
+      if tmp ~= nil then
+        tmp = tmp .. ',' .. k .. ':' .. v
+      else
+        tmp = k .. ':' .. v
+      end
+    end
+    val = tmp
+  end
+
   vim.api.nvim_win_set_option(0, opt, val)
   vim.api.nvim_set_option(opt, val)
 end
