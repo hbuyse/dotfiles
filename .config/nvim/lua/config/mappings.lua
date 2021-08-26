@@ -4,10 +4,6 @@ local function kmap(mode, key, result)
 end
 
 local setup_mappings = function()
-  -- Completion
-  vim.api.nvim_set_keymap('i', '<tab>', '<Plug>(completion_smart_tab)', {noremap = false, silent = false})
-  vim.api.nvim_set_keymap('i', '<s-tab>', '<Plug>(completion_smart_s_tab)', {noremap = false, silent = false})
-
   -- Diagnostics
   kmap('n', '<leader>dn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
   kmap('n', '<leader>dp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')

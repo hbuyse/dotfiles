@@ -31,7 +31,6 @@ return require'packer'.startup(function()
 
   -- lsp
   use 'neovim/nvim-lspconfig'
-  use 'nvim-lua/completion-nvim'
   use 'anott03/nvim-lspinstall'
   use {
     'onsails/lspkind-nvim',
@@ -64,10 +63,81 @@ return require'packer'.startup(function()
       })
     end
   }
+
+  -- completion
   use {
-    'norcalli/snippets.nvim',
+    'hrsh7th/nvim-cmp',
+    requires = {
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'saadparwaiz1/cmp_luasnip'},
+      {'L3MON4D3/LuaSnip'},
+      {'rafamadriz/friendly-snippets'}
+    },
     config = function()
-      require'snippets'.use_suggested_mappings()
+      -- luasnip setup
+      local luasnip = require 'luasnip'
+
+      -- nvim-cmp setup
+      local cmp = require 'cmp'
+
+      --
+      local t = function(str)
+        return vim.api.nvim_replace_termcodes(str, true, true, true)
+      end
+
+      local check_back_space = function()
+        local col = vim.fn.col '.' - 1
+        return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s' ~= nil
+      end
+
+      cmp.setup {
+        --[[ completion = {
+          -- Does not perform completion automatically. I can still use manual completion though.
+          autocomplete = nil
+        }, ]]
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = {
+          ['<C-p>'] = cmp.mapping.select_prev_item(),
+          ['<C-n>'] = cmp.mapping.select_next_item(),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.close(),
+          ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          },
+          ['<Tab>'] = function(fallback)
+            if vim.fn.pumvisible() == 1 then
+              vim.fn.feedkeys(t('<C-n>'), 'n')
+            elseif luasnip.expand_or_jumpable() then
+              vim.fn.feedkeys(t('<Plug>luasnip-expand-or-jump'), '')
+            elseif check_back_space() then
+              vim.fn.feedkeys(t("<tab>"), "n")
+            else
+              fallback()
+            end
+          end,
+          ['<S-Tab>'] = function(fallback)
+            if vim.fn.pumvisible() == 1 then
+              vim.fn.feedkeys(t('<C-p>'), 'n')
+            elseif luasnip.jumpable(-1) then
+              vim.fn.feedkeys(t('<Plug>luasnip-jump-prev'), '')
+            else
+              fallback()
+            end
+          end,
+        },
+        sources = {
+          { name = 'buffer' },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+        },
+      }
     end
   }
 
