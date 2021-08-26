@@ -70,7 +70,7 @@ return require'packer'.startup(function()
       {'hrsh7th/cmp-nvim-lsp'},
       {'saadparwaiz1/cmp_luasnip'},
       {'L3MON4D3/LuaSnip'},
-      {'rafamadriz/friendly-snippets'}
+      {'rafamadriz/friendly-snippets'},
     },
     config = function()
       -- luasnip setup
@@ -137,6 +137,20 @@ return require'packer'.startup(function()
           { name = 'luasnip' },
         },
       }
+    end
+  }
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup{}
+      local has_cmp, _ = pcall(require, 'cmp')
+      if has_cmp then
+        require("nvim-autopairs.completion.cmp").setup({
+          map_cr = true, --  map <CR> on insert mode
+          map_complete = true, -- it will auto insert `(` after select function or method item
+        })
+      end
     end
   }
 

@@ -39,3 +39,4 @@ M.search_dotfiles = function(opts)
 end
 
 return M
+-- vim: set ts=2 sw=2 tw=0 noet ft=lua :
