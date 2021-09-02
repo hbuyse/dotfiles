@@ -46,3 +46,5 @@ ${font}${color}RAM:${alignr}${font}${color2}${mem} / ${memmax}
 ${font}${color}Swap:${alignr}${font}${color2}${swap} / ${swapfree}
 
 ${color}${font Hack:bold:size=9}File System ${hr}
+]]
+-- vim: set ts=4 sw=4 tw=0 noet ft=lua :
