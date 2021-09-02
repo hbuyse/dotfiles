@@ -2,7 +2,7 @@
 
 readonly DAEMON="conky"
 readonly CONKY_CONFIG_FOLDER="${HOME}/.config/conky"
-readonly TMP_FOLDER="/tmp/conky/"
+readonly TMP_FOLDER="/tmp/conky"
 readonly DATE_TIME_CONFIG="${TMP_FOLDER}/conkyrc.date.time"
 readonly PROC_CONFIG="${TMP_FOLDER}/conkyrc.proc.mem"
 readonly CONKIES=("${DATE_TIME_CONFIG}" "${PROC_CONFIG}")
@@ -21,12 +21,12 @@ killall -q -9 ${DAEMON}
 mkdir -p ${TMP_FOLDER}
 
 # Create config date time
-cp "${CONKY_CONFIG_FOLDER}/conkyrc.date.time.before" "${DATE_TIME_CONFIG}"
+head -$(($(wc -l ${CONKY_CONFIG_FOLDER}/conkyrc.date.time | cut -d' ' -f1) - 2)) ${CONKY_CONFIG_FOLDER}/conkyrc.date.time > ${DATE_TIME_CONFIG}
 while read mountpoint
 do
     echo "\$font\${color}$mountpoint:\${alignr}\${color2}\${fs_used $mountpoint} / \${fs_size $mountpoint}" >> ${DATE_TIME_CONFIG}
 done < <(mount | grep -E ^/dev | awk '{print $3}' | sort)
-echo ']]' >> "${DATE_TIME_CONFIG}"
+tail -2 ${CONKY_CONFIG_FOLDER}/conkyrc.date.time >> ${DATE_TIME_CONFIG}
 
 # Create config processes mem usage
 SCREEN_WIDTH=$(xrandr | grep " connected primary " | awk -F '[ x+]' '{print $5}')
