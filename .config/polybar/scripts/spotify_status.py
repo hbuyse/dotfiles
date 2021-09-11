@@ -5,9 +5,11 @@ import argparse
 
 import dbus
 
+
 def fix_string(string):
     """Corrects encoding for the python version used"""
     return string if sys.version_info.major == 3 else string.encode('utf-8')
+
 
 def truncate(name, trunclen):
     """Truncate a string"""
@@ -17,6 +19,7 @@ def truncate(name, trunclen):
         if ('(' in name) and (')' not in name):
             name += ')'
     return name
+
 
 class Spotify:
     """Spotity class get its datas from dbus"""
@@ -151,4 +154,5 @@ def main():
                                      play_pause=play_pause,
                                      album=album), trunclen + 4))
 
-main()
+if __name__ == '__main__':
+    main()
