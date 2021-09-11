@@ -265,4 +265,4 @@ element alternate.active {
 element-icon {
 	size: 2.5ch;
 }
-/* vim:ft=css
+/* vim: set ts=4 sw=4 tw=0 et ft=css :*/
