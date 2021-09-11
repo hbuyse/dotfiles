@@ -92,6 +92,9 @@ local setup_mappings = function()
       kmap(mode, c, '<nop>')
     end
   end
+
+  -- In INSERT mode, doing 'jk' is equivalent to <Esc> (retunr to NORMAL mode)
+  kmap('i', 'jk', '<Esc>')
 end
 
 setup_mappings()
