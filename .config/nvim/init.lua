@@ -65,8 +65,8 @@ local wopts = {
   -- Show tab delimiter
   listchars = {
     tab = '| ',
-    eol = '↴',
-    space = '⋅'
+    -- eol = '↴',
+    -- space = '⋅'
   },
   scrolloff = 999
 }
