@@ -13,3 +13,8 @@ fi
 if [ -d "$HOME/.npm-packages/bin" ]; then
 	export PATH="$HOME/.npm-packages/bin:$PATH"
 fi
+
+# set path so it includes cargo binaries (Rust)
+if [ -d "$HOME/.cargo/bin" ]; then
+	export PATH="$HOME/.cargo/bin:$PATH"
+fi
