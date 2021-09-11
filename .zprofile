@@ -1,4 +1,8 @@
 
+if [ -d "$HOME/.local/bin" ]; then
+	export PATH="$HOME/.local/bin:$PATH"
+fi
+
 # set path so it includes pyenv
 if [ -d "$HOME/.pyenv" ]; then
 	export PATH="$HOME/.pyenv/bin:$PATH"
