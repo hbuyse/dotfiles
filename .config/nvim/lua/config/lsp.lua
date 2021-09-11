@@ -86,10 +86,12 @@ end
 local servers = {
   ccls = {
     init_options = {
-      compilationDatabaseDirectory = "build"
+      compilationDatabaseDirectory = "build",
+      cache = {
+        directory = "/tmp/ccls-cache"
+      }
     },
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = on_attach
   },
   pyright = {
     on_attach = on_attach
