@@ -7,15 +7,13 @@ off
 output VIRTUAL1
 off
 output HDMI2
-crtc 0
-gamma 0.769:0.769:0.769
+crtc 1
 mode 1920x1080
 pos 0x0
-primary
 rate 60.00
 output eDP1
-crtc 1
-gamma 0.769:0.769:0.769
-mode 1600x900
-pos 1920x911
-rate 60.00
+crtc 0
+mode 1920x1080
+pos 0x1080
+primary
+rate 60.01
