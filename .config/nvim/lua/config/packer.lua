@@ -265,7 +265,7 @@ return require'packer'.startup(function()
         sections = {
           lualine_a = { {'mode', upper = true} },
           lualine_b = { {'branch', icon = ''} },
-          lualine_c = { {'filename', file_status = true} },
+          lualine_c = { {'filename', file_status = true, path = 1} },
           lualine_x = { {'diagnostics', sources = {'nvim_lsp'}} },
           lualine_y = { 'encoding', 'fileformat', 'filetype' },
           lualine_z = { 'progress', 'location'  },
