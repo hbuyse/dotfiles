@@ -10,4 +10,9 @@ if command -v feh > "/dev/null"; then
   feh --bg-fill ${HOME}/.config/wallpapers/wallpaper.png
 fi
 
+# Relaunch the conkies
+if command -v feh > "/dev/null"; then
+  ${HOME}/.config/conky/launch.sh
+fi
+
 # vim: set ts=2 sw=2 tw=0 et ft=sh :

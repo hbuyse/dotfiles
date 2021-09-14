@@ -254,16 +254,10 @@ exec_always --no-startup-id $HOME/.config/rofi/power.sh Uncaffeinate
 # Start picom
 exec_always --no-startup-id $HOME/.config/picom/launch.sh
 
-# Add background wallpaper
-exec_always --no-startup-id feh --bg-fill "$HOME/.config/wallpapers/wallpaper.png"
-
 # Start polybar
 # Polybar must be started through the i3 config file (and not using .xsession)
 # Otherwise, polybar will not be able to show the different workspace in the bar.
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# Start conky
-exec_always --no-startup-id $HOME/.config/conky/launch.sh
 
 # Start redshift
 exec_always --no-startup-id $HOME/.config/redshift/launch.sh
