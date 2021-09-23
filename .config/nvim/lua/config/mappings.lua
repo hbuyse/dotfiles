@@ -4,24 +4,6 @@ local function kmap(mode, key, result)
 end
 
 local setup_mappings = function()
-  -- Diagnostics
-  kmap('n', '<leader>dn', ':lua vim.lsp.diagnostic.goto_next()<CR>')
-  kmap('n', '<leader>dp', ':lua vim.lsp.diagnostic.goto_prev()<CR>')
-  kmap('n', '<leader>ds', ':lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
-
-  -- LSP
-  kmap('n', 'gd', ':lua vim.lsp.buf.definition()<CR>')
-  kmap('n', 'gD', ':lua vim.lsp.buf.declaration()<CR>')
-  kmap('n', 'gi', ':lua vim.lsp.buf.implementation()<CR>')
-  kmap('n', 'gw', ':lua vim.lsp.buf.document_symbol()<CR>')
-  kmap('n', 'gW', ':lua vim.lsp.buf.workspace_symbol()<CR>')
-  kmap('n', 'gr', ':lua vim.lsp.buf.references()<CR>')
-  kmap('n', 'gt', ':lua vim.lsp.buf.type_definition()<CR>')
-  kmap('n', 'K', ':lua vim.lsp.buf.hover()<CR>')
-  kmap('n', '<c-k>', ':lua vim.lsp.buf.signature_help()<CR>')
-  kmap('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-  kmap('n', '<leader>rn', ':lua vim.lsp.buf.rename()<CR>')
-
   -- Telescope
   kmap('n', '<C-p>',      ':lua require"telescope.builtin".find_files()<CR>')
   kmap('n', '<leader>fr', ':lua require"telescope.builtin".lsp_references()<CR>')
