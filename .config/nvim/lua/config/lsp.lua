@@ -5,6 +5,11 @@ if not has_lsp then
   return
 end
 
+-- Add border
+vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#4F4945]]
+vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=#EBDBB2 guibg=#4F4945]]
+local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│'}
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -21,7 +26,7 @@ local on_attach = function(client, bufnr)
   -- noselect  Do not select a match in the menu, force the user to
   --           select one from the menu. Only works in combination with
   --           "menu" or "menuone".
-  buf_set_option('completeopt', 'menuone,noinsert,noselect')
+  -- buf_set_option('completeopt', 'menuone,noinsert,noselect')
 
   local opts = { noremap=true, silent=true }
 
@@ -32,12 +37,27 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
+  -- Diagnostics keymaps
+  buf_set_keymap('n', '<leader>dn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', '<leader>dp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', '<leader>ds', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
+
+  -- LSP keymaps
+  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', 'gw', '<cmd>lua vim.lsp.buf.document_symbol()<CR>', opts)
+  buf_set_keymap('n', 'gW', '<cmd>lua vim.lsp.buf.workspace_symbol()<CR>', opts)
+  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
@@ -45,6 +65,23 @@ local on_attach = function(client, bufnr)
       augroup END
     ]], false)
   end
+
+  vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border})
+  vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border})
+  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+  })
+
+  -- Not working with Neovim 0.5
+  -- local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+  -- for type, icon in pairs(signs) do
+  --   local hl = "DiagnosticSign" .. type
+  --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+  -- end
+
 end
 
 local function prepare_sumneko_lua_language_server()
@@ -89,7 +126,8 @@ local function prepare_sumneko_lua_language_server()
           enable = false,
         }
       }
-    }
+    },
+    on_attach = on_attach
   }
 end
 
@@ -117,10 +155,6 @@ local servers = {
 }
 
 for lsp, conf in pairs(servers) do
-  if conf['cmd'] ~= nil then
-    lspconfig[lsp].setup(conf)
-  else
-    lspconfig[lsp].setup { conf }
-  end
+  lspconfig[lsp].setup(conf)
 end
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :

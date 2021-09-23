@@ -12,6 +12,17 @@ end
 -- Only required if you have packer in your `opt` pack
 vim.cmd [[packadd packer.nvim]]
 
+-- Automatically compile packer when writing files in $HOME/.config/nvim
+vim.api.nvim_exec(
+  [[
+  augroup Packer
+    autocmd!
+    autocmd BufWritePost ~/.config/nvim/* PackerCompile
+  augroup end
+]],
+  false
+)
+
 
 return require'packer'.startup(function()
   -- Packer can manage itself as an optional plugin
@@ -233,6 +244,7 @@ return require'packer'.startup(function()
   use {
     "npxbr/gruvbox.nvim",
     requires = {"rktjmp/lush.nvim"},
+
     config = function()
       vim.g.gruvbox_contrast_dark = 'medium'
       vim.g.gruvbox_sign_column = 'bg1'
@@ -289,6 +301,7 @@ return require'packer'.startup(function()
     config = function()
       vim.cmd [[ highlight IndentBlanklineContextChar guifg=#a89984 guibg=NONE gui=NONE gui=nocombine ]]
       require('indent_blankline').setup {
+        use_treesitter = true,
         space_char_blankline = " ",
         show_current_context = true,
         char_list = {'|', '¦', '┆', '┊'}
@@ -309,7 +322,14 @@ return require'packer'.startup(function()
   }
 
   -- kommentary
-  use 'b3nj5m1n/kommentary'
+  use {
+    'b3nj5m1n/kommentary',
+    config = function()
+      require('kommentary.config').configure_language("default", {
+        prefer_single_line_comments = true,
+      })
+    end
+  }
 
   -- colorizer
   use {
