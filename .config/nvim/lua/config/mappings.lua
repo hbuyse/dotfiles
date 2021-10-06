@@ -13,7 +13,7 @@ local setup_mappings = function()
   kmap('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
   kmap('n', '<leader>fq', ':lua require"telescope.builtin".quickfix()<CR>')
   kmap('n', '<leader>fg', ':lua require"telescope.builtin".git_files()<CR>')
-  kmap('n', '<leader>ft', ':lua require"telescope.builtin".document_diagnostics()<CR>')
+  kmap('n', '<leader>ft', ':lua require"telescope.builtin".lsp_document_diagnostics()<CR>')
   kmap('n', '<leader>fd', ':lua require"config.dotfiles".search_dotfiles({})<CR>')
 
   -- nvim-tree
