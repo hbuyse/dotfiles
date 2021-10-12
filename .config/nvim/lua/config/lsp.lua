@@ -151,6 +151,9 @@ local servers = {
   sumneko_lua = prepare_sumneko_lua_language_server(),
   perlls = {
     on_attach = on_attach
+  },
+  texlab = {
+    on_attach = on_attach
   }
 }
 
