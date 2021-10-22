@@ -1,4 +1,5 @@
 local has_lsp, lspconfig = pcall(require, 'lspconfig')
+local has_telescope, _ = pcall(require, 'telescope')
 
 -- If lspconfig is not present, return
 if not has_lsp then
@@ -54,6 +55,13 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+
+  -- Telescope
+  if has_telescope then
+    buf_set_keymap('n', '<leader>fr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', opts)
+    buf_set_keymap('n', '<leader>ft', '<cmd>lua require"telescope.builtin".lsp_document_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '<leader>fc', '<cmd>lua require"telescope.builtin".lsp_code_actions()<CR>', opts)
+  end
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then

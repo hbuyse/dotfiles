@@ -6,14 +6,12 @@ end
 local setup_mappings = function()
   -- Telescope
   kmap('n', '<C-p>',      ':lua require"telescope.builtin".find_files()<CR>')
-  kmap('n', '<leader>fr', ':lua require"telescope.builtin".lsp_references()<CR>')
   kmap('n', '<leader>fs', ':lua require"telescope.builtin".live_grep()<CR>')
   kmap('n', '<leader>fw', ':lua require"telescope.builtin".grep_string({search = vim.fn.expand("<cword>")})<CR>')
   kmap('n', '<leader>fh', ':lua require"telescope.builtin".help_tags()<CR>')
   kmap('n', '<leader>fb', ':lua require"telescope.builtin".buffers()<CR>')
   kmap('n', '<leader>fq', ':lua require"telescope.builtin".quickfix()<CR>')
   kmap('n', '<leader>fg', ':lua require"telescope.builtin".git_files()<CR>')
-  kmap('n', '<leader>ft', ':lua require"telescope.builtin".lsp_document_diagnostics()<CR>')
   kmap('n', '<leader>fd', ':lua require"config.dotfiles".search_dotfiles({})<CR>')
 
   -- nvim-tree
