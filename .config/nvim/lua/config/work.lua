@@ -10,7 +10,7 @@ local bopts = {
   copyindent = true,
   softtabstop = 0,
   shiftwidth = 4,
-  tabstop = 4
+  tabstop = 4,
 }
 
 for opt, val in pairs(wopts) do
