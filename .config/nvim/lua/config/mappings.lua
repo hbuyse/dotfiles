@@ -1,11 +1,11 @@
 local function kmap(mode, key, result)
   -- TODO: use vim.api.nvim_buf_set_keymap after
-  vim.api.nvim_set_keymap(mode, key, result, {noremap = true, silent = true})
+  vim.api.nvim_set_keymap(mode, key, result, { noremap = true, silent = true })
 end
 
 local setup_mappings = function()
   -- Telescope
-  kmap('n', '<C-p>',      '<cmd>lua require"telescope.builtin".find_files()<CR>')
+  kmap('n', '<C-p>', '<cmd>lua require"telescope.builtin".find_files()<CR>')
   kmap('n', '<leader>fs', '<cmd>lua require"telescope.builtin".live_grep()<CR>')
   kmap('n', '<leader>fw', '<cmd>lua require"telescope.builtin".grep_string({search = vim.fn.expand("<cword>")})<CR>')
   kmap('n', '<leader>fh', '<cmd>lua require"telescope.builtin".help_tags()<CR>')
@@ -31,15 +31,23 @@ local setup_mappings = function()
   kmap('n', '<leader>P', '<cmd>%p+<CR>')
 
   -- Kommentary
-  vim.api.nvim_set_keymap("n", "<leader>c<space>", "<Plug>kommentary_line_default", {noremap = false, silent = false})
-  vim.api.nvim_set_keymap("x", "<leader>c<space>", "<Plug>kommentary_visual_default<C-c>", {noremap = false, silent = false})
+  vim.api.nvim_set_keymap('n', '<leader>c<space>', '<Plug>kommentary_line_default', {
+    noremap = false,
+    silent = false,
+  })
+  vim.api.nvim_set_keymap(
+    'x',
+    '<leader>c<space>',
+    '<Plug>kommentary_visual_default<C-c>',
+    { noremap = false, silent = false }
+  )
 
   -- moveline
-  kmap('n', '<a-j>', "<cmd>move .+1<cr>==")
-  kmap('i', '<a-j>', "<esc><cmd>move .+1<cr>==gi")
+  kmap('n', '<a-j>', '<cmd>move .+1<cr>==')
+  kmap('i', '<a-j>', '<esc><cmd>move .+1<cr>==gi')
   kmap('v', '<a-j>', "<cmd>move '>+1<cr>gv=gv")
-  kmap('n', '<a-k>', "<cmd>move .-2<cr>==")
-  kmap('i', '<a-k>', "<esc><cmd>move .-2<cr>==gi")
+  kmap('n', '<a-k>', '<cmd>move .-2<cr>==')
+  kmap('i', '<a-k>', '<esc><cmd>move .-2<cr>==gi')
   kmap('v', '<a-k>', "<cmd>move '<-2<cr>gv=gv")
 
   -- Mappings to toggle folds
@@ -51,15 +59,15 @@ local setup_mappings = function()
   kmap('v', '<F9>', 'zf')
 
   -- Some good remaps from ThePrimeagen (https://www.youtube.com/watch?v=hSHATqh8svM)
-  kmap('n', 'Y', 'y$')       -- Copy to the end of the line
-  kmap('n', 'n', 'nzzzv')    -- Keep the search centered
-  kmap('n', 'N', 'Nzzzv')    -- Keep the search centered
+  kmap('n', 'Y', 'y$') -- Copy to the end of the line
+  kmap('n', 'n', 'nzzzv') -- Keep the search centered
+  kmap('n', 'N', 'Nzzzv') -- Keep the search centered
 
   -- From one of my colleagues
-  kmap('n', '*', '*N')       -- Do not go to the next word but highlight all iterations of the current word
+  kmap('n', '*', '*N') -- Do not go to the next word but highlight all iterations of the current word
 
   -- Undo break points
-  local undocharacters = {',', '.', '?', '!', '[', ']', '(', ')', '/', '\'', '"', ' '}
+  local undocharacters = { ',', '.', '?', '!', '[', ']', '(', ')', '/', "'", '"', ' ' }
   for _, c in ipairs(undocharacters) do
     kmap('i', c, c .. '<C-g>u')
   end
@@ -67,9 +75,9 @@ local setup_mappings = function()
   -- Sadistic mode: remap Arrow keys to force me to use hjkl...
   local modes = {
     '', -- Normal, Visual, Select, Operator-pending
-    'i' -- Insert
+    'i', -- Insert
   }
-  local characters = {'<Up>', '<Down>', '<Right>', '<Left>', '<PageUp>', '<PageDown>'}
+  local characters = { '<Up>', '<Down>', '<Right>', '<Left>', '<PageUp>', '<PageDown>' }
   for _, mode in ipairs(modes) do
     for _, c in ipairs(characters) do
       kmap(mode, c, '<nop>')

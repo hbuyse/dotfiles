@@ -15,7 +15,7 @@ M.search_dotfiles = function(opts)
   local show_untracked = utils.get_default(opts.show_untracked, false)
   local recurse_submodules = utils.get_default(opts.recurse_submodules, false)
   if show_untracked and recurse_submodules then
-    error("Git does not suppurt both --others and --recurse-submodules")
+    error('Git does not suppurt both --others and --recurse-submodules')
   end
 
   -- By creating the entry maker after the cwd options,
@@ -25,12 +25,16 @@ M.search_dotfiles = function(opts)
   pickers.new(opts, {
     prompt_title = 'Dotfiles',
     finder = finders.new_oneshot_job(
-      vim.tbl_flatten( {
-        "git", "--git-dir=" .. vim.env.HOME .. "/.dotfiles.git",
-        "--work-tree=" .. vim.env.HOME, "ls-files", "--exclude-standard", "--cached",
-        show_untracked and "--others" or nil,
-        recurse_submodules and "--recurse-submodules" or nil
-      } ),
+      vim.tbl_flatten({
+        'git',
+        '--git-dir=' .. vim.env.HOME .. '/.dotfiles.git',
+        '--work-tree=' .. vim.env.HOME,
+        'ls-files',
+        '--exclude-standard',
+        '--cached',
+        show_untracked and '--others' or nil,
+        recurse_submodules and '--recurse-submodules' or nil,
+      }),
       opts
     ),
     previewer = conf.file_previewer(opts),

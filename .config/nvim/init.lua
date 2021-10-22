@@ -3,7 +3,7 @@ vim.g.mapleader = ' '
 
 -- Global options
 local opts = {
-  guicursor = "",
+  guicursor = '',
   showmatch = false,
   showmode = false,
   hlsearch = true,
@@ -30,7 +30,7 @@ local opts = {
   encoding = 'utf-8',
 
   syntax = 'on',
-  completeopt = "menuone,noinsert,noselect"
+  completeopt = 'menuone,noinsert,noselect',
 }
 
 -- Window options
@@ -68,7 +68,7 @@ local wopts = {
     -- eol = '↴',
     -- space = '⋅'
   },
-  scrolloff = 999
+  scrolloff = 999,
 }
 
 -- Buffer options
@@ -80,7 +80,7 @@ local bopts = {
   softtabstop = 4,
   shiftwidth = 4,
   autoindent = true,
-  smartindent = true
+  smartindent = true,
 }
 
 for opt, val in pairs(opts) do
@@ -113,7 +113,7 @@ end
 local gvars = {
   -- Python programs
   python3_host_prog = vim.env.HOME .. '/.pyenv/versions/py3nvim/bin/python',
-  python2_host_prog = vim.env.HOME .. '/.pyenv/versions/py2nvim/bin/python'
+  python2_host_prog = vim.env.HOME .. '/.pyenv/versions/py2nvim/bin/python',
 }
 
 for var, val in pairs(gvars) do
@@ -122,5 +122,5 @@ end
 
 vim.api.nvim_exec([[ filetype plugin on ]], false)
 
-require'config'
+require('config')
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
