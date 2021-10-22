@@ -1,5 +1,6 @@
 local has_lsp, lspconfig = pcall(require, 'lspconfig')
 local has_telescope, _ = pcall(require, 'telescope')
+local has_scan, scan = pcall(require, 'plenary.scandir')
 
 -- If lspconfig is not present, return
 if not has_lsp then
@@ -145,10 +146,40 @@ local function prepare_sumneko_lua_language_server()
   }
 end
 
+local function get_cland_executable()
+  if not has_scan then
+    return 'clangd'
+  end
+
+  local paths = os.getenv('PATH')
+  local list_clangd = {
+    'clangd-devel',
+    'clangd13', 'clangd-13',
+    'clangd12', 'clangd-12',
+    'clangd11', 'clangd-11',
+    'clangd10', 'clangd-10',
+    'clangd90', 'clangd-9',
+    'clangd'
+  }
+
+  for path in string.gmatch(paths, '([^:]+)') do
+    local filepaths = scan.scan_dir(path, { hidden = false, search_pattern = 'clangd.*' })
+    for _, clangd in ipairs(list_clangd) do
+      for _, filepath in ipairs(filepaths) do
+        if filepath == path .. '/' .. clangd then
+          return filepath
+        end
+      end
+    end
+  end
+
+  return 'clangd'
+end
+
 -- Use a loop to conveniently both setup defined servers and map buffer local keybindings when the language server attaches
 local servers = {
   clangd = {
-    cmd = { 'clangd-12', '--background-index', '--clang-tidy', '--enable-config' },
+    cmd = { get_cland_executable() , '--background-index', '--clang-tidy', '--enable-config' },
     on_attach = on_attach,
   },
   pyright = {
