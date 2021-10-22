@@ -23,7 +23,7 @@ vim.api.nvim_exec(
   false
 )
 
-return require('packer').startup(function()
+return require('packer').startup({function()
   -- Packer can manage itself as an optional plugin
   use({ 'wbthomason/packer.nvim', opt = true })
 
@@ -340,5 +340,12 @@ return require('packer').startup(function()
 
   -- file-line
   use('bogado/file-line')
-end)
+end,
+config = {
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'single' })
+    end
+  }
+}})
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
