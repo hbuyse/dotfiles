@@ -46,29 +46,29 @@ return require('packer').startup({function()
     config = function()
       -- commented options are defaults
       require('lspkind').init({
-        -- with_text = true,
-        -- symbol_map = {
-        --   Text = '',
-        --   Method = 'ƒ',
-        --   Function = '',
-        --   Constructor = '',
-        --   Variable = '',
-        --   Class = '',
-        --   Interface = 'ﰮ',
-        --   Module = '',
-        --   Property = '',
-        --   Unit = '',
-        --   Value = '',
-        --   Enum = '了',
-        --   Keyword = '',
-        --   Snippet = '﬌',
-        --   Color = '',
-        --   File = '',
-        --   Folder = '',
-        --   EnumMember = '',
-        --   Constant = '',
-        --   Struct = ''
-        -- },
+        with_text = true,
+        symbol_map = {
+          Text = '',
+          Method = 'ƒ',
+          Function = '',
+          Constructor = '',
+          Variable = '',
+          Class = '',
+          Interface = 'ﰮ',
+          Module = '',
+          Property = '',
+          Unit = '',
+          Value = '',
+          Enum = '了',
+          Keyword = '',
+          Snippet = '﬌',
+          Color = '',
+          File = '',
+          Folder = '',
+          EnumMember = '',
+          Constant = '',
+          Struct = ''
+        },
       })
     end,
   })
@@ -84,6 +84,7 @@ return require('packer').startup({function()
       { 'saadparwaiz1/cmp_luasnip' },
       { 'L3MON4D3/LuaSnip' },
       { 'rafamadriz/friendly-snippets' },
+      { 'onsails/lspkind-nvim' },
     },
     config = function()
 
@@ -103,10 +104,6 @@ return require('packer').startup({function()
       local cmp = require('cmp')
 
       cmp.setup({
-        completion = {
-          -- Does not perform completion automatically. I can still use manual completion though.
-          autocomplete = false
-        },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -152,6 +149,22 @@ return require('packer').startup({function()
           { name = 'buffer' },
           { name = 'path' },
         },
+        formatting = {
+          format = require('lspkind').cmp_format({
+            with_text = false,
+            menu = {
+              luasnip = "[snip]",
+              nvim_lsp = "[LSP]",
+              nvim_lua = "[api]",
+              buffer = "[buf]",
+              path = "[path]",
+            }
+          })
+        },
+        experimental = {
+          native_menu = false,
+          ghost_text = true
+        }
       })
     end,
   })

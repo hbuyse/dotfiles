@@ -88,7 +88,6 @@ local on_attach = function(client, bufnr)
     virtual_text = true,
     signs = true,
     underline = true,
-    update_in_insert = true,
   })
 
   -- Not working with Neovim 0.5
