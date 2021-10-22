@@ -141,13 +141,8 @@ end
 
 -- Use a loop to conveniently both setup defined servers and map buffer local keybindings when the language server attaches
 local servers = {
-  ccls = {
-    init_options = {
-      compilationDatabaseDirectory = "build",
-      cache = {
-        directory = "/tmp/ccls-cache"
-      }
-    },
+  clangd = {
+    cmd = { 'clangd-12', '--background-index', '--clang-tidy', '--enable-config' },
     on_attach = on_attach
   },
   pyright = {
