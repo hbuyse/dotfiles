@@ -35,9 +35,6 @@ local opts = {
 
 -- Window options
 local wopts = {
-  -- Always enable the statusline
-  statusline = '2',
-
   -- wrap
   wrap = false,
 

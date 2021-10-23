@@ -288,12 +288,12 @@ return require('packer').startup({function()
       require('lualine').setup({
         options = {
           theme = 'gruvbox',
-          section_separators = { '', '' },
-          component_separators = { '', '' },
+          section_separators = { left = '', right = '' },
+          component_separators = { left = '', right = '' },
           icons_enabled = true,
         },
         sections = {
-          lualine_a = { { 'mode', upper = true } },
+          lualine_a = { { 'mode' } },
           lualine_b = { { 'branch', icon = '' } },
           lualine_c = { { 'filename', file_status = true, path = 1 } },
           lualine_x = { { 'diagnostics', sources = { 'nvim_lsp' }, symbols = { error = ' ', warn = ' ' } } },
