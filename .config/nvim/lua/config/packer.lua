@@ -259,6 +259,7 @@ return require('packer').startup({
           ensure_installed = 'maintained',
           highlight = {
             enable = true, -- false will disable the whole extension
+            disable = { 'perl' },
           },
         })
       end,
