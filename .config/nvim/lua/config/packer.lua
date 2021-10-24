@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('packer')`
 
 local fn = vim.fn
 
@@ -152,7 +152,7 @@ return require('packer').startup({
             { name = 'luasnip' },
             { name = 'nvim_lsp' },
             { name = 'nvim_lua' },
-            { name = 'buffer' },
+            { name = 'buffer', keyword_length = 5 },
             { name = 'path' },
           },
           formatting = {
