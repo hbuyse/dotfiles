@@ -251,17 +251,6 @@ bindsym $mod+p exec --no-startup-id xautolock -locknow
 exec_always --no-startup-id $HOME/.config/i3/start_xautolock.sh
 exec_always --no-startup-id $HOME/.config/rofi/power.sh Uncaffeinate
 
-# Start picom
-exec_always --no-startup-id $HOME/.config/picom/launch.sh
-
-# Start polybar
-# Polybar must be started through the i3 config file (and not using .xsession)
-# Otherwise, polybar will not be able to show the different workspace in the bar.
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# Start redshift
-exec_always --no-startup-id $HOME/.config/redshift/launch.sh
-
 ##################
 # GRUVBOX COLORS #
 ##################
