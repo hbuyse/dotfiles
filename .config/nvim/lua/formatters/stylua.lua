@@ -37,8 +37,6 @@ local stylua_finder = function(path)
   return cached_configs[path]
 end
 
-local cached_configs = {}
-
 -- Check if a global stylua.toml file exists
 local stylua_finder_fallback = function(path)
   if cached_configs[path] == nil then

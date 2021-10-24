@@ -1,4 +1,3 @@
-local Path = require('plenary.path')
 local Job = require('plenary.job')
 
 local perltidy = {}
