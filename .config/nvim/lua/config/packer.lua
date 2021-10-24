@@ -267,7 +267,7 @@ return require('packer').startup({
 
     -- gruvbox
     use({
-      'npxbr/gruvbox.nvim',
+      'ellisonleao/gruvbox.nvim',
       requires = { 'rktjmp/lush.nvim' },
 
       config = function()
