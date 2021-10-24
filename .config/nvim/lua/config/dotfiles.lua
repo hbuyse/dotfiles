@@ -1,3 +1,9 @@
+local has_telescope, telescope = pcall(require, 'telescope')
+
+if not has_telescope then
+  return nil
+end
+
 local finders = require('telescope.finders')
 local make_entry = require('telescope.make_entry')
 local pickers = require('telescope.pickers')

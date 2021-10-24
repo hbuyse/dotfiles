@@ -1,6 +1,6 @@
-local _M = {}
+local M = {}
 
-function _M.getHostname()
+function M.getHostname()
   local f = io.open('/etc/hostname')
   local hostname = f:read('*a') or ''
   f:close()
@@ -8,5 +8,5 @@ function _M.getHostname()
   return hostname
 end
 
-return _M
+return M
 -- vim: set ts=2 sw=2 tw=0 noet ft=lua :
