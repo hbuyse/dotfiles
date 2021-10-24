@@ -16,4 +16,4 @@ killall -q -9 "${DAEMON}"
 ${DAEMON} -x
 
 # Start the daemon
-${DAEMON} -c "${CONF}"
+nohup ${DAEMON} -c "${CONF}" &
