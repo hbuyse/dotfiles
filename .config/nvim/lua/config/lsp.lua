@@ -153,12 +153,17 @@ local function get_cland_executable()
   local paths = os.getenv('PATH')
   local list_clangd = {
     'clangd-devel',
-    'clangd13', 'clangd-13',
-    'clangd12', 'clangd-12',
-    'clangd11', 'clangd-11',
-    'clangd10', 'clangd-10',
-    'clangd90', 'clangd-9',
-    'clangd'
+    'clangd13',
+    'clangd-13',
+    'clangd12',
+    'clangd-12',
+    'clangd11',
+    'clangd-11',
+    'clangd10',
+    'clangd-10',
+    'clangd90',
+    'clangd-9',
+    'clangd',
   }
 
   for path in string.gmatch(paths, '([^:]+)') do
@@ -178,7 +183,7 @@ end
 -- Use a loop to conveniently both setup defined servers and map buffer local keybindings when the language server attaches
 local servers = {
   clangd = {
-    cmd = { get_cland_executable() , '--background-index', '--clang-tidy', '--enable-config' },
+    cmd = { get_cland_executable(), '--background-index', '--clang-tidy', '--enable-config' },
     on_attach = on_attach,
   },
   pyright = {
