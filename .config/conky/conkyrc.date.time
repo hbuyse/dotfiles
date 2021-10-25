@@ -43,7 +43,7 @@ $alignr${cpubar cpu8 6,123}
 #
 ${voffset 10}${color}${font Hack:bold:size=9}Memory ${hr}
 ${font}${color}RAM:${alignr}${font}${color2}${mem} / ${memmax}
-${font}${color}Swap:${alignr}${font}${color2}${swap} / ${swapfree}
+${font}${color}Swap:${alignr}${font}${color2}${swap} / ${swapmax}
 
 ${color}${font Hack:bold:size=9}File System ${hr}
 ]]
