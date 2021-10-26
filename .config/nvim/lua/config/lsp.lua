@@ -199,6 +199,24 @@ local servers = {
   texlab = {
     on_attach = on_attach,
   },
+  rust_analyzer = {
+    on_attach = on_attach,
+    -- From https://rust-analyzer.github.io/manual.html#nvim-lsp
+    settings = {
+      ['rust-analyzer'] = {
+        assist = {
+          importGranularity = 'module',
+          importPrefix = 'by_self',
+        },
+        cargo = {
+          loadOutDirsFromCheck = true,
+        },
+        procMacro = {
+          enable = true,
+        },
+      },
+    },
+  },
 }
 
 for lsp, conf in pairs(servers) do
