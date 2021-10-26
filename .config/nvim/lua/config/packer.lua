@@ -305,7 +305,9 @@ return require('packer').startup({
             lualine_a = { { 'mode' } },
             lualine_b = { { 'branch', icon = '' } },
             lualine_c = { { 'filename', file_status = true, path = 1 } },
-            lualine_x = { { 'diagnostics', sources = { 'nvim_lsp' }, symbols = { error = ' ', warn = ' ' } } },
+            lualine_x = {
+              { 'diagnostics', sources = { 'nvim_lsp' }, symbols = { error = ' ', warn = ' ' } },
+            },
             lualine_y = { 'encoding', 'fileformat', 'filetype' },
             lualine_z = { 'progress', 'location' },
           },
