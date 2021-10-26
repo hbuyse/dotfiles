@@ -14,6 +14,9 @@ local setup_mappings = function()
   kmap('n', '<leader>fg', '<cmd>lua require"telescope.builtin".git_files()<CR>')
   kmap('n', '<leader>fd', '<cmd>lua require"config.dotfiles".search_dotfiles({})<CR>')
 
+  -- nvim-treesitter
+  kmap('n', '<F3>', '<cmd>TSPlaygroundToggle<CR>')
+
   -- nvim-tree
   kmap('n', '<F2>', '<cmd>NvimTreeToggle<CR>')
 
