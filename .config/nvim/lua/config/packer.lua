@@ -283,7 +283,9 @@ return require('packer').startup({
       'kyazdani42/nvim-tree.lua',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
       config = function()
-        vim.g.nvim_tree_side = 'left'
+        require('nvim-tree').setup({
+          view = { side = 'left' },
+        })
       end,
     })
 
