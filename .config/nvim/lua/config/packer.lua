@@ -284,7 +284,11 @@ return require('packer').startup({
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
       config = function()
         require('nvim-tree').setup({
-          view = { side = 'left' },
+          autoclose = true,
+          view = {
+            side = 'left',
+            auto_resize = true,
+          },
         })
       end,
     })
@@ -371,12 +375,5 @@ return require('packer').startup({
     -- file-line
     use('bogado/file-line')
   end,
-  config = {
-    display = {
-      open_fn = function()
-        return require('packer.util').float({ border = 'single' })
-      end,
-    },
-  },
 })
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
