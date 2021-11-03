@@ -8,7 +8,7 @@ if ! command -v ${CTL} > /dev/null; then
 fi
 
 # WORK
-if [ "$HOSTNAME" = "henrib-latitude-5400" ] || [ "$HOSTNAME" = "t480" ]; then
+if [ "$HOSTNAME" = "hbuyse-latitude5400" ] || [ "$HOSTNAME" = "t480" ]; then
     # Use internal PCI card
     ${CTL} set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
 
