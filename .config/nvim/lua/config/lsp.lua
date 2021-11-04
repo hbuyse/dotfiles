@@ -93,11 +93,14 @@ local on_attach = function(client, bufnr)
     underline = true,
   })
 
-  -- Not working with Neovim 0.5
-  local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
-  for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+  local nvim_version = vim.version()
+  if nvim_version.major >= 0 and nvim_version.minor >= 6 then
+    -- Not working with Neovim 0.5
+    local signs = { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' }
+    for type, icon in pairs(signs) do
+      local hl = 'DiagnosticSign' .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
+    end
   end
 end
 
