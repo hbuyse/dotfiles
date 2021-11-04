@@ -8,6 +8,7 @@ perltidy.format = function(bufnr)
   -- stylua: ignore
   local j = Job:new({
     'perltidy',
+    '-q',
     '-',
     writer = vim.api.nvim_buf_get_lines(0, 0, -1, false),
   })
