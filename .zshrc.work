@@ -93,6 +93,8 @@ plugins+=(ubuntu)
 plugins+=(virtualenv)
 plugins+=(virtualenvwrapper)
 plugins+=(cargo)
+plugins+=(docker)
+plugins+=(docker-compose)
 
 source $ZSH/oh-my-zsh.sh
 
