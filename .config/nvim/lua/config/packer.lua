@@ -179,12 +179,12 @@ return require('packer').startup({
       'windwp/nvim-autopairs',
       config = function()
         require('nvim-autopairs').setup({})
-        local has_cmp, _ = pcall(require, 'cmp')
+        local has_cmp, cmp = pcall(require, 'cmp')
         if has_cmp then
-          require('nvim-autopairs.completion.cmp').setup({
-            map_cr = true, --  map <CR> on insert mode
-            map_complete = true, -- it will auto insert `(` after select function or method item
-          })
+          cmp.event:on(
+            'confirm_done',
+            require('nvim-autopairs.completion.cmp').on_confirm_done({ map_char = { tex = '' } })
+          )
         end
       end,
     })

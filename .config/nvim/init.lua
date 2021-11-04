@@ -63,7 +63,7 @@ local wopts = {
   listchars = {
     tab = '| ',
     -- eol = '↴',
-    -- space = '⋅'
+    -- space = '⋅',
   },
   scrolloff = 999,
 }
