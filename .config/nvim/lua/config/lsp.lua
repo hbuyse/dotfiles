@@ -22,18 +22,6 @@ local on_attach = function(client, bufnr)
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- completeopt (:help completopt)
-  -- menuone   Use the popup menu also when there is only one match.
-  --           Useful when there is additional information about the
-  --           match, e.g., what file it comes from.
-  -- noinsert  Do not insert any text for a match until the user selects
-  --           a match from the menu. Only works in combination with
-  --           "menu" or "menuone". No effect if "longest" is present.
-  -- noselect  Do not select a match in the menu, force the user to
-  --           select one from the menu. Only works in combination with
-  --           "menu" or "menuone".
-  -- buf_set_option('completeopt', 'menuone,noinsert,noselect')
-
   local opts = { noremap = true, silent = true }
 
   -- Set some keybinds conditional on server capabilities
