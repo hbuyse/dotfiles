@@ -52,7 +52,7 @@ local on_attach = function(client, bufnr)
   -- Telescope
   if has_telescope then
     buf_set_keymap('n', '<leader>fr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', opts)
-    buf_set_keymap('n', '<leader>ft', '<cmd>lua require"telescope.builtin".lsp_document_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '<leader>fd', '<cmd>lua require"telescope.builtin".lsp_document_diagnostics()<CR>', opts)
     buf_set_keymap('n', '<leader>fc', '<cmd>lua require"telescope.builtin".lsp_code_actions()<CR>', opts)
   end
 
