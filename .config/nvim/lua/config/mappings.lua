@@ -62,7 +62,6 @@ local setup_mappings = function()
   kmap('v', '<F9>', 'zf')
 
   -- Some good remaps from ThePrimeagen (https://www.youtube.com/watch?v=hSHATqh8svM)
-  kmap('n', 'Y', 'y$') -- Copy to the end of the line
   kmap('n', 'n', 'nzzzv') -- Keep the search centered
   kmap('n', 'N', 'Nzzzv') -- Keep the search centered
 
