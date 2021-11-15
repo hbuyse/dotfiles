@@ -21,7 +21,7 @@ local setup_mappings = function()
   kmap('n', '<F2>', '<cmd>NvimTreeToggle<CR>')
 
   -- Misc
-  kmap('', '<leader> ', '<cmd>noh<CR>')
+  kmap('', '<leader><space>', '<Cmd>nohlsearch<Bar>diffupdate<CR><C-L>')
 
   -- Clipboard
   kmap('n', '<leader>y', '"+y')
