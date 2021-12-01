@@ -374,6 +374,9 @@ return require('packer').startup({
 
     -- file-line
     use('bogado/file-line')
+
+    -- Startify
+    use('mhinz/vim-startify')
   end,
 })
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :

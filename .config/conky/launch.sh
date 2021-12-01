@@ -24,7 +24,7 @@ mkdir -p ${TMP_FOLDER}
 head -$(($(wc -l ${CONKY_CONFIG_FOLDER}/conkyrc.date.time | cut -d' ' -f1) - 2)) ${CONKY_CONFIG_FOLDER}/conkyrc.date.time > ${DATE_TIME_CONFIG}
 while read mountpoint
 do
-    echo "\$font\${color}$mountpoint:\${alignr}\${color2}\${fs_used $mountpoint} / \${fs_size $mountpoint}" >> ${DATE_TIME_CONFIG}
+    echo "\$font\${color}$mountpoint:\${alignr}\${color2}\${fs_used_perc $mountpoint} % - \${fs_used $mountpoint} / \${fs_size $mountpoint}" >> ${DATE_TIME_CONFIG}
 done < <(mount | grep -E ^/dev | awk '{print $3}' | sort)
 tail -2 ${CONKY_CONFIG_FOLDER}/conkyrc.date.time >> ${DATE_TIME_CONFIG}
 
