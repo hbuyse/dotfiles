@@ -12,6 +12,7 @@ logger = logging.getLogger('gif-downloader')
 start_time = time.time()
 
 URLS = {
+    'ah_denis_brogniart': "https://media4.giphy.com/media/3o7btW7VDxqrhJEnqE/giphy.gif",
     'bartender_beer':"https://media.giphy.com/media/h8NdYZJGH1ZRe/giphy-downsized.gif",
     'boom_anna_kendrick':"https://media.giphy.com/media/laUY2MuoktHPy/giphy.gif",
     'c_est_pas_faux':"https://media1.tenor.com/images/9e2fd8f6f208f6e34a01038859a10b0b/tenor.gif",
@@ -91,6 +92,8 @@ URLS = {
     'weekend_rabbids':"https://media.giphy.com/media/l2JhBoNin9yhqSDLO/giphy.gif",
     'whats_up_seal':"https://media.giphy.com/media/ypqHf6pQ5kQEg/giphy.gif",
     'yeah':"https://media.giphy.com/media/MSS0COPq80x68/giphy.gif",
+    'yes_sir_donald': 'https://media.giphy.com/media/uMANNaqTUVz0s/source.gif',
+    'yes_sir_jack_black': 'https://media.giphy.com/media/2t9sDPrlvFpdK/source.gif',
     'you_can_do_it':"https://media.giphy.com/media/mmtLWZVKLOqOs/giphy.gif",
     'you_shall_not_pass':"https://media.giphy.com/media/njYrp176NQsHS/source.gif"
 }
