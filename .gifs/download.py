@@ -1,11 +1,14 @@
 #! /usr/bin/env python
+"""This script downloads GIFs in order to always have my stock up to date on all my computers"""
 
+import argparse
 import logging
 import time
 import threading
+from typing import List
+
 import requests
 
-from typing import List
 
 logger = logging.getLogger('gif-downloader')
 
@@ -41,6 +44,7 @@ URLS = {
     'hello_there_whale':"https://media.giphy.com/media/mW05nwEyXLP0Y/source.gif",
     'hello_tom_hanks':"https://media.giphy.com/media/xT9IgG50Fb7Mi0prBC/giphy.gif",
     'hello_teleboobies':"https://media1.tenor.com/images/44b38d55109e7be164f75e6651993b7f/tenor.gif",
+    'i_m_listening_ariana_grande': "https://c.tenor.com/8RXV3mSUFqkAAAAC/gpositions-ariana.gif",
     'kiss_flirt_shaq':"https://media.giphy.com/media/10UUe8ZsLnaqwo/giphy.gif",
     'la_bamboche_c_est_termine':"https://media1.tenor.com/images/3cbe185deac4a7c5787f9bd0e9abe759/tenor.gif",
     'lapin_metro_kassos':"https://media1.tenor.com/images/32fcbeadbbfa7746d1f5a5d2acd633a0/tenor.gif",
@@ -88,6 +92,7 @@ URLS = {
     'thank_you_the_office':"https://media.giphy.com/media/5xtDarmwsuR9sDRObyU/giphy-downsized.gif",
     't_es_mauvais_oss117':"https://media1.tenor.com/images/a21a28d1e2bb341d7ef7ddd4e8908b37/tenor.gif",
     'this_is_fine':"https://media.giphy.com/media/QMHoU66sBXqqLqYvGO/giphy.gif",
+    'tumbleweed': "https://media.giphy.com/media/5x89XRx3sBZFC/giphy.gif",
     'weekend_minions':"https://media.giphy.com/media/lqFY9hBTLX7os/giphy.gif",
     'weekend_rabbids':"https://media.giphy.com/media/l2JhBoNin9yhqSDLO/giphy.gif",
     'whats_up_seal':"https://media.giphy.com/media/ypqHf6pQ5kQEg/giphy.gif",
@@ -99,39 +104,67 @@ URLS = {
 }
 
 
+def configure_logger(debug=False):
+    """Configure the logger"""
+    logger.setLevel(logging.DEBUG if debug else logging.INFO)
+
+    # create console handler and set level to debug
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG if debug else logging.INFO)
+
+    # create formatter
+    formatter = None
+    fmt = '%(asctime)s - %(name)s - %(threadName)s - %(levelname)s - %(message)s'
+    try:
+        import coloredlogs
+        formatter = coloredlogs.ColoredFormatter(fmt)
+    except ImportError:
+        formatter = logging.Formatter(fmt)
+
+    # add formatter to ch
+    for handler in [ch]:
+        handler.setFormatter(formatter)
+
+        # add ch to logger
+        logger.addHandler(handler)
+
+
 def chunks(lst: List, split_nb: int) -> List[List]:
     """Generator that yields the chunks you want"""
-    if not lst:
-        return lst
-
-    step = int(len(lst) / split_nb + 0.5)
-    # step = int((len(lst) / split_nb) // 1) + 1
-    logger.debug("{} / {} = {}".format(len(lst), split_nb, step))
-    for i in range(0, len(lst), step):
-        yield lst[i:i+step]
+    if lst:
+        step = int(len(lst) / split_nb + 0.5)
+        # step = int((len(lst) / split_nb) // 1) + 1
+        logger.debug("%d / %d = %d", len(lst), split_nb, step)
+        for i in range(0, len(lst), step):
+            yield lst[i:i+step]
 
 
 class DownloaderThread(threading.Thread):
+    """Thread that download a list of file"""
 
     def __init__(self, keys_list: list, id: int):
-        super().__init__()
-        self._id = id
+        super().__init__(name=f'Thread {id}')
         self._keys_list = keys_list
 
     def run(self):
         for key in self._keys_list:
-            logger.warning("Downloading {}.gif".format(key))
+            logger.info("Downloading %s.gif", key)
 
-            url = URLS[key]
-
-            with open('{}.gif'.format(key), 'wb') as fh:
-                r = requests.get(url, allow_redirects=True)
-                fh.write(r.content)
+            with open(f'{key}.gif', 'wb') as fh:
+                resp = requests.get(URLS[key], allow_redirects=True)
+                fh.write(resp.content)
+                logger.debug("Downloaded %s.gif (%d bytes)", key, len(resp.content))
 
 
 def main():
-    thread_pool = list()
+    thread_pool = []
     thread_arg_list = chunks(list(URLS.keys()), 8)
+
+    parser = argparse.ArgumentParser(description="Download my gifs")
+    parser.add_argument('-d', '--debug', action='store_true', help="Show debug log traces")
+    args = parser.parse_args()
+
+    configure_logger(debug=args.debug)
 
     # Create ResultsWriterThread and store them in the pool
     for id, thread_arg in enumerate(thread_arg_list):
