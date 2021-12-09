@@ -8,4 +8,9 @@ if command -v xrdb > /dev/null; then
         xrdb -merge -load "$XRESOURCES_FILE"
     fi
 fi
+
+# Set the repeatition rate
+if command -v xset > /dev/null; then
+    xset r rate 450 60
+fi
 # vim: set ts=4 sw=4 tw=0 et ft=sh :
