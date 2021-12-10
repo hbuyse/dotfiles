@@ -231,7 +231,7 @@ bindsym --release Control+Print exec --no-startup-id scrot --select --freeze "$H
 #############
 
 # Set the screenlayout
-exec_always autorandr -c
+exec_always autorandr --change --force
 
 # Set the different keyboard layouts
 # us-intl: US international layout

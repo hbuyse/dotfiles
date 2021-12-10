@@ -130,5 +130,5 @@ end
 
 vim.api.nvim_exec([[ filetype plugin on ]], false)
 
-require('config')
+require('hbuyse')
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :

@@ -325,6 +325,3 @@ tags
 [._]*.un~
 
 # End of https://www.toptal.com/developers/gitignore/api/c,c++,vim,python,rust,lua,direnv,emacs
-
-# PERSONNAL
-.dotfiles.git

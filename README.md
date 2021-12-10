@@ -2,22 +2,18 @@
 
 All my dotfiles used at work or at home
 
-## Configuration of dotfiles
+## Installation
 
-https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html
-
-## Set upstrean branches
-
-Add this to the section `[remote "origin"]`:
-
-```
-fetch = +refs/heads/*:refs/remotes/origin/*
-```
-
-Then, fetch all data
+Clone the repo
 
 ```sh
-dotfiles fetch --tags origin
+git clone https://github.com/hbuyse/dotfiles $HOME/.dotfiles
+```
+
+Install the configuration files
+
+```sh
+$HOME/.dotfiles/install.sh
 ```
 
 ## Neovim Lua guide
