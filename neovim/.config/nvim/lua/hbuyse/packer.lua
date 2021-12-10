@@ -377,6 +377,9 @@ return require('packer').startup({
 
     -- Startify
     use('mhinz/vim-startify')
+
+    -- Doxygen WIP
+    use(os.getenv('HOME') .. '/Programming/doxygen.nvim')
   end,
 })
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :

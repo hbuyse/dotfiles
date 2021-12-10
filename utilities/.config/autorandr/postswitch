@@ -11,7 +11,7 @@ if command -v feh > "/dev/null"; then
 fi
 
 # Relaunch the conkies
-if command -v feh > "/dev/null"; then
+if command -v conky > "/dev/null"; then
   ${HOME}/.config/conky/launch.sh
 fi
 
