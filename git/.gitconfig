@@ -2,6 +2,7 @@
 	# Should contain the user.name and the user.email
 	path = ~/.gituser
 [core]
+	# npm install -g diff-so-fancy
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = true
