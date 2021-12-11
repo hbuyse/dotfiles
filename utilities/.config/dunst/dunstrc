@@ -29,7 +29,8 @@ follow = mouse
 # the top and down respectively.
 # The width can be negative.  In this case the actual width is the
 # screen width minus the width defined in within the geometry option.
-geometry = "500x5-20+52"
+width = 500
+notification_limit = 5
 
 # Turn on the progess bar
 progress_bar = true
@@ -58,11 +59,6 @@ shrink = no
 # This option will only work if a compositing window manager is
 # present (e.g. xcompmgr, compiz, etc.).
 transparency = 0
-
-# The height of the entire notification.  If the height is smaller
-# than the font height and padding combined, it will be raised
-# to the font height and padding.
-notification_height = 0
 
 # Draw a line of "separator_height" pixel height between two
 # notifications.
@@ -182,16 +178,14 @@ show_indicators = yes
 # Align icons left/right/off
 icon_position = right
 
-# Scale small icons up to this size, set to 0 to disable. Helpful
-# for e.g. small files or high-dpi screens. In case of conflict,
-# max_icon_size takes precedence over this.
-min_icon_size = 0
+# Icon themes (comma separated)
+icon_theme = Papirus-Dark, Papirus, ePapirus-Dark, ePapirus
 
-# Scale larger icons down to this size, set to 0 to disable
-max_icon_size = 32
+# Size of the icon in pixels
+icon_size = 32
 
-# Paths to default icons.
-icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+# new icon lookup method
+enable_recursive_icon_lookup = true
 
 ### History ###
 
@@ -218,20 +212,6 @@ title = Dunst
 
 # Define the class of the windows spawned by dunst
 class = Dunst
-
-# Print a notification on startup.
-# This is mainly for error detection, since dbus (re-)starts dunst
-# automatically after a crash.
-startup_notification = false
-
-# Manage dunst's desire for talking
-# Can be one of the following values:
-#  crit: Critical features. Dunst aborts
-#  warn: Only non-fatal warnings
-#  mesg: Important Messages
-#  info: all unimportant stuff
-# debug: all less than unimportant stuff
-verbosity = mesg
 
 # Define the corner radius of the notification window
 # in pixel size. If the radius is 0, you have no rounded
@@ -276,28 +256,6 @@ mouse_right_click = close_all
 # using the resolution and physical size. This might be useful in setups
 # where there are multiple screens with very different dpi values.
 per_monitor_dpi = false
-
-[shortcuts]
-
-# Shortcuts are specified as [modifier+][modifier+]...key
-# Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
-# "mod3" and "mod4" (windows-key).
-# Xev might be helpful to find names for keys.
-
-# Close notification.
-close = ctrl+space
-
-# Close all notifications.
-close_all = ctrl+shift+space
-
-# Redisplay last message(s).
-# On the US keyboard layout "grave" is normally above TAB and left
-# of "1". Make sure this key actually exists on your keyboard layout,
-# e.g. check output of 'xmodmap -pke'
-history = ctrl+grave
-
-# Context menu.
-context = ctrl+shift+period
 
 [urgency_low]
 # IMPORTANT: colors have to be defined in quotation marks.
