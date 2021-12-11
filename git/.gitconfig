@@ -2,8 +2,7 @@
 	# Should contain the user.name and the user.email
 	path = ~/.gituser
 [core]
-	; pager = diff-so-fancy | less --tabs=4 -RFX
-	pager = perl /usr/share/doc/git/contrib/diff-highlight/diff-highlight | less --tabs=4 -RFX
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = true
 [color "diff-highlight"]
