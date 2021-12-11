@@ -34,6 +34,7 @@ Go check this excellent guide https://github.com/nanotee/nvim-lua-guide
 - [compton](https://github.com/chjj/compton)
 - [dunst](https://github.com/dunst-project/dunst)
 - [neovim](https://github.com/neovim/neovim)
+- [rofi](https://github.com/davatorium/rofi)
 
 ### Suggested
 
