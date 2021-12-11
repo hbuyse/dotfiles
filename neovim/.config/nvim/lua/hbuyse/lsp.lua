@@ -1,6 +1,7 @@
 local has_lsp, lspconfig = pcall(require, 'lspconfig')
 local has_telescope, _ = pcall(require, 'telescope')
 local has_scan, scan = pcall(require, 'plenary.scandir')
+local hostname = require('hbuyse.hostname')
 
 -- If lspconfig is not present, return
 if not has_lsp then
@@ -105,8 +106,17 @@ local function prepare_sumneko_lua_language_server()
   end
 
   -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
-  local sumneko_root_path = '/opt/lua-language-server'
-  local sumneko_binary = sumneko_root_path .. '/bin/' .. system_name .. '/lua-language-server'
+  local sumneko_root_path = ''
+  local sumneko_binary = ''
+
+  if hostname.getHostname() == 'T480' then
+    sumneko_root_path = '/usr/share/lua-language-server'
+    sumneko_binary = '/usr/lib/lua-language-server/lua-language-server'
+  else
+    sumneko_root_path = '/opt/lua-language-server'
+    sumneko_binary = sumneko_root_path .. '/bin/' .. system_name .. '/lua-language-server'
+  end
+
   local runtime_path = vim.split(package.path, ';')
   table.insert(runtime_path, 'lua/?.lua')
   table.insert(runtime_path, 'lua/?/init.lua')
