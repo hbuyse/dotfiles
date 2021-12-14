@@ -38,7 +38,7 @@ install_nerd_font() {
 	echo -ne "- ${YELLOW}Installing ${font} font...${RESET}"
 
 	# Cannot download if git version inferior to 2.26
-	if [ "$(git --version | cut -d'.' -f2)" -lt 2 ] || [ "$(git --version | cut -d'.' -f2)" -lt 26 ]; then
+	if [ "$(git --version | cut -d'.' -f1 | cut -d' ' -f3)" -lt 2 ] || [ "$(git --version | cut -d'.' -f2)" -lt 26 ]; then
 		echo -e "\nCannot install Nerd Font '${font}': git version should be superior than 2.26" 1>&2
 		return
 	fi
