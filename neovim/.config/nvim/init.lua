@@ -65,8 +65,10 @@ local wopts = {
   signcolumn = 'yes:1',
 
   -- folding options
-  foldmethod = 'expr',
-  foldexpr = 'nvim_treesitter#foldexpr()',
+  foldmethod = 'manual',
+  foldnestmax = 10,
+  foldenable = false,
+  foldlevel = 2,
 
   -- Show tab delimiter
   listchars = {
