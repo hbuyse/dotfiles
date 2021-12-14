@@ -2,17 +2,24 @@
 
 DOTFILES_PATH="$(dirname "$(realpath "${0}")")"
 
+RED=$(printf '\033[31m')
+GREEN=$(printf '\033[32m')
+YELLOW=$(printf '\033[33m')
+BLUE=$(printf '\033[34m')
+BOLD=$(printf '\033[1m')
+RESET=$(printf '\033[m')
+
 init_wallpapers() {
-	echo -ne "- \e[33mPull wallpapers...\e[0m"
+	echo -ne "- ${YELLOW}Pull wallpapers...${RESET}"
 	git --work-tree="${DOTFILES_PATH}" --git-dir="${DOTFILES_PATH}/.git" lfs pull
-	echo -e "\e[32m done\e[0m"
+	echo -e "${GREEN} done${RESET}"
 }
 
 init_stow() {
 	local stow_param=("${@}")
 	local stow_array=(devtools gifs git neovim shells terminals utilities wallpapers wms X)
 
-	echo -ne "- \e[33mStowing...\e[0m"
+	echo -ne "- ${YELLOW}Stowing...${RESET}"
 	for val in ${stow_array[*]}; do
 		if [ "${#stow_param[*]}" -eq 0 ]; then
 			stow -t "${HOME}" -d "${DOTFILES_PATH}" "${val}"
@@ -21,14 +28,14 @@ init_stow() {
 			stow ${stow_param[*]} -t "${HOME}" -d "${DOTFILES_PATH}" "${val}"
 		fi
 	done
-	echo -e "\e[32m done\e[0m"
+	echo -e "${GREEN} done${RESET}"
 }
 
 install_nerd_font() {
 	local font="${1}"
 	local NERD_FONTS_DIR="${DOTFILES_PATH}/nerd-fonts"
 
-	echo -ne "- \e[33mInstalling ${font} font...\e[0m"
+	echo -ne "- ${YELLOW}Installing ${font} font...${RESET}"
 
 	# Cannot download if git version inferior to 2.26
 	if [ "$(git --version | cut -d'.' -f2)" -lt 2 ] || [ "$(git --version | cut -d'.' -f2)" -lt 26 ]; then
@@ -49,12 +56,12 @@ install_nerd_font() {
 	# Install the fonts
 	"${DOTFILES_PATH}/nerd-fonts/install.sh" -q "${font}"
 
-	echo -e "\e[32m done\e[0m"
+	echo -e "${GREEN} done${RESET}"
 }
 
 finalize_git() {
 	if [ ! -f "${HOME}/.gituser" ]; then
-		echo -e "\e[31mDo not forget to add your user.name and your user.email into the file ${HOME}/.gituser\e[0m" 1>&2
+		echo -e "${RED}Do not forget to add your user.name and your user.email into the file ${HOME}/.gituser${RESET}" 1>&2
 	fi
 }
 
