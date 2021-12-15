@@ -113,8 +113,8 @@ local function prepare_sumneko_lua_language_server()
     sumneko_root_path = '/usr/share/lua-language-server'
     sumneko_binary = '/usr/lib/lua-language-server/lua-language-server'
   else
-    sumneko_root_path = '/opt/lua-language-server'
-    sumneko_binary = sumneko_root_path .. '/bin/' .. system_name .. '/lua-language-server'
+    sumneko_root_path = os.getenv('HOME') .. '/.local/lua-language-server'
+    sumneko_binary = sumneko_root_path .. '/bin/lua-language-server'
   end
 
   local runtime_path = vim.split(package.path, ';')
