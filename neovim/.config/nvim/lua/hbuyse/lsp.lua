@@ -71,8 +71,14 @@ local on_attach = function(client, bufnr)
     )
   end
 
-  vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = border })
-  vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border })
+  -- Override borders globally
+  local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+  function vim.lsp.util.open_floating_preview(contents, syntax, options, ...)
+    options = options or {}
+    options.border = options.border or border
+    return orig_util_open_floating_preview(contents, syntax, options, ...)
+  end
+
   vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = {
       prefix = '●',
