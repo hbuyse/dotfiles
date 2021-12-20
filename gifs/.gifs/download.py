@@ -80,7 +80,6 @@ class DownloaderThread(threading.Thread):
 
 def main():
     gifs = retrieve_gif_list()
-    print(gifs.keys())
     thread_pool = []
     thread_arg_list = chunks(list(gifs.keys()), 8)
 
