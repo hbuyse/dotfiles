@@ -283,7 +283,7 @@ return require('packer').startup({
               goto_node = '<cr>',
               show_help = '?',
             },
-          }
+          },
         })
       end,
     })

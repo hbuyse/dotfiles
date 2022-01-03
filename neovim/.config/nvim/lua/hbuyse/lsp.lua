@@ -207,6 +207,9 @@ local servers = {
   texlab = {
     on_attach = on_attach,
   },
+  jsonls = {
+    on_attach = on_attach,
+  },
   rust_analyzer = {
     on_attach = on_attach,
     -- From https://rust-analyzer.github.io/manual.html#nvim-lsp
