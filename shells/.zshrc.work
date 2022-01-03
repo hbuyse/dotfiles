@@ -94,6 +94,7 @@ plugins+=(virtualenvwrapper)
 plugins+=(cargo)
 plugins+=(docker)
 plugins+=(docker-compose)
+plugins+=(you-should-use)
 
 source $ZSH/oh-my-zsh.sh
 
