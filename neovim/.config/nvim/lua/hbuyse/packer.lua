@@ -41,7 +41,12 @@ return require('packer').startup({
     })
 
     -- lsp
-    use('neovim/nvim-lspconfig')
+    use({
+      'neovim/nvim-lspconfig',
+      requires = {
+        'nvim-lua/lsp_extensions.nvim',
+      },
+    })
     use({
       'onsails/lspkind-nvim',
       config = function()
