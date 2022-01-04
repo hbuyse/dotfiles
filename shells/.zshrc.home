@@ -86,6 +86,7 @@ plugins+=(rust)
 plugins+=(sudo)
 plugins+=(virtualenvwrapper)
 plugins+=(zsh-completions)
+plugins+=(you-should-use)
 
 autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
