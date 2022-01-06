@@ -333,7 +333,7 @@ return require('packer').startup({
             lualine_b = { { 'branch', icon = '' } },
             lualine_c = { { 'filename', file_status = true, path = 1 } },
             lualine_x = {
-              { 'diagnostics', sources = { 'nvim_diagnostic' }, symbols = { error = ' ', warn = ' ' } },
+              { 'diagnostics', sources = { (vim.version().minor < 6) and 'nvim_lsp' or 'nvim_diagnostic' }, symbols = { error = ' ', warn = ' ' } },
             },
             lualine_y = { 'encoding', 'fileformat', 'filetype' },
             lualine_z = { 'progress', 'location' },

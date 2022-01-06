@@ -112,8 +112,11 @@ local function prepare_sumneko_lua_language_server()
   -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
   local sumneko_root_path = ''
   local sumneko_binary = ''
+  local hostname = hostname.getHostname()
 
-  if hostname.getHostname() == 'T480' then
+  if hostname == nil then
+	return nil
+  elseif hostname == 'T480' then
     sumneko_root_path = '/usr/share/lua-language-server'
     sumneko_binary = '/usr/lib/lua-language-server/lua-language-server'
   else
