@@ -88,10 +88,10 @@ local on_attach = function(client, bufnr)
     return orig_util_open_floating_preview(contents, syntax, options, ...)
   end
 
-  vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  vim.diagnostic.config({
     virtual_text = {
       prefix = '●',
-      source = 'if_many',
+      source = 'always', -- Or "if_many"
     },
     signs = true,
     underline = true,
