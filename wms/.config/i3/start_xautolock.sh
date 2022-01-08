@@ -4,7 +4,7 @@ DAEMON="xautolock"
 HOSTNAME="$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
 OPTS=("-time 5")
-OPTS+=("-locker \"$HOME/.config/i3/i3lock-multi -i $HOME/.config/wallpapers/locker.png\"")
+OPTS+=("-locker \"betterlockscreen -l\"")
 OPTS+=("-notify 30 -notifier \"notify-send -u critical -t 29000 'i3lock' 'Will lock in 30 seconds'\"")
 
 
