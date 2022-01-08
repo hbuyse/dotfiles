@@ -321,6 +321,14 @@ return require('packer').startup({
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
       config = function()
+        local treesitter = require('nvim-treesitter')
+        local function treelocation()
+          return treesitter.statusline({
+            indicator_size = 70,
+            type_patterns = { 'class_definition', 'function_definition', 'method_definition' },
+            separator = ' -> ',
+          })
+        end
         require('lualine').setup({
           options = {
             theme = 'gruvbox',
@@ -331,9 +339,22 @@ return require('packer').startup({
           sections = {
             lualine_a = { { 'mode' } },
             lualine_b = { { 'branch', icon = '' } },
-            lualine_c = { { 'filename', file_status = true, path = 1 } },
+            lualine_c = {
+              { 'filename', file_status = true, path = 1 },
+              {
+                'diff',
+                colored = true,
+                symbols = { added = '+', modified = '~', removed = '-' }, -- Changes the symbols used by the diff.
+                source = nil,
+              },
+            },
             lualine_x = {
-              { 'diagnostics', sources = { (vim.version().minor < 6) and 'nvim_lsp' or 'nvim_diagnostic' }, symbols = { error = ' ', warn = ' ' } },
+              treelocation,
+              {
+                'diagnostics',
+                sources = { (vim.version().minor < 6) and 'nvim_lsp' or 'nvim_diagnostic' },
+                symbols = { error = ' ', warn = ' ' },
+              },
             },
             lualine_y = { 'encoding', 'fileformat', 'filetype' },
             lualine_z = { 'progress', 'location' },
