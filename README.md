@@ -35,6 +35,7 @@ Go check this excellent guide https://github.com/nanotee/nvim-lua-guide
 - [dunst](https://github.com/dunst-project/dunst)
 - [neovim](https://github.com/neovim/neovim)
 - [rofi](https://github.com/davatorium/rofi)
+- [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)
 
 ### Suggested
 
