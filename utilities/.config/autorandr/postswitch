@@ -1,32 +1,36 @@
 #! /usr/bin/env bash
 
+cmd_exists () {
+    command -v "$1" >/dev/null
+}
+
 # Send notification to the user
-if command -v notify-send > "/dev/null"; then
+if cmd_exists notify-send; then
   notify-send -i display "Autorandr" "Using profile '${AUTORANDR_CURRENT_PROFILE}'"
 fi
 
 # Reset the background
-if command -v feh > "/dev/null"; then
+if cmd_exists feh; then
   feh --bg-fill ${HOME}/.config/wallpapers/wallpaper.png
 fi
 
 # Relaunch the conkies
-if command -v conky > "/dev/null"; then
+if cmd_exists conky; then
   ${HOME}/.config/conky/launch.sh
 fi
 
 # Relaunch picom
-if command -v picom > /dev/null; then
+if cmd_exists picom; then
   $HOME/.config/picom/launch.sh
 fi
 
 # Start polybar
-if command -v polybar > /dev/null; then
+if cmd_exists polybar; then
   $HOME/.config/polybar/launch.sh
 fi
 
 # Start redshift
-if command -v redshift > /dev/null; then
+if cmd_exists redshift; then
   $HOME/.config/redshift/launch.sh
 fi
 
