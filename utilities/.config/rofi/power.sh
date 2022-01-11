@@ -15,6 +15,7 @@ list() {
     echo -en "Logout\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-log-out.svg\n"
     echo -en "Shutdown\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-shutdown.svg\n"
     echo -en "Reboot\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-reboot.svg\n"
+    echo -en "Hibernate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-suspend-hibernate.svg\n"
     echo -en "Suspend\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-suspend.svg\n"
     if [[ "$(xset q | grep "DPMS is " | awk '{ print $3 }' | tr "[:upper:]" "[:lower:]")" == "disabled" ]]; then
         echo -en "Caffeinate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-full.svg\n"
@@ -54,6 +55,9 @@ then
             ;;
         "Reboot")
             lock && systemctl reboot
+            ;;
+        "Hibernate")
+            lock && sudo systemctl hibernate
             ;;
         "Suspend")
             lock && systemctl suspend
