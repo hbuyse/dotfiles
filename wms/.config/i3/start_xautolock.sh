@@ -5,8 +5,7 @@ HOSTNAME="$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
 OPTS=("-time 5")
 if command -v betterlockscreen > /dev/null; then
-    # Generate lockscreen
-    betterlockscreen -u "$HOME/.config/wallpapers/locker.png"
+    # The generation of lockscreen is done in the autorandr postswitch script
     OPTS+=("-locker \"betterlockscreen -l\"")
 else
     OPTS+=("-locker \"i3lock\"")
