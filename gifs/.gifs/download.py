@@ -6,15 +6,13 @@ import logging
 import os
 import time
 import threading
-from typing import List
+from typing import AnyStr, List
 
 import requests
 import yaml
 
 
 logger = logging.getLogger('gif-downloader')
-
-start_time = time.time()
 
 def retrieve_gif_list():
     ret = {}
@@ -78,16 +76,27 @@ class DownloaderThread(threading.Thread):
                 logger.debug("Downloaded %s.gif (%d bytes)", key, len(resp.content))
 
 
-def main():
-    gifs = retrieve_gif_list()
-    thread_pool = []
-    thread_arg_list = chunks(list(gifs.keys()), 8)
+def check_gif_exists(gif_names: List[AnyStr]):
+    """Check if the GIF has already been downloaded and add it to list if it does not."""
+    l = []
+    for gif_name in gif_names:
+        if os.path.exists(f'{gif_name}.gif'):
+            logger.debug(f'GIF {gif_name} already exists. Passing')
+            continue
+        l.append(gif_name)
 
+    return l
+
+def main():
     parser = argparse.ArgumentParser(description="Download my gifs")
     parser.add_argument('-d', '--debug', action='store_true', help="Show debug log traces")
     args = parser.parse_args()
 
     configure_logger(debug=args.debug)
+
+    gifs = retrieve_gif_list()
+    thread_pool = []
+    thread_arg_list = chunks(check_gif_exists(list(gifs.keys())), 8)
 
     # Create ResultsWriterThread and store them in the pool
     for id, thread_arg in enumerate(thread_arg_list):
