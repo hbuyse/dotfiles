@@ -41,7 +41,7 @@ then
             ;;
         "Caffeinate")
             xautolock -disable
-            xset s 600 600 +dpms
+            xset s 1800 1800 +dpms
             notify-send "Screen saver" "Disabled"
             ;;
         "Lock")
