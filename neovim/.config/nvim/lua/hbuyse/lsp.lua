@@ -53,7 +53,8 @@ local on_attach = function(client, bufnr)
   -- Telescope
   if has_telescope then
     buf_set_keymap('n', '<leader>fr', '<cmd>lua require"telescope.builtin".lsp_references()<CR>', opts)
-    buf_set_keymap('n', '<leader>fd', '<cmd>lua require"telescope.builtin".lsp_document_diagnostics()<CR>', opts)
+    buf_set_keymap('n', '<leader>fd', '<cmd>lua require"telescope.builtin".diagnostics()<CR>', opts)
+    buf_set_keymap('n', '<leader>fdd', '<cmd>lua require"telescope.builtin".diagnostics({bufnr=0})<CR>', opts)
     buf_set_keymap('n', '<leader>fc', '<cmd>lua require"telescope.builtin".lsp_code_actions()<CR>', opts)
   end
 
@@ -115,7 +116,7 @@ local function prepare_sumneko_lua_language_server()
   local hostname = hostname.getHostname()
 
   if hostname == nil then
-	return nil
+    return nil
   elseif hostname == 'T480' then
     sumneko_root_path = '/usr/share/lua-language-server'
     sumneko_binary = '/usr/lib/lua-language-server/lua-language-server'
