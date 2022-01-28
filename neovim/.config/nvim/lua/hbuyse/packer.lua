@@ -201,11 +201,12 @@ return require('packer').startup({
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
         { 'kyazdani42/nvim-web-devicons' },
+        { 'nvim-telescope/telescope-file-browser.nvim' },
       },
       config = function()
         require('telescope').setup({
           defaults = {
-            prompt_prefix = ' > ',
+            prompt_prefix = '   ',
 
             winblend = 0,
 
@@ -215,7 +216,7 @@ return require('packer').startup({
                 width_padding = 0.1,
                 height_padding = 0.1,
                 preview_width = 0.6,
-                prompt_position = 'bottom',
+                prompt_position = 'top',
                 preview_cutoff = 120,
               },
               vertical = {
@@ -249,6 +250,7 @@ return require('packer').startup({
             },
           },
         })
+        require('telescope').load_extension('file_browser')
       end,
     })
 
