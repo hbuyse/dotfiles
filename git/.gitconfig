@@ -37,6 +37,8 @@
 	# the --multiple option of git-fetch[1] is in effect).
 	# A value of 0 will give some reasonable default. If unset, it defaults to 1.
 	parallel = 0
+[push]
+	followTags = true
 [mergetool "vimdiff"]
 	path = nvim
 [core]
