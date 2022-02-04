@@ -210,21 +210,25 @@ return require('packer').startup({
 
             winblend = 0,
 
-            layout_strategy = 'horizontal',
+            layout_strategy = 'vertical',
             layout_config = {
               horizontal = {
-                width_padding = 0.1,
+                height = 0.9,
                 height_padding = 0.1,
+                preview_cutoff = 120,
                 preview_width = 0.6,
                 prompt_position = 'top',
-                preview_cutoff = 120,
+                width = 0.8,
+                width_padding = 0.1,
               },
               vertical = {
-                width_padding = 0.05,
+                -- height = 0.9,
                 height_padding = 1,
-                preview_height = 0.5,
-                prompt_position = 'bottom',
-                preview_cutoff = 120,
+                -- preview_cutoff = 120,
+                -- preview_height = 0.5,
+                prompt_position = 'top',
+                -- width = 0.8,
+                width_padding = 0.05,
               },
             },
 
