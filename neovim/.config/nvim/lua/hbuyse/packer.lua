@@ -52,7 +52,7 @@ return require('packer').startup({
       config = function()
         -- commented options are defaults
         require('lspkind').init({
-          with_text = true,
+          mode = 'symbol_text',
           symbol_map = {
             Text = '',
             Method = 'ƒ',
