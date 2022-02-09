@@ -24,18 +24,18 @@ GRUVBOX = {
     "red1": "#cc241d",
     "red2": "#fb4934",
     "yellow1": "#d79921",
-    "yellow2": "#fabd2f"
+    "yellow2": "#fabd2f",
 }
 
 ICONS = {
     "battery": {
-        10: "%{{F{color}}} %{{F-}}".format(color=GRUVBOX['red1']),  # 00 -> 10
-        33: "%{{F{color}}} %{{F-}}".format(color=GRUVBOX['orange1']),  # 11 -> 33
+        10: "%{{F{color}}} %{{F-}}".format(color=GRUVBOX["red1"]),  # 00 -> 10
+        33: "%{{F{color}}} %{{F-}}".format(color=GRUVBOX["orange1"]),  # 11 -> 33
         55: " ",  # 34 -> 55
         78: " ",  # 56 -> 78
-        100: " "   # 79 -> 100
+        100: " ",  # 79 -> 100
     },
-    "charging": ""
+    "charging": "",
 }
 
 POWER_SUPPLIES_PATH = "/sys/class/power_supply"
@@ -52,7 +52,7 @@ class PowerSupply:
     def alarm(self):
         """Get data from the file /sys/class/power_supply/*/alarm"""
         data = 0
-        with open(os.path.join(self._path, "alarm"), 'r') as fld:
+        with open(os.path.join(self._path, "alarm"), "r") as fld:
             data = int(fld.read().strip())
         return data
 
@@ -60,7 +60,7 @@ class PowerSupply:
     def capacity(self):
         """Get data from the file /sys/class/power_supply/*/capacity"""
         data = 0
-        with open(os.path.join(self._path, "capacity"), 'r') as fld:
+        with open(os.path.join(self._path, "capacity"), "r") as fld:
             data = int(fld.read().strip())
         return data
 
@@ -68,7 +68,7 @@ class PowerSupply:
     def capacity_level(self):
         """Get data from the file /sys/class/power_supply/*/capacity_level"""
         data = 0
-        with open(os.path.join(self._path, "capacity_level"), 'r') as fld:
+        with open(os.path.join(self._path, "capacity_level"), "r") as fld:
             data = int(fld.read().strip())
         return data
 
@@ -76,7 +76,7 @@ class PowerSupply:
     def charge_start_threshold(self):
         """Get data from the file /sys/class/power_supply/*/charge_start_threshold"""
         data = 0
-        with open(os.path.join(self._path, "charge_start_threshold"), 'r') as fld:
+        with open(os.path.join(self._path, "charge_start_threshold"), "r") as fld:
             data = int(fld.read().strip())
         return data
 
@@ -84,7 +84,7 @@ class PowerSupply:
     def charge_stop_threshold(self):
         """Get data from the file /sys/class/power_supply/*/charge_stop_threshold"""
         data = 0
-        with open(os.path.join(self._path, "charge_stop_threshold"), 'r') as fld:
+        with open(os.path.join(self._path, "charge_stop_threshold"), "r") as fld:
             data = int(fld.read().strip())
         return data
 
@@ -92,7 +92,7 @@ class PowerSupply:
     def cycle_count(self):
         """Get data from the file /sys/class/power_supply/*/cycle_count"""
         data = 0
-        with open(os.path.join(self._path, "cycle_count"), 'r') as fld:
+        with open(os.path.join(self._path, "cycle_count"), "r") as fld:
             data = int(fld.read().strip())
         return data
 
@@ -101,10 +101,10 @@ class PowerSupply:
         """Get data from the file /sys/class/power_supply/*/energy_full"""
         data = 0
         try:
-            with open(os.path.join(self._path, "energy_full"), 'r') as fld:
+            with open(os.path.join(self._path, "energy_full"), "r") as fld:
                 data = int(fld.read().strip())
         except FileNotFoundError:
-            with open(os.path.join(self._path, "charge_full"), 'r') as fld:
+            with open(os.path.join(self._path, "charge_full"), "r") as fld:
                 data = int(fld.read().strip())
         return data
 
@@ -113,10 +113,10 @@ class PowerSupply:
         """Get data from the file /sys/class/power_supply/*/energy_full_design"""
         data = 0
         try:
-            with open(os.path.join(self._path, "energy_full_design"), 'r') as fld:
+            with open(os.path.join(self._path, "energy_full_design"), "r") as fld:
                 data = int(fld.read().strip())
         except FileNotFoundError:
-            with open(os.path.join(self._path, "charge_full_design"), 'r') as fld:
+            with open(os.path.join(self._path, "charge_full_design"), "r") as fld:
                 data = int(fld.read().strip())
         return data
 
@@ -125,10 +125,10 @@ class PowerSupply:
         """Get data from the file /sys/class/power_supply/*/energy_now"""
         data = 0
         try:
-            with open(os.path.join(self._path, "energy_now"), 'r') as fld:
+            with open(os.path.join(self._path, "energy_now"), "r") as fld:
                 data = int(fld.read().strip())
         except FileNotFoundError:
-            with open(os.path.join(self._path, "charge_now"), 'r') as fld:
+            with open(os.path.join(self._path, "charge_now"), "r") as fld:
                 data = int(fld.read().strip())
         return data
 
@@ -136,7 +136,7 @@ class PowerSupply:
     def manufacturer(self):
         """Get data from the file /sys/class/power_supply/*/manufacturer"""
         data = "Unknown"
-        with open(os.path.join(self._path, "manufacturer"), 'r') as fld:
+        with open(os.path.join(self._path, "manufacturer"), "r") as fld:
             data = fld.read().strip()
         return data
 
@@ -144,7 +144,7 @@ class PowerSupply:
     def model_name(self):
         """Get data from the file /sys/class/power_supply/*/model_name"""
         data = "Unknown"
-        with open(os.path.join(self._path, "model_name"), 'r') as fld:
+        with open(os.path.join(self._path, "model_name"), "r") as fld:
             data = fld.read().strip()
         return data
 
@@ -153,10 +153,10 @@ class PowerSupply:
         """Get data from the file /sys/class/power_supply/*/power_now"""
         data = 0
         try:
-            with open(os.path.join(self._path, "power_now"), 'r') as fld:
+            with open(os.path.join(self._path, "power_now"), "r") as fld:
                 data = int(fld.read().strip())
         except FileNotFoundError:
-            with open(os.path.join(self._path, "current_now"), 'r') as fld:
+            with open(os.path.join(self._path, "current_now"), "r") as fld:
                 data = int(fld.read().strip())
         return data
 
@@ -164,7 +164,7 @@ class PowerSupply:
     def present(self):
         """Get data from the file /sys/class/power_supply/*/present"""
         data = False
-        with open(os.path.join(self._path, "present"), 'r') as fld:
+        with open(os.path.join(self._path, "present"), "r") as fld:
             data = bool(fld.read().strip())
         return data
 
@@ -172,7 +172,7 @@ class PowerSupply:
     def serial_number(self):
         """Get data from the file /sys/class/power_supply/*/serial_number"""
         data = "Unknown"
-        with open(os.path.join(self._path, "serial_number"), 'r') as fld:
+        with open(os.path.join(self._path, "serial_number"), "r") as fld:
             data = fld.read().strip()
         return data
 
@@ -180,7 +180,7 @@ class PowerSupply:
     def status(self):
         """Get data from the file /sys/class/power_supply/*/status"""
         data = "Unknown"
-        with open(os.path.join(self._path, "status"), 'r') as fld:
+        with open(os.path.join(self._path, "status"), "r") as fld:
             data = fld.read().strip()
         return data
 
@@ -188,7 +188,7 @@ class PowerSupply:
     def technology(self):
         """Get data from the file /sys/class/power_supply/*/technology"""
         data = "Unknown"
-        with open(os.path.join(self._path, "technology"), 'r') as fld:
+        with open(os.path.join(self._path, "technology"), "r") as fld:
             data = fld.read().strip()
         return data
 
@@ -196,7 +196,7 @@ class PowerSupply:
     def type(self):
         """Get data from the file /sys/class/power_supply/*/type"""
         data = "Unknown"
-        with open(os.path.join(self._path, "type"), 'r') as fld:
+        with open(os.path.join(self._path, "type"), "r") as fld:
             data = fld.read().strip()
         return data
 
@@ -204,7 +204,7 @@ class PowerSupply:
     def uevent(self):
         """Get data from the file /sys/class/power_supply/*/uevent"""
         data = "Unknown"
-        with open(os.path.join(self._path, "uevent"), 'r') as fld:
+        with open(os.path.join(self._path, "uevent"), "r") as fld:
             data = fld.read().strip()
         return data
 
@@ -212,7 +212,7 @@ class PowerSupply:
     def voltage_min_design(self):
         """Get data from the file /sys/class/power_supply/*/voltage_min_design"""
         data = 0
-        with open(os.path.join(self._path, "voltage_min_design"), 'r') as fld:
+        with open(os.path.join(self._path, "voltage_min_design"), "r") as fld:
             data = int(fld.read().strip())
         return data
 
@@ -220,7 +220,7 @@ class PowerSupply:
     def voltage_now(self):
         """Get data from the file /sys/class/power_supply/*/voltage_now"""
         data = 0
-        with open(os.path.join(self._path, "voltage_now"), 'r') as fld:
+        with open(os.path.join(self._path, "voltage_now"), "r") as fld:
             data = int(fld.read().strip())
         return data
 
@@ -291,33 +291,33 @@ def main():
     """Main program"""
     powersupplies = PowerSupplies()
 
-    charge_icon = ICONS['charging'] if powersupplies.status == "Charging" else ""
+    charge_icon = ICONS["charging"] if powersupplies.status == "Charging" else ""
     percentage = powersupplies.percentage
-    level_icon = ICONS['battery'][10]
+    level_icon = ICONS["battery"][10]
     if percentage <= 10.0:
-        level_icon = ICONS['battery'][10]
+        level_icon = ICONS["battery"][10]
     elif percentage <= 33.0:
-        level_icon = ICONS['battery'][33]
+        level_icon = ICONS["battery"][33]
     elif percentage <= 55.0:
-        level_icon = ICONS['battery'][55]
+        level_icon = ICONS["battery"][55]
     elif percentage <= 78.0:
-        level_icon = ICONS['battery'][78]
+        level_icon = ICONS["battery"][78]
     else:
-        level_icon = ICONS['battery'][100]
+        level_icon = ICONS["battery"][100]
 
     remaining_time = powersupplies.time_remaining
 
     remaining_time_str = ""
     if remaining_time != datetime.timedelta(0):
-        remaining_time_str = " ({:02d}h{:02d})".format(int(remaining_time.seconds / 3600),
-                                                       int(remaining_time.seconds % 3600 / 60))
+        remaining_time_str = " ({:02d}h{:02d})".format(
+            int(remaining_time.seconds / 3600), int(remaining_time.seconds % 3600 / 60)
+        )
 
-    print("{charge_icon} {level_icon} {percentage}%{time}".format(
-        charge_icon=charge_icon,
-        level_icon=level_icon,
-        percentage=powersupplies.percentage,
-        time=remaining_time_str
-    ))
+    print(
+        "{charge_icon} {level_icon} {percentage}%{time}".format(
+            charge_icon=charge_icon, level_icon=level_icon, percentage=powersupplies.percentage, time=remaining_time_str
+        )
+    )
 
 
 if __name__ == "__main__":
