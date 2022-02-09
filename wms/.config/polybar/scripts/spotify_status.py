@@ -8,16 +8,16 @@ import dbus
 
 def fix_string(string):
     """Corrects encoding for the python version used"""
-    return string if sys.version_info.major == 3 else string.encode('utf-8')
+    return string if sys.version_info.major == 3 else string.encode("utf-8")
 
 
 def truncate(name, trunclen):
     """Truncate a string"""
     if len(name) > trunclen:
         name = name[:trunclen]
-        name += '...'
-        if ('(' in name) and (')' not in name):
-            name += ')'
+        name += "..."
+        if ("(" in name) and (")" not in name):
+            name += ")"
     return name
 
 
@@ -26,78 +26,54 @@ class Spotify:
 
     def __init__(self):
         self._session_bus = dbus.SessionBus()
-        self._bus = self._session_bus.get_object(
-            'org.mpris.MediaPlayer2.spotify',
-            '/org/mpris/MediaPlayer2'
-            )
-        self._properties = dbus.Interface(self._bus, 'org.freedesktop.DBus.Properties')
+        self._bus = self._session_bus.get_object("org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2")
+        self._properties = dbus.Interface(self._bus, "org.freedesktop.DBus.Properties")
 
     @property
     def metadata(self):
         """Retrieve metadata from the Dbus connection"""
-        return self._properties.Get('org.mpris.MediaPlayer2.Player', 'Metadata')
+        return self._properties.Get("org.mpris.MediaPlayer2.Player", "Metadata")
 
     @property
     def status(self):
         """Retrieve status from the Dbus connection"""
-        return self._properties.Get('org.mpris.MediaPlayer2.Player', 'PlaybackStatus')
+        return self._properties.Get("org.mpris.MediaPlayer2.Player", "PlaybackStatus")
 
     @property
     def position(self):
         """Retrieve position from the Dbus connection"""
-        return self._properties.Get('org.mpris.MediaPlayer2.Player', 'Position')
+        return self._properties.Get("org.mpris.MediaPlayer2.Player", "Position")
+
 
 def main():
     """Main program"""
     parser = argparse.ArgumentParser()
+    parser.add_argument("-t", "--trunclen", type=int, metavar="trunclen")
+    parser.add_argument("-f", "--format", type=str, metavar="custom format", dest="custom_format")
+    parser.add_argument("-p", "--playpause", type=str, metavar="play-pause indicator", dest="play_pause")
+    parser.add_argument("--font", type=str, metavar="the index of the font to use for the main label", dest="font")
     parser.add_argument(
-        '-t',
-        '--trunclen',
-        type=int,
-        metavar='trunclen'
-    )
-    parser.add_argument(
-        '-f',
-        '--format',
+        "--playpause-font",
         type=str,
-        metavar='custom format',
-        dest='custom_format'
+        metavar="the index of the font to use to display the playpause indicator",
+        dest="play_pause_font",
     )
     parser.add_argument(
-        '-p',
-        '--playpause',
-        type=str,
-        metavar='play-pause indicator',
-        dest='play_pause'
-    )
-    parser.add_argument(
-        '--font',
-        type=str,
-        metavar='the index of the font to use for the main label',
-        dest='font'
-    )
-    parser.add_argument(
-        '--playpause-font',
-        type=str,
-        metavar='the index of the font to use to display the playpause indicator',
-        dest='play_pause_font'
-    )
-    parser.add_argument(
-        '-q',
-        '--quiet',
-        action='store_true',
+        "-q",
+        "--quiet",
+        action="store_true",
         help="if set, don't show any output when the current song is paused",
-        dest='quiet',
+        dest="quiet",
     )
 
     args = parser.parse_args()
 
     # Default parameters
-    output = fix_string(u'{play_pause} {artist}: {song}')
+    output = fix_string(u"{play_pause} {artist}: {song}")
     trunclen = 35
-    play_pause = fix_string(u'\uF04B,\uF04C') # first character is play, second is paused
+    play_pause = fix_string(u"\uF04B,\uF04C")  # first character is play, second is paused
 
-    label_with_font = '%{{T{font}}}{label}%{{T-}}'
+    label_with_font = "%{{T{font}}}{label}%{{T-}}"
     font = args.font
     play_pause_font = args.play_pause_font
 
@@ -123,10 +99,10 @@ def main():
         sys.exit(1)
 
     # Handle play/pause label
-    play_pause = play_pause.split(',')
-    if status == 'Playing':
+    play_pause = play_pause.split(",")
+    if status == "Playing":
         play_pause = play_pause[0]
-    elif status == 'Paused':
+    elif status == "Paused":
         play_pause = play_pause[1]
     else:
         play_pause = str()
@@ -136,12 +112,12 @@ def main():
 
     # Handle main label
 
-    artist = fix_string(metadata['xesam:artist'][0]) if metadata['xesam:artist'] else ''
-    song = fix_string(metadata['xesam:title']) if metadata['xesam:title'] else ''
-    album = fix_string(metadata['xesam:album']) if metadata['xesam:album'] else ''
+    artist = fix_string(metadata["xesam:artist"][0]) if metadata["xesam:artist"] else ""
+    song = fix_string(metadata["xesam:title"]) if metadata["xesam:title"] else ""
+    album = fix_string(metadata["xesam:album"]) if metadata["xesam:album"] else ""
 
-    if (quiet and status == 'Paused') or (not artist and not song and not album):
-        print('')
+    if (quiet and status == "Paused") or (not artist and not song and not album):
+        print("")
     else:
         if font:
             artist = label_with_font.format(font=font, label=artist)
@@ -149,10 +125,8 @@ def main():
             album = label_with_font.format(font=font, label=album)
 
         # Add 4 to trunclen to account for status symbol, spaces, and other padding characters
-        print(truncate(output.format(artist=artist,
-                                     song=song,
-                                     play_pause=play_pause,
-                                     album=album), trunclen + 4))
+        print(truncate(output.format(artist=artist, song=song, play_pause=play_pause, album=album), trunclen + 4))
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
