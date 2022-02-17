@@ -27,7 +27,7 @@
 	rl = reflog --pretty=reflog
 [pretty]
 	# reflog, with relative date:
-	reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %s
+	reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %gs
 [fetch]
 	# If true, fetch will automatically behave as if the --prune option was given on the command line.
 	# See also remote.<name>.prune and the PRUNING section of git-fetch[1].
