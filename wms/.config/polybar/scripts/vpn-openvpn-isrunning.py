@@ -4,6 +4,7 @@ import psutil
 
 if __name__ == "__main__":
     color = "fb4934"
+    icon = ""
 
     # Iterate over all running processes
     for proc in psutil.process_iter():
@@ -16,6 +17,7 @@ if __name__ == "__main__":
             "nobody",
         ]:
             color = "b8bb26"
+            icon = ""
             break
 
-    print(f"%{{u#{color}}}%{{+u}}TUNNEL: %{{F#{color}}}%{{F-}}%{{u-}}")
+    print(f"%{{u#{color}}}%{{+u}}TUNNEL: %{{F#{color}}}{icon}%{{F-}}%{{u-}}")
