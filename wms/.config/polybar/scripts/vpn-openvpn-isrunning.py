@@ -8,8 +8,13 @@ if __name__ == "__main__":
 
     # Iterate over all running processes
     for proc in psutil.process_iter():
+        pInfoDict: dict = {}
+
         # Get process detail as dictionary
-        pInfoDict = proc.as_dict(attrs=["pid", "name", "cmdline"])
+        try:
+            pInfoDict = proc.as_dict(attrs=["pid", "name", "cmdline"])
+        except psutil.NoSuchProcess:
+            continue
 
         # Append dict of process detail in list
         if pInfoDict["name"] == "openvpn" and pInfoDict["cmdline"][-2:] == [
