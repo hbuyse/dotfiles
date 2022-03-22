@@ -1,0 +1,13 @@
+{{- $email := "" -}}
+{{- if hasKey . "email" -}}
+{{-   $email = .email -}}
+{{- else -}}
+{{-   $email = promptString "email" -}}
+{{- end -}}
+
+[data]
+	email = {{ $email | quote }}
+
+[age]
+	identity = "{{ .chezmoi.homeDir }}/.age-key.txt"
+	recipient = "age18hmxlg3q2nu4krgzyl9tyz0zvr9x8pj3ufqg5xcxskmmnnsp8yrqxh7v3c"

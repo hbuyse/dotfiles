@@ -1,0 +1,55 @@
+[".oh-my-zsh"]
+	type = "archive"
+	url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+	exact = true
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[".oh-my-zsh/custom/plugins/zsh-history-substring-search"]
+	type = "archive"
+	url = "https://github.com/zsh-users/zsh-history-substring-search/archive/master.tar.gz"
+	exact = true
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	type = "archive"
+	url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+	exact = true
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[".oh-my-zsh/custom/plugins/you-should-use"]
+	type = "archive"
+	url = "https://github.com/MichaelAquilina/zsh-you-should-use/archive/refs/tags/1.7.3.tar.gz"
+	exact = true
+	stripComponents = 1
+
+[".oh-my-zsh/custom/plugins/chroot"]
+	type = "archive"
+	url = "https://gist.github.com/hbuyse/854435b018de288c956513561d32504b/archive/master.tar.gz"
+	exact = true
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[".oh-my-zsh/custom/plugins/zsh-completions"]
+	type = "archive"
+	url = "https://github.com/zsh-users/zsh-completions/archive/refs/tags/0.33.0.tar.gz"
+	exact = true
+	stripComponents = 1
+
+[".oh-my-zsh/custom/themes/powerlevel10k"]
+	type = "archive"
+	url = "https://github.com/romkatv/powerlevel10k/archive/v1.16.1.tar.gz"
+	exact = true
+	stripComponents = 1
+
+[".local/share/fonts/Hack"]
+	type = "archive"
+	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip"
+	exact = true
+
+[".local/bin/betterlockscreen"]
+	type = "file"
+	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/betterlockscreen"
+	executable = true

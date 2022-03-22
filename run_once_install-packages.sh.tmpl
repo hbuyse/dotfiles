@@ -1,0 +1,20 @@
+#! /usr/bin/env bash
+
+{{ if eq .chezmoi.osRelease.idLike "arch" -}}
+# Update pacman database
+sudo pacman -Syyu
+
+# Install my package
+sudo pacman -Sy \
+    age \
+    alacritty \
+    bat \
+    bottom \
+    chezmoi \
+	feh \
+    firefox \
+    htop \
+    i3-gaps \
+    pyenv \
+    rofi
+{{ end -}}
