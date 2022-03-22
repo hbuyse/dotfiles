@@ -1,0 +1,66 @@
+[user]
+	name = Henri Buyse
+	email = {{ .email | quote }}
+[include]
+	# Should contain private informations
+	path = ~/.gitconfig.local
+[core]
+	# npm install -g diff-so-fancy
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	newNormal = green bold
+	newHighlight = green bold 22
+	oldHighlight = red bold 52
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
+[grep]
+	lineNumber = true
+[merge]
+	tool = meld
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	rl = reflog --pretty=reflog
+[pretty]
+	# reflog, with relative date:
+	reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %gs
+[fetch]
+	# If true, fetch will automatically behave as if the --prune option was given on the command line.
+	# See also remote.<name>.prune and the PRUNING section of git-fetch[1].
+	prune = true
+	pruneTags = true
+	# Specifies the maximal number of fetch operations to be run in parallel at a time (submodules, or remotes when
+	# the --multiple option of git-fetch[1] is in effect).
+	# A value of 0 will give some reasonable default. If unset, it defaults to 1.
+	parallel = 0
+[push]
+	followTags = true
+[mergetool "vimdiff"]
+	path = nvim
+[core]
+	editor = nvim
+	excludesFile = ~/.gitignore
+	attributesFile = ~/.gitattributes
+[stash]
+	showPatch = true
+[rebase]
+	stat = true
+	autoStash = true
+[diff "bin"]
+	# Allow files following the diff=bin (defined in .git.config/attributes) to be correctly differenciate
+	binary = true
+	textconv = /usr/bin/hexdump -v -C
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+# vim: set ts=4 sw=4 tw=0 noet ft=gitconfig
