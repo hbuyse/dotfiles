@@ -241,7 +241,7 @@ exec_always --no-startup-id setxkbmap -layout "us,fr" -variant "intl,latin9"
 
 # Increase keyboard repeat and delay
 # After 450 ms of pressing a key, the OS will put out about 60 times the same key in a second
-exec_always --no-startup-id xset r rate 450 60
+exec_always --no-startup-id xset r rate 350 60
 
 # Setup pulseaudio
 exec_always --no-startup-id $HOME/.config/i3/setup_pactl.sh
