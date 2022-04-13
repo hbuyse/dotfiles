@@ -118,8 +118,8 @@ local function prepare_sumneko_lua_language_server()
   if hostname == nil then
     return nil
   elseif hostname == 'T480' then
-    sumneko_root_path = '/usr/share/lua-language-server'
-    sumneko_binary = '/usr/lib/lua-language-server/lua-language-server'
+    sumneko_root_path = '/usr/lib/lua-language-server'
+    sumneko_binary = sumneko_root_path .. '/bin/lua-language-server'
   else
     sumneko_root_path = os.getenv('HOME') .. '/.local/lua-language-server'
     sumneko_binary = sumneko_root_path .. '/bin/lua-language-server'
