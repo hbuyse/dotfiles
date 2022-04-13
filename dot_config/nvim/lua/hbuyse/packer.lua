@@ -531,8 +531,20 @@ return require('packer').startup({
       end,
     })
 
+
+    -- Neogen
+    use {
+      "danymat/neogen",
+      config = function()
+          require('neogen').setup {}
+      end,
+      requires = "nvim-treesitter/nvim-treesitter",
+      -- Uncomment next line if you want to follow only stable versions
+      -- tag = "*"
+    }
+
     -- Doxygen WIP
-    use(os.getenv('HOME') .. '/Programming/doxygen.nvim')
+    -- use(os.getenv('HOME') .. '/Programming/doxygen.nvim')
   end,
 })
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
