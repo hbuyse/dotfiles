@@ -1,7 +1,8 @@
 #! /usr/bin/env bash
 
-{{ if eq .chezmoi.osRelease.idLike "arch" -}}
-# Update pacman database
+{{ if eq .chezmoi.os "linux" }}
+{{   if eq .chezmoi.osRelease.id "manjaro" -}}
+# Refresh packages list
 sudo pacman -Syyu
 
 # Install my package
@@ -11,10 +12,47 @@ sudo pacman -Sy \
     bat \
     bottom \
     chezmoi \
-	feh \
+    feh \
     firefox \
     htop \
     i3-gaps \
     pyenv \
-    rofi
+    rofi \
+    npm \
+    neovim
+{{   else if eq .chezmoi.osRelease.id "ubuntu" -}}
+# Add PPAs
+sudo add-apt-repository -ny ppa:neovim-ppa/stable
+sudo add-apt-repository -ny ppa:git-core/ppa
+sudo add-apt-repository -ny ppa:yubico/stable
+
+# Refresh packages list
+sudo apt-get update
+
+# Install packages
+sudo apt-get install -y \
+    yubikey-manager yubikey-personalization-gui libpam-yubico libpam-u2f \
+    meld \
+    git git-lfs \
+    neovim
+{{   end -}}
 {{ end -}}
+
+{{ if eq .chezmoi.os "freebsd" -}}
+# Refresh packages list
+sudo pkg update
+
+# Install packages
+sudo pkg install -y \
+    age \
+    chezmoi \
+    tshark \
+    neovim \
+    tree \
+    git-lfs \
+    npm
+{{ end -}}
+
+# Install diff-so-fancy
+npm install -g diff-so-fancy
+# vim: set ts=4 sw=4 tw=0 et ft=sh :
