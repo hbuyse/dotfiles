@@ -33,6 +33,9 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     os_icon                 # os identifier
+{{ if eq .chezmoi.os "freebsd" -}}
+    chroot                  # chroot information
+{{- end }}
     dir                     # current directory
     vcs                     # git status
     # =========================[ Line #2 ]=========================
@@ -1569,6 +1572,20 @@
   # typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
   # typeset -g POWERLEVEL9K_TIME_PREFIX='%250Fat '
+
+{{ if eq .chezmoi.os "freebsd" -}}
+  ####################################[ chroot: chroot information ]####################################
+  function prompt_chroot() {
+    local data="$(chroot_prompt_info)"
+    if [[ -n $data ]]; then
+      p10k segment -f 208 -i '' -t "$(chroot_prompt_info)"
+    fi
+  }
+
+  function instant_prompt_chroot() {
+    prompt_chroot
+  }
+{{- end }}
 
   # Example of a user-defined prompt segment. Function prompt_example will be called on every
   # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or
