@@ -19,6 +19,11 @@ if [ -f "$HOME/.cargo/env" ]; then
 fi
 
 {{ if eq .chezmoi.hostname "freebsd" -}}
+# Arcanist
+if [ -d "$HOME/.local/arcanist/" ]; then
+	export PATH="$PATH:$HOME/.local/arcanist/bin/"
+fi
+
 # Coverity
 if [ -d "$HOME/.local/coverity/" ]; then
 	export PATH="$PATH:$HOME/.local/coverity/bin/"
