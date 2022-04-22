@@ -327,14 +327,6 @@ return require('packer').startup({
       'nvim-lualine/lualine.nvim',
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
       config = function()
-        local treesitter = require('nvim-treesitter')
-        local function treelocation()
-          return treesitter.statusline({
-            indicator_size = 70,
-            type_patterns = { 'class_definition', 'function_definition', 'method_definition' },
-            separator = ' -> ',
-          })
-        end
         require('lualine').setup({
           options = {
             theme = 'gruvbox',
@@ -355,7 +347,6 @@ return require('packer').startup({
               },
             },
             lualine_x = {
-              treelocation,
               {
                 'diagnostics',
                 sources = { (vim.version().minor < 6) and 'nvim_lsp' or 'nvim_diagnostic' },
@@ -531,17 +522,16 @@ return require('packer').startup({
       end,
     })
 
-
     -- Neogen
-    use {
-      "danymat/neogen",
+    use({
+      'danymat/neogen',
       config = function()
-          require('neogen').setup {}
+        require('neogen').setup({})
       end,
-      requires = "nvim-treesitter/nvim-treesitter",
+      requires = 'nvim-treesitter/nvim-treesitter',
       -- Uncomment next line if you want to follow only stable versions
       -- tag = "*"
-    }
+    })
 
     -- Doxygen WIP
     -- use(os.getenv('HOME') .. '/Programming/doxygen.nvim')
