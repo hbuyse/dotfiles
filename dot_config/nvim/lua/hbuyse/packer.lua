@@ -533,8 +533,8 @@ return require('packer').startup({
       -- tag = "*"
     })
 
-    -- Doxygen WIP
-    -- use(os.getenv('HOME') .. '/Programming/doxygen.nvim')
+    -- surround.vim
+    use('tpope/vim-surround')
   end,
 })
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
