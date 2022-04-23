@@ -4,16 +4,11 @@ All my dotfiles used at work or at home
 
 ## Installation
 
-Clone the repo
+First, download your age-key.txt file.
+Then, you can copy this line of code:
 
-```sh
-git clone https://github.com/hbuyse/dotfiles $HOME/.dotfiles
 ```
-
-Install the configuration files
-
-```sh
-$HOME/.dotfiles/install.sh
+BINDIR=${HOME}/.local/bin sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply hbuyse
 ```
 
 ## Neovim Lua guide
@@ -26,10 +21,6 @@ Go check this excellent guide https://github.com/nanotee/nvim-lua-guide
 
 - [i3-gaps](https://github.com/Airblader/i3)
 - [polybar](https://github.com/polybar/polybar)
-- [nerd-fonts](https://github.com/ryanoasis/nerd-fonts#option-3-install-script)
-- [zsh](https://github.com/zsh-users/zsh)
-- [oh-my-zsh](https://ohmyz.sh/)
-- [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 - [feh](https://github.com/derf/feh)
 - [compton](https://github.com/chjj/compton)
 - [dunst](https://github.com/dunst-project/dunst)
