@@ -101,9 +101,9 @@ plugins+=(zsh-completions)
 plugins+=(zsh-history-substring-search)
 plugins+=(zsh-syntax-highlighting)
 {{- if eq .chezmoi.hostname "freebsd" }}
-plugins+=(upd)
 plugins+=(chroot)
-{{- else if eq .chezmoi.hostname "henrib-latitude5400" }}
+{{- end }}
+{{ if eq .chezmoi.hostname "freebsd" "henrib-latitude5400" -}}
 plugins+=(upd)
 {{- end }}
 

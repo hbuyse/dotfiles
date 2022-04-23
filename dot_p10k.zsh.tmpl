@@ -33,7 +33,7 @@
   typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
     # =========================[ Line #1 ]=========================
     os_icon                 # os identifier
-{{ if eq .chezmoi.os "freebsd" -}}
+{{ if eq .chezmoi.hostname "freebsd" -}}
     chroot                  # chroot information
 {{- end }}
     dir                     # current directory
@@ -1573,7 +1573,7 @@
   # Custom prefix.
   # typeset -g POWERLEVEL9K_TIME_PREFIX='%250Fat '
 
-{{ if eq .chezmoi.os "freebsd" -}}
+{{ if eq .chezmoi.hostname "freebsd" -}}
   ####################################[ chroot: chroot information ]####################################
   function prompt_chroot() {
     local data="$(chroot_prompt_info)"
