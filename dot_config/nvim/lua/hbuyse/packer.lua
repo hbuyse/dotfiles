@@ -313,10 +313,14 @@ return require('packer').startup({
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
       config = function()
         require('nvim-tree').setup({
-          autoclose = true,
           view = {
             side = 'left',
-            auto_resize = true,
+            number = true,
+          },
+          actions = {
+            open_file = {
+              resize_window = true,
+            },
           },
         })
       end,
