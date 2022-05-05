@@ -5,8 +5,16 @@
 {{-   $email = promptString "email" -}}
 {{- end -}}
 
+{{- $name := "" -}}
+{{- if hasKey . "name" -}}
+{{-   $name = .name -}}
+{{- else -}}
+{{-   $name = promptString "name" -}}
+{{- end -}}
+
 [data]
 	email = {{ $email | quote }}
+	name = {{ $name | quote }}
 
 [age]
 	identity = "{{ .chezmoi.homeDir }}/.age-key.txt"
