@@ -2,6 +2,7 @@ require('hbuyse.packer')
 require('hbuyse.mappings')
 require('hbuyse.lsp')
 require('hbuyse.snippets')
+require('hbuyse.autocmds')
 local hostname = require('hbuyse.hostname')
 
 if hostname.getHostname() == 'henrib-Latitude-5400' then

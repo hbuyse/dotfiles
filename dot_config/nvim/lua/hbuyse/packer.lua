@@ -6,22 +6,10 @@ local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
   vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-  vim.api.nvim_command('packadd packer.nvim')
 end
 
 -- Only required if you have packer in your `opt` pack
-vim.cmd([[packadd packer.nvim]])
-
--- Automatically compile packer when writing files in $HOME/.config/nvim
-vim.api.nvim_exec(
-  [[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost ~/.config/nvim/lua/* PackerCompile
-  augroup end
-]],
-  false
-)
+vim.api.nvim_command('packadd packer.nvim')
 
 return require('packer').startup({
   function()
