@@ -8,11 +8,6 @@ if not has_lsp then
   return
 end
 
--- Add border
-vim.cmd([[autocmd ColorScheme * highlight NormalFloat guibg=#4F4945]])
-vim.cmd([[autocmd ColorScheme * highlight FloatBorder guifg=#EBDBB2 guibg=#4F4945]])
-local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }
-
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -60,30 +55,29 @@ local on_attach = function(client, bufnr)
 
   -- Set autocommands conditional on server_capabilities
   if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]],
-      false
-    )
+    local gid = vim.api.nvim_create_augroup('LSPDocumentHighlight', {})
+    vim.api.nvim_create_autocmd('CursorHold', {
+      group = gid,
+      desc = 'Highlight document using LSP server capabilities',
+      buffer = vim.api.nvim_get_current_buf(),
+      callback = function()
+        vim.lsp.buf.document_highlight()
+      end,
+    })
+    vim.api.nvim_create_autocmd('CursorMoved', {
+      group = gid,
+      desc = 'Clear document highlights using LSP server capabilities',
+      buffer = vim.api.nvim_get_current_buf(),
+      callback = function()
+        vim.lsp.buf.clear_references()
+      end,
+    })
   end
-  -- Enable type inlay hints
-  vim.api.nvim_exec(
-    [[
-    augroup lsp_inlay_hints
-      autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-    augroup END
-    ]],
-    false
-  )
 
   -- Override borders globally
   local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
   function vim.lsp.util.open_floating_preview(contents, syntax, options, ...)
+    local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }
     options = options or {}
     options.border = options.border or border
     return orig_util_open_floating_preview(contents, syntax, options, ...)
