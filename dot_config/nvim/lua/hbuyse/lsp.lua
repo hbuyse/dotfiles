@@ -165,6 +165,8 @@ local function get_cland_executable()
   local paths = os.getenv('PATH')
   local list_clangd = {
     'clangd-devel',
+    'clangd14',
+    'clangd-14',
     'clangd13',
     'clangd-13',
     'clangd12',
