@@ -4,7 +4,5 @@ dot_config/wallpapers/locker.png filter=lfs diff=lfs merge=lfs -text
 dot_config/wallpapers/tux_eyes_gruvboxed.png filter=lfs diff=lfs merge=lfs -text
 dot_config/wallpapers/tux_eyes_gruvboxed_fractal.png filter=lfs diff=lfs merge=lfs -text
 dot_config/wallpapers/tux_eyes_gruvboxed_fractal_breaking_glass.png filter=lfs diff=lfs merge=lfs -text
-dot_config/wallpapers/tux_gruvboxed.png filter=lfs diff=lfs merge=lfs -text
-dot_config/wallpapers/tux_gruvboxed.xcf filter=lfs diff=lfs merge=lfs -text
 dot_config/wallpapers/tux_eyes.xcf filter=lfs diff=lfs merge=lfs -text
 . text !filter !merge !diff
