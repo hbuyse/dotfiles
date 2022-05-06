@@ -60,3 +60,51 @@
 	type = "file"
 	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/betterlockscreen"
 	executable = true
+
+[".pyenv"]
+	type = "archive"
+	url = "https://github.com/pyenv/pyenv/archive/refs/tags/v2.2.5.tar.gz"
+	exact = false
+	stripComponents = 1
+
+[ ".pyenv/plugins/pyenv-ccache" ]
+	type = "archive"
+	url = "https://github.com/pyenv/pyenv-ccache/archive/refs/heads/master.tar.gz"
+	exact = false
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[ ".pyenv/plugins/pyenv-doctor" ]
+	type = "archive"
+	url = "https://github.com/pyenv/pyenv-doctor/archive/refs/heads/master.tar.gz"
+	exact = false
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[ ".pyenv/plugins/pyenv-installer" ]
+	type = "archive"
+	url = "https://github.com/pyenv/pyenv-installer/archive/refs/heads/master.tar.gz"
+	exact = false
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[ ".pyenv/plugins/pyenv-update" ]
+	type = "archive"
+	url = "https://github.com/pyenv/pyenv-update/archive/refs/heads/master.tar.gz"
+	exact = false
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[ ".pyenv/plugins/pyenv-virtualenv" ]
+	type = "archive"
+	url = "https://github.com/pyenv/pyenv-virtualenv/archive/refs/heads/master.tar.gz"
+	exact = false
+	stripComponents = 1
+	refreshPeriod = "168h"
+
+[ ".pyenv/plugins/pyenv-which-ext" ]
+	type = "archive"
+	url = "https://github.com/pyenv/pyenv-which-ext/archive/refs/heads/master.tar.gz"
+	exact = false
+	stripComponents = 1
+	refreshPeriod = "168h"
