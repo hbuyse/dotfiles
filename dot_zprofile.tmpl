@@ -1,9 +1,13 @@
+in_chroot() {
+	[[ "$(ls -di /)" != "2 /" ]] && return 0 || return 1;
+}
+
 if [ -d "$HOME/.local/bin" ]; then
 	export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # set path so it includes pyenv
-if [ -d "$HOME/.pyenv" ] && [[ "$(ls -di /)" == "2 /" ]]; then
+if [ -d "$HOME/.pyenv" ] && ! in_chroot; then
 	export PATH="$HOME/.pyenv/bin:$PATH"
 	eval "$(pyenv init --path)"
 fi
