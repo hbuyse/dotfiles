@@ -4,6 +4,7 @@ local has_lsp_extensions, lsp_extensions = pcall(require, 'lsp_extensions')
 
 local has_stylua, stylua = pcall(require, 'formatters.stylua')
 local has_perltidy, perltidy = pcall(require, 'formatters.perltidy')
+local has_jsontool, jsontool = pcall(require, 'formatters.jsontool')
 
 if has_packer then
   -- Automatically compile packer when writing files in $HOME/.config/nvim
@@ -82,6 +83,19 @@ if has_perltidy and vim.fn.executable('perltidy') == 1 then
     pattern = { '*.pl', '*.pm' },
     callback = function()
       perltidy.format()
+    end,
+  })
+end
+
+-- Automatically format Perl code
+if has_jsontool then
+  local gid = vim.api.nvim_create_augroup('JsonFormaterAuto', {})
+  vim.api.nvim_create_autocmd('BufWritePre', {
+    group = gid,
+    desc = 'JSON Code Formatter',
+    pattern = '*.json',
+    callback = function()
+      jsontool.format()
     end,
   })
 end
