@@ -79,7 +79,7 @@ if has_perltidy and vim.fn.executable('perltidy') == 1 then
   vim.api.nvim_create_autocmd('BufWritePre', {
     group = gid,
     desc = 'Perltidy Code Formatter',
-    pattern = '*.lua',
+    pattern = { '*.pl', '*.pm' },
     callback = function()
       perltidy.format()
     end,
