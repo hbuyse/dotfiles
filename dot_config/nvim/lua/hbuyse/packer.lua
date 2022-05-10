@@ -419,10 +419,7 @@ return require('packer').startup({
     })
 
     -- Startify
-    use({
-      'mhinz/vim-startify',
-      tag = '*',
-    })
+    use('mhinz/vim-startify')
 
     -- Markdown preview
     use({
