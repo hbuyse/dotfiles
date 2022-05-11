@@ -19,10 +19,10 @@ conky.config = {
 }
 conky.text = [[
 # Date and time
-${voffset 8}$color2${font Hack Nerd Font Mono:size=16}${time %A}$font\
-${voffset -8}$alignr$color${font Hack Nerd Font Mono:size=38}${time %e}$font
-$color${voffset -30}$color${font Hack Nerd Font Mono:size=18}${time %b}$font\
-${voffset -3} $color${font Hack Nerd Font Mono:size=20}${time %Y}$font$color2$hr
+${voffset 8}${color2}${font Hack Nerd Font Mono:size=16}${time %A}${font}\
+${voffset -8}${alignr}$color${font Hack Nerd Font Mono:size=38}${time %e}${font}
+${color}${voffset -30}$color${font Hack Nerd Font Mono:size=18}${time %b}${font}\
+${voffset -3} ${color}${font Hack Nerd Font Mono:size=20}${time %Y}${font}${color2}${hr}
 #
 ${voffset 15}${color}${font Hack Nerd Font Mono:bold:size=9}${execi 10000 lsb_release -ds | sed -e 's/"//g'}
 ${color}${font Hack Nerd Font Mono:bold:size=9}Uptime: ${alignr}${color2}${font}${uptime_short}
@@ -43,6 +43,16 @@ $alignr${cpubar cpu8 6,148}
 ${voffset 10}${color}${font Hack Nerd Font Mono:bold:size=9}Memory ${hr}
 ${font}${color}RAM:${alignr}${font}${color2}${mem} / ${memmax}
 ${font}${color}Swap:${alignr}${font}${color2}${swap} / ${swapmax}
+
+{{- if eq .chezmoi.hostname "hbuyse-latitude5400" }}
+
+${color}${font Hack Nerd Font Mono:bold:size=9}Temperature ${hr}
+${font}${color}CPU 1: ${alignr}${font}${color2}${hwmon 7 temp 2} °C
+${font}${color}CPU 2: ${alignr}${font}${color2}${hwmon 7 temp 3} °C
+${font}${color}CPU 3: ${alignr}${font}${color2}${hwmon 7 temp 4} °C
+${font}${color}CPU 4: ${alignr}${font}${color2}${hwmon 7 temp 5} °C
+
+{{- end }}
 
 ${color}${font Hack Nerd Font Mono:bold:size=9}File System ${hr}
 ]]
