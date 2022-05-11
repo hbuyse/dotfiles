@@ -1,3 +1,6 @@
+# You can see what files chezmoi ignores with the command
+#   chezmoi ignored
+
 README.md
 
 {{- if eq .chezmoi.hostname "freebsd" }}
@@ -6,10 +9,14 @@ README.md
 .config/conky
 .config/dunst
 .config/i3
-.config/pacman
 .config/picom
 .config/polybar
 .config/rofi
 .config/redshift
 .config/wallpapers
+{{- end }}
+
+{{- if (or (not (index .chezmoi.osRelease "idLike")) (ne .chezmoi.osRelease.idLike "arch")) }}
+# Do not copy pacman folder (specific Arch Linux)
+.config/pacman
 {{- end }}
