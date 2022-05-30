@@ -105,7 +105,7 @@ local trim_whitespace_gid = vim.api.nvim_create_augroup('TrimWhitespace', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = trim_whitespace_gid,
   desc = 'Trim whitespaces before saving',
-  command = '%s/s+$//e',
+  command = '%s/\\s\\+$//e',
 })
 
 -- Autojump to last known position in the file
