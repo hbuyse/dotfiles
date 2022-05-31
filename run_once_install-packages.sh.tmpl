@@ -22,14 +22,24 @@ cmdexists() {
 }
 
 npm_install() {
-    prompt "Installing '${1}' using npm"
-    if ! npm list -g "${1}" | grep -q "${1}"; then
+    local pkg_and_version="${1}"
+    local package="$(echo ${pkg_and_version} | cut -d'@' -f1)"
+    local version="$(echo ${pkg_and_version} | cut -d'@' -f2)"
+    if [ -n "$(npm list --location=global -p ${pkg_and_version})" ]; then
+        prompt "Installing '${pkg_and_version}' using npm"
+        display_already_installed
+    elif [ -n "$(npm list --location=global -p ${package})" ]; then
+        prompt "Updating '${package}' to version '${version}' using npm"
+        npm update --silent -g "${pkg_and_version}"
+        local err=${?}
+        prompt "Updating '${package}' to version '${version}' using npm"
+        display_ko_ok ${err}
+    else
+        prompt "Installing '${1}' using npm"
         npm install --silent -g "${1}"
         local err=${?}
         prompt "Installing '${1}' using npm"
         display_ko_ok ${err}
-    else
-        display_already_installed
     fi
 }
 
