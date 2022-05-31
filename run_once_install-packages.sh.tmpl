@@ -14,7 +14,7 @@ display_already_installed() {
 }
 
 display_ko_ok() {
-    [ $? -eq 0 ] && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
+    [ ${1} -eq 0 ] && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
 }
 
 cmdexists() {
@@ -25,8 +25,9 @@ npm_install() {
     prompt "Installing '${1}' using npm"
     if ! npm list -g "${1}" | grep -q "${1}"; then
         npm install --silent -g "${1}"
+        local err=${?}
         prompt "Installing '${1}' using npm"
-        display_ko_ok
+        display_ko_ok ${err}
     else
         display_already_installed
     fi
@@ -34,7 +35,7 @@ npm_install() {
 
 prompt "Asking for 'sudo' rights: "
 sudo echo -n
-display_ko_ok
+display_ko_ok ${?}
 
 {{ if eq .chezmoi.os "linux" }}
 {{   if eq .chezmoi.osRelease.id "manjaro" -}}
@@ -67,7 +68,7 @@ for i in "git-core/ppa" "yubico/stable" "regolith-linux/stable"; do
         display_already_installed
     else
         sudo add-apt-repository -ny ppa:${i}
-        display_ko_ok
+        display_ko_ok $?
     fi
 done
 
@@ -76,19 +77,19 @@ if grep -q "https://deb.nodesource.com/node_16.x" /etc/apt/sources.list.d/nodeso
     display_already_installed
 else
     curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - > /dev/null
-    display_ko_ok
+    display_ko_ok $?
 fi
 
 # Refresh packages list
 prompt "Updating packages list: "
 sudo apt-get update --quiet --quiet
-display_ko_ok
+display_ko_ok $?
 
 # Install packages (nodejs = node + npm)
 UBUNTU_PKGS=(yubikey-manager yubikey-personalization-gui libpam-yubico libpam-u2f meld git git-lfs nodejs i3-gaps python3-pip python3-dev shellcheck zsh curl ripgrep fd-find)
 prompt "Installing ${UBUNTU_PKGS[*]}: "
 sudo apt-get install --assume-yes --quiet ${UBUNTU_PKGS[*]}
-display_ko_ok
+display_ko_ok $?
 
 # Install dunst
 DUNST_VERSION="1.8.1"
@@ -109,15 +110,15 @@ else
         libpango1.0-dev \
         libgtk-3-dev \
         libxdg-basedir-dev
-    display_ko_ok
+    display_ko_ok $?
 
     prompt "- Downloading and extracting source code:"
     curl --location --silent "https://github.com/dunst-project/dunst/archive/refs/tags/v${DUNST_VERSION}.tar.gz" | tar -xz -C /tmp -f -
-    display_ko_ok
+    display_ko_ok $?
 
     prompt "- Compiling source code: "
     make -C /tmp/dunst-${DUNST_VERSION} PREFIX=${HOME}/.local install
-    display_ko_ok
+    display_ko_ok $?
 
     rm -rf /tmp/dunst-${DUNST_VERSION}
 fi
@@ -150,11 +151,11 @@ else
         libxkbcommon-dev \
         libxkbcommon-x11-dev \
         libjpeg-dev
-    display_ko_ok
+    display_ko_ok $?
 
     prompt "- Downloading and extracting source code:"
     curl --location --silent "https://github.com/Raymo111/i3lock-color/archive/refs/tags/${I3LOCK_COLOR_VERSION}.tar.gz" | tar -xz -C /tmp -f -
-    display_ko_ok
+    display_ko_ok $?
 
     prompt "- Compiling source code: "
     autoreconf -fiv /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
@@ -163,7 +164,7 @@ else
     /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/configure --disable-sanitizers --prefix=${HOME}/.local
     cd -
     make -C /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build PREFIX=${HOME}/.local install
-    display_ko_ok
+    display_ko_ok $?
 
     rm -rf /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
 fi
