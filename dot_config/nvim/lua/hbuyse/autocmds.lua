@@ -1,12 +1,12 @@
-local has_packer, packer = pcall(require, 'packer')
-local has_lsp, _ = pcall(require, 'lspconfig')
-local has_lsp_extensions, lsp_extensions = pcall(require, 'lsp_extensions')
+local packer = require('packer')
+local lsp = require('lspconfig')
+local lsp_extensions = require('lsp_extensions')
 
 local has_stylua, stylua = pcall(require, 'formatters.stylua')
 local has_perltidy, perltidy = pcall(require, 'formatters.perltidy')
 local has_jsontool, jsontool = pcall(require, 'formatters.jsontool')
 
-if has_packer then
+if packer then
   -- Automatically compile packer when writing files in $HOME/.config/nvim
   local packer_gid = vim.api.nvim_create_augroup('AutoPackerCompilation', {})
   vim.api.nvim_create_autocmd('BufWritePost', {
@@ -22,23 +22,7 @@ if has_packer then
   })
 end
 
--- Change LSP hover colors
-if has_lsp then
-  local gid = vim.api.nvim_create_augroup('LSPHoverBorderColor', {})
-  local colors = {
-    NormalFloat = 'guibg=#4F4945',
-    FloatBorder = 'guifg=#EBDBB2 guibg=#4F4945',
-  }
-  for k, v in pairs(colors) do
-    vim.api.nvim_create_autocmd('ColorScheme', {
-      group = gid,
-      desc = 'Change color for LSP hover',
-      command = 'highlight ' .. k .. ' ' .. v,
-    })
-  end
-end
-
-if has_lsp and has_lsp_extensions then
+if lsp and lsp_extensions then
   -- Enable type inlay hints
   local lsp_inlay_hints_group_id = vim.api.nvim_create_augroup('LSPInlayHints', {})
   vim.api.nvim_create_autocmd({
