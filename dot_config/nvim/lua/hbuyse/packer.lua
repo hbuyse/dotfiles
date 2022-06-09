@@ -19,12 +19,10 @@ return require('packer').startup({
     -- git
     use({
       'tpope/vim-fugitive',
-      tag = '*',
     })
 
     use({
       'lewis6991/gitsigns.nvim',
-      tag = '*',
       requires = {
         'nvim-lua/plenary.nvim',
       },
@@ -36,7 +34,6 @@ return require('packer').startup({
     -- lsp
     use({
       'neovim/nvim-lspconfig',
-      tag = '*',
       requires = {
         'nvim-lua/lsp_extensions.nvim',
       },
@@ -370,7 +367,6 @@ return require('packer').startup({
     -- indentline
     use({
       'lukas-reineke/indent-blankline.nvim',
-      tag = '*',
       config = function()
         vim.cmd([[ highlight IndentBlanklineContextChar guifg=#a89984 guibg=NONE gui=NONE gui=nocombine ]])
         require('indent_blankline').setup({
@@ -415,7 +411,6 @@ return require('packer').startup({
     -- file-line
     use({
       'bogado/file-line',
-      tag = '*',
     })
 
     -- Startify
@@ -527,19 +522,15 @@ return require('packer').startup({
     -- Neogen
     use({
       'danymat/neogen',
-      tag = '*',
       config = function()
         require('neogen').setup({})
       end,
       requires = 'nvim-treesitter/nvim-treesitter',
-      -- Uncomment next line if you want to follow only stable versions
-      -- tag = "*"
     })
 
     -- surround.vim
     use({
       'tpope/vim-surround',
-      tag = '*',
     })
   end,
 })
