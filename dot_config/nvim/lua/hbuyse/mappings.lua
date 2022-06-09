@@ -93,6 +93,11 @@ local setup_mappings = function()
 
   -- In INSERT mode, doing 'jk' is equivalent to <Esc> (retunr to NORMAL mode)
   kmap('i', 'jk', '<Esc>')
+
+  -- Neogen
+  kmap('n', '<leader>nf', "<cmd>lua require('neogen').generate({type = 'func'})<CR>")
+  kmap('n', '<leader>nc', "<cmd>lua require('neogen').generate({ type = 'class' })<CR>")
+  kmap('n', '<leader>nt', "<cmd>lua require('neogen').generate({ type = 'type' })<CR>")
 end
 
 setup_mappings()
