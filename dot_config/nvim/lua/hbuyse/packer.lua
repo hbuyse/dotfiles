@@ -291,10 +291,18 @@ return require('packer').startup({
       requires = { 'rktjmp/lush.nvim' },
 
       config = function()
+        local colors = require('gruvbox.colors')
         vim.g.gruvbox_contrast_dark = 'medium'
         vim.g.gruvbox_sign_column = 'bg1'
         vim.g.gruvbox_hls_highlight = 'orange'
         vim.api.nvim_exec([[ colorscheme gruvbox ]], false)
+
+        -- Set the colors for LSP floating window
+        vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#4F4945' })
+        vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#4F4945', fg = colors.light1 })
+
+        -- Set colorcolumn colors
+        vim.api.nvim_set_hl(0, 'ColorColumn', { bg = colors.dark1 })
       end,
     })
 
