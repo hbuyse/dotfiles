@@ -77,6 +77,9 @@ local wopts = {
     -- space = '⋅',
   },
   scrolloff = 999,
+
+  -- Set colorcolumn
+  colorcolumn = '120,160',
 }
 
 -- Buffer options
