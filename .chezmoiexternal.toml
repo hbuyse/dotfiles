@@ -58,7 +58,7 @@
 
 [".local/bin/betterlockscreen"]
 	type = "file"
-	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/betterlockscreen"
+	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.0.4/betterlockscreen"
 	executable = true
 
 [".pyenv"]
