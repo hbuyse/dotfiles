@@ -292,6 +292,8 @@ return require('packer').startup({
 
       config = function()
         local colors = require('gruvbox.colors')
+        local has_bufferline, _ = pcall(require, 'bufferline')
+
         vim.g.gruvbox_contrast_dark = 'medium'
         vim.g.gruvbox_sign_column = 'bg1'
         vim.g.gruvbox_hls_highlight = 'orange'
@@ -303,6 +305,11 @@ return require('packer').startup({
 
         -- Set colorcolumn colors
         vim.api.nvim_set_hl(0, 'ColorColumn', { bg = colors.dark1 })
+
+        if has_bufferline then
+          vim.api.nvim_set_hl(0, 'BufferLineSeparatorVisible', { fg = colors.bright_orange })
+          vim.api.nvim_set_hl(0, 'BufferLineSeparatorSelected', { fg = colors.dark1 })
+        end
       end,
     })
 
@@ -539,6 +546,24 @@ return require('packer').startup({
     -- surround.vim
     use({
       'tpope/vim-surround',
+    })
+
+    -- bufferline (tabline)
+    use({
+      'akinsho/bufferline.nvim',
+      tag = 'v2.*',
+      requires = 'kyazdani42/nvim-web-devicons',
+      config = function()
+        require('bufferline').setup({
+          options = {
+            mode = 'buffers',
+            color_icons = true,
+            show_buffer_close_icons = false,
+            separator_style = 'slant',
+            always_show_bufferline = true,
+          },
+        })
+      end,
     })
   end,
 })
