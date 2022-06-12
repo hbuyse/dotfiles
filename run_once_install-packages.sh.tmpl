@@ -25,18 +25,27 @@ npm_install() {
     local pkg_and_version="${1}"
     local package="$(echo ${pkg_and_version} | cut -d'@' -f1)"
     local version="$(echo ${pkg_and_version} | cut -d'@' -f2)"
+
+    # Fix when package starts with '@'
+    if [ -z "${package}" ]; then
+        package="$(echo ${pkg_and_version} | cut -d'@' -f2)"
+        version="$(echo ${pkg_and_version} | cut -d'@' -f3)"
+    fi
+
     if [ -n "$(npm list --location=global -p ${pkg_and_version})" ]; then
         prompt "Installing '${pkg_and_version}' using npm"
         display_already_installed
     elif [ -n "$(npm list --location=global -p ${package})" ]; then
         prompt "Updating '${package}' to version '${version}' using npm"
-        npm update --silent -g "${pkg_and_version}"
+        npm install --silent --location=global "${pkg_and_version}"
         local err=${?}
-        prompt "Updating '${package}' to version '${version}' using npm"
+        if [ ${err} -eq 0 ]; then
+            prompt "Updating '${package}' to version '${version}' using npm"
+        fi
         display_ko_ok ${err}
     else
         prompt "Installing '${1}' using npm"
-        npm install --silent -g "${1}"
+        npm install --silent --location=global "${pkg_and_version}"
         local err=${?}
         prompt "Installing '${1}' using npm"
         display_ko_ok ${err}
