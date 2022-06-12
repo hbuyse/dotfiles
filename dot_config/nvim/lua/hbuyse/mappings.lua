@@ -98,6 +98,10 @@ local setup_mappings = function()
   kmap('n', '<leader>nf', "<cmd>lua require('neogen').generate({type = 'func'})<CR>")
   kmap('n', '<leader>nc', "<cmd>lua require('neogen').generate({ type = 'class' })<CR>")
   kmap('n', '<leader>nt', "<cmd>lua require('neogen').generate({ type = 'type' })<CR>")
+
+  -- Buffer movement
+  kmap('n', 'L', '<cmd>BufferLineCyclePrev<CR>')
+  kmap('n', 'H', '<cmd>BufferLineCycleNext<CR>')
 end
 
 setup_mappings()
