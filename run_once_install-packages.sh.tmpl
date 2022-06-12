@@ -216,7 +216,7 @@ sudo pkg install --automatic --yes \
 
 # Compile Neovim
 NEOVIM_VERSION="0.7.0"
-prompt "Installing Neovim v${NEOVIM_VERSION}: "
+prompt "Installing Neovim v${NEOVIM_VERSION}"
 if cmdexists "nvim" && nvim --version | grep -q ${NEOVIM_VERSION}; then
     display_already_installed
 else
