@@ -109,7 +109,7 @@ local function prepare_sumneko_lua_language_server()
   local sumneko_binary = ''
   local my_hostname = hostname.getHostname()
 
-  if my_hostname == nil then
+  if my_hostname == nil or my_hostname == 'freebsd' then
     return nil
   elseif my_hostname == 'T480' then
     sumneko_root_path = '/usr/lib/lua-language-server'
