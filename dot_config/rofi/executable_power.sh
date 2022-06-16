@@ -17,6 +17,11 @@ list() {
     echo -en "Reboot\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-reboot.svg\n"
     echo -en "Hibernate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-suspend-hibernate.svg\n"
     echo -en "Suspend\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/apps/system-suspend.svg\n"
+    if pgrep --exact redshift > /dev/null; then
+        echo -en "Deactivate Redshift\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/redshift-status-off.svg\n"
+    else
+        echo -en "Activate Redshift\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/redshift-status-on.svg\n"
+    fi
     if [[ "$(xset q | grep "DPMS is " | awk '{ print $3 }' | tr "[:upper:]" "[:lower:]")" == "disabled" ]]; then
         echo -en "Caffeinate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-full.svg\n"
     else
@@ -31,9 +36,9 @@ list() {
     fi
 }
 
-if [[ -n "$@" ]]
+if [[ -n "${@}" ]]
 then
-    case "$@" in
+    case "${@}" in
         "Uncaffeinate")
             xautolock -enable
             xset s 1800 1800 -dpms
@@ -68,6 +73,12 @@ then
             ;;
         "Do Not Disturb")
             dunstctl set-paused true
+            ;;
+        "Deactivate Redshift")
+            pkill redshift
+            ;;
+        "Activate Redshift")
+            "${HOME}/.config/redshift/launch.sh"
             ;;
     esac
 else
