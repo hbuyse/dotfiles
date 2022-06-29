@@ -240,13 +240,13 @@ fi
 # Install npm packages
 if cmdexists npm; then
     NPM_PKGS=(
-        "npm@8.11.0"
+        "npm@8.13.1"
         "diff-so-fancy@1.4.3"
-        "pyright@1.1.250"
-        "bash-language-server@3.0.3"
+        "pyright@1.1.256"
+        "bash-language-server@3.0.4"
         "vscode-langservers-extracted@4.2.1"
         "neovim@4.10.1"
-        "@marp-team/marp-cli@2.0.0"
+        "@marp-team/marp-cli@2.0.4"
     )
     for pkg in ${NPM_PKGS[*]}; do
         npm_install "${pkg}"
