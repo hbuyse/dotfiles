@@ -215,7 +215,7 @@ sudo pkg install --automatic --yes \
 {{ end -}}
 
 # Compile Neovim
-NEOVIM_VERSION="0.7.0"
+NEOVIM_VERSION="0.7.2"
 prompt "Installing Neovim v${NEOVIM_VERSION}"
 if cmdexists "nvim" && nvim --version | grep -q ${NEOVIM_VERSION}; then
     display_already_installed
@@ -225,7 +225,11 @@ else
     display_ko_ok $?
 
     prompt "- Compiling Neovim ${NEOVIM_VERSION}"
+{{ if eq .chezmoi.os "freebsd" -}}
     gmake CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=~/.local -C /tmp/neovim-${NEOVIM_VERSION} -j4 install
+{{ else }}
+    make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=~/.local -C /tmp/neovim-${NEOVIM_VERSION} -j4 install
+{{ end }}
     display_ko_ok $?
 
     prompt "- Removing /tmp/neovim-${NEOVIM_VERSION}"
