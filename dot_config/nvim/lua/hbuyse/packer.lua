@@ -291,7 +291,7 @@ return require('packer').startup({
       requires = { 'rktjmp/lush.nvim' },
 
       config = function()
-        local colors = require('gruvbox.colors')
+        local palette = require('gruvbox.palette')
         local has_bufferline, _ = pcall(require, 'bufferline')
 
         vim.g.gruvbox_contrast_dark = 'medium'
@@ -301,14 +301,14 @@ return require('packer').startup({
 
         -- Set the colors for LSP floating window
         vim.api.nvim_set_hl(0, 'NormalFloat', { bg = '#4F4945' })
-        vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#4F4945', fg = colors.light1 })
+        vim.api.nvim_set_hl(0, 'FloatBorder', { bg = '#4F4945', fg = palette.light1 })
 
         -- Set colorcolumn colors
-        vim.api.nvim_set_hl(0, 'ColorColumn', { bg = colors.dark1 })
+        vim.api.nvim_set_hl(0, 'ColorColumn', { bg = palette.dark1 })
 
         if has_bufferline then
-          vim.api.nvim_set_hl(0, 'BufferLineSeparatorVisible', { fg = colors.bright_orange })
-          vim.api.nvim_set_hl(0, 'BufferLineSeparatorSelected', { fg = colors.dark1 })
+          vim.api.nvim_set_hl(0, 'BufferLineSeparatorVisible', { fg = palette.bright_orange })
+          vim.api.nvim_set_hl(0, 'BufferLineSeparatorSelected', { fg = palette.dark1 })
         end
       end,
     })
