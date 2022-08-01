@@ -52,11 +52,11 @@ local setup_mappings = function()
 
   -- moveline
   kmap('n', '<a-j>', '<cmd>move .+1<cr>==')
-  kmap('i', '<a-j>', '<esc><cmd>move .+1<cr>==gi')
-  kmap('v', '<a-j>', "<cmd>move '>+1<cr>gv=gv")
   kmap('n', '<a-k>', '<cmd>move .-2<cr>==')
+  kmap('i', '<a-j>', '<esc><cmd>move .+1<cr>==gi')
   kmap('i', '<a-k>', '<esc><cmd>move .-2<cr>==gi')
-  kmap('v', '<a-k>', "<cmd>move '<-2<cr>gv=gv")
+  -- kmap('v', '<a-j>', "<cmd>move '>+1<cr>gv=gv")
+  -- kmap('v', '<a-k>', "<cmd>move '<-2<cr>gv=gv")
 
   -- Mappings to toggle folds
   -- With the following in your vimrc, you can toggle folds open/closed by pressing F9.
