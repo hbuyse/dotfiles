@@ -16,7 +16,7 @@ local setup_mappings = function()
   kmap(
     'n',
     '<leader>dt',
-    '<cmd>lua require"telescope.builtin".git_files({cwd = os.getenv("HOME") .. "/.dotfiles"})<CR>'
+    '<cmd>lua require"telescope.builtin".git_files({cwd = os.getenv("HOME") .. "/.local/share/chezmoi"})<CR>'
   )
 
   -- nvim-treesitter
