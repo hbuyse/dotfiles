@@ -89,6 +89,7 @@ plugins+=(sudo)
 {{- if eq .chezmoi.os "linux" }}
 plugins+=(docker)
 plugins+=(docker-compose)
+plugins+=(lxd)
 {{- end }}
 if ! in_chroot; then
 	plugins+=(direnv)
@@ -98,6 +99,9 @@ if ! in_chroot; then
 	plugins+=(virtualenvwrapper)
 	plugins+=(poetry)
 	plugins+=(rust)
+{{- if eq .chezmoi.hostname "freebsd" "hbuyse-latitude5400" }}
+	plugins+=(upd)
+{{- end }}
 fi
 
 # Custom oh-my-zsh plugins
@@ -107,9 +111,6 @@ plugins+=(zsh-history-substring-search)
 plugins+=(zsh-syntax-highlighting)
 {{- if eq .chezmoi.hostname "freebsd" }}
 plugins+=(chroot)
-{{- end }}
-{{ if eq .chezmoi.hostname "freebsd" "henrib-latitude5400" -}}
-plugins+=(upd)
 {{- end }}
 
 autoload -U compinit && compinit
