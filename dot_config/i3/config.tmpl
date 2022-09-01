@@ -133,7 +133,7 @@ set $ws4 "4:mail"
 set $ws5 "5:message"
 set $ws6 "6:spotify"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8:docker"
 set $ws9 "9:keepass"
 set $ws10 "10:zoom"
 set $ws11 "11"
@@ -240,6 +240,8 @@ for_window [class="(?i)spotify"] move container to workspace $ws6
 for_window [class="(?i)thunderbird"] move container to workspace $ws4
 for_window [class="(?i)mattermost"] move container to workspace $ws5
 for_window [class="(?i)discord"] move container to workspace $ws5
+for_window [class="(?i)docker desktop"] move container to workspace $ws8
+for_window [class="(?i)docker.*"] move container to workspace $ws8
 for_window [class="(?i)keepass.*"] move container to workspace $ws9
 for_window [class="(?i)zoom"] move container to workspace $ws10
 for_window [title="(?i)zoom meeting"] move container to workspace $ws10
