@@ -99,9 +99,6 @@ if ! in_chroot; then
 	plugins+=(virtualenvwrapper)
 	plugins+=(poetry)
 	plugins+=(rust)
-{{- if eq .chezmoi.hostname "freebsd" "hbuyse-latitude5400" }}
-	plugins+=(upd)
-{{- end }}
 fi
 
 # Custom oh-my-zsh plugins
