@@ -565,6 +565,9 @@ return require('packer').startup({
         })
       end,
     })
+
+    -- robot framework highlight
+    use('mfukar/robotframework-vim')
   end,
 })
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
