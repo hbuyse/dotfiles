@@ -113,3 +113,11 @@
 	type = "file"
 	url = "https://github.com/nextcloud/desktop/releases/download/v3.5.4/Nextcloud-3.5.4-x86_64.AppImage"
 	executable = true
+
+[ ".local/bin/bat" ]
+    type = "file"
+    url = "https://github.com/sharkdp/bat/releases/download/v0.22.1/bat-v0.22.1-x86_64-unknown-linux-gnu.tar.gz"
+    executable = true
+    [".local/bin/bat".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v0.22.1-x86_64-unknown-linux-gnu/bat"]
