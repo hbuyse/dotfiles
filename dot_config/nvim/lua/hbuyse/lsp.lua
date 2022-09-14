@@ -228,6 +228,9 @@ local servers = {
       },
     },
   },
+  robotframework_ls = {
+    on_attach = on_attach,
+  },
 }
 
 for lsp, conf in pairs(servers) do
