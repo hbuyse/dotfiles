@@ -41,3 +41,4 @@ application/pdf=FoxitReader.desktop
 application/ppdf=FoxitReader.desktop
 application/xfdf=FoxitReader.desktop
 application/fdf=FoxitReader.desktop
+x-scheme-handler/nc=com.nextcloud.desktopclient.nextcloud.desktop
