@@ -42,6 +42,9 @@ local opts = {
   --           select one from the menu. Only works in combination with
   --           "menu" or "menuone".
   completeopt = 'menuone,noinsert,noselect',
+
+  -- Disable mouse support
+  mouse = '',
 }
 
 -- Window options
