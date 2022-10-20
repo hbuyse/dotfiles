@@ -63,7 +63,7 @@
 
 [".pyenv"]
 	type = "archive"
-	url = "https://github.com/pyenv/pyenv/archive/refs/tags/v2.3.3.tar.gz"
+	url = "https://github.com/pyenv/pyenv/archive/refs/tags/v2.3.5.tar.gz"
 	exact = false
 	stripComponents = 1
 
