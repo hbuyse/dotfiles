@@ -1,6 +1,10 @@
 local packer = require('packer')
-local lsp = require('lspconfig')
-local lsp_extensions = require('lsp_extensions')
+local has_lsp, lsp = pcall(require, 'lspconfig')
+local has_extensions, lsp_extensions = pcall(require,'lsp_extensions')
+
+if has_lsp ~= true then
+  return
+end
 
 local has_stylua, stylua = pcall(require, 'formatters.stylua')
 local has_perltidy, perltidy = pcall(require, 'formatters.perltidy')
