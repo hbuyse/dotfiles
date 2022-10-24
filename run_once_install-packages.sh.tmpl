@@ -196,6 +196,14 @@ chmod +x $HOME/.local/bin/rust-analyzer
 {{ end -}}
 
 {{ if eq .chezmoi.os "freebsd" -}}
+# Copy /etc/pkg/FreeBSD.conf and change to https
+prompt "Copy pkg config and change UR to https: "
+if [ ! -f /usr/local/etc/pkg/FreeBSD.conf ]; then
+    cp /etc/pkg/FreeBSD.conf /usr/local/etc/pkg/FreeBSD.conf
+    sed -i 's/pkg+http:/pkg+https:/' /usr/local/etc/pkg/FreeBSD.conf
+    display_ko_ok $?
+fi
+
 # Install packages
 sudo pkg install --automatic --yes \
     age \
