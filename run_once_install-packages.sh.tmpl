@@ -226,9 +226,9 @@ sudo pkg install --automatic --yes \
     fzf \
     libtool \
     gettext
-{{- end -}}
+{{- end }}
 
-{{ if eq .chezmoi.os "freebsd" -}}
+{{- if eq .chezmoi.os "freebsd" }}
 # Compile Neovim
 NEOVIM_VERSION="0.8.1"
 prompt "Installing Neovim v${NEOVIM_VERSION}"
@@ -249,7 +249,7 @@ else
     rm -rf /tmp/neovim-${NEOVIM_VERSION}
     display_ko_ok $?
 fi
-{{- end -}}
+{{- end }}
 
 # Install npm packages
 if cmdexists npm; then
@@ -275,11 +275,11 @@ fi
 
 # Rustup
 if ! cmdexists rustup; then
-{{ if eq .chezmoi.os "freebsd" }}
+{{- if eq .chezmoi.os "freebsd" }}
     RUST_DEFAULT_HOST="x86_64-unknown-freebsd"
-{{ else }}
+{{- else }}
     RUST_DEFAULT_HOST="x86_64-unknown-linux-gnu"
-{{ end }}
+{{- end }}
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q --no-modify-path --default-host ${RUST_DEFAULT_HOST} --default-toolchain none --profile default -y
 fi
 
@@ -289,7 +289,7 @@ if ! cmdexists "rustc"; then
     rustup install toolchain stable
 fi
 
-{{ if ne .chezmoi.os "freebsd" }}
+{{- if ne .chezmoi.os "freebsd" }}
 # Install Papirus icon theme
 ICON_DIR="$HOME/.local/share/icons"
 ICON_THEME="Papirus"
@@ -300,6 +300,6 @@ if [ ! -d "${ICON_DIR}/${ICON_THEME}" ]; then
 else
     display_already_installed
 fi
-{{ end }}
+{{- end }}
 
 # vim: set ts=4 sw=4 tw=0 et ft=sh :
