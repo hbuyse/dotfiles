@@ -226,9 +226,9 @@ sudo pkg install --automatic --yes \
     fzf \
     libtool \
     gettext
+{{- end -}}
 
-{{ end -}}
-
+{{ if eq .chezmoi.os "freebsd" -}}
 # Compile Neovim
 NEOVIM_VERSION="0.8.1"
 prompt "Installing Neovim v${NEOVIM_VERSION}"
@@ -236,31 +236,20 @@ if cmdexists "nvim" && nvim --version | grep -q ${NEOVIM_VERSION}; then
     display_already_installed
 else
     prompt "- Installing build prerequisites"
-{{ if eq .chezmoi.os "linux" }}
-{{   if eq .chezmoi.osRelease.id "manjaro" -}}
-    sudo pacman -S base-devel cmake unzip ninja tree-sitter curl
-{{   else if eq .chezmoi.osRelease.id "ubuntu" -}}
-sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
-{{   end -}}
-{{ else if eq .chezmoi.os "freebsd" }}
     sudo pkg install cmake gmake libtool sha automake pkgconf unzip wget gettext curl
-{{ end -}}
     prompt "- Downloading Neovim ${NEOVIM_VERSION}"
     wget -O- https://github.com/neovim/neovim/archive/refs/tags/v${NEOVIM_VERSION}.tar.gz | tar -xz -C /tmp -f -
     display_ko_ok $?
 
     prompt "- Compiling Neovim ${NEOVIM_VERSION}"
-{{ if eq .chezmoi.os "freebsd" -}}
     gmake CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=~/.local -C /tmp/neovim-${NEOVIM_VERSION} -j4 install
-{{ else }}
-    make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=~/.local -C /tmp/neovim-${NEOVIM_VERSION} -j4 install
-{{ end }}
     display_ko_ok $?
 
     prompt "- Removing /tmp/neovim-${NEOVIM_VERSION}"
     rm -rf /tmp/neovim-${NEOVIM_VERSION}
     display_ko_ok $?
 fi
+{{- end -}}
 
 # Install npm packages
 if cmdexists npm; then
