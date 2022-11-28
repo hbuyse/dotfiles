@@ -3,7 +3,7 @@
 
 README.md
 
-{{- if eq .chezmoi.hostname "freebsd" }}
+{{- if eq .chezmoi.os "freebsd" }}
 .tmux.conf
 .config/autorandr
 .config/conky
