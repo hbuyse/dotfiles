@@ -1,9 +1,6 @@
 local packages = {
   'hbuyse.packer',
   'hbuyse.mappings',
-  'hbuyse.lsp',
-  'hbuyse.snippets',
-  'hbuyse.autocmds',
 }
 for _, v in ipairs(packages) do
   require(v)
