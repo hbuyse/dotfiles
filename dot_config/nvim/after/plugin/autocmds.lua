@@ -1,14 +1,6 @@
 local packer = require('packer')
-local has_lsp, lsp = pcall(require, 'lspconfig')
-local has_extensions, lsp_extensions = pcall(require,'lsp_extensions')
-
-if has_lsp ~= true then
-  return
-end
-
-local has_stylua, stylua = pcall(require, 'formatters.stylua')
-local has_perltidy, perltidy = pcall(require, 'formatters.perltidy')
-local has_jsontool, jsontool = pcall(require, 'formatters.jsontool')
+local lsp = pcall(require, 'lspconfig')
+local lsp_extensions = pcall(require, 'lsp_extensions')
 
 if packer then
   -- Automatically compile packer when writing files in $HOME/.config/nvim
@@ -45,45 +37,6 @@ if lsp and lsp_extensions then
         highlight = 'Comment',
         enabled = { 'TypeHint', 'ChainingHint', 'ParameterHint' },
       })
-    end,
-  })
-end
-
--- Automatically format Lua code
-if has_stylua and vim.fn.executable('stylua') == 1 then
-  local gid = vim.api.nvim_create_augroup('StyluaAuto', {})
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    group = gid,
-    desc = 'Stylua Code Formatter',
-    pattern = '*.lua',
-    callback = function()
-      stylua.format()
-    end,
-  })
-end
-
--- Automatically format Perl code
-if has_perltidy and vim.fn.executable('perltidy') == 1 then
-  local gid = vim.api.nvim_create_augroup('PerltidyAuto', {})
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    group = gid,
-    desc = 'Perltidy Code Formatter',
-    pattern = { '*.pl', '*.pm' },
-    callback = function()
-      perltidy.format()
-    end,
-  })
-end
-
--- Automatically format Perl code
-if has_jsontool then
-  local gid = vim.api.nvim_create_augroup('JsonFormaterAuto', {})
-  vim.api.nvim_create_autocmd('BufWritePre', {
-    group = gid,
-    desc = 'JSON Code Formatter',
-    pattern = '*.json',
-    callback = function()
-      jsontool.format()
     end,
   })
 end
