@@ -11,8 +11,8 @@ require('nvim-tree').setup({
 })
 
 local nkeymaps = {
-  ['<F2>'] = '<cmd>NvimTreeToggle<CR>',
+  ['<F2>'] = { cmd = '<cmd>NvimTreeToggle<CR>', desc = 'Toggle Nvim-Tree' },
 }
-for map, cmd in pairs(nkeymaps) do
-  vim.keymap.set('n', map, cmd, { noremap = true, silent = true })
+for k, v in pairs(nkeymaps) do
+  vim.keymap.set('n', k, v.cmd, { noremap = true, silent = true, desc = v.desc })
 end
