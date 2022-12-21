@@ -1,8 +1,3 @@
-local function kmap(mode, key, result)
-  -- TODO: use vim.api.nvim_buf_set_keymap after
-  vim.keymap.set(mode, key, result, { noremap = true, silent = true })
-end
-
 require('telescope').setup({
   defaults = {
     prompt_prefix = '   ',
@@ -56,16 +51,19 @@ require('telescope').setup({
 require('telescope').load_extension('file_browser')
 
 local nkeymaps = {
-  ['<C-p>'] = '<cmd>lua require"telescope.builtin".find_files()<CR>',
-  ['<leader>fs'] = '<cmd>lua require"telescope.builtin".live_grep()<CR>',
-  ['<leader>fw'] = '<cmd>lua require"telescope.builtin".grep_string({search = vim.fn.expand("<cword>")})<CR>',
-  ['<leader>ff'] = '<cmd>lua require"telescope.builtin".grep_string()<CR>',
-  ['<leader>fh'] = '<cmd>lua require"telescope.builtin".help_tags()<CR>',
-  ['<leader>fb'] = '<cmd>lua require"telescope.builtin".buffers()<CR>',
-  ['<leader>fq'] = '<cmd>lua require"telescope.builtin".quickfix()<CR>',
-  ['<leader>fg'] = '<cmd>lua require"telescope.builtin".git_files()<CR>',
-  ['<leader>dt'] = '<cmd>lua require"telescope.builtin".git_files({cwd = os.getenv("HOME") .. "/.local/share/chezmoi"})<CR>',
+  ['<C-p>'] = { cmd = require('telescope.builtin').find_files, desc = 'Search Files' },
+  ['<leader>sf'] = { cmd = require('telescope.builtin').find_files, desc = '[S]earch [F]iles' },
+  ['<leader>sg'] = { cmd = require('telescope.builtin').live_grep, desc = '[S]earch by [G]rep' },
+  ['<leader>sw'] = { cmd = require('telescope.builtin').grep_string, desc = '[S]earch current [W]ord' },
+  ['<leader>sh'] = { cmd = require('telescope.builtin').help_tags, desc = '[S]earch [H]elp' },
+  ['<leader>sb'] = { cmd = require('telescope.builtin').buffers, desc = '[S]earch [B]uffers' },
+  ['<leader>dt'] = {
+    cmd = function()
+      require('telescope.builtin').git_files({ cwd = os.getenv('HOME') .. '/.local/share/chezmoi' })
+    end,
+    desc = 'Search in [D]o[T]files',
+  },
 }
-for map, cmd in pairs(nkeymaps) do
-  vim.keymap.set('n', map, cmd, { noremap = true, silent = true })
+for k, v in pairs(nkeymaps) do
+  vim.keymap.set('n', k, v.cmd, { noremap = true, silent = true, desc = v.desc })
 end
