@@ -69,11 +69,27 @@ require('mason-tool-installer').setup({
   -- Default: 0
   start_delay = 0,
 })
+require('mason.settings').set({
+  ui = {
+    border = 'rounded',
+  },
+})
 
 local lsp = require('lsp-zero')
 local has_telescope, _ = pcall(require, 'telescope')
 
-lsp.preset('recommended')
+-- lsp.preset('recommended')
+local function custom_preset()
+  local opts = require('lsp-zero.presets').recommended()
+
+  opts[1] = 'custom'
+  -- Disable preset keymaps to not pollute my keymaps
+  opts.set_lsp_keymaps = false
+
+  return opts
+end
+
+lsp.set_preferences(custom_preset())
 
 lsp.ensure_installed({
   'awk_ls', -- awk-language-server
@@ -125,41 +141,41 @@ lsp.set_preferences({
 
 -- Set some key mappings
 local function lsp_keymaps(client, bufnr)
-  local kmap = function(m, lhs, rhs)
-    local opts = { remap = false, silent = true, buffer = bufnr }
+  local kmap = function(m, lhs, rhs, desc)
+    local opts = { remap = false, silent = true, buffer = bufnr, desc = desc }
     vim.keymap.set(m, lhs, rhs, opts)
   end
   --
   -- Set some keybinds conditional on server capabilities
   if client.server_capabilities.documentFormattingProvider then
-    kmap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>')
+    kmap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', 'Format current buffer with LSP')
   elseif client.server_capabilities.documentRangeFormattingProvider then
-    kmap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>')
+    kmap('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', 'Format current buffer with LSP')
   end
 
   -- Diagnostics keymaps
-  kmap('n', '<leader>dn', vim.diagnostic.goto_next)
-  kmap('n', '<leader>dp', vim.diagnostic.goto_prev)
-  kmap('n', '<leader>ds', vim.diagnostic.open_float)
+  kmap('n', '<leader>dn', vim.diagnostic.goto_next, '[D]iagnostic [N]ext')
+  kmap('n', '<leader>dp', vim.diagnostic.goto_prev, '[D]iagnostic [P]revious')
+  kmap('n', '<leader>dl', vim.diagnostic.open_float, '[D]iagnostics In [L]ine')
 
   -- LSP keymaps
-  kmap('n', 'gd', vim.lsp.buf.definition)
-  kmap('n', 'gD', vim.lsp.buf.declaration)
-  kmap('n', 'gi', vim.lsp.buf.implementation)
-  kmap('n', 'gw', vim.lsp.buf.document_symbol)
-  kmap('n', 'gW', vim.lsp.buf.workspace_symbol)
-  kmap('n', 'gr', vim.lsp.buf.references)
-  kmap('n', 'gt', vim.lsp.buf.type_definition)
-  kmap('n', 'K', vim.lsp.buf.hover)
-  kmap('n', '<c-k>', vim.lsp.buf.signature_help)
-  kmap('n', '<leader>ca', vim.lsp.buf.code_action)
-  kmap('n', '<leader>rn', vim.lsp.buf.rename)
+  kmap('n', 'gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
+  kmap('n', 'gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+  kmap('n', 'gi', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
+  kmap('n', '<leader>ds', vim.lsp.buf.document_symbol, '[D]ocument [S]ymbols')
+  kmap('n', '<leader>ws', vim.lsp.buf.workspace_symbol, '[W]orkspace [S]ymbols')
+  kmap('n', 'gr', vim.lsp.buf.references, '[G]oto [R]eferences')
+  kmap('n', 'gt', vim.lsp.buf.type_definition, '[G]oto [T]ype definition')
+  kmap('n', 'K', vim.lsp.buf.hover, 'Hover Documentation')
+  kmap('n', '<c-k>', vim.lsp.buf.signature_help, 'Signature Documenation')
+  kmap('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+  kmap('n', '<leader>rn', vim.lsp.buf.rename, '[R]e[N]ame')
 
   -- Telescope
   if has_telescope then
     local builtin = require('telescope.builtin')
-    kmap('n', '<leader>fr', builtin.lsp_references)
-    kmap('n', '<leader>fd', builtin.diagnostics)
+    kmap('n', '<leader>fr', builtin.lsp_references, '[F]ind [R]eferences')
+    kmap('n', '<leader>fd', builtin.diagnostics, '[F]ind [D]iagnostics')
   end
 end
 
@@ -241,3 +257,4 @@ require('lspkind').init({
 })
 
 require('fidget').setup({})
+--  vim: set ts=2 sw=2 tw=0 noet ft=lua :

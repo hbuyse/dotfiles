@@ -31,8 +31,8 @@ require('nvim-treesitter.configs').setup({
 })
 
 local nkeymaps = {
-  ['<F3>'] = '<cmd>TSPlaygroundToggle<CR>',
+  ['<F3>'] = { cmd = '<cmd>TSPlaygroundToggle<CR>', desc = 'Toggle TreeSitter Playground' },
 }
-for map, cmd in pairs(nkeymaps) do
-  vim.keymap.set('n', map, cmd, { noremap = true, silent = true })
+for k, v in pairs(nkeymaps) do
+  vim.keymap.set('n', k, v.cmd, { noremap = true, silent = true, desc = v.desc })
 end
