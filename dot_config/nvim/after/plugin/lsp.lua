@@ -163,3 +163,5 @@ require('lspkind').init({
     Struct = '',
   },
 })
+
+require('fidget').setup({})

@@ -1,20 +1,21 @@
 -- This file can be loaded by calling `lua require('packer')`
-
-local fn = vim.fn
-
-local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+    vim.cmd([[packadd packer.nvim]])
+    return true
+  end
+  return false
 end
 
--- Only required if you have packer in your `opt` pack
-vim.api.nvim_command('packadd packer.nvim')
+local packer_bootstrap = ensure_packer()
 
 return require('packer').startup({
-  function()
+  function(use)
     -- Packer can manage itself as an optional plugin
-    use({ 'wbthomason/packer.nvim', opt = true })
+    use({ 'wbthomason/packer.nvim' })
 
     -- git
     use({
@@ -50,6 +51,9 @@ return require('packer').startup({
 
         -- Icons
         { 'onsails/lspkind-nvim' },
+
+        -- Standalone UI for nvim-lsp progress
+        { 'j-hui/fidget.nvim' },
       },
     })
 
@@ -99,8 +103,13 @@ return require('packer').startup({
     -- doxygen
     use('vim-scripts/DoxygenToolkit.vim')
 
-    -- kommentary
-    use('b3nj5m1n/kommentary')
+    -- comments
+    use({
+      'numToStr/Comment.nvim',
+      config = function()
+        require('Comment').setup()
+      end,
+    })
 
     -- colorizer
     use('norcalli/nvim-colorizer.lua')
@@ -138,6 +147,12 @@ return require('packer').startup({
 
     -- robot framework highlight
     use('mfukar/robotframework-vim')
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
+      require('packer').sync()
+    end
   end,
 })
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
