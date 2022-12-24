@@ -24,9 +24,9 @@ return require('packer').startup({
 
     use({
       'lewis6991/gitsigns.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-      },
+      config = function()
+        require('gitsigns').setup({})
+      end,
     })
 
     use({
@@ -36,6 +36,7 @@ return require('packer').startup({
         { 'neovim/nvim-lspconfig' },
         { 'williamboman/mason.nvim' },
         { 'williamboman/mason-lspconfig.nvim' },
+        { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
 
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
@@ -132,6 +133,10 @@ return require('packer').startup({
     -- Neogen
     use({
       'danymat/neogen',
+      config = function()
+        require('neogen').setup({})
+      end,
+      tag = '*',
       requires = 'nvim-treesitter/nvim-treesitter',
     })
 

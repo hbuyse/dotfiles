@@ -4,7 +4,7 @@ function M.getHostname()
   local f = io.open('/etc/hostname')
 
   if not f then
-	return nil
+    return nil
   end
 
   local hostname = f:read('*a') or ''

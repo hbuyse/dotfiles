@@ -1,17 +1,93 @@
+require('mason').setup({
+  ui = {
+    icons = {
+      package_installed = '✓',
+      package_pending = '➜',
+      package_uninstalled = '✗',
+    },
+  },
+})
+require('mason-tool-installer').setup({
+
+  -- a list of all tools you want to ensure are installed upon
+  -- start; they should be the names Mason uses for each tool
+  ensure_installed = {
+    -- LSPs
+    'awk-language-server',
+    'bash-language-server',
+    'clangd',
+    'cmake-language-server',
+    'json-lsp',
+    'nginx-language-server',
+    'robotframework-lsp',
+    'rust-analyzer',
+    'lua-language-server',
+    'pyright',
+    'texlab',
+    'yaml-language-server',
+
+    -- Linters
+    'cmakelang',
+    --'commitlint',
+    'cpplint',
+    'gitlint',
+    'pylint',
+    'shellcheck',
+    'markdownlint',
+    'rstcheck',
+    'yamllint',
+
+    -- Formatters
+    'beautysh',
+    'black',
+    'clang-format',
+    'cmakelang',
+    'fixjson',
+    'isort',
+    'jq',
+    'rustfmt',
+    'stylua',
+    'xmlformatter',
+    'yamlfmt',
+  },
+
+  -- if set to true this will check each tool for updates. If updates
+  -- are available the tool will be updated. This setting does not
+  -- affect :MasonToolsUpdate or :MasonToolsInstall.
+  -- Default: false
+  auto_update = false,
+
+  -- automatically install / update on startup. If set to false nothing
+  -- will happen on startup. You can use :MasonToolsInstall or
+  -- :MasonToolsUpdate to install tools and check for updates.
+  -- Default: true
+  run_on_start = true,
+
+  -- set a delay (in ms) before the installation starts. This is only
+  -- effective if run_on_start is set to true.
+  -- e.g.: 5000 = 5 second delay, 10000 = 10 second delay, etc...
+  -- Default: 0
+  start_delay = 0,
+})
+
 local lsp = require('lsp-zero')
 local has_telescope, _ = pcall(require, 'telescope')
 
 lsp.preset('recommended')
 
 lsp.ensure_installed({
-  'clangd',
-  'pyright',
-  'bashls',
-  'texlab',
-  'jsonls',
-  'sumneko_lua',
-  'rust_analyzer',
-  'robotframework_ls',
+  'awk_ls', -- awk-language-server
+  'bashls', -- bash-language-server
+  'clangd', -- clangd
+  'cmake', -- cmake-language-server
+  'jsonls', -- json-lsp
+  -- 'nginx-language-server' (not in lspconfig for now)
+  'robotframework_ls', -- robotframework-lsp
+  'rust_analyzer', -- rust_analyzer
+  'sumneko_lua', -- lua-language-server
+  'pyright', -- pyright
+  'texlab', -- texlab
+  'yamlls', -- yaml-language-server
 })
 
 -- Fix Undefined global 'vim'
