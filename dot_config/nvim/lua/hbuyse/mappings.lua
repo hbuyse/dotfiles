@@ -70,17 +70,17 @@ kmap('x', '<leader>p', '"_dp')
 kmap('x', '<leader>P', '"_dP')
 
 -- Open command to replace the word under cursor in the whole document
-kmap(
+vim.keymap.set(
   'n',
   '<leader>rd',
   ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
-  '[R]eplace word under cursor in whole [D]ocument'
+  { desc = '[R]eplace word under cursor in whole [D]ocument' }
 )
-kmap(
+vim.keymap.set(
   'n',
   '<leader>rl',
   ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
-  '[R]eplace word under cursor in current [L]ine'
+  { desc = '[R]eplace word under cursor in current [L]ine' }
 )
 
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
