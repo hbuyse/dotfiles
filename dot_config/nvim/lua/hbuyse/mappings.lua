@@ -60,7 +60,7 @@ end
 kmap('i', 'jk', '<Esc>', 'jk == <Esc>')
 
 -- Do nothing
-kmap('n', 'Q', '<nop>')
+kmap('n', 'Q', '<nop>', 'Disable key Q')
 
 -- Do not move the cursor when doing 'J' in normal mode
 kmap('n', 'J', 'mzJ`z')
