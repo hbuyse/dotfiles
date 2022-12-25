@@ -72,9 +72,15 @@ kmap('x', '<leader>P', '"_dP')
 -- Open command to replace the word under cursor in the whole document
 kmap(
   'n',
-  '<leader>s',
-  ':%s/<<C-r><C-w>>/<C-r><C-w>/gI<Left><Left><Left>',
-  'Replace word under cursor in whole document'
+  '<leader>rd',
+  ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
+  '[R]eplace word under cursor in whole [D]ocument'
+)
+kmap(
+  'n',
+  '<leader>rl',
+  ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
+  '[R]eplace word under cursor in current [L]ine'
 )
 
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
