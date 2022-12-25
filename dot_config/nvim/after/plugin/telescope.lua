@@ -52,11 +52,13 @@ require('telescope').load_extension('file_browser')
 
 local nkeymaps = {
   ['<C-p>'] = { cmd = require('telescope.builtin').find_files, desc = 'Search Files' },
+  ['<leader>sb'] = { cmd = require('telescope.builtin').buffers, desc = '[S]earch [B]uffers' },
+  ['<leader>sd'] = { cmd = require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics' },
   ['<leader>sf'] = { cmd = require('telescope.builtin').find_files, desc = '[S]earch [F]iles' },
   ['<leader>sg'] = { cmd = require('telescope.builtin').live_grep, desc = '[S]earch by [G]rep' },
-  ['<leader>sw'] = { cmd = require('telescope.builtin').grep_string, desc = '[S]earch current [W]ord' },
   ['<leader>sh'] = { cmd = require('telescope.builtin').help_tags, desc = '[S]earch [H]elp' },
-  ['<leader>sb'] = { cmd = require('telescope.builtin').buffers, desc = '[S]earch [B]uffers' },
+  ['<leader>sr'] = { cmd = require('telescope.builtin').lsp_references, '[S]earch [R]eferences' },
+  ['<leader>sw'] = { cmd = require('telescope.builtin').grep_string, desc = '[S]earch current [W]ord' },
   ['<leader>dt'] = {
     cmd = function()
       require('telescope.builtin').git_files({ cwd = os.getenv('HOME') .. '/.local/share/chezmoi' })

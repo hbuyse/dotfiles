@@ -170,13 +170,6 @@ local function lsp_keymaps(client, bufnr)
   kmap('n', '<c-k>', vim.lsp.buf.signature_help, 'Signature Documenation')
   kmap('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
   kmap('n', '<leader>rn', vim.lsp.buf.rename, '[R]e[N]ame')
-
-  -- Telescope
-  if has_telescope then
-    local builtin = require('telescope.builtin')
-    kmap('n', '<leader>fr', builtin.lsp_references, '[F]ind [R]eferences')
-    kmap('n', '<leader>fd', builtin.diagnostics, '[F]ind [D]iagnostics')
-  end
 end
 
 local function lsp_document_highlight(bufnr)
