@@ -66,8 +66,7 @@ kmap('n', 'Q', '<nop>', 'Disable key Q')
 kmap('n', 'J', 'mzJ`z')
 
 -- Remap the p command in visual mode so that it first deletes to the black hole register
-kmap('x', '<leader>p', '"_dp')
-kmap('x', '<leader>P', '"_dP')
+kmap('x', '<leader>p', '"_dP')
 
 -- Open command to replace the word under cursor in the whole document
 vim.keymap.set(
