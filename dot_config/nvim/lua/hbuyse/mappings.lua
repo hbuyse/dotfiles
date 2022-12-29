@@ -78,7 +78,7 @@ vim.keymap.set(
 vim.keymap.set(
   'n',
   '<leader>rl',
-  ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
+  ':s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
   { desc = '[R]eplace word under cursor in current [L]ine' }
 )
 
