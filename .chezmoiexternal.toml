@@ -125,6 +125,6 @@
 {{ if eq .chezmoi.os "linux" -}}
 [ ".local/bin/nvim" ]
     type = "file"
-    url = "https://github.com/neovim/neovim/releases/download/v0.8.1/nvim.appimage"
+    url = "https://github.com/neovim/neovim/releases/download/v0.8.2/nvim.appimage"
     executable = true
 {{- end }}
