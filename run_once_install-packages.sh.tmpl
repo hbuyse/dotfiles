@@ -78,10 +78,12 @@ sudo pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm \
     ripgrep \
     fd
 
+sudo paru -Sy cava
+
 {{   else if eq .chezmoi.osRelease.id "ubuntu" -}}
 # Add PPAs
 echo "Installing PPAs"
-for i in "git-core/ppa" "yubico/stable" "regolith-linux/stable"; do
+for i in "git-core/ppa" "yubico/stable" "regolith-linux/stable" "hsheth2/ppa"; do
     prompt "- ${i}:"
     if grep -riq "${i}" "/etc/apt/sources.list.d"; then
         display_already_installed
@@ -105,7 +107,7 @@ sudo apt-get update --quiet --quiet
 display_ko_ok $?
 
 # Install packages (nodejs = node + npm)
-UBUNTU_PKGS=(yubikey-manager yubikey-personalization-gui libpam-yubico libpam-u2f meld git git-lfs nodejs i3-gaps python3-pip python3-dev shellcheck zsh curl ripgrep fd-find)
+UBUNTU_PKGS=(yubikey-manager yubikey-personalization-gui libpam-yubico libpam-u2f meld git git-lfs nodejs i3-gaps python3-pip python3-dev shellcheck zsh curl ripgrep fd-find cava)
 prompt "Installing ${UBUNTU_PKGS[*]}: "
 sudo apt-get install --assume-yes --quiet ${UBUNTU_PKGS[*]}
 display_ko_ok $?
