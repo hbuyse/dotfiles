@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Cava
+GenericName=Audio Visualizer
+Comment=Bar spectrum audio visualizer for terminal
+TryExec=cava
+Exec=cava
+Terminal=true
+Type=Application
+Keywords=Audio;Visualizer;
+Icon=com.alacritty.Alacritty
+Categories=Utility;Audio;
+StartupNotify=false
