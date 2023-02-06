@@ -232,7 +232,7 @@ sudo pkg install --automatic --yes \
 
 {{- if eq .chezmoi.os "freebsd" }}
 # Compile Neovim
-NEOVIM_VERSION="0.8.2"
+NEOVIM_VERSION="0.8.3"
 prompt "Installing Neovim v${NEOVIM_VERSION}"
 if cmdexists "nvim" && nvim --version | grep -q ${NEOVIM_VERSION}; then
     display_already_installed
