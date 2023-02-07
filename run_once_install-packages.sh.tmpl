@@ -206,7 +206,7 @@ if [ ! -f ${FREEBSD_PKG_REPOS}/FreeBSD.conf ]; then
     sudo cp /etc/pkg/FreeBSD.conf ${FREEBSD_PKG_REPOS}/FreeBSD.conf
     display_ko_ok $?
     prompt "Change URL to HTTPS: "
-    sudo sed -i -e 's/pkg\+http:/pkg\+https:/' ${FREEBSD_PKG_REPOS}/FreeBSD.conf
+    sudo sed -i -e 's/pkg\+http:/pkg\+https:/' -e 's/latest/quaterly/' ${FREEBSD_PKG_REPOS}/FreeBSD.conf
     display_ko_ok $?
 fi
 
