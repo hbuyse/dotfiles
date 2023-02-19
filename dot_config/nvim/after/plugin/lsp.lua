@@ -100,14 +100,14 @@ lsp.ensure_installed({
   -- 'nginx-language-server' (not in lspconfig for now)
   'robotframework_ls', -- robotframework-lsp
   'rust_analyzer', -- rust_analyzer
-  'sumneko_lua', -- lua-language-server
+  'lua_ls', -- lua-language-server
   'pyright', -- pyright
   'texlab', -- texlab
   'yamlls', -- yaml-language-server
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
   settings = {
     Lua = {
       diagnostics = {
