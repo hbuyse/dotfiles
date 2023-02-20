@@ -51,16 +51,6 @@
 	exact = false
 	stripComponents = 1
 
-[".local/share/fonts/Hack"]
-	type = "archive"
-	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip"
-	exact = true
-
-[".local/bin/betterlockscreen"]
-	type = "file"
-	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.0.4/betterlockscreen"
-	executable = true
-
 [".pyenv"]
 	type = "archive"
 	url = "https://github.com/pyenv/pyenv/archive/refs/tags/v2.3.5.tar.gz"
@@ -110,6 +100,16 @@
 	refreshPeriod = "168h"
 
 {{ if eq .chezmoi.os "linux" -}}
+[".local/share/fonts/Hack"]
+	type = "archive"
+	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip"
+	exact = true
+
+[".local/bin/betterlockscreen"]
+	type = "file"
+	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.0.4/betterlockscreen"
+	executable = true
+
 [ ".local/bin/nextcloud" ]
 	type = "file"
 	url = "https://github.com/nextcloud/desktop/releases/download/v3.6.6/Nextcloud-3.6.6-x86_64.AppImage"
