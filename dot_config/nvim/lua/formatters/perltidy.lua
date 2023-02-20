@@ -9,6 +9,7 @@ perltidy.format = function(bufnr)
   local j = Job:new({
     'perltidy',
     '-q',
+    '-se',
     '-',
     writer = vim.api.nvim_buf_get_lines(0, 0, -1, false),
   })
@@ -30,6 +31,8 @@ perltidy.format = function(bufnr)
   -- Handle some weird snippet problems. Not everyone will necessarily have this problem.
   Luasnip_current_nodes = Luasnip_current_nodes or {}
   Luasnip_current_nodes[bufnr] = nil
+
+  print('[perltidy] done')
 end
 
 return perltidy
