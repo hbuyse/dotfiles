@@ -25,9 +25,9 @@ if cmd_exists picom; then
 fi
 
 # Start redshift
-if cmd_exists redshift; then
-  $HOME/.config/redshift/launch.sh
-fi
+# if cmd_exists redshift; then
+#   $HOME/.config/redshift/launch.sh
+# fi
 
 # Update lockscreen
 if cmd_exists betterlockscreen; then
