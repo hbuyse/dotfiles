@@ -102,7 +102,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 [".local/share/fonts/Hack"]
 	type = "archive"
-	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip"
+	url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
 	exact = true
 
 [".local/bin/betterlockscreen"]
