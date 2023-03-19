@@ -112,7 +112,7 @@
 
 [ ".local/bin/nextcloud" ]
 	type = "file"
-	url = "https://github.com/nextcloud/desktop/releases/download/v3.6.6/Nextcloud-3.6.6-x86_64.AppImage"
+	url = "https://github.com/nextcloud/desktop/releases/download/v3.7.4/Nextcloud-3.7.4-x86_64.AppImage"
 	executable = true
 
 [ ".local/bin/bat" ]
