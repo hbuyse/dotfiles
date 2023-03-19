@@ -105,11 +105,6 @@
 	url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
 	exact = true
 
-[".local/bin/conky"]
-	type = "file"
-	url = "https://github.com/brndnmtthws/conky/releases/latest/download/conky-x86_64.AppImage"
-	executable = true
-
 [".local/bin/betterlockscreen"]
 	type = "file"
 	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.0.4/betterlockscreen"
