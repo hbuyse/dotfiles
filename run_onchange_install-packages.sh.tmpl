@@ -52,6 +52,26 @@ npm_install() {
     fi
 }
 
+cargo_install() {
+    local pkg_and_version="${1}"
+    local package="$(echo ${pkg_and_version} | cut -d'@' -f1)"
+    local version="$(echo ${pkg_and_version} | cut -d'@' -f2)"
+
+    if cargo install --list | grep -q "${package} v${version}"; then
+        prompt "Installing '${package} v${version}' using cargo"
+        display_already_installed
+    else
+        if cargo install --list | grep -q "${package}"; then
+            prompt "Updating '${package}' to version '${version}' using cargo"
+        else
+            prompt "Installing '${1}' using cargo"
+        fi
+        cargo install --version="${version}" --locked --quiet --jobs=4 "${package}"
+        local err=${?}
+        display_ko_ok ${err}
+    fi
+}
+
 prompt "Asking for 'sudo' rights: "
 sudo echo -n
 display_ko_ok ${?}
@@ -290,12 +310,30 @@ if ! cmdexists rustup; then
 fi
 
 # Rust compiler
+source ${HOME}/.cargo/env
 if ! cmdexists "rustc"; then
-    source ${HOME}/.cargo/env
     rustup install toolchain stable
 fi
 
-{{- if ne .chezmoi.os "freebsd" }}
+# Install cargo package
+if cmdexists cargo; then
+    CARGO_PKGS=(
+        "bottom@0.8.0"
+        "fd@8.7.0"
+        "stylua@0.11.0"
+        "texlab@3.3.2"
+{{- if eq .chezmoi.os "linux" }}
+        "alacritty@0.12.0"
+        "spotify-tui@0.25.0"
+        "spotifyd@0.3.4"
+{{- end }}
+    )
+    for pkg in ${CARGO_PKGS[*]}; do
+        cargo_install "${pkg}"
+    done
+fi
+
+{{ if ne .chezmoi.os "freebsd" -}}
 # Install Papirus icon theme
 ICON_DIR="$HOME/.local/share/icons"
 ICON_THEME="Papirus"
