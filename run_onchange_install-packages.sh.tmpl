@@ -93,8 +93,8 @@ for i in "git-core/ppa" "yubico/stable" "regolith-linux/stable" "hsheth2/ppa"; d
     fi
 done
 
-prompt "Installing Node JS 16 (LTS) repo"
-if grep -q "https://deb.nodesource.com/node_16.x" /etc/apt/sources.list.d/nodesource.list; then
+prompt "Installing Node JS 18 (LTS) repo"
+if grep -q "https://deb.nodesource.com/node_18.x" /etc/apt/sources.list.d/nodesource.list; then
     display_already_installed
 else
     curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - > /dev/null
