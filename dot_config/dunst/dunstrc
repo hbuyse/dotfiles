@@ -37,10 +37,10 @@ progress_bar = true
 #
 # Set the progress bar height. This includes the frame, so make sure
 # it's at least twice as big as the frame width.
-progress_bar_height = 10
+progress_bar_height = 7
 
 # Set the frame width of the progress bar
-progress_bar_frame_width = 1
+progress_bar_frame_width = 2
 
 # Set the minimum width for the progress bar
 progress_bar_min_width = 250
@@ -289,6 +289,15 @@ timeout = 10
 frame_color = "#1db954"
 background = "#191414"
 foreground = "#ffffff"
+highlight  = "#1ed760"
+
+[spotifyd]
+appname = spotifyd
+timeout = 10
+frame_color = "#1db954"
+background = "#191414"
+foreground = "#ffffff"
+highlight  = "#1ed760"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
