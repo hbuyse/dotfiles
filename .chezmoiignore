@@ -11,9 +11,18 @@ README.md
 .config/i3
 .config/picom
 .config/polybar
-.config/rofi
 .config/redshift
+.config/rofi
+.config/spotifyd
+.config/spotify-tui
+.config/systemd
 .config/wallpapers
+
+.local/share
+{{- end }}
+
+{{- if .chezmoi.os.id "void" }}
+.config/systemd
 {{- end }}
 
 {{- if (or (not (index .chezmoi.osRelease "idLike")) (ne .chezmoi.osRelease.idLike "arch")) }}
