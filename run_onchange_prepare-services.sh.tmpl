@@ -14,7 +14,16 @@ echo "==================================="
 
 case "${OS}-${DISTRIB_ID}" in
 	"linux-ubuntu"|"linux-manjaro")
-		SERVICES=("dunst" "spotifyd" "polkit-gnome-authentication-agent")
+		# Reload the services
+		systemctl --user daemon-reload
+
+		# Enable all the following user services
+		SERVICES=(
+			"dunst"
+			"spotifyd"
+			"polkit-gnome-authentication-agent"
+			"nextcloud"
+		)
 		for sv in "${SERVICES[@]}"; do
 			systemctl --user enable --now "${sv}.service"
 		done
