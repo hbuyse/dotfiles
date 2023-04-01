@@ -100,6 +100,22 @@
 	refreshPeriod = "168h"
 
 {{ if eq .chezmoi.os "linux" -}}
+[".local/share/themes/Gruvbox-Dark-Border"]
+	type = "archive"
+	url = "https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme/archive/refs/heads/master.tar.gz"
+	exact = false
+	refreshPeriod = "168h"
+	stripComponents = 3
+    include = ["Gruvbox-GTK-Theme-master/themes/Gruvbox-Dark-B/**"]
+
+[".local/share/themes/Gruvbox-Dark-BorderLess"]
+	type = "archive"
+	url = "https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme/archive/refs/heads/master.tar.gz"
+	exact = false
+	refreshPeriod = "168h"
+	stripComponents = 3
+    include = ["Gruvbox-GTK-Theme-master/themes/Gruvbox-Dark-BL/**"]
+
 [".local/share/fonts/Hack"]
 	type = "archive"
 	url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
