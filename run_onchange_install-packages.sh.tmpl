@@ -307,10 +307,13 @@ if ! grep -i $USER /etc/passwd | cut -d: -f 7 | grep -q zsh; then
 fi
 
 # Rustup
+[[ "${OS}" == "freebsd" ]] && RUST_DEFAULT_HOST="x86_64-unknown-freebsd" || RUST_DEFAULT_HOST="x86_64-unknown-linux-gnu"
 if ! cmdexists rustup; then
-    [[ "${OS}" == "freebsd" ]] && RUST_DEFAULT_HOST="x86_64-unknown-freebsd" || RUST_DEFAULT_HOST="x86_64-unknown-linux-gnu"
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q --no-modify-path --default-host ${RUST_DEFAULT_HOST} --default-toolchain none --profile default -y
     rustup default stable
+# Use the redirection since rustup check throw a Broken Pipe when filtering with grep -q
+elif ! rustup check | grep "stable-${RUST_DEFAULT_HOST} - Up to date" > /dev/null; then
+    rustup update
 fi
 
 # Rust compiler
