@@ -63,9 +63,10 @@ npm_install() {
 }
 
 cargo_install() {
-    local pkg_and_version="${1}"
-    local package="$(echo ${pkg_and_version} | cut -d'@' -f1)"
-    local version="$(echo ${pkg_and_version} | cut -d'@' -f2)"
+    local package="${1}"
+    local version_and_features="${2}"
+    local version="$(echo ${version_and_features} | cut -d',' -f1)"
+    local features="$(echo ${version_and_features} | cut -d',' -f2-)"
 
     if cargo install --list | grep -q "${package} v${version}"; then
         prompt "Installing '${package} v${version}' using cargo"
@@ -76,7 +77,11 @@ cargo_install() {
         else
             prompt "Installing '${1}' using cargo"
         fi
-        cargo install --version="${version}" --quiet --jobs=4 "${package}"
+        if [ -z "${features}" ]; then
+            cargo install --version="${version}" --quiet --jobs=4 "${package}"
+        else
+            cargo install --version="${version}" --features="${features}" --quiet --jobs=4 "${package}"
+        fi
         local err=${?}
         display_ko_ok ${err}
     fi
@@ -324,27 +329,27 @@ fi
 
 # Install cargo package
 if cmdexists cargo; then
-    CARGO_PKGS=(
-        "bottom@0.8.0"
-        "fd-find@8.7.0"
-        "stylua@0.11.0"
-        "texlab@4.3.2"
-        "ripgrep@13.0.0"
-        "du-dust@0.8.5"
-        "hexyl@0.12.0"
-        "bat@0.23.0"
+    declare -A CARGO_PKGS=(
+        ["bottom"]="0.8.0"
+        ["fd-find"]="8.7.0"
+        ["stylua"]="0.11.0"
+        ["texlab"]="4.3.2"
+        ["ripgrep"]="13.0.0"
+        ["du-dust"]="0.8.5"
+        ["hexyl"]="0.12.0"
+        ["bat"]="0.23.0"
     )
 
     if [[ "${OS}" == "linux" ]]; then
         CARGO_PKGS+=(
-            "alacritty@0.12.0"
-            "spotify-tui@0.25.0"
-            "spotifyd@0.3.4"
+            ["alacritty"]="0.12.0"
+            ["spotify-tui"]="0.25.0"
+            ["spotifyd"]="0.3.4,pulseaudio_backend"
         )
     fi
 
-    for pkg in ${CARGO_PKGS[*]}; do
-        cargo_install "${pkg}"
+    for pkg in ${!CARGO_PKGS[*]}; do
+        cargo_install "${pkg}" "${CARGO_PKGS[${pkg}]}"
     done
 fi
 
