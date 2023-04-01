@@ -19,6 +19,8 @@ application/json=nvim.desktop;
 application/x-x509-ca-cert=nvim.desktop;
 text/x-python3=nvim.desktop;
 image/gif=firefox.desktop;
+application/x-pem-file=nvim.desktop;
+text/x-patch=nvim.desktop;
 
 [Default Applications]
 text/x-csrc=nvim.desktop
