@@ -1,0 +1,13 @@
+[Unit]
+Description=Nextcloud client
+Documentation=https://docs.nextcloud.com/desktop/latest/
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=%h/.local/bin/nextcloud
+Restart=always
+RestartSec=12
+
+[Install]
+WantedBy=default.target
