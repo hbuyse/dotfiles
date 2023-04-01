@@ -307,6 +307,7 @@ if ! cmdexists rustup; then
     RUST_DEFAULT_HOST="x86_64-unknown-linux-gnu"
 {{- end }}
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q --no-modify-path --default-host ${RUST_DEFAULT_HOST} --default-toolchain none --profile default -y
+    rustup default stable
 fi
 
 # Rust compiler
