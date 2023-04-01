@@ -5,7 +5,12 @@ Documentation=man:dunst(1)
 [Service]
 Type=dbus
 BusName=org.freedesktop.Notifications
+{{- if and (index .chezmoi.osRelease "idLike") (eq .chezmoi.osRelease.idLike "debian") }}
 ExecStart=%h/.local/bin/dunst
+{{- else }}
+ExecStart=/usr/bin/dunst
+{{- end }}
 
 [Install]
 WantedBy=default.target
+# vim: set ts=4 sw=4 tw=0 noet ft=systemd :
