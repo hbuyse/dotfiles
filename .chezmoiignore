@@ -21,7 +21,7 @@ README.md
 .local/share
 {{- end }}
 
-{{- if .chezmoi.os.id "void" }}
+{{- if eq .chezmoi.osRelease.id "void" }}
 .config/systemd
 {{- end }}
 
