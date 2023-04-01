@@ -76,7 +76,7 @@ cargo_install() {
         else
             prompt "Installing '${1}' using cargo"
         fi
-        cargo install --version="${version}" --locked --quiet --jobs=4 "${package}"
+        cargo install --version="${version}" --quiet --jobs=4 "${package}"
         local err=${?}
         display_ko_ok ${err}
     fi
