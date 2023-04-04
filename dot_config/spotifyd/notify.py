@@ -26,14 +26,14 @@ def notify(data):
     notify_interface = dbus.Interface(dbus.SessionBus().get_object(ITEM, "/" + ITEM.replace(".", "/")), ITEM)
 
     if data["event"] == "volumeset":
-        notify_interface.Notify("spotifyd", 0, "Spotify", data["event"], json.dumps(data, indent=4),
+        notify_interface.Notify("spotifyd", 0, "Spotify", data["event"], str(data["volume"]),
                                 [], {"urgency": 1, "suppress-sound": True, "value": data["volume"]}, 1000)
         return
 
     notify_interface.Notify("spotifyd",
                             0,
                             "Spotify",
-                            data["event"],
+                            f"{data['event']} - {data['source']}",
                             f"{data['song']} by {data['artists']}\nAlbum: {data['album']}",
                             [],
                             {
@@ -95,6 +95,7 @@ def main():
             client_id, client_secret = get_authentication()
             spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id, client_secret))
             results = spotify.track(data["trackid"], market="FR")
+            data["source"] = "spotipy"
 
             if results:
                 data["song"] = results["name"]
@@ -109,10 +110,12 @@ def main():
 
         else:
             data["song"] = result[0][0]
-            data["album"] = result[0][1]
-            data["artists"] = result[0][2]
+            data["artists"] = result[0][1]
+            data["album"] = result[0][2]
+            data["source"] = "database"
 
-    notify(data)
+    if data['event'] not in ['volumeset', "preloading", "load"]:
+        notify(data)
 
 if __name__ == "__main__":
     main()
