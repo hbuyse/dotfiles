@@ -1,6 +1,8 @@
 [Unit]
 Description=Dunst notification daemon
 Documentation=man:dunst(1)
+Wants=graphical-session.target
+After=graphical-session.target
 
 [Service]
 Type=dbus
@@ -11,6 +13,4 @@ ExecStart=%h/.local/bin/dunst
 ExecStart=/usr/bin/dunst
 {{- end }}
 
-[Install]
-WantedBy=default.target
 # vim: set ts=4 sw=4 tw=0 noet ft=systemd :
