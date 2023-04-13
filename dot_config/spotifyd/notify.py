@@ -58,6 +58,9 @@ def main():
 
     assert(event is not None)
 
+    if event not in ["play", "pause"]:
+        return
+
     data = {
         "event": event
     }
@@ -86,7 +89,7 @@ def main():
         if position and duration:
             data['percentage'] = int(position / duration * 100)  # type: ignore
 
-    data["event"] = event
+    data["event"] = event.title()
 
     if "trackid" in data:
         query = f"SELECT song_name, song_artists, song_album FROM songs WHERE song_id=\"{data['trackid']}\";"
