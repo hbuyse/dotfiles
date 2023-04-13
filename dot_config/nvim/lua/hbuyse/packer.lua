@@ -115,12 +115,6 @@ return require('packer').startup({
     -- colorizer
     use('norcalli/nvim-colorizer.lua')
 
-    -- file-line
-    use({
-      'bogado/file-line',
-      branch = 'main',
-    })
-
     -- Startify
     use('mhinz/vim-startify')
 
