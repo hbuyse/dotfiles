@@ -46,7 +46,16 @@ local trim_whitespace_gid = vim.api.nvim_create_augroup('TrimWhitespace', {})
 vim.api.nvim_create_autocmd('BufWritePre', {
   group = trim_whitespace_gid,
   desc = 'Trim whitespaces before saving',
-  command = '%s/\\s\\+$//e',
+  callback = function()
+    -- Do not remove whitespaces if we are in git diff
+    for _, v in ipairs({ 'diff' }) do
+      if vim.bo.filetype == v then
+        return
+      end
+    end
+
+    vim.api.nvim_exec2('%s/\\s\\+$//e', { output = false })
+  end,
 })
 
 -- Autojump to last known position in the file
