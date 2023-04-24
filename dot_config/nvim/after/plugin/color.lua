@@ -1,12 +1,5 @@
 local palette = require('gruvbox.palette')
 
--- Set the colors for LSP floating window
-vim.api.nvim_set_hl(0, 'NormalFloat', { bg = palette.colors.dark1, fg = palette.colors.light1 })
-vim.api.nvim_set_hl(0, 'FloatBorder', { bg = palette.colors.dark1, fg = palette.colors.light1 })
-
--- Set colorcolumn colors
-vim.api.nvim_set_hl(0, 'ColorColumn', { bg = palette.colors.dark1 })
-
 -- ----------------
 -- Indent Blankline
 -- ----------------
@@ -44,6 +37,15 @@ vim.g.gruvbox_contrast_dark = 'medium'
 vim.g.gruvbox_sign_column = 'bg1'
 vim.g.gruvbox_hls_highlight = 'orange'
 vim.o.background = 'dark'
-require('gruvbox').setup()
+require('gruvbox').setup({
+  overrides = {
+    -- Set the colors for LSP floating window
+    NormalFloat = { bg = palette.colors.dark1, fg = palette.colors.light1 },
+    FloatBorder = { bg = palette.colors.dark1, fg = palette.colors.light1 },
+
+    -- Set colorcolumn colors
+    ColorColumn = { bg = palette.colors.dark1 },
+  },
+})
 vim.cmd('colorscheme gruvbox')
 --  vim: set ts=2 sw=2 tw=0 noet ft=lua :
