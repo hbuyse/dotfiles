@@ -66,7 +66,7 @@ return require('packer').startup({
       requires = {
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
-        { 'kyazdani42/nvim-web-devicons' },
+        { 'nvim-tree/nvim-web-devicons' },
         { 'nvim-telescope/telescope-file-browser.nvim' },
       },
     })
@@ -88,15 +88,15 @@ return require('packer').startup({
 
     -- nvim tree
     use({
-      'kyazdani42/nvim-tree.lua',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      'nvim-tree/nvim-tree.lua',
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true },
       branch = 'master',
     })
 
     -- lualine
     use({
       'nvim-lualine/lualine.nvim',
-      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+      requires = { 'nvim-tree/nvim-web-devicons', opt = true },
     })
 
     -- indentline
@@ -153,7 +153,7 @@ return require('packer').startup({
     use({
       'akinsho/bufferline.nvim',
       tag = '*',
-      requires = 'kyazdani42/nvim-web-devicons',
+      requires = 'nvim-tree/nvim-web-devicons',
     })
 
     -- robot framework highlight
