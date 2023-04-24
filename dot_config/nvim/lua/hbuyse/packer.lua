@@ -159,6 +159,15 @@ return require('packer').startup({
     -- robot framework highlight
     use('mfukar/robotframework-vim')
 
+    -- Notifier
+    use({
+      'rcarriga/nvim-notify',
+      tag = '*',
+      config = function()
+        require('notify').setup()
+      end,
+    })
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
