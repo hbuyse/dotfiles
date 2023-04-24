@@ -4,8 +4,8 @@ local palette = require('gruvbox.palette')
 vim.keymap.set('n', 'H', '<cmd>BufferLineCyclePrev<CR>', { desc = 'Move to previous bufferline' })
 vim.keymap.set('n', 'L', '<cmd>BufferLineCycleNext<CR>', { desc = 'Move to next bufferline' })
 
-vim.api.nvim_set_hl(0, 'BufferLineSeparatorSelected', { fg = palette.dark1 })
-vim.api.nvim_set_hl(0, 'BufferLineSeparator', { fg = palette.dark1 })
+vim.api.nvim_set_hl(0, 'BufferLineSeparatorSelected', { fg = palette.colors.dark1 })
+vim.api.nvim_set_hl(0, 'BufferLineSeparator', { fg = palette.colors.dark1 })
 
 require('bufferline').setup({
   options = {
