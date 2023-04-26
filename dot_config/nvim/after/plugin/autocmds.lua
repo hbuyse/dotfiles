@@ -54,7 +54,7 @@ vim.api.nvim_create_autocmd('BufWritePre', {
       end
     end
 
-    vim.api.nvim_exec2('%s/\\s\\+$//e', { output = false })
+    vim.api.nvim_command('%s/\\s\\+$//e')
   end,
 })
 
