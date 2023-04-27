@@ -132,6 +132,8 @@ local gvars = {
   loaded_perl_provider = 0,
   -- Disable Ruby support
   loaded_ruby_provider = 0,
+  -- Activate editorconfig file support
+  editorconfig = true,
 }
 
 for var, val in pairs(gvars) do
@@ -142,4 +144,3 @@ vim.api.nvim_exec([[ filetype plugin on ]], false)
 
 require('hbuyse')
 require('formatters')
--- vim: set ts=2 sw=2 tw=0 et ft=lua :
