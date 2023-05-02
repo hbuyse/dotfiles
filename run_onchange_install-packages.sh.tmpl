@@ -154,7 +154,7 @@ if [[ "${OS}" == "linux" ]]; then
             display_ko_ok $?
 
             # Install dunst
-            DUNST_VERSION="1.9.1"
+            DUNST_VERSION="1.9.2"
             prompt "Installing dunst v${DUNST_VERSION}: "
             if cmdexists dunst || ! dunst --version | grep -q ${DUNST_VERSION}; then
                 display_already_installed
