@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Spotify TUI
 GenericName=Spotify Client in terminal
-TryExec=spt
-Exec=spt
-Terminal=true
+Exec=alacritty --class Spotify --command spt
+Terminal=false
 Type=Application
 Keywords=Audio;Player;
 Icon=spotify
 Categories=Utility;Audio;
 StartupNotify=false
+StartupWMClass=SpotifyTui
