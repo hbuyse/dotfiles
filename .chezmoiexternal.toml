@@ -143,9 +143,4 @@
     type = "file"
 	url = "https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage"
     executable = true
-
-[ ".local/bin/imhex" ]
-    type = "file"
-    url = "https://github.com/WerWolv/ImHex/releases/download/v1.26.2/imhex-1.26.2.AppImage"
-    executable = true
 {{- end }}
