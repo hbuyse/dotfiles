@@ -141,7 +141,7 @@
 
 [ ".local/bin/nvim" ]
     type = "file"
-	url = "https://github.com/neovim/neovim/releases/download/v0.9.0/nvim.appimage"
+	url = "https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage"
     executable = true
 
 [ ".local/bin/imhex" ]
