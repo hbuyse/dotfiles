@@ -24,7 +24,7 @@ display_already_installed() {
 }
 
 display_ko_ok() {
-    [ ${1} -eq 0 ] && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
+    [ "${1}" -eq 0 ] && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
 }
 
 cmdexists() {
@@ -33,13 +33,13 @@ cmdexists() {
 
 npm_install() {
     local pkg_and_version="${1}"
-    local package="$(echo ${pkg_and_version} | cut -d'@' -f1)"
-    local version="$(echo ${pkg_and_version} | cut -d'@' -f2)"
+    local package="$(echo "${pkg_and_version}" | cut -d'@' -f1)"
+    local version="$(echo "${pkg_and_version}" | cut -d'@' -f2)"
 
     # Fix when package starts with '@'
     if [ -z "${package}" ]; then
-        package="$(echo ${pkg_and_version} | cut -d'@' -f2)"
-        version="$(echo ${pkg_and_version} | cut -d'@' -f3)"
+        package="$(echo "${pkg_and_version}" | cut -d'@' -f2)"
+        version="$(echo "${pkg_and_version}" | cut -d'@' -f3)"
     fi
 
     if [ -n "$(npm list --location=global -p ${pkg_and_version})" ]; then
@@ -65,8 +65,12 @@ npm_install() {
 cargo_install() {
     local package="${1}"
     local version_and_features="${2}"
-    local version="$(echo ${version_and_features} | cut -d',' -f1)"
-    local features="$(echo ${version_and_features} | cut -d',' -f2-)"
+    local version="$(echo "${version_and_features}" | cut -d',' -f1)"
+    local features="$(echo "${version_and_features}" | cut -d',' -f2-)"
+
+    if [ "${version}" == "${features}" ]; then
+        features=""
+    fi
 
     if cargo install --list | grep -q "${package} v${version}"; then
         prompt "Installing '${package} v${version}' using cargo"
