@@ -332,19 +332,18 @@ fi
 # Install cargo package
 if cmdexists cargo; then
     declare -A CARGO_PKGS=(
-        ["bottom"]="0.8.0"
+        ["bottom"]="0.9.3"
         ["fd-find"]="8.7.0"
-        ["stylua"]="0.11.0"
+        ["stylua"]="0.18.1"
         ["texlab"]="4.3.2"
         ["ripgrep"]="13.0.0"
-        ["du-dust"]="0.8.5"
-        ["hexyl"]="0.12.0"
+        ["du-dust"]="0.8.6"
         ["bat"]="0.23.0"
     )
 
     if [[ "${OS}" == "linux" ]]; then
         CARGO_PKGS+=(
-            ["alacritty"]="0.12.0"
+            ["alacritty"]="0.12.2"
             ["spotify-tui"]="0.25.0"
             ["spotifyd"]="0.3.5,pulseaudio_backend"
         )
