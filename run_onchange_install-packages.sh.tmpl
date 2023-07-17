@@ -292,13 +292,15 @@ fi
 # Install npm packages
 if cmdexists npm; then
     NPM_PKGS=(
-        "npm@9.6.2"
+        "npm@9.8.0"
         "diff-so-fancy@1.4.3"
-        "pyright@1.1.299"
-        "bash-language-server@4.8.3"
-        "vscode-langservers-extracted@4.6.0"
+        "pyright@1.1.317"
+        "bash-language-server@5.0.0"
+        "vscode-langservers-extracted@4.7.0"
         "neovim@4.10.1"
-        "@marp-team/marp-cli@2.4.0"
+        "@marp-team/marp-cli@3.1.0"
+        "typescript@5.1.6"
+        "typescript-language-server@3.3.2"
     )
     for pkg in ${NPM_PKGS[*]}; do
         npm_install "${pkg}"
