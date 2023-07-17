@@ -82,9 +82,9 @@ cargo_install() {
             prompt "Installing '${1}' using cargo"
         fi
         if [ -z "${features}" ]; then
-            cargo install --version="${version}" --quiet --jobs=4 "${package}"
+            cargo install --release --version="${version}" --quiet --jobs=4 "${package}"
         else
-            cargo install --version="${version}" --features="${features}" --quiet --jobs=4 "${package}"
+            cargo install --release --version="${version}" --features="${features}" --quiet --jobs=4 "${package}"
         fi
         local err=${?}
         display_ko_ok ${err}
