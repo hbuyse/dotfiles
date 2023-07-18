@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if gifs %}
+        {% for key, value in gifs.items() %}
+			{% if loop.index0 % 3 == 0 %}
+				<div class="row">
+			{% endif %}
+			<div class="col">
+				<div class="card" style="margin-bottom: 20px">
+                    <img id="{{ key }}_id" class="card-img-top img-thumbnail" src="{{ value }}" alt="alt text">
+                    <div class="card-img-overlay">
+                        <a onclick="copy_text('{{ key }}_id')" class="btn btn-outline-warning btn-sm float-end" data-bs-toggle="popover" data-bs-content="Copy text" data-bs-trigger="hover focus">
+                            Copy link
+                        </a>
+                    </div>
+				  <div class="card-body">
+					<h5 class="card-title">{{ key }}</h5>
+				  </div>
+				</div>
+			</div>
+			{% if loop.index0 % 3 == 2 %}
+				</div> <!-- class: row -->
+			{% endif %}
+        {% endfor %}
+    {% else %}
+        <p>No gifs where given</p>
+    {% endif %}
+    <script type="text/javascript" src="static/index.js"></script>
+{% endblock %}
