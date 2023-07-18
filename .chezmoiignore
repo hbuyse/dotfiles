@@ -17,6 +17,7 @@ README.md
 .config/spotify-tui
 .config/systemd
 .config/wallpapers
+.gifs
 
 .local/share
 {{- end }}
