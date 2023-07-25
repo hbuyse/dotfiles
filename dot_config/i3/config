@@ -208,8 +208,7 @@ for_window [class="(?i)discord"] move container to workspace $ws5
 for_window [class="(?i)docker desktop"] move container to workspace $ws8
 for_window [class="(?i)docker.*"] move container to workspace $ws8
 for_window [class="(?i)keepass.*"] move container to workspace $ws9
-for_window [class="(?i)zoom"] move container to workspace $ws10
-for_window [title="(?i)zoom meeting"] move container to workspace $ws10
+for_window [class="(?i)zoom.*"] move container to workspace $ws10
 
 ########
 # ROFI #
