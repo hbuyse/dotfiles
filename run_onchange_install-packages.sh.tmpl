@@ -120,7 +120,22 @@ if [[ "${OS}" == "linux" ]]; then
                 shellcheck \
                 zsh \
                 curl \
-                clang
+                clang \
+                autorandr \
+                base-devel \
+                xautolock \
+                git \
+                git-lfs \
+                tmux \
+                python-pip python-virtualenv python-virtualenvwrapper \
+                polybar \
+                feh
+
+            if ! cmdexists paru; then
+                git clone https://aur.archlinux.org/paru.git /tmp/paru
+                (cd paru && makepkg -si)
+                rm -rf /tmp/paru
+            fi
 
             paru -Sy cava
             ;;
