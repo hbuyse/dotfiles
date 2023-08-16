@@ -370,15 +370,16 @@ fi
 # Install npm packages
 if cmdexists npm; then
     declare -A NPM_PKGS=(
-        ["@marp-team/marp-cli"]="3.1.0"
+        ["@marp-team/marp-cli"]="3.2.0"
         ["bash-language-server"]="5.0.0"
         ["diff-so-fancy"]="1.4.3"
         ["neovim"]="4.10.1"
-        ["npm"]="9.8.0"
-        ["pyright"]="1.1.317"
-        ["typescript-language-server"]="3.3.2"
+        ["npm"]="9.8.1"
+        ["pyright"]="1.1.323"
         ["typescript"]="5.1.6"
+        ["typescript-language-server"]="3.3.2"
         ["vscode-langservers-extracted"]="4.7.0"
+        ["yaml-language-server"]="1.14.0"
     )
     for pkg in ${!NPM_PKGS[*]}; do
         npm_install "${pkg}" "${NPM_PKGS[${pkg}]}"
