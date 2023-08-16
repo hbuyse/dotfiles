@@ -30,3 +30,8 @@ README.md
 # Do not copy pacman folder (specific Arch Linux)
 .config/pacman
 {{- end }}
+
+{{- if eq .chezmoi.os "linux" }}
+.local/share/fonts/.uuid
+.local/share/fonts/*/.uuid
+{{- end }}
