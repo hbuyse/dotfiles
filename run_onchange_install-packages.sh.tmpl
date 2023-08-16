@@ -91,6 +91,60 @@ cargo_install() {
     fi
 }
 
+# Install packages based on the OS.
+# Check that the package is installed before installing it.
+install_packages() {
+    local packages_to_install=("$@")
+    local packages_not_installed=()
+    local install_cmd=""
+
+    # Get the command to install package and check that package is installed
+    case "${OS}-${ID}" in
+        "linux-manjaro")
+            install_cmd="pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm"
+            for pkg in ${packages_to_install[@]}; do
+                if ! pacman --query --search --quiet "${pkg}"; then
+                    packages_not_installed+=("${pkg}")
+                fi
+            done
+            ;;
+
+        "linux-ubuntu")
+            install_cmd="apt-get install --assume-yes --quiet"
+            # Check that package is installed
+            for pkg in "${packages_to_install[@]}"; do
+                # Check if already installed
+                if ! dpkg --get-selections| grep -w "${pkg}" | awk '{ print $2 }' | grep -q -w 'install'; then
+                    packages_not_installed+=("${pkg}")
+                fi
+            done
+            ;;
+
+        "freebsd-freebsd")
+            install_cmd="pkg install --automatic --yes"
+            # Check that package is installed
+            for pkg in "${packages_to_install[@]}"; do
+                # Check if already installed
+                if ! pkg info | grep -qw "${pkg}"; then
+                    packages_not_installed+=("${pkg}")
+                fi
+            done
+            ;;
+
+        *)
+            echo "Unsupported distribution: '${DISTRIB_ID}'"
+            return
+            ;;
+    esac
+
+    # Install only the packages that are not already installed
+    if [ ${#packages_not_installed[@]} -ne 0 ]; then
+        prompt "Installing ${packages_not_installed[*]}: "
+        sudo ${install_cmd} ${packages_not_installed[*]}
+        display_ko_ok $?
+    fi
+}
+
 # Display some informations about the install
 echo "==================================="
 echo "Script: ${0}"
@@ -108,7 +162,7 @@ if [[ "${OS}" == "linux" ]]; then
     case "${ID}" in
         "manjaro")
             # Install my package
-            sudo pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm \
+            install_packages \
                 age \
                 chezmoi \
                 feh \
@@ -153,6 +207,7 @@ if [[ "${OS}" == "linux" ]]; then
                 fi
             done
 
+            # Install packages (nodejs = node + npm)
             prompt "Installing Node JS 18 (LTS) repo"
             if grep -q "https://deb.nodesource.com/node_18.x" /etc/apt/sources.list.d/nodesource.list; then
                 display_already_installed
@@ -166,11 +221,21 @@ if [[ "${OS}" == "linux" ]]; then
             sudo apt-get update --quiet --quiet
             display_ko_ok $?
 
-            # Install packages (nodejs = node + npm)
-            UBUNTU_PKGS=(yubikey-manager yubikey-personalization-gui libpam-yubico libpam-u2f meld git git-lfs nodejs i3-gaps python3-pip python3-dev shellcheck zsh curl cava)
-            prompt "Installing ${UBUNTU_PKGS[*]}: "
-            sudo apt-get install --assume-yes --quiet ${UBUNTU_PKGS[*]}
-            display_ko_ok $?
+            install_packages \
+                yubikey-manager \
+                yubikey-personalization-gui \
+                libpam-yubico \
+                libpam-u2f \
+                meld \
+                git git-lfs \
+                nodejs \
+                i3-gaps \
+                python3-pip \
+                python3-dev \
+                shellcheck \
+                zsh \
+                curl \
+                cava
 
             # Install dunst
             DUNST_VERSION="1.9.2"
@@ -181,7 +246,7 @@ if [[ "${OS}" == "linux" ]]; then
                 # Dunst dependencies
                 echo
                 prompt "- Installing dependencies: "
-                sudo apt-get install --assume-yes --quiet \
+                install_packages \
                     libdbus-1-dev \
                     libx11-dev \
                     libxinerama-dev \
@@ -212,7 +277,7 @@ if [[ "${OS}" == "linux" ]]; then
             else
                 # Install i3lock-color
                 prompt "- Installing dependencies: "
-                sudo apt-get install --assume-yes --quiet \
+                install_packages \
                     autoconf \
                     gcc \
                     make \
@@ -284,7 +349,7 @@ elif [[ "${OS}" == "freebsd" ]]; then
     fi
 
     # Install packages
-    sudo pkg install --automatic --yes \
+    install_packages \
         age \
         chezmoi \
         tshark \
