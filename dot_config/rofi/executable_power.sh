@@ -23,9 +23,9 @@ list() {
         echo -en "Activate Redshift\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/redshift-status-on.svg\n"
     fi
     if [[ "$(xset q | grep "DPMS is " | awk '{ print $3 }' | tr "[:upper:]" "[:lower:]")" == "disabled" ]]; then
-        echo -en "Caffeinate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-full.svg\n"
-    else
         echo -en "Uncaffeinate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-empty.svg\n"
+    else
+        echo -en "Caffeinate\0icon\x1f${HOME}/.local/share/icons/${icon_name}/${size}x${size}/panel/caffeine-cup-full.svg\n"
     fi
     if pgrep dunst > "/dev/null"; then
         if [[ "$(dunstctl is-paused)" == "true" ]]; then
@@ -41,12 +41,12 @@ then
     case "${@}" in
         "Uncaffeinate")
             xautolock -enable
-            xset s 1800 1800 -dpms
+            xset -display :0 s 600 600 +dpms
             notify-send "Screen saver" "Enabled"
             ;;
         "Caffeinate")
             xautolock -disable
-            xset s 1800 1800 +dpms
+            xset -display :0 s off -dpms
             notify-send "Screen saver" "Disabled"
             ;;
         "Lock")
