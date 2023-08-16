@@ -32,15 +32,9 @@ cmdexists() {
 }
 
 npm_install() {
-    local pkg_and_version="${1}"
-    local package="$(echo "${pkg_and_version}" | cut -d'@' -f1)"
-    local version="$(echo "${pkg_and_version}" | cut -d'@' -f2)"
-
-    # Fix when package starts with '@'
-    if [ -z "${package}" ]; then
-        package="$(echo "${pkg_and_version}" | cut -d'@' -f2)"
-        version="$(echo "${pkg_and_version}" | cut -d'@' -f3)"
-    fi
+    local package="${1}"
+    local version="${2}"
+    local pkg_and_version="${package}@${version}"
 
     if [ -n "$(npm list --location=global -p ${pkg_and_version})" ]; then
         prompt "Installing '${pkg_and_version}' using npm"
@@ -375,19 +369,19 @@ fi
 
 # Install npm packages
 if cmdexists npm; then
-    NPM_PKGS=(
-        "npm@9.8.0"
-        "diff-so-fancy@1.4.3"
-        "pyright@1.1.317"
-        "bash-language-server@5.0.0"
-        "vscode-langservers-extracted@4.7.0"
-        "neovim@4.10.1"
-        "@marp-team/marp-cli@3.1.0"
-        "typescript@5.1.6"
-        "typescript-language-server@3.3.2"
+    declare -A NPM_PKGS=(
+        ["@marp-team/marp-cli"]="3.1.0"
+        ["bash-language-server"]="5.0.0"
+        ["diff-so-fancy"]="1.4.3"
+        ["neovim"]="4.10.1"
+        ["npm"]="9.8.0"
+        ["pyright"]="1.1.317"
+        ["typescript-language-server"]="3.3.2"
+        ["typescript"]="5.1.6"
+        ["vscode-langservers-extracted"]="4.7.0"
     )
-    for pkg in ${NPM_PKGS[*]}; do
-        npm_install "${pkg}"
+    for pkg in ${!NPM_PKGS[*]}; do
+        npm_install "${pkg}" "${NPM_PKGS[${pkg}]}"
     done
 fi
 
