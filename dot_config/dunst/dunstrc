@@ -17,6 +17,8 @@ monitor = 0
 # will be ignored.
 follow = mouse
 
+enable_regex_posix = true
+
 # The geometry of the window:
 #   [{width}]x{height}[+/-{x}+/-{y}]
 # The geometry of the message window.
@@ -284,12 +286,13 @@ timeout = 0
 #icon = /path/to/icon
 
 [spotify]
-appname = Spotify
+desktop_entry = "com.spotify.Client"
 timeout = 10
 frame_color = "#1db954"
 background = "#191414"
 foreground = "#ffffff"
 highlight  = "#1ed760"
+default_icon = /home/henrib/.local/share/icons/Papirus/64x64/apps/com.spotify.Client.svg
 
 [spotifyd]
 appname = spotifyd
@@ -298,6 +301,7 @@ frame_color = "#1db954"
 background = "#191414"
 foreground = "#ffffff"
 highlight  = "#1ed760"
+default_icon = /home/henrib/.local/share/icons/Papirus/64x64/apps/com.spotify.Client.svg
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
