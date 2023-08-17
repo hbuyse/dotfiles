@@ -147,21 +147,29 @@
 	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.0.4/betterlockscreen"
 	executable = true
 
+{{ $nextcloudVersion := "3.9.2" -}}
 [ ".local/bin/nextcloud" ]
 	type = "file"
-	url = "https://github.com/nextcloud-releases/desktop/releases/download/v3.9.2/Nextcloud-3.9.2-x86_64.AppImage"
+	url = "https://github.com/nextcloud-releases/desktop/releases/download/v{{ $nextcloudVersion }}/Nextcloud-{{ $nextcloudVersion }}-x86_64.AppImage"
 	executable = true
 
+{{ $batVersion := "0.23.0" -}}
 [ ".local/bin/bat" ]
     type = "file"
-    url = "https://github.com/sharkdp/bat/releases/download/v0.23.0/bat-v0.23.0-x86_64-unknown-linux-gnu.tar.gz"
+    url = "https://github.com/sharkdp/bat/releases/download/v{{ $batVersion }}/bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu.tar.gz"
     executable = true
     [".local/bin/bat".filter]
         command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v0.23.0-x86_64-unknown-linux-gnu/bat"]
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu/bat"]
 
 [ ".local/bin/nvim" ]
     type = "file"
 	url = "https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage"
     executable = true
+
+{{ $luaLsVersion := "3.6.25" -}}
+[ ".local/lua-language-server" ]
+	type = "archive"
+	url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-linux-x64.tar.gz"
+	exact = true
 {{- end }}
