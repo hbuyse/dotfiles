@@ -116,9 +116,30 @@
 	stripComponents = 3
     include = ["Gruvbox-GTK-Theme-master/themes/Gruvbox-Dark-BL/**"]
 
+{{ $nerdFontsVersion := "3.0.2" -}}
 [".local/share/fonts/Hack"]
 	type = "archive"
-	url = "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
+	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Hack.tar.xz"
+	exact = true
+
+[".local/share/fonts/Iosevka"]
+	type = "archive"
+	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Iosevka.tar.xz"
+	exact = true
+
+[".local/share/fonts/Meslo"]
+	type = "archive"
+	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Meslo.tar.xz"
+	exact = true
+
+[".local/share/fonts/Ubuntu"]
+	type = "archive"
+	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Ubuntu.tar.xz"
+	exact = true
+
+[".local/share/fonts/UbuntuMono"]
+	type = "archive"
+	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/UbuntuMono.tar.xz"
 	exact = true
 
 [".local/bin/betterlockscreen"]
