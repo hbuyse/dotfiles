@@ -9,10 +9,10 @@ output HDMI-1
 gamma 0.769:0.769:0.769
 mode 1920x1080
 pos 1080x420
+primary
 rate 60.00
 output eDP-1
 gamma 0.769:0.769:0.769
 mode 1600x900
 pos 3000x717
-primary
 rate 59.95
