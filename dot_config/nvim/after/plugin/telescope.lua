@@ -1,3 +1,5 @@
+local has_notify, _ = pcall(require, 'notify')
+
 require('telescope').setup({
   defaults = {
     prompt_prefix = '   ',
@@ -66,6 +68,12 @@ local nkeymaps = {
     desc = 'Search in [D]o[T]files',
   },
 }
+
+if has_notify then
+  require('telescope').load_extension('notify')
+  nkeymaps['<leader>sn'] = { cmd = require('telescope').extensions.notify.notify, desc = '[S]earch [N]otifications' }
+end
+
 for k, v in pairs(nkeymaps) do
   vim.keymap.set('n', k, v.cmd, { noremap = true, silent = true, desc = v.desc })
 end
