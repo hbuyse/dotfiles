@@ -30,21 +30,17 @@ return require('packer').startup({
     })
 
     use({
-      'VonHeikemen/lsp-zero.nvim',
-      requires = {
-        -- LSP Support
-        { 'neovim/nvim-lspconfig' },
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
-        { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+      'neovim/nvim-lspconfig',
+    })
 
-        -- Autocompletion
-        { 'hrsh7th/nvim-cmp' },
+    use({
+      'hrsh7th/nvim-cmp',
+      requires = {
         { 'hrsh7th/cmp-buffer' },
         { 'hrsh7th/cmp-path' },
-        { 'saadparwaiz1/cmp_luasnip' },
         { 'hrsh7th/cmp-nvim-lsp' },
         { 'hrsh7th/cmp-nvim-lua' },
+        { 'saadparwaiz1/cmp_luasnip' },
 
         -- Snippets
         { 'L3MON4D3/LuaSnip' },
@@ -52,9 +48,6 @@ return require('packer').startup({
 
         -- Icons
         { 'onsails/lspkind-nvim' },
-
-        -- Standalone UI for nvim-lsp progress
-        { 'j-hui/fidget.nvim' },
       },
     })
 
@@ -163,9 +156,6 @@ return require('packer').startup({
     use({
       'rcarriga/nvim-notify',
       tag = '*',
-      config = function()
-        require('notify').setup()
-      end,
     })
 
     -- Automatically set up your configuration after cloning packer.nvim
