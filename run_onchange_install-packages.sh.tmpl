@@ -100,7 +100,7 @@ pip_install() {
         else
             prompt "Installing '${package} v${version}' using pip"
         fi
-        pip install --quiet --user "${upgrade_opt}" "${package}==${version}"
+        pip install --quiet --user ${upgrade_opt} "${package}==${version}"
         local err=${?}
         display_ko_ok ${err}
     fi
