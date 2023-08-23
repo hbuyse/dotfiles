@@ -22,7 +22,7 @@ if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
 
-{{ if eq .chezmoi.hostname "freebsd" -}}
+{{ if eq .chezmoi.os "freebsd" -}}
 # Arcanist
 if [ -d "$HOME/.local/arcanist/" ]; then
 	PATH="$PATH:$HOME/.local/arcanist/bin/"
@@ -32,7 +32,13 @@ fi
 if [ -d "$HOME/.local/coverity/" ]; then
 	PATH="$PATH:$HOME/.local/coverity/bin/"
 fi
+{{ else if eq .chezmoi.os "linux" -}}
+# Docker socket
+DOCKER_SOCKET="/var/run/docker.sock"
+if [ -S "${DOCKER_SOCKET}" ]; then
+    DOCKER_HOST="unix://${DOCKER_SOCKET}"
+fi
 {{- end }}
 
-export PATH
+export PATH {{ if eq .chezmoi.os "linux" -}}DOCKER_HOST{{ end }}
 #  vim: set ts=4 sw=4 tw=0 noet ft=sh :
