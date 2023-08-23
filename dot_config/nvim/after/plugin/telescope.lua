@@ -60,7 +60,12 @@ local nkeymaps = {
   ['<leader>sg'] = { cmd = require('telescope.builtin').live_grep, desc = '[S]earch by [G]rep' },
   ['<leader>sh'] = { cmd = require('telescope.builtin').help_tags, desc = '[S]earch [H]elp' },
   ['<leader>sr'] = { cmd = require('telescope.builtin').lsp_references, '[S]earch [R]eferences' },
-  ['<leader>sw'] = { cmd = require('telescope.builtin').grep_string, desc = '[S]earch current [W]ord' },
+  ['<leader>sw'] = {
+    cmd = function()
+      require('telescope.builtin').grep_string({ word_match = '-w' })
+    end,
+    desc = '[S]earch current [W]ord',
+  },
   ['<leader>dt'] = {
     cmd = function()
       require('telescope.builtin').git_files({ cwd = os.getenv('HOME') .. '/.local/share/chezmoi' })
