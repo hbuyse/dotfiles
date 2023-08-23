@@ -171,5 +171,5 @@
 [ ".local/lua-language-server" ]
 	type = "archive"
 	url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-linux-x64.tar.gz"
-	exact = true
+	exact = false
 {{- end }}
