@@ -3,18 +3,18 @@ in_chroot() {
 }
 
 if [ -d "$HOME/.local/bin" ]; then
-	export PATH="$HOME/.local/bin:$PATH"
+	PATH="$HOME/.local/bin:$PATH"
 fi
 
 # set path so it includes pyenv
 if [ -d "$HOME/.pyenv" ] && ! in_chroot; then
-	export PATH="$HOME/.pyenv/bin:$PATH"
+	PATH="$HOME/.pyenv/bin:$PATH"
 	eval "$(pyenv init --path)"
 fi
 
 # set path so it includes npm
 if [ -d "$HOME/.npm-packages/bin" ]; then
-	export PATH="$HOME/.npm-packages/bin:$PATH"
+	PATH="$HOME/.npm-packages/bin:$PATH"
 fi
 
 # set path so it includes cargo binaries (Rust)
@@ -25,11 +25,14 @@ fi
 {{ if eq .chezmoi.hostname "freebsd" -}}
 # Arcanist
 if [ -d "$HOME/.local/arcanist/" ]; then
-	export PATH="$PATH:$HOME/.local/arcanist/bin/"
+	PATH="$PATH:$HOME/.local/arcanist/bin/"
 fi
 
 # Coverity
 if [ -d "$HOME/.local/coverity/" ]; then
-	export PATH="$PATH:$HOME/.local/coverity/bin/"
+	PATH="$PATH:$HOME/.local/coverity/bin/"
 fi
 {{- end }}
+
+export PATH
+#  vim: set ts=4 sw=4 tw=0 noet ft=sh :
