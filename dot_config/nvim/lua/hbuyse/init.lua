@@ -1,5 +1,5 @@
 local packages = {
-  'hbuyse.packer',
+  'hbuyse.lazy_config',
   'hbuyse.mappings',
 }
 for _, v in ipairs(packages) do
