@@ -1,28 +1,3 @@
-local has_notify, notify = pcall(require, 'notify')
-local has_telescope, _ = pcall(require, 'telescope')
-
-if not has_notify then
-  return
-end
-
-notify.setup({
-  background_colour = 'NotifyBackground',
-  fps = 30,
-  icons = {
-    DEBUG = '',
-    ERROR = '',
-    INFO = '',
-    TRACE = '✎',
-    WARN = '',
-  },
-  level = 2,
-  minimum_width = 50,
-  render = 'default',
-  stages = 'fade_in_slide_out',
-  timeout = 5000,
-  top_down = true,
-})
-
 local client_notifs = {}
 
 local function get_notif_data(client_id, token)
@@ -46,7 +21,7 @@ local function update_spinner(client_id, token)
     local new_spinner = (notif_data.spinner + 1) % #spinner_frames
     notif_data.spinner = new_spinner
 
-    notif_data.notification = notify(nil, nil, {
+    notif_data.notification = require('notify')(nil, nil, {
       hide_from_history = true,
       icon = spinner_frames[new_spinner],
       replace = notif_data.notification,
@@ -80,7 +55,7 @@ local function lsp_progress_notification(_, result, ctx)
   if val.kind == 'begin' then
     local message = format_message(val.message, val.percentage)
 
-    notif_data.notification = notify(message, 'info', {
+    notif_data.notification = require('notify')(message, 'info', {
       title = format_title(val.title, vim.lsp.get_client_by_id(client_id).name),
       icon = spinner_frames[1],
       timeout = false,
@@ -90,12 +65,12 @@ local function lsp_progress_notification(_, result, ctx)
     notif_data.spinner = 1
     update_spinner(client_id, result.token)
   elseif val.kind == 'report' and notif_data then
-    notif_data.notification = notify(format_message(val.message, val.percentage), 'info', {
+    notif_data.notification = require('notify')(format_message(val.message, val.percentage), 'info', {
       replace = notif_data.notification,
       hide_from_history = false,
     })
   elseif val.kind == 'end' and notif_data then
-    notif_data.notification = notify(val.message and format_message(val.message) or 'Complete', 'info', {
+    notif_data.notification = require('notify')(val.message and format_message(val.message) or 'Complete', 'info', {
       icon = '',
       replace = notif_data.notification,
       timeout = 3000,
@@ -105,8 +80,6 @@ local function lsp_progress_notification(_, result, ctx)
   end
 end
 
-vim.lsp.handlers['$/progress'] = lsp_progress_notification
-
 local severity = {
   'error',
   'warn',
@@ -114,9 +87,36 @@ local severity = {
   'info', -- map both hint and info to info?
 }
 
-vim.lsp.handlers['window/showMessage'] = function(err, method, params, _client_id)
-  vim.notify(method.message, severity[params.type])
-end
+return {
+  {
 
--- Use the notification windowsas your default notify function
-vim.notify = require('notify')
+    -- Fancy, configurable, notification manager
+    'rcarriga/nvim-notify',
+    opts = {
+      background_colour = 'NotifyBackground',
+      fps = 30,
+      icons = {
+        DEBUG = '',
+        ERROR = '',
+        INFO = '',
+        TRACE = '✎',
+        WARN = '',
+      },
+      level = 2,
+      minimum_width = 50,
+      render = 'default',
+      stages = 'fade_in_slide_out',
+      timeout = 5000,
+      top_down = true,
+    },
+    init = function()
+      vim.lsp.handlers['$/progress'] = lsp_progress_notification
+      vim.lsp.handlers['window/showMessage'] = function(err, method, params, _client_id)
+        vim.notify(method.message, severity[params.type])
+      end
+
+      -- Use the notification windowsas your default notify function
+      vim.notify = require('notify')
+    end,
+  },
+}

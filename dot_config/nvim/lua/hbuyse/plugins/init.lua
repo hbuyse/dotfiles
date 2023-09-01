@@ -21,44 +21,18 @@ return {
     end,
   },
   {
-    -- Quickstart configs for Nvim LSP
-    'neovim/nvim-lspconfig',
-  },
-  {
     -- Autopairs
     'windwp/nvim-autopairs',
-  },
-  {
-    -- Fuzzy finder
-    'nvim-telescope/telescope.nvim',
-    dependencies = {
-      { 'nvim-lua/popup.nvim' },
-      { 'nvim-lua/plenary.nvim' },
-      { 'nvim-tree/nvim-web-devicons' },
-      { 'nvim-telescope/telescope-file-browser.nvim' },
-    },
-  },
-  {
-    -- Treesitter configurations and abstraction layer
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      { 'nvim-treesitter/playground' },
-    },
-    build = ':TSUpdate',
-  },
-  {
-    -- File Explorer For Neovim Written In Lua
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
-  {
-    -- Blazing fast and easy to configure Neovim statusline written in Lua
-    'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
+    config = function()
+      require('nvim-autopairs').setup({})
+      local has_cmp, cmp = pcall(require, 'cmp')
+      if has_cmp then
+        cmp.event:on(
+          'confirm_done',
+          require('nvim-autopairs.completion.cmp').on_confirm_done({ map_char = { tex = '' } })
+        )
+      end
+    end,
   },
   {
     -- Indentation guides to all lines (including empty lines)
@@ -80,14 +54,6 @@ return {
     'mhinz/vim-startify',
   },
   {
-    -- Markdown preview
-    'iamcco/markdown-preview.nvim',
-    ft = 'markdown',
-    build = function()
-      vim.fn['mkdp#util#install']()
-    end,
-  },
-  {
     -- Better annotation generator
     'danymat/neogen',
     ft = { 'c', 'cpp', 'rust', 'lua', 'python' },
@@ -103,17 +69,8 @@ return {
     'kylechui/nvim-surround',
   },
   {
-    -- bufferline (tabline)
-    'akinsho/bufferline.nvim',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-  },
-  {
     -- Robot framework highlight
     'mfukar/robotframework-vim',
     ft = 'robot',
-  },
-  {
-    -- Fancy, configurable, notification manager
-    'rcarriga/nvim-notify',
   },
 }
