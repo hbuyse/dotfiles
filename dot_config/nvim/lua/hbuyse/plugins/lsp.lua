@@ -253,6 +253,8 @@ return {
             '--background-index',
             '--clang-tidy',
             '--enable-config',
+            '-j',
+            '4',
           },
         },
         cmake = {},
