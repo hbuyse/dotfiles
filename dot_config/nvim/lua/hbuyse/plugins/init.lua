@@ -1,16 +1,5 @@
 return {
   {
-    -- Git wrapper
-    'tpope/vim-fugitive',
-  },
-  {
-    -- Super fast git decorations
-    'lewis6991/gitsigns.nvim',
-    config = function()
-      require('gitsigns').setup({})
-    end,
-  },
-  {
     -- Startup time profiler
     'dstein64/vim-startuptime',
     -- lazy-load on a command
