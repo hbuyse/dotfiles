@@ -26,6 +26,7 @@ return {
   config = function()
     -- luasnip setup
     local luasnip = require('luasnip')
+    require('luasnip.loaders.from_vscode').lazy_load()
 
     -- nvim-cmp setup
     local cmp = require('cmp')
@@ -50,7 +51,7 @@ return {
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
-          elseif luasnip.expand_or_jumpable() then
+          elseif luasnip.expand_or_locally_jumpable() then
             luasnip.expand_or_jump()
           elseif has_words_before() then
             cmp.complete()
