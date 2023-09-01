@@ -143,4 +143,3 @@ end
 vim.api.nvim_exec([[ filetype plugin on ]], false)
 
 require('hbuyse')
-require('formatters')

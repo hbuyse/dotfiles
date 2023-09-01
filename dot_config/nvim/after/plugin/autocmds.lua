@@ -24,23 +24,6 @@ if lsp and lsp_extensions then
   })
 end
 
--- Trim whitespace
-local trim_whitespace_gid = vim.api.nvim_create_augroup('TrimWhitespace', {})
-vim.api.nvim_create_autocmd('BufWritePre', {
-  group = trim_whitespace_gid,
-  desc = 'Trim whitespaces before saving',
-  callback = function()
-    -- Do not remove whitespaces if we are in git diff
-    for _, v in ipairs({ 'diff' }) do
-      if vim.bo.filetype == v then
-        return
-      end
-    end
-
-    vim.api.nvim_command('%s/\\s\\+$//e')
-  end,
-})
-
 -- Autojump to last known position in the file
 local autojump_gid = vim.api.nvim_create_augroup('AutoJump', {})
 vim.api.nvim_create_autocmd('BufReadPost', {
