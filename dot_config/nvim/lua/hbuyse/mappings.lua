@@ -3,7 +3,7 @@ local function kmap(mode, key, result, desc)
 end
 
 -- Misc
-kmap('', '<leader><space>', '<Cmd>nohlsearch<Bar>diffupdate<CR><C-L>', { desc = 'Clear highlight' })
+kmap('', '<leader><space>', '<Cmd>nohlsearch<Bar>diffupdate<CR><C-L>', 'Clear highlight')
 
 -- Clipboard
 kmap('n', '<leader>y', '"+y')
