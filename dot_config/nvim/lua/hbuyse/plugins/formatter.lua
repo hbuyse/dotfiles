@@ -61,6 +61,7 @@ return {
             notify('File formatted', nil, { title = 'formatter.nvim' })
           end,
         })
-    end
+      end
+    end,
   },
 }
