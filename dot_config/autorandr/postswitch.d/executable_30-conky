@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+cmd_exists () {
+    command -v "$1" >/dev/null
+}
+
+# Relaunch the conkies
+if cmd_exists conky; then
+  "${HOME}/.config/conky/launch.sh"
+fi

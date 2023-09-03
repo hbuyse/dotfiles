@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+
+cmd_exists () {
+    command -v "$1" >/dev/null
+}
+
+# Start polybar
+if cmd_exists polybar; then
+  sleep 5
+  "${HOME}/.config/polybar/launch.sh"
+fi
+
+# vim: set ts=2 sw=2 tw=0 et ft=sh :
