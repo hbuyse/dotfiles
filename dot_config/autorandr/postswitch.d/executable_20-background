@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+cmd_exists () {
+    command -v "$1" >/dev/null
+}
+
+# Reset the background
+if cmd_exists feh; then
+  feh --bg-fill "${HOME}/.config/wallpapers/wallpaper.png"
+fi

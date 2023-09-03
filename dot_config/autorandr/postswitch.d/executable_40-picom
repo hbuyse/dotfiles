@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+cmd_exists () {
+    command -v "$1" >/dev/null
+}
+
+# Relaunch picom
+if cmd_exists picom; then
+  "$HOME/.config/picom/launch.sh"
+fi
+
+# vim: set ts=2 sw=2 tw=0 et ft=sh :
