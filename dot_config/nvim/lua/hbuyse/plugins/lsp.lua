@@ -26,10 +26,12 @@ local function get_clangd_executable()
     'clangd',
   }
 
-  for path in string.gmatch(paths, '([^:]+)') do
+  -- gmatch returns an iterator function
+  for path in paths:gmatch('([^:]+)') do
     local filepaths = scan.scan_dir(path, { hidden = false, search_pattern = 'clangd.*' })
     for _, clangd in ipairs(list_clangd) do
-      for _, filepath in ipairs(filepaths) do
+      for i = #filepaths, 1, -1 do
+        local filepath = filepaths[i]
         if filepath == path .. '/' .. clangd then
           return filepath
         end
