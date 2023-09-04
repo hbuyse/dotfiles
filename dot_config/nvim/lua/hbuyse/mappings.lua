@@ -69,6 +69,7 @@ kmap('n', 'J', 'mzJ`z')
 kmap('x', '<leader>p', '"_dP')
 
 -- Open command to replace the word under cursor in the whole document
+-- Not using kmap since we need to modify the command line
 vim.keymap.set(
   'n',
   '<leader>rd',
@@ -81,5 +82,10 @@ vim.keymap.set(
   ':s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
   { desc = '[R]eplace word under cursor in current [L]ine' }
 )
+
+local has_lazy, lazy = pcall(require, 'lazy')
+if has_lazy then
+  kmap('n', '<F12>', lazy.home, 'Open Lazy homepage')
+end
 
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
