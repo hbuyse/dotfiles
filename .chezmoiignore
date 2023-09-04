@@ -6,9 +6,11 @@ README.md
 {{- if eq .chezmoi.os "freebsd" }}
 .tmux.conf
 .config/autorandr
+.config/cava
 .config/conky
 .config/dunst
 .config/i3
+.config/libvirt
 .config/picom
 .config/polybar
 .config/redshift
