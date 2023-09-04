@@ -1,29 +1,3 @@
-local lsp = pcall(require, 'lspconfig')
-local lsp_extensions = pcall(require, 'lsp_extensions')
-
-if lsp and lsp_extensions then
-  -- Enable type inlay hints
-  local lsp_inlay_hints_group_id = vim.api.nvim_create_augroup('LSPInlayHints', {})
-  vim.api.nvim_create_autocmd({
-    'CursorMoved',
-    'InsertLeave',
-    'BufEnter',
-    'BufWinEnter',
-    'TabEnter',
-    'BufWritePost',
-  }, {
-    group = lsp_inlay_hints_group_id,
-    pattern = '*.rs',
-    callback = function()
-      lsp_extensions.inlay_hints({
-        prefix = '',
-        highlight = 'Comment',
-        enabled = { 'TypeHint', 'ChainingHint', 'ParameterHint' },
-      })
-    end,
-  })
-end
-
 -- Autojump to last known position in the file
 local autojump_gid = vim.api.nvim_create_augroup('AutoJump', {})
 vim.api.nvim_create_autocmd('BufReadPost', {
