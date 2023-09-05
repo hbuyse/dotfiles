@@ -144,11 +144,13 @@ local function on_attach(client, bufnr)
     lsp_document_highlight(bufnr)
   end
 
-  if client.server_capabilities.inlayHintProvider and not vim.version.lt(vim.version(), { 0, 10, 0 }) then
+  if not vim.lsp.inlay_hint then
+    vim.notify('Neovim not supporting', vim.log.levels.INFO, { title = 'InlayHints' })
+  elseif not client.server_capabilities.inlayHintProvider then
+    vim.notify('Server not supporting', vim.log.levels.INFO, { title = 'InlayHints' })
+  else
     lsp_inlay_hints(bufnr)
     vim.notify('Activated', vim.log.levels.INFO, { title = 'InlayHints' })
-  else
-    vim.notify('Not activated', vim.log.levels.INFO, { title = 'InlayHints' })
   end
 end
 
