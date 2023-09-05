@@ -3,7 +3,9 @@ return {
     -- Better annotation generator
     'danymat/neogen',
     ft = { 'c', 'cpp', 'rust', 'lua', 'python' },
-    config = true,
+    opts = {
+      snippet_engine = 'luasnip',
+    },
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
     },
