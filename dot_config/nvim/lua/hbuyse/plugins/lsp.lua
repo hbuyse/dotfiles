@@ -1,3 +1,5 @@
+--- Retrieve the latest version of clangd (absolute path)
+---@return string filepath absolute path to the latest version of clangd
 local function get_clangd_executable()
   local has_scan, scan = pcall(require, 'plenary.scandir')
   if not has_scan then
@@ -125,8 +127,15 @@ local function print_table(node)
   print(output_str)
 end
 
--- Set some key mappings
+--- Setup mapping when attaching LSP server
+---@param client table LSP client
+---@param bufnr integer Buffer number
 local function lsp_keymaps(client, bufnr)
+  --- Wrapper function to set keymap
+  ---@param m string|table The modes
+  ---@param lhs string Keymap
+  ---@param rhs string|function Command called when pressing keymap
+  ---@param desc string Keymap description
   local kmap = function(m, lhs, rhs, desc)
     local opts = { remap = false, silent = true, buffer = bufnr, desc = desc }
     vim.keymap.set(m, lhs, rhs, opts)
@@ -178,6 +187,8 @@ local function lsp_document_highlight(bufnr)
   })
 end
 
+--- Create augroup and autocommands for InlayHints
+---@param bufnr integer Buffer number
 local function lsp_inlay_hints(bufnr)
   local inlay_hints_group = vim.api.nvim_create_augroup('InlayHints', { clear = false })
 
@@ -201,6 +212,9 @@ local function lsp_inlay_hints(bufnr)
   })
 end
 
+--- Callback called when attaching to LSP server
+---@param client table LSP client
+---@param bufnr integer Buffer number
 local function on_attach(client, bufnr)
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
