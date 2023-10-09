@@ -5,24 +5,6 @@ return {
     config = function()
       local palette = require('gruvbox').palette
 
-      local group = vim.api.nvim_create_augroup('IndentBlanklineHighlight', { clear = false })
-      vim.api.nvim_create_autocmd('ColorScheme', {
-        callback = function()
-          local indentblankline = {
-            IndentBlanklineChar = palette.dark4, -- Highlight of indent character
-            IndentBlanklineSpaceChar = palette.dark4, -- Highlight of space character
-            IndentBlanklineSpaceCharBlankline = palette.neutral_red, -- Highlight of space character on blank lines.
-            IndentBlanklineContextChar = palette.light2, -- Highlight of indent character when base of current context
-            IndentBlanklineContextSpaceChar = palette.visual_grey, -- Highlight of space characters one indent level of the current context
-            IndentBlanklineContextStart = palette.neutral_red, -- Highlight of the first line of the current context.
-          }
-          for name, color in pairs(indentblankline) do
-            vim.api.nvim_set_hl(0, name, { foreground = color, bold = true, nocombine = true })
-          end
-        end,
-        group = group,
-      })
-
       vim.g.gruvbox_contrast_dark = 'medium'
       vim.g.gruvbox_sign_column = 'bg1'
       vim.g.gruvbox_hls_highlight = 'orange'
