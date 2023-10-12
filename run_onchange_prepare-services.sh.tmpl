@@ -11,27 +11,26 @@ echo "Operating System: ${OS}"
 echo "Distribution ID: ${DISTRIB_ID}"
 echo "==================================="
 
-
 case "${OS}-${DISTRIB_ID}" in
-	"linux-ubuntu"|"linux-manjaro")
-		# Reload the services
-		systemctl --user daemon-reload
+"linux-ubuntu" | "linux-manjaro")
+    # Reload the services
+    systemctl --user daemon-reload
 
-		# Enable all the following user services
-		SERVICES=(
-			"dunst"
-			"librespot"
-			"nextcloud"
-			"polkit-gnome-authentication-agent"
-			"spotifyd"
-		)
-		for sv in "${SERVICES[@]}"; do
-			systemctl --user enable --now "${sv}.service"
-		done
-		;;
-    *)
-        echo "Unsupported OS-distribution: '${OS}-${DISTRIB_ID}'"
-        ;;
+    # Enable all the following user services
+    SERVICES=(
+        "dunst"
+        "librespot"
+        "nextcloud"
+        "polkit-gnome-authentication-agent"
+        "spotifyd"
+    )
+    for sv in "${SERVICES[@]}"; do
+        systemctl --user enable --now "${sv}.service"
+    done
+    ;;
+*)
+    echo "Unsupported OS-distribution: '${OS}-${DISTRIB_ID}'"
+    ;;
 esac
 
 # vim: set ts=4 sw=4 tw=0 noet ft=sh :

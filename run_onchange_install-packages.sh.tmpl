@@ -16,12 +16,12 @@ readonly IDLIKE=""
 {{- end }}
 
 if [ $(id -u) -eq 0 ]; then
-	readonly SUDO=""
+    readonly SUDO=""
 else
-	readonly SUDO="sudo"
+    readonly SUDO="sudo"
 fi
 
-prompt () {
+prompt() {
     echo -en "$*: "
 }
 
@@ -34,7 +34,7 @@ display_ko_ok() {
 }
 
 cmdexists() {
-    command -v "$1" > /dev/null && return 0 || return 1;
+    command -v "$1" > /dev/null && return 0 || return 1
 }
 
 npm_install() {
@@ -121,41 +121,41 @@ install_packages() {
 
     # Get the command to install package and check that package is installed
     case "${OS}-${ID}" in
-        "linux-manjaro")
-            install_cmd="pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm"
-            for pkg in ${packages_to_install[@]}; do
-                if ! pacman --query --search --quiet "${pkg}"; then
-                    packages_not_installed+=("${pkg}")
-                fi
-            done
-            ;;
+    "linux-manjaro")
+        install_cmd="pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm"
+        for pkg in ${packages_to_install[@]}; do
+            if ! pacman --query --search --quiet "${pkg}"; then
+                packages_not_installed+=("${pkg}")
+            fi
+        done
+        ;;
 
-        "linux-ubuntu")
-            install_cmd="apt-get install --assume-yes --quiet"
-            # Check that package is installed
-            for pkg in "${packages_to_install[@]}"; do
-                # Check if already installed
-                if ! dpkg --get-selections| grep -w "${pkg}" | awk '{ print $2 }' | grep -q -w 'install'; then
-                    packages_not_installed+=("${pkg}")
-                fi
-            done
-            ;;
+    "linux-ubuntu")
+        install_cmd="apt-get install --assume-yes --quiet"
+        # Check that package is installed
+        for pkg in "${packages_to_install[@]}"; do
+            # Check if already installed
+            if ! dpkg --get-selections | grep -w "${pkg}" | awk '{ print $2 }' | grep -q -w 'install'; then
+                packages_not_installed+=("${pkg}")
+            fi
+        done
+        ;;
 
-        "freebsd-freebsd")
-            install_cmd="pkg install --automatic --yes"
-            # Check that package is installed
-            for pkg in "${packages_to_install[@]}"; do
-                # Check if already installed
-                if ! pkg info | grep -qw "${pkg}"; then
-                    packages_not_installed+=("${pkg}")
-                fi
-            done
-            ;;
+    "freebsd-freebsd")
+        install_cmd="pkg install --automatic --yes"
+        # Check that package is installed
+        for pkg in "${packages_to_install[@]}"; do
+            # Check if already installed
+            if ! pkg info | grep -qw "${pkg}"; then
+                packages_not_installed+=("${pkg}")
+            fi
+        done
+        ;;
 
-        *)
-            echo "Unsupported distribution: '${DISTRIB_ID}'"
-            return
-            ;;
+    *)
+        echo "Unsupported distribution: '${DISTRIB_ID}'"
+        return
+        ;;
     esac
 
     # Install only the packages that are not already installed
@@ -177,179 +177,179 @@ echo "User: ${USER}"
 echo "==================================="
 
 if [ -n "${SUDO}" ]; then
-	prompt "Asking for 'sudo' rights: "
-	sudo -p "" echo -n
-	display_ko_ok ${?}
+    prompt "Asking for 'sudo' rights: "
+    sudo -p "" echo -n
+    display_ko_ok ${?}
 fi
 
 if [[ "${OS}" == "linux" ]]; then
     case "${ID}" in
-        "manjaro")
-            # Install my package
-            install_packages \
-                age \
-                chezmoi \
-                feh \
-                firefox \
-                htop \
-                i3-wm \
-                rofi \
-                npm \
-                shellcheck \
-                zsh \
-                curl \
-                clang \
-                autorandr \
-                base-devel \
-                xautolock \
-                git \
-                git-lfs \
-                tmux \
-                python-pip python-virtualenv python-virtualenvwrapper \
-                polybar \
-                feh
+    "manjaro")
+        # Install my package
+        install_packages \
+            age \
+            chezmoi \
+            feh \
+            firefox \
+            htop \
+            i3-wm \
+            rofi \
+            npm \
+            shellcheck \
+            zsh \
+            curl \
+            clang \
+            autorandr \
+            base-devel \
+            xautolock \
+            git \
+            git-lfs \
+            tmux \
+            python-pip python-virtualenv python-virtualenvwrapper \
+            polybar \
+            feh
 
-            if ! cmdexists paru; then
-                git clone https://aur.archlinux.org/paru.git /tmp/paru
-                (cd paru && makepkg -si)
-                rm -rf /tmp/paru
-            fi
+        if ! cmdexists paru; then
+            git clone https://aur.archlinux.org/paru.git /tmp/paru
+            (cd paru && makepkg -si)
+            rm -rf /tmp/paru
+        fi
 
-            paru -Sy cava
-            ;;
+        paru -Sy cava
+        ;;
 
-        "ubuntu")
-            # Add PPAs
-            echo "Installing PPAs"
-            for i in "git-core/ppa" "yubico/stable" "regolith-linux/stable" "hsheth2/ppa"; do
-                prompt "- ${i}:"
-                if grep -riq "${i}" "/etc/apt/sources.list.d"; then
-                    display_already_installed
-                else
-                    ${SUDO} add-apt-repository -ny ppa:${i}
-                    display_ko_ok $?
-                fi
-            done
-
-            # Install packages (nodejs = node + npm)
-            prompt "Installing Node JS 18 (LTS) repo"
-            if grep -q "https://deb.nodesource.com/node_18.x" /etc/apt/sources.list.d/nodesource.list; then
+    "ubuntu")
+        # Add PPAs
+        echo "Installing PPAs"
+        for i in "git-core/ppa" "yubico/stable" "regolith-linux/stable" "hsheth2/ppa"; do
+            prompt "- ${i}:"
+            if grep -riq "${i}" "/etc/apt/sources.list.d"; then
                 display_already_installed
-            elif [ -n ${SUDO} ]; then
-                curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - > /dev/null
-                display_ko_ok $?
             else
-                curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - > /dev/null
+                ${SUDO} add-apt-repository -ny ppa:${i}
                 display_ko_ok $?
             fi
+        done
 
-            # Refresh packages list
-            prompt "Updating packages list: "
-            ${SUDO} apt-get update --quiet --quiet
+        # Install packages (nodejs = node + npm)
+        prompt "Installing Node JS 18 (LTS) repo"
+        if grep -q "https://deb.nodesource.com/node_18.x" /etc/apt/sources.list.d/nodesource.list; then
+            display_already_installed
+        elif [ -n ${SUDO} ]; then
+            curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - > /dev/null
+            display_ko_ok $?
+        else
+            curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - > /dev/null
+            display_ko_ok $?
+        fi
+
+        # Refresh packages list
+        prompt "Updating packages list: "
+        ${SUDO} apt-get update --quiet --quiet
+        display_ko_ok $?
+
+        install_packages \
+            yubikey-manager \
+            yubikey-personalization-gui \
+            libpam-yubico \
+            libpam-u2f \
+            meld \
+            git git-lfs \
+            nodejs \
+            i3-gaps \
+            python3-pip \
+            python3-dev \
+            shellcheck \
+            zsh \
+            curl \
+            cava
+
+        # Install dunst
+        DUNST_VERSION="1.9.2"
+        prompt "Installing dunst v${DUNST_VERSION}: "
+        if cmdexists dunst || ! dunst --version | grep -q ${DUNST_VERSION}; then
+            display_already_installed
+        else
+            # Dunst dependencies
+            echo
+            prompt "- Installing dependencies: "
+            install_packages \
+                libdbus-1-dev \
+                libx11-dev \
+                libxinerama-dev \
+                libxrandr-dev \
+                libxss-dev \
+                libglib2.0-dev \
+                libpango1.0-dev \
+                libgtk-3-dev \
+                libxdg-basedir-dev
             display_ko_ok $?
 
+            prompt "- Downloading and extracting source code:"
+            curl --location --silent "https://github.com/dunst-project/dunst/archive/refs/tags/v${DUNST_VERSION}.tar.gz" | tar -xz -C /tmp -f -
+            display_ko_ok $?
+
+            prompt "- Compiling source code: "
+            make -C /tmp/dunst-${DUNST_VERSION} PREFIX=${HOME}/.local install
+            display_ko_ok $?
+
+            rm -rf /tmp/dunst-${DUNST_VERSION}
+        fi
+
+        # Install i3lock color
+        I3LOCK_COLOR_VERSION="2.13.c.4"
+        prompt "Installing i3lock-color v${I3LOCK_COLOR_VERSION}: "
+        if cmdexists i3lock && i3lock --version 2>&1 | grep -q ${I3LOCK_COLOR_VERSION}; then
+            display_already_installed
+        else
+            # Install i3lock-color
+            prompt "- Installing dependencies: "
             install_packages \
-                yubikey-manager \
-                yubikey-personalization-gui \
-                libpam-yubico \
-                libpam-u2f \
-                meld \
-                git git-lfs \
-                nodejs \
-                i3-gaps \
-                python3-pip \
-                python3-dev \
-                shellcheck \
-                zsh \
-                curl \
-                cava
+                autoconf \
+                gcc \
+                make \
+                pkg-config \
+                libpam0g-dev \
+                libcairo2-dev \
+                libfontconfig1-dev \
+                libxcb-composite0-dev \
+                libev-dev \
+                libx11-xcb-dev \
+                libxcb-xkb-dev \
+                libxcb-xinerama0-dev \
+                libxcb-randr0-dev \
+                libxcb-image0-dev \
+                libxcb-util-dev \
+                libxcb-xrm-dev \
+                libxkbcommon-dev \
+                libxkbcommon-x11-dev \
+                libjpeg-dev
+            display_ko_ok $?
 
-            # Install dunst
-            DUNST_VERSION="1.9.2"
-            prompt "Installing dunst v${DUNST_VERSION}: "
-            if cmdexists dunst || ! dunst --version | grep -q ${DUNST_VERSION}; then
-                display_already_installed
-            else
-                # Dunst dependencies
-                echo
-                prompt "- Installing dependencies: "
-                install_packages \
-                    libdbus-1-dev \
-                    libx11-dev \
-                    libxinerama-dev \
-                    libxrandr-dev \
-                    libxss-dev \
-                    libglib2.0-dev \
-                    libpango1.0-dev \
-                    libgtk-3-dev \
-                    libxdg-basedir-dev
-                display_ko_ok $?
+            prompt "- Downloading and extracting source code:"
+            curl --location --silent "https://github.com/Raymo111/i3lock-color/archive/refs/tags/${I3LOCK_COLOR_VERSION}.tar.gz" | tar -xz -C /tmp -f -
+            display_ko_ok $?
 
-                prompt "- Downloading and extracting source code:"
-                curl --location --silent "https://github.com/dunst-project/dunst/archive/refs/tags/v${DUNST_VERSION}.tar.gz" | tar -xz -C /tmp -f -
-                display_ko_ok $?
+            prompt "- Compiling source code: "
+            autoreconf -fiv /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
+            mkdir -p /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build
+            cd /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build
+            /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/configure --disable-sanitizers --prefix=${HOME}/.local
+            cd -
+            make -C /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build PREFIX=${HOME}/.local install
+            display_ko_ok $?
 
-                prompt "- Compiling source code: "
-                make -C /tmp/dunst-${DUNST_VERSION} PREFIX=${HOME}/.local install
-                display_ko_ok $?
+            rm -rf /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
+        fi
 
-                rm -rf /tmp/dunst-${DUNST_VERSION}
-            fi
+        # Install rust-analyzer
+        curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.local/bin/rust-analyzer
+        chmod +x $HOME/.local/bin/rust-analyzer
+        ;;
 
-            # Install i3lock color
-            I3LOCK_COLOR_VERSION="2.13.c.4"
-            prompt "Installing i3lock-color v${I3LOCK_COLOR_VERSION}: "
-            if cmdexists i3lock && i3lock --version 2>&1 | grep -q ${I3LOCK_COLOR_VERSION}; then
-                display_already_installed
-            else
-                # Install i3lock-color
-                prompt "- Installing dependencies: "
-                install_packages \
-                    autoconf \
-                    gcc \
-                    make \
-                    pkg-config \
-                    libpam0g-dev \
-                    libcairo2-dev \
-                    libfontconfig1-dev \
-                    libxcb-composite0-dev \
-                    libev-dev \
-                    libx11-xcb-dev \
-                    libxcb-xkb-dev \
-                    libxcb-xinerama0-dev \
-                    libxcb-randr0-dev \
-                    libxcb-image0-dev \
-                    libxcb-util-dev \
-                    libxcb-xrm-dev \
-                    libxkbcommon-dev \
-                    libxkbcommon-x11-dev \
-                    libjpeg-dev
-                display_ko_ok $?
-
-                prompt "- Downloading and extracting source code:"
-                curl --location --silent "https://github.com/Raymo111/i3lock-color/archive/refs/tags/${I3LOCK_COLOR_VERSION}.tar.gz" | tar -xz -C /tmp -f -
-                display_ko_ok $?
-
-                prompt "- Compiling source code: "
-                autoreconf -fiv /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
-                mkdir -p /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build
-                cd /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build
-                /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/configure --disable-sanitizers --prefix=${HOME}/.local
-                cd -
-                make -C /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build PREFIX=${HOME}/.local install
-                display_ko_ok $?
-
-                rm -rf /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
-            fi
-
-            # Install rust-analyzer
-            curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.local/bin/rust-analyzer
-            chmod +x $HOME/.local/bin/rust-analyzer
-            ;;
-
-        *)
-            echo "Unsupported Linux distribution: '${DISTRIB_ID}'"
-            ;;
+    *)
+        echo "Unsupported Linux distribution: '${DISTRIB_ID}'"
+        ;;
     esac
 
     # Install Papirus icon theme
@@ -398,7 +398,7 @@ elif [[ "${OS}" == "freebsd" ]]; then
         libtool \
         gettext \
         neovim \
-		npm
+        npm
 fi
 
 # Install npm packages
