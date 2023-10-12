@@ -407,8 +407,8 @@ if cmdexists npm; then
         ["bash-language-server"]="5.0.0"
         ["diff-so-fancy"]="1.4.3"
         ["neovim"]="4.10.1"
-        ["npm"]="10.1.0"
-        ["pyright"]="1.1.326"
+        ["npm"]="10.2.0"
+        ["pyright"]="1.1.331"
         ["typescript"]="5.2.2"
         ["typescript-language-server"]="3.3.2"
         ["vscode-langservers-extracted"]="4.7.0"
@@ -444,10 +444,10 @@ fi
 # Install cargo package
 if cmdexists cargo; then
     declare -A CARGO_PKGS=(
-        ["bottom"]="0.9.3"
+        ["bottom"]="0.9.6"
         ["fd-find"]="8.7.0"
-        ["stylua"]="0.18.1"
-        ["texlab"]="4.3.2"
+        ["stylua"]="0.18.2"
+        ["texlab"]="5.10.1"
         ["ripgrep"]="13.0.0"
         ["du-dust"]="0.8.6"
         ["bat"]="0.23.0"
@@ -455,7 +455,7 @@ if cmdexists cargo; then
 
     if [[ "${OS}" == "linux" ]]; then
         CARGO_PKGS+=(
-            ["alacritty"]="0.12.2"
+            ["alacritty"]="0.12.3"
             ["spotify-tui"]="0.25.0"
             ["spotifyd"]="0.3.5,pulseaudio_backend"
         )
@@ -469,7 +469,7 @@ fi
 if cmdexists pip; then
     declare -A PIP_PKGS=(
         ["cmake-language-server"]="0.1.7"
-        ["robotframework-lsp"]="1.11.0"
+        ["robotframework-lsp"]="1.12.0"
     )
 
     for pkg in ${!PIP_PKGS[*]}; do
