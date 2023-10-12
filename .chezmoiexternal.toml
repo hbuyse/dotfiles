@@ -172,4 +172,10 @@
 	type = "archive"
 	url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-linux-x64.tar.gz"
 	exact = false
+
+{{ $shfmtVersion := "3.7.0" -}}
+[ ".local/bin/shfmt" ]
+    type = "file"
+	url = "https://github.com/mvdan/sh/releases/download/v{{ $shfmtVersion }}/shfmt_v{{ $shfmtVersion }}_linux_amd64"
+    executable = true
 {{- end }}
