@@ -164,7 +164,7 @@
 
 [ ".local/bin/nvim" ]
     type = "file"
-	url = "https://github.com/neovim/neovim/releases/download/v0.9.2/nvim.appimage"
+	url = "https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage"
     executable = true
 
 {{ $luaLsVersion := "3.6.25" -}}
