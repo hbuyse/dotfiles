@@ -57,6 +57,7 @@ return {
         'scss',
         'sql',
         'toml',
+        'twig',
         'typescript',
         'vim',
         'vimdoc',
