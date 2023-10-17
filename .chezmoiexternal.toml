@@ -179,3 +179,8 @@
 	url = "https://github.com/mvdan/sh/releases/download/v{{ $shfmtVersion }}/shfmt_v{{ $shfmtVersion }}_linux_amd64"
     executable = true
 {{- end }}
+
+[".config/alacritty/themes"]
+    type = "git-repo"
+    url = "https://github.com/alacritty/alacritty-theme"
+    refreshPeriod = "168h"
