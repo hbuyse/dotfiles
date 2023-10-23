@@ -36,50 +36,49 @@ list() {
     fi
 }
 
-if [[ -n "${@}" ]]
-then
-    case "${@}" in
-        "Uncaffeinate")
-            xautolock -enable
-            xset -display :0 s 600 600 +dpms
-            notify-send "Screen saver" "Enabled"
-            ;;
-        "Caffeinate")
-            xautolock -disable
-            xset -display :0 s off -dpms
-            notify-send "Screen saver" "Disabled"
-            ;;
-        "Lock")
-            lock && xset dpms force off
-            ;;
-        "Logout")
-            i3-msg exit
-            ;;
-        "Shutdown")
-            lock && systemctl poweroff
-            ;;
-        "Reboot")
-            lock && systemctl reboot
-            ;;
-        "Hibernate")
-            lock && sudo systemctl hibernate
-            ;;
-        "Suspend")
-            lock && systemctl suspend
-            ;;
-        "Do Disturb")
-            dunstctl set-paused false
-            notify-send "Do Not Disturb" "Disabled"
-            ;;
-        "Do Not Disturb")
-            dunstctl set-paused true
-            ;;
-        "Deactivate Redshift")
-            pkill redshift
-            ;;
-        "Activate Redshift")
-            "${HOME}/.config/redshift/launch.sh"
-            ;;
+if [[ -n "${1}" ]]; then
+    case "${1}" in
+    "Uncaffeinate")
+        xautolock -enable
+        xset -display :0 s 600 600 +dpms
+        notify-send "Screen saver" "Enabled"
+        ;;
+    "Caffeinate")
+        xautolock -disable
+        xset -display :0 s off -dpms
+        notify-send "Screen saver" "Disabled"
+        ;;
+    "Lock")
+        lock && xset dpms force off
+        ;;
+    "Logout")
+        i3-msg exit
+        ;;
+    "Shutdown")
+        lock && systemctl poweroff
+        ;;
+    "Reboot")
+        lock && systemctl reboot
+        ;;
+    "Hibernate")
+        lock && sudo systemctl hibernate
+        ;;
+    "Suspend")
+        lock && systemctl suspend
+        ;;
+    "Do Disturb")
+        dunstctl set-paused false
+        notify-send "Do Not Disturb" "Disabled"
+        ;;
+    "Do Not Disturb")
+        dunstctl set-paused true
+        ;;
+    "Deactivate Redshift")
+        pkill redshift
+        ;;
+    "Activate Redshift")
+        "${HOME}/.config/redshift/launch.sh"
+        ;;
     esac
 else
     list Papirus 24

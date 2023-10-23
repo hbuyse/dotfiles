@@ -2,4 +2,3 @@
 " start of a line
 highlight ExtraWhitespace ctermbg=108 guibg=#689d6a
 match ExtraWhitespace /\s\+$\| \+\ze\t\| [^\t]\zs\t\+/
-

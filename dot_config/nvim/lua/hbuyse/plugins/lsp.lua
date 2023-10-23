@@ -183,7 +183,8 @@ return {
         underline = true,
       })
 
-      -- Use a loop to conveniently both setup defined servers and map buffer local keybindings when the language server attaches
+      -- Use a loop to conveniently both setup defined servers and map buffer local keybindings when the language
+      -- server attaches
       local servers = {
         bashls = {},
         clangd = {
@@ -209,7 +210,8 @@ return {
             then
               overrides = {
                 runtime = {
-                  -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                  -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of
+                  -- Neovim)
                   version = 'LuaJIT',
                 },
                 -- Make the server aware of Neovim runtime files

@@ -1,0 +1,8 @@
+line_ending: lf
+formatter:
+    type: basic
+    include_document_start: true
+    retain_line_breaks: true
+    indent: 4
+    line_ending: lf
+#  vim: set ts=4 sw=4 tw=0 et ft=yaml :

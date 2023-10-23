@@ -13,7 +13,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup("hbuyse.plugins", {
+require('lazy').setup('hbuyse.plugins', {
   defaults = {
     lazy = false,
     -- version = '*', -- try installing the latest stable versions of plugins

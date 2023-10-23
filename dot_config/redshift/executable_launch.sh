@@ -5,8 +5,8 @@ readonly CONF="$HOME/.config/redshift/redshift.conf"
 
 # Check if the command exists
 if ! command -v "${DAEMON}" > /dev/null; then
-	echo "${DAEMON} not found. Exiting"
-	exit
+    echo "${DAEMON} not found. Exiting"
+    exit
 fi
 
 # Kill all previous instances of the daemon

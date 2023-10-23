@@ -1,0 +1,37 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+    - repo: https://github.com/pre-commit/pre-commit-hooks
+      rev: v4.5.0
+      hooks:
+        - id: trailing-whitespace
+        - id: end-of-file-fixer
+        - id: check-yaml
+        - id: check-toml
+          exclude: .chezmoiexternal.toml
+        - id: check-added-large-files
+    - repo: https://github.com/JohnnyMorganz/StyLua
+      rev: v0.18.2
+      hooks:
+        - id: stylua
+          args: [--search-parent-directories]
+    - repo: https://github.com/jumanjihouse/pre-commit-hooks
+      rev: 3.0.0
+      hooks:
+        - id: shellcheck
+        - id: shfmt
+          args: [-i 4, -sr, -bn]
+    - repo: https://github.com/psf/black
+      rev: 23.9.1
+      hooks:
+        - id: black
+    - repo: https://github.com/google/yamlfmt
+      rev: v0.10.0
+      hooks:
+        - id: yamlfmt
+    - repo: https://github.com/lunarmodules/luacheck.git
+      rev: v1.1.1
+      hooks:
+        - id: luacheck
+          args: [--globals, vim, --]

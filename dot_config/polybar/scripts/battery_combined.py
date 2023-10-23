@@ -262,7 +262,9 @@ class PowerSupplies:
         status = self.status
 
         if status == "Charging":
-            time = datetime.timedelta(hours=(self.energy_full - self.energy_now) / self.power_now)
+            time = datetime.timedelta(
+                hours=(self.energy_full - self.energy_now) / self.power_now
+            )
         elif status == "Discharging":
             time = datetime.timedelta(hours=self.energy_now / self.power_now)
 
@@ -315,7 +317,10 @@ def main():
 
     print(
         "{charge_icon} {level_icon} {percentage}%{time}".format(
-            charge_icon=charge_icon, level_icon=level_icon, percentage=powersupplies.percentage, time=remaining_time_str
+            charge_icon=charge_icon,
+            level_icon=level_icon,
+            percentage=powersupplies.percentage,
+            time=remaining_time_str,
         )
     )
 

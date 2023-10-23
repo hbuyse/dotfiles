@@ -4,7 +4,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   group = autojump_gid,
   desc = 'Autojump to last known position in the file',
   pattern = '*',
-  callback = function(data)
+  callback = function(_)
     local last_pos = vim.fn.line('\'"')
     local end_pos = vim.fn.line('$')
     if 0 < last_pos and last_pos <= end_pos then

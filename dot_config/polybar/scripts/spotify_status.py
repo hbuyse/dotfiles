@@ -26,7 +26,9 @@ class Spotify:
 
     def __init__(self):
         self._session_bus = dbus.SessionBus()
-        self._bus = self._session_bus.get_object("org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2")
+        self._bus = self._session_bus.get_object(
+            "org.mpris.MediaPlayer2.spotify", "/org/mpris/MediaPlayer2"
+        )
         self._properties = dbus.Interface(self._bus, "org.freedesktop.DBus.Properties")
 
     @property
@@ -49,9 +51,18 @@ def main():
     """Main program"""
     parser = argparse.ArgumentParser()
     parser.add_argument("-t", "--trunclen", type=int, metavar="trunclen")
-    parser.add_argument("-f", "--format", type=str, metavar="custom format", dest="custom_format")
-    parser.add_argument("-p", "--playpause", type=str, metavar="play-pause indicator", dest="play_pause")
-    parser.add_argument("--font", type=str, metavar="the index of the font to use for the main label", dest="font")
+    parser.add_argument(
+        "-f", "--format", type=str, metavar="custom format", dest="custom_format"
+    )
+    parser.add_argument(
+        "-p", "--playpause", type=str, metavar="play-pause indicator", dest="play_pause"
+    )
+    parser.add_argument(
+        "--font",
+        type=str,
+        metavar="the index of the font to use for the main label",
+        dest="font",
+    )
     parser.add_argument(
         "--playpause-font",
         type=str,
@@ -69,9 +80,11 @@ def main():
     args = parser.parse_args()
 
     # Default parameters
-    output = fix_string(u"{play_pause} {artist}: {song}")
+    output = fix_string("{play_pause} {artist}: {song}")
     trunclen = 35
-    play_pause = fix_string(u"\uF04B,\uF04C")  # first character is play, second is paused
+    play_pause = fix_string(
+        "\uF04B,\uF04C"
+    )  # first character is play, second is paused
 
     label_with_font = "%{{T{font}}}{label}%{{T-}}"
     font = args.font
@@ -125,7 +138,14 @@ def main():
             album = label_with_font.format(font=font, label=album)
 
         # Add 4 to trunclen to account for status symbol, spaces, and other padding characters
-        print(truncate(output.format(artist=artist, song=song, play_pause=play_pause, album=album), trunclen + 4))
+        print(
+            truncate(
+                output.format(
+                    artist=artist, song=song, play_pause=play_pause, album=album
+                ),
+                trunclen + 4,
+            )
+        )
 
 
 if __name__ == "__main__":

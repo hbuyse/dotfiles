@@ -13,7 +13,6 @@ fi
 
 OPTS+=("-notify 30 -notifier \"notify-send -u critical -t 29000 'i3lock' 'Will lock in 30 seconds'\"")
 
-
 if ! command -v $DAEMON; then
     echo "$DAEMON not found. Exiting"
     exit

@@ -1,3 +1,4 @@
+---
 # Shell
 #
 # You can set `shell.program` to the path of your favorite shell, e.g.
@@ -9,7 +10,6 @@
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /bin/zsh
-  args:
-    - --login
-
+    program: /bin/zsh
+    args:
+        - --login

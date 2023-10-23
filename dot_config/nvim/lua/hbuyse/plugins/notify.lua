@@ -111,7 +111,7 @@ return {
     },
     init = function()
       vim.lsp.handlers['$/progress'] = lsp_progress_notification
-      vim.lsp.handlers['window/showMessage'] = function(err, method, params, _client_id)
+      vim.lsp.handlers['window/showMessage'] = function(_, method, params, _)
         vim.notify(method.message, severity[params.type])
       end
 
