@@ -2,6 +2,7 @@
 #   chezmoi ignored
 
 README.md
+utils.sh
 
 {{- if eq .chezmoi.os "freebsd" }}
 .tmux.conf

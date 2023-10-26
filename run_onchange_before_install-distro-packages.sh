@@ -1,116 +1,7 @@
 #! /usr/bin/env bash
 
-# shellcheck disable=all
-#
-readonly RED="\e[1;31m"
-readonly GREEN="\e[1;32m"
-readonly YELLOW="\e[1;33m"
-readonly DEFAULT="\e[0m"
-
-readonly OS="{{- .chezmoi.os }}"
-readonly ID="{{- .chezmoi.osRelease.id }}"
-{{- if index .chezmoi.osRelease "idLike" }}
-readonly IDLIKE="{{- .chezmoi.osRelease.idLike }}"
-{{- else }}
-readonly IDLIKE=""
-{{- end }}
-
-if [ $(id -u) -eq 0 ]; then
-    readonly SUDO=""
-else
-    readonly SUDO="sudo"
-fi
-
-prompt() {
-    echo -en "$*: "
-}
-
-display_already_installed() {
-    echo -e "${YELLOW}already installed${DEFAULT}"
-}
-
-display_ko_ok() {
-    [ "${1}" -eq 0 ] && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
-}
-
-cmdexists() {
-    command -v "$1" > /dev/null && return 0 || return 1
-}
-
-npm_install() {
-    local package="${1}"
-    local version="${2}"
-    local pkg_and_version="${package}@${version}"
-
-    if [ -n "$(npm list --location=global -p ${pkg_and_version})" ]; then
-        prompt "Installing '${pkg_and_version}' using npm"
-        display_already_installed
-    elif [ -n "$(npm list --location=global -p ${package})" ]; then
-        prompt "Updating '${package}' to version '${version}' using npm"
-        npm install --silent --location=global "${pkg_and_version}"
-        local err=${?}
-        if [ ${err} -eq 0 ]; then
-            prompt "Updating '${package}' to version '${version}' using npm"
-        fi
-        display_ko_ok ${err}
-    else
-        prompt "Installing '${package} v${version}' using npm"
-        npm install --silent --location=global "${pkg_and_version}"
-        local err=${?}
-        prompt "Installing '${package}' using npm"
-        display_ko_ok ${err}
-    fi
-}
-
-cargo_install() {
-    local package="${1}"
-    local version_and_features="${2}"
-    local version="$(echo "${version_and_features}" | cut -d',' -f1)"
-    local features="$(echo "${version_and_features}" | cut -d',' -f2-)"
-
-    if [ "${version}" == "${features}" ]; then
-        features=""
-    fi
-
-    if cargo install --list | grep -q "${package} v${version}"; then
-        prompt "Installing '${package} v${version}' using cargo"
-        display_already_installed
-    else
-        if cargo install --list | grep -q "${package}"; then
-            prompt "Updating '${package}' to version '${version}' using cargo"
-        else
-            prompt "Installing '${package} v${version}' using cargo"
-        fi
-        if [ -z "${features}" ]; then
-            cargo install --version="${version}" --quiet --jobs=4 "${package}"
-        else
-            cargo install --version="${version}" --features="${features}" --quiet --jobs=4 "${package}"
-        fi
-        local err=${?}
-        display_ko_ok ${err}
-    fi
-}
-
-pip_install() {
-    local package="${1}"
-    local version="${2}"
-
-    if pip freeze --local | grep -q "${package}==${version}"; then
-        prompt "Installing '${package} v${version}' using pip"
-        display_already_installed
-    else
-        local upgrade_opt=""
-        if pip freeze --local | grep -q "${package}"; then
-            prompt "Updating '${package}' to version '${version}' using pip"
-            upgrade_opt="--upgrade"
-        else
-            prompt "Installing '${package} v${version}' using pip"
-        fi
-        pip install --quiet --user ${upgrade_opt} "${package}==${version}"
-        local err=${?}
-        display_ko_ok ${err}
-    fi
-}
+# Load the shell lib
+. "${CHEZMOI_WORKING_TREE}/utils.sh"
 
 # Install packages based on the OS.
 # Check that the package is installed before installing it.
@@ -123,7 +14,9 @@ install_packages() {
     case "${OS}-${ID}" in
     "linux-manjaro")
         install_cmd="pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm"
-        for pkg in ${packages_to_install[@]}; do
+        # Check that package is installed
+        for pkg in "${packages_to_install[@]}"; do
+            # Check if not already installed
             if ! pacman --query --search --quiet "${pkg}"; then
                 packages_not_installed+=("${pkg}")
             fi
@@ -134,7 +27,7 @@ install_packages() {
         install_cmd="apt-get install --assume-yes --quiet"
         # Check that package is installed
         for pkg in "${packages_to_install[@]}"; do
-            # Check if already installed
+            # Check if not already installed
             if ! dpkg --get-selections | grep -w "${pkg}" | awk '{ print $2 }' | grep -q -w 'install'; then
                 packages_not_installed+=("${pkg}")
             fi
@@ -161,24 +54,22 @@ install_packages() {
     # Install only the packages that are not already installed
     if [ ${#packages_not_installed[@]} -ne 0 ]; then
         prompt "Installing ${packages_not_installed[*]}: "
-        ${SUDO} ${install_cmd} ${packages_not_installed[*]}
+        "${SUDO}" "${install_cmd}" "${packages_not_installed[*]}"
         display_ko_ok $?
     fi
 }
 
-# Display some informations about the install
-echo "==================================="
-echo "Script: ${0}"
-echo "-----------------------------------"
-echo "Operating System: ${OS}"
-echo "Distribution ID: ${ID}"
-echo "Distribution IDLike: ${IDLIKE}"
-echo "User: ${USER}"
-echo "==================================="
+display_info "${0}"
+
+if [ "${CHEZMOI_UID}" -eq 0 ]; then
+    readonly SUDO=""
+else
+    readonly SUDO="sudo"
+fi
 
 if [ -n "${SUDO}" ]; then
     prompt "Asking for 'sudo' rights: "
-    sudo -p "" echo -n
+    sudo -p "" -v
     display_ko_ok ${?}
 fi
 
@@ -195,7 +86,6 @@ if [[ "${OS}" == "linux" ]]; then
             i3-wm \
             rofi \
             npm \
-            shellcheck \
             zsh \
             curl \
             clang \
@@ -235,7 +125,7 @@ if [[ "${OS}" == "linux" ]]; then
         prompt "Installing Node JS 18 (LTS) repo"
         if grep -q "https://deb.nodesource.com/node_18.x" /etc/apt/sources.list.d/nodesource.list; then
             display_already_installed
-        elif [ -n ${SUDO} ]; then
+        elif [ -n "${SUDO}" ]; then
             curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - > /dev/null
             display_ko_ok $?
         else
@@ -259,7 +149,6 @@ if [[ "${OS}" == "linux" ]]; then
             i3-gaps \
             python3-pip \
             python3-dev \
-            shellcheck \
             zsh \
             curl \
             cava
@@ -290,7 +179,7 @@ if [[ "${OS}" == "linux" ]]; then
             display_ko_ok $?
 
             prompt "- Compiling source code: "
-            make -C /tmp/dunst-${DUNST_VERSION} PREFIX=${HOME}/.local install
+            make -C /tmp/dunst-${DUNST_VERSION} PREFIX="${HOME}/.local" install
             display_ko_ok $?
 
             rm -rf /tmp/dunst-${DUNST_VERSION}
@@ -333,18 +222,19 @@ if [[ "${OS}" == "linux" ]]; then
             prompt "- Compiling source code: "
             autoreconf -fiv /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
             mkdir -p /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build
-            cd /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build
-            /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/configure --disable-sanitizers --prefix=${HOME}/.local
-            cd -
-            make -C /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build PREFIX=${HOME}/.local install
+            (
+                cd "/tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build" || exit
+                "/tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/configure" --disable-sanitizers --prefix="${HOME}/.local"
+            )
+            make -C /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build PREFIX="${HOME}/.local" install
             display_ko_ok $?
 
             rm -rf /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
         fi
 
         # Install rust-analyzer
-        curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.local/bin/rust-analyzer
-        chmod +x $HOME/.local/bin/rust-analyzer
+        curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
+        chmod +x "${HOME}/.local/bin/rust-analyzer"
         ;;
 
     *)
@@ -386,7 +276,6 @@ elif [[ "${OS}" == "freebsd" ]]; then
         ripgrep \
         fd-find \
         py39-pip \
-        hs-ShellCheck \
         zsh \
         curl \
         rust-analyzer \
@@ -401,78 +290,10 @@ elif [[ "${OS}" == "freebsd" ]]; then
         npm
 fi
 
-# Install npm packages
-if cmdexists npm; then
-    declare -A NPM_PKGS=(
-        ["bash-language-server"]="5.0.0"
-        ["diff-so-fancy"]="1.4.3"
-        ["neovim"]="4.10.1"
-        ["npm"]="10.2.0"
-        ["pyright"]="1.1.331"
-        ["typescript"]="5.2.2"
-        ["typescript-language-server"]="3.3.2"
-        ["vscode-langservers-extracted"]="4.7.0"
-        ["yaml-language-server"]="1.14.0"
-    )
-    for pkg in ${!NPM_PKGS[*]}; do
-        npm_install "${pkg}" "${NPM_PKGS[${pkg}]}"
-    done
-fi
-
 # Check ZSH is my shell
-if ! grep -i $USER /etc/passwd | cut -d: -f 7 | grep -q zsh; then
+if ! grep -i "$USER" /etc/passwd | cut -d: -f 7 | grep -q zsh; then
     prompt "Changing shell to $(which zsh)"
     chsh -s "$(which zsh)"
-fi
-
-# Rustup
-[[ "${OS}" == "freebsd" ]] && RUST_DEFAULT_HOST="x86_64-unknown-freebsd" || RUST_DEFAULT_HOST="x86_64-unknown-linux-gnu"
-if ! cmdexists rustup; then
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q --no-modify-path --default-host ${RUST_DEFAULT_HOST} --default-toolchain none --profile default -y
-    rustup default stable
-# Use the redirection since rustup check throw a Broken Pipe when filtering with grep -q
-elif ! rustup check | grep "stable-${RUST_DEFAULT_HOST} - Up to date" > /dev/null; then
-    rustup update
-fi
-
-# Rust compiler
-source ${HOME}/.cargo/env
-if ! cmdexists "rustc"; then
-    rustup install toolchain stable
-fi
-
-# Install cargo package
-if cmdexists cargo; then
-    declare -A CARGO_PKGS=(
-        ["bottom"]="0.9.6"
-        ["fd-find"]="8.7.0"
-        ["stylua"]="0.18.2"
-        ["texlab"]="5.10.1"
-        ["ripgrep"]="13.0.0"
-        ["du-dust"]="0.8.6"
-        ["bat"]="0.23.0"
-    )
-
-    if [[ "${OS}" == "linux" ]]; then
-        CARGO_PKGS+=(
-            ["alacritty"]="0.12.3"
-        )
-    fi
-
-    for pkg in ${!CARGO_PKGS[*]}; do
-        cargo_install "${pkg}" "${CARGO_PKGS[${pkg}]}"
-    done
-fi
-
-if cmdexists pip; then
-    declare -A PIP_PKGS=(
-        ["cmake-language-server"]="0.1.7"
-        ["robotframework-lsp"]="1.12.0"
-    )
-
-    for pkg in ${!PIP_PKGS[*]}; do
-        pip_install "${pkg}" "${PIP_PKGS[${pkg}]}"
-    done
 fi
 
 # vim: set ts=4 sw=4 tw=0 et ft=sh :
