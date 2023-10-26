@@ -231,10 +231,6 @@ if [[ "${OS}" == "linux" ]]; then
 
             rm -rf /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
         fi
-
-        # Install rust-analyzer
-        curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
-        chmod +x "${HOME}/.local/bin/rust-analyzer"
         ;;
 
     *)

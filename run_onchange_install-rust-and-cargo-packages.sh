@@ -8,7 +8,7 @@ cargo_install() {
     local version_and_features="${2}"
     local version
     local features
-    local args_str
+    local args
 
     version="$(echo "${version_and_features}" | cut -d',' -f1)"
     features="$(echo "${version_and_features}" | cut -d',' -f2-)"
@@ -28,10 +28,10 @@ cargo_install() {
         fi
 
         if [ -n "${features}" ]; then
-            args_str="--features=\"${features}\""
+            args=("--features" "${features}")
         fi
 
-        cargo install --quiet --locked --jobs=4 --version="${version}" "${args_str}" "${package}"
+        cargo install --quiet --locked --jobs=4 --version="${version}" "${args[@]}" "${package}"
         display_ko_ok ${?}
     fi
 }
@@ -66,7 +66,7 @@ cargo_git_install() {
             args=("--features" "${features}")
         fi
 
-        cargo install --quiet --locked --jobs=4 --tag="v${version}" "${args[*]}" --git "${git_uri}"
+        cargo install --quiet --locked --jobs=4 --tag="v${version}" "${args[@]}" --git "${git_uri}"
         display_ko_ok ${?}
     fi
 }
@@ -88,6 +88,12 @@ fi
 source "${HOME}/.cargo/env"
 if ! cmdexists "rustc"; then
     rustup install toolchain stable
+fi
+
+# Install rust-analyzer
+if [[ "${OS}" == "linux" ]]; then
+    curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
+    chmod +x "${HOME}/.local/bin/rust-analyzer"
 fi
 
 # Install cargo package
