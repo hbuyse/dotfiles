@@ -44,6 +44,7 @@ dump() { /bin/echo "$output"; }
 trim() { head -n "$maxln"; }
 
 # wraps highlight to treat exit code 141 (killed by SIGPIPE) as success
+# shellcheck disable=SC2317
 safepipe() {
     "$@"
     test $? = 0 -o $? = 141

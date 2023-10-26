@@ -1,12 +1,12 @@
 #! /usr/bin/env bash
 
-readonly DAEMONS=("picom" "compton")
-readonly HOSTNAME="$(hostname | tr '[:upper:]' '[:lower:]')"
+DAEMONS=("picom" "compton")
+HOSTNAME="$(hostname | tr '[:upper:]' '[:lower:]')"
 DAEMON=""
 OPTS=("--config" "${HOME}/.config/picom/picom.conf" "-b")
 
 # Check for either picom or compton
-for d in ${DAEMONS[*]}; do
+for d in "${DAEMONS[@]}"; do
     if command -v "${d}" > /dev/null; then
         DAEMON=${d}
     fi

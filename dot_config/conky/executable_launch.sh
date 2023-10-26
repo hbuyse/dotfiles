@@ -32,7 +32,7 @@ SCREEN_WIDTH=$(xrandr | grep " connected primary " | awk -F '[ x+]' '{print $5}'
 sed -e "s/CONKY_GAP_Y/$((SCREEN_WIDTH - 230))/g" "${CONKY_CONFIG_FOLDER}/conkyrc.proc.mem.in" > "${PROC_CONFIG}"
 
 # Launch conkies
-for conky_conf in ${CONKIES[*]}; do
+for conky_conf in "${CONKIES[@]}"; do
     ${DAEMON} -c "${conky_conf}" -d > "$(mktemp -p ${TMP_FOLDER} conky.XXXXXXXXXX.log)" 2>&1
 done
 # vim: set ts=4 sw=4 tw=0 et ft=sh :
