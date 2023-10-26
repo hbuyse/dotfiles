@@ -223,9 +223,9 @@ bindsym --release $mod+x exec $HOME/.config/rofi/powermenu.sh
 ##############
 # SCREENSHOT #
 ##############
-bindsym --release Print exec --no-startup-id scrot --multidisp "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
-bindsym --release Mod1+Sys_Req exec --no-startup-id scrot --focused "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
-bindsym --release Control+Print exec --no-startup-id scrot --select --freeze "$HOME/Pictures/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
+bindsym --release Print exec --no-startup-id scrot --multidisp "$HOME/Pictures/Screenshots/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
+bindsym --release Mod1+Sys_Req exec --no-startup-id scrot --focused "$HOME/Pictures/Screenshots/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
+bindsym --release Control+Print exec --no-startup-id scrot --select --freeze "$HOME/Pictures/Screenshots/%Y%m%d_%H%M%S.png" --exec 'notify-send "Screenshot taken" "$f\n$wx$h"'
 
 
 
