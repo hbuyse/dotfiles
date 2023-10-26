@@ -31,5 +31,5 @@ else
         OPTS+=("--backend=xrender")
     fi
 
-    eval "${DAEMON}" "${OPTS[*]}"
+    "${DAEMON}" "${OPTS[@]}"
 fi

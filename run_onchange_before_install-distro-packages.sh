@@ -54,7 +54,7 @@ install_packages() {
     # Install only the packages that are not already installed
     if [ ${#packages_not_installed[@]} -ne 0 ]; then
         prompt "Installing ${packages_not_installed[*]}: "
-        "${SUDO}" "${install_cmd}" "${packages_not_installed[*]}"
+        "${SUDO}" "${install_cmd}" "${packages_not_installed[@]}"
         display_ko_ok $?
     fi
 }

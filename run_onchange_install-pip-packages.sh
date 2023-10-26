@@ -32,7 +32,7 @@ if cmdexists pip; then
         ["robotframework-lsp"]="1.12.0"
     )
 
-    for pkg in ${!PIP_PKGS[*]}; do
+    for pkg in "${!PIP_PKGS[@]}"; do
         pip_install "${pkg}" "${PIP_PKGS[${pkg}]}"
     done
 fi

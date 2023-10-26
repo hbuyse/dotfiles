@@ -113,7 +113,7 @@ if cmdexists cargo; then
         )
     fi
 
-    for pkg in ${!CARGO_PKGS[*]}; do
+    for pkg in "${!CARGO_PKGS[@]}"; do
         cargo_install "${pkg}" "${CARGO_PKGS[${pkg}]}"
     done
 
@@ -121,7 +121,7 @@ if cmdexists cargo; then
         ["https://github.com/latex-lsp/texlab"]="5.10.1"
     )
 
-    for pkg in ${!CARGO_GIT_PKGS[*]}; do
+    for pkg in "${!CARGO_GIT_PKGS[@]}"; do
         cargo_git_install "${pkg}" "${CARGO_GIT_PKGS[${pkg}]}"
     done
 fi

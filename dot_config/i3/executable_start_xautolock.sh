@@ -19,8 +19,7 @@ if ! command -v $DAEMON; then
 fi
 
 if [[ $HOSTNAME == "t480" ]] || [[ $HOSTNAME == "cg8250" ]]; then
-    OPTS+=("-killtime 15 -killer \"systemctl suspend\"")
-    OPTS+=("-detectsleep")
+    OPTS+=("-killtime 15" "-killer \"systemctl suspend\"" "-detectsleep")
 fi
 
 killall $DAEMON

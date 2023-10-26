@@ -43,7 +43,7 @@ if cmdexists npm; then
         ["vscode-langservers-extracted"]="4.7.0"
         ["yaml-language-server"]="1.14.0"
     )
-    for pkg in ${!NPM_PKGS[*]}; do
+    for pkg in "${!NPM_PKGS[@]}"; do
         npm_install "${pkg}" "${NPM_PKGS[${pkg}]}"
     done
 fi
