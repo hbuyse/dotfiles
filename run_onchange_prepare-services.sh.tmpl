@@ -19,10 +19,8 @@ case "${OS}-${DISTRIB_ID}" in
     # Enable all the following user services
     SERVICES=(
         "dunst"
-        "librespot"
         "nextcloud"
         "polkit-gnome-authentication-agent"
-        "spotifyd"
     )
     for sv in "${SERVICES[@]}"; do
         systemctl --user enable --now "${sv}.service"

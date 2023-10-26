@@ -294,15 +294,6 @@ foreground = "#ffffff"
 highlight  = "#1ed760"
 default_icon = /home/henrib/.local/share/icons/Papirus/64x64/apps/com.spotify.Client.svg
 
-[spotifyd]
-appname = spotifyd
-timeout = 10
-frame_color = "#1db954"
-background = "#191414"
-foreground = "#ffffff"
-highlight  = "#1ed760"
-default_icon = /home/henrib/.local/share/icons/Papirus/64x64/apps/com.spotify.Client.svg
-
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
 #
