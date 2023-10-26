@@ -178,6 +178,15 @@
     type = "file"
 	url = "https://github.com/mvdan/sh/releases/download/v{{ $shfmtVersion }}/shfmt_v{{ $shfmtVersion }}_linux_amd64"
     executable = true
+
+{{ $shellcheckVersion := "0.9.0" -}}
+[ ".local/bin/shellcheck" ]
+    type = "file"
+    url = "https://github.com/koalaman/shellcheck/releases/download/v{{ $shellcheckVersion }}/shellcheck-v{{ $shellcheckVersion }}.linux.x86_64.tar.xz"
+    executable = true
+    [".local/bin/shellcheck".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--xz", "--to-stdout", "shellcheck-v{{ $shellcheckVersion }}/shellcheck"]
 {{- end }}
 
 [".config/alacritty/themes"]
