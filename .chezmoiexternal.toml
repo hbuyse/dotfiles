@@ -187,7 +187,13 @@
     [".local/bin/shellcheck".filter]
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--xz", "--to-stdout", "shellcheck-v{{ $shellcheckVersion }}/shellcheck"]
-{{- end }}
+
+{{ $bitwardenVersion := "2023.10.0" -}}
+[ ".local/bin/bitwarden" ]
+    type = "file"
+	url = "https://github.com/bitwarden/clients/releases/download/desktop-v{{ $bitwardenVersion }}/Bitwarden-{{ $bitwardenVersion }}-x86_64.AppImage"
+    executable = true
+{{- end }} {{/* .chezmoi.os "linux" */}}
 
 [".config/alacritty/themes"]
     type = "git-repo"

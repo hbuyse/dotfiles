@@ -134,7 +134,7 @@ set $ws5 "5:message"
 set $ws6 "6:spotify"
 set $ws7 "7"
 set $ws8 "8:docker"
-set $ws9 "9:keepass"
+set $ws9 "9:passwords"
 set $ws10 "10:zoom"
 
 # switch to workspace
@@ -208,6 +208,7 @@ for_window [class="(?i)discord"] move container to workspace $ws5
 for_window [class="(?i)docker desktop"] move container to workspace $ws8
 for_window [class="(?i)docker.*"] move container to workspace $ws8
 for_window [class="(?i)keepass.*"] move container to workspace $ws9
+for_window [class="(?i)bitwarden.*"] move container to workspace $ws9
 for_window [class="(?i)zoom.*"] move container to workspace $ws10
 
 ########
