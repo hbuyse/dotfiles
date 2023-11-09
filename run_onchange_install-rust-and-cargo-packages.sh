@@ -73,6 +73,12 @@ cargo_git_install() {
 
 display_info "${0}"
 
+# Do not install if truenas
+if [[ "${HOSTNAME}" == "truenas" ]]; then
+    echo "Truenas host. Passing to next script"
+    exit 0
+fi
+
 # Rustup
 [[ "${OS}" == "freebsd" ]] && RUST_DEFAULT_HOST="x86_64-unknown-freebsd" || RUST_DEFAULT_HOST="x86_64-unknown-linux-gnu"
 if ! cmdexists rustup; then
