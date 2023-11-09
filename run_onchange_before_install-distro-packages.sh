@@ -238,16 +238,6 @@ if [[ "${OS}" == "linux" ]]; then
         ;;
     esac
 
-    # Install Papirus icon theme
-    ICON_DIR="$HOME/.local/share/icons"
-    ICON_THEME="Papirus"
-    prompt "Installing Papirus Icon theme"
-    if [ ! -d "${ICON_DIR}/${ICON_THEME}" ]; then
-        wget -qO- https://git.io/papirus-icon-theme-install | DESTDIR="${ICON_DIR}" ICON_THEMES="${ICON_THEME}" sh
-        display_ko_ok $?
-    else
-        display_already_installed
-    fi
 elif [[ "${OS}" == "freebsd" ]]; then
     # Copy /etc/pkg/FreeBSD.conf and change to https
     FREEBSD_PKG_REPOS="/usr/local/etc/pkg/repos"
