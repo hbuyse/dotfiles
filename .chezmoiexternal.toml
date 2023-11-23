@@ -170,19 +170,19 @@
 {{ $luaLsVersion := "3.6.25" -}}
 [ ".local/lua-language-server" ]
 	type = "archive"
-	url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-linux-x64.tar.gz"
+	url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-{{ .chezmoi.os }}-x64.tar.gz"
 	exact = false
 
 {{ $shfmtVersion := "3.7.0" -}}
 [ ".local/bin/shfmt" ]
     type = "file"
-	url = "https://github.com/mvdan/sh/releases/download/v{{ $shfmtVersion }}/shfmt_v{{ $shfmtVersion }}_linux_amd64"
+	url = "https://github.com/mvdan/sh/releases/download/v{{ $shfmtVersion }}/shfmt_v{{ $shfmtVersion }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}"
     executable = true
 
 {{ $shellcheckVersion := "0.9.0" -}}
 [ ".local/bin/shellcheck" ]
     type = "file"
-    url = "https://github.com/koalaman/shellcheck/releases/download/v{{ $shellcheckVersion }}/shellcheck-v{{ $shellcheckVersion }}.linux.x86_64.tar.xz"
+    url = "https://github.com/koalaman/shellcheck/releases/download/v{{ $shellcheckVersion }}/shellcheck-v{{ $shellcheckVersion }}.{{ .chezmoi.os }}.x86_64.tar.xz"
     executable = true
     [".local/bin/shellcheck".filter]
         command = "tar"
