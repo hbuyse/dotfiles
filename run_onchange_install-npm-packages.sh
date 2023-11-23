@@ -36,11 +36,11 @@ if cmdexists npm; then
         ["bash-language-server"]="5.0.0"
         ["diff-so-fancy"]="1.4.3"
         ["neovim"]="4.10.1"
-        ["npm"]="10.2.0"
-        ["pyright"]="1.1.331"
-        ["typescript"]="5.2.2"
-        ["typescript-language-server"]="3.3.2"
-        ["vscode-langservers-extracted"]="4.7.0"
+        ["npm"]="10.2.4"
+        ["pyright"]="1.1.337"
+        ["typescript"]="5.3.2"
+        ["typescript-language-server"]="4.1.2"
+        ["vscode-langservers-extracted"]="4.8.0"
         ["yaml-language-server"]="1.14.0"
     )
     for pkg in "${!NPM_PKGS[@]}"; do
