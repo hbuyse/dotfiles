@@ -108,6 +108,10 @@ case "${OS}-${ID}" in
     ;;
 
 "linux-ubuntu")
+    prompt "Update mirrors to latest update: "
+    ${SUDO} apt-get update --quiet --quiet
+    display_ko_ok $?
+
     # Add PPAs
     echo "Installing PPAs"
     for i in "git-core/ppa" "yubico/stable" "regolith-linux/stable" "hsheth2/ppa"; do
@@ -121,16 +125,18 @@ case "${OS}-${ID}" in
     done
 
     # Install packages (nodejs = node + npm)
-    prompt "Installing Node JS 18 (LTS) repo"
-    if grep -q "https://deb.nodesource.com/node_18.x" /etc/apt/sources.list.d/nodesource.list; then
-        display_already_installed
-    elif [ -n "${SUDO}" ]; then
-        curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - > /dev/null
-        display_ko_ok $?
-    else
-        curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - > /dev/null
-        display_ko_ok $?
-    fi
+    NODE_MAJOR=20
+    prompt "Installing Node JS ${NODE_MAJOR} (LTS) repo" && echo
+    install_packages ca-certificates curl gnupg
+    ${SUDO} mkdir -p /etc/apt/keyrings
+
+    prompt "- Downloading GPG key: "
+    curl -fsSL "https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key" | ${SUDO} gpg --yes --dearmor -o "/etc/apt/keyrings/nodesource.gpg"
+    display_ko_ok $?
+
+    prompt "- Adding repo: "
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | sudo tee "/etc/apt/sources.list.d/nodesource.list" > "/dev/null"
+    display_ko_ok $?
 
     # Refresh packages list
     prompt "Updating packages list: "
