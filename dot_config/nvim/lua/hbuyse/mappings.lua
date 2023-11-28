@@ -88,4 +88,6 @@ if has_lazy then
   kmap('n', '<F12>', lazy.home, 'Open Lazy homepage')
 end
 
+kmap('n', '<F3>', '<cmd>InspectTree<CR>')
+
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
