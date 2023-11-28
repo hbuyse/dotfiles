@@ -11,6 +11,9 @@ return {
 
       return {
         filetype = {
+          c = {
+            require('formatter.filetypes.c').clangformat,
+          },
           json = {
             require('formatter.filetypes.json').jq,
           },
