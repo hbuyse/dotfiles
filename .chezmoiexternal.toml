@@ -193,6 +193,12 @@
     type = "file"
 	url = "https://github.com/bitwarden/clients/releases/download/desktop-v{{ $bitwardenVersion }}/Bitwarden-{{ $bitwardenVersion }}-x86_64.AppImage"
     executable = true
+
+{{ $flameshotVersion := "12.1.0" -}}
+[ ".local/bin/flameshot" ]
+    type = "file"
+	url = "https://github.com/flameshot-org/flameshot/releases/download/v{{ $flameshotVersion }}/Flameshot-{{ $flameshotVersion }}.x86_64.AppImage"
+    executable = true
 {{- end }} {{/* .chezmoi.os "linux" */}}
 
 {{ $fzfVersion := "0.44.1" -}}
