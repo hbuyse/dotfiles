@@ -32,6 +32,10 @@ display_info "${0}"
 
 # Install npm packages
 if cmdexists npm; then
+	# Create NPM directory
+	source ${CHEZMOI_SOURCE_DIR}/dot_npmrc
+	mkdir -p ${prefix}
+
     declare -A NPM_PKGS=(
         ["bash-language-server"]="5.0.0"
         ["diff-so-fancy"]="1.4.3"
@@ -43,6 +47,7 @@ if cmdexists npm; then
         ["vscode-langservers-extracted"]="4.8.0"
         ["yaml-language-server"]="1.14.0"
     )
+
     for pkg in "${!NPM_PKGS[@]}"; do
         npm_install "${pkg}" "${NPM_PKGS[${pkg}]}"
     done
