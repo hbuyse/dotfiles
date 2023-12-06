@@ -1,63 +1,61 @@
 return {
   {
-    -- formatter
-    'mhartington/formatter.nvim',
-    -- not using opts or you will have installation problems
-    opts = function()
-      local has_formatter, _ = pcall(require, 'formatter')
-      if not has_formatter then
-        return {}
-      end
+    'stevearc/conform.nvim',
+    opts = {
+      -- Set the log level. Use `:ConformInfo` to see the location of the log file.
+      log_level = vim.log.levels.ERROR,
+      -- Conform will notify you when a formatter errors
+      notify_on_error = true,
+      formatters_by_ft = {
+        c = { 'clang-format' },
+        json = { 'jq' },
+        lua = { 'stylua' },
+        -- Conform will run multiple formatters sequentially
+        python = { 'isort', 'black' },
+        rust = { 'rustfmt' },
+        sh = { 'shfmt' },
+        -- Use the "*" filetype to run formatters on all filetypes.
+        ['*'] = { 'codespell' },
+        -- Use the "_" filetype to run formatters on filetypes that don't have other formatters configured.
+        ['_'] = { 'trim_whitespace' },
+      },
+      format_on_save = function(bufnr)
+        -- Disable autoformat on certain filetypes
+        local ignore_filetypes = { 'diff' }
+        if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+          return
+        end
 
-      return {
-        filetype = {
-          c = {
-            require('formatter.filetypes.c').clangformat,
-          },
-          json = {
-            require('formatter.filetypes.json').jq,
-          },
-          lua = {
-            require('formatter.filetypes.lua').stylua,
-          },
-          python = {
-            require('formatter.filetypes.python').isort,
-            require('formatter.filetypes.python').black,
-          },
-          rust = {
-            require('formatter.filetypes.rust').rustfmt,
-          },
-          sh = {
-            require('formatter.filetypes.sh').shfmt,
-          },
-          ['*'] = {
-            function()
-              -- Do not remove whitespaces if we are in git diff
-              for _, v in ipairs({ 'diff' }) do
-                if vim.bo.filetype == v then
-                  return nil
-                end
-              end
-              return require('formatter.filetypes.any').remove_trailing_whitespace
-            end,
-          },
-        },
-      }
-    end,
+        -- These options will be passed to conform.format()
+        return {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        }
+      end,
+    },
     init = function()
-      -- Trim whitespace
+      -- Format on save
       local format_gid = vim.api.nvim_create_augroup('FormatAutogroup', {})
-      local has_notify, notify = pcall(require, 'notify')
-      if has_notify then
-        vim.api.nvim_create_autocmd('User', {
-          pattern = 'FormatterPost',
-          group = format_gid,
-          desc = 'Post format hook',
-          callback = function()
-            notify('File formatted', nil, { title = 'formatter.nvim' })
-          end,
-        })
-      end
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        pattern = '*',
+        group = format_gid,
+        callback = function(args)
+          require('conform').format({ bufnr = args.buf })
+        end,
+      })
+
+      -- Old notify hook
+      -- local has_notify, notify = pcall(require, 'notify')
+      -- if has_notify then
+      --   vim.api.nvim_create_autocmd('User', {
+      --     pattern = 'FormatterPost',
+      --     group = format_gid,
+      --     desc = 'Post format hook',
+      --     callback = function()
+      --       notify('File formatted', nil, { title = 'formatter.nvim' })
+      --     end,
+      --   })
+      -- end
     end,
   },
 }
