@@ -34,7 +34,9 @@ display_info "${0}"
 if cmdexists npm; then
     # Create NPM directory
     source "${CHEZMOI_SOURCE_DIR}/dot_npmrc"
-    mkdir -p "${prefix:?}"
+
+    # shellcheck disable=SC2154
+    mkdir -p "${prefix}"
 
     declare -A NPM_PKGS=(
         ["bash-language-server"]="5.0.0"
