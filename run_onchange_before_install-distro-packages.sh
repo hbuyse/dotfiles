@@ -78,29 +78,13 @@ case "${OS}-${ID}" in
 "linux-manjaro")
     # Install my package
     install_packages \
-        age \
-        chezmoi \
-        feh \
+        chezmoi age \
         firefox \
-        htop \
-        i3-wm \
-        rofi \
-        npm \
-        zsh \
-        curl \
-        clang \
-        autorandr \
-        base-devel \
-        xautolock \
-        git \
-        git-lfs \
-        tmux \
+        i3-wm feh autorandr rofi npm xautolock polybar \
+        zsh fzf tmux npm \
+        clang git git-lfs curl htop \
         python-pip python-virtualenv python-virtualenvwrapper \
-        polybar \
-        feh \
-        autorandr \
-        rofi \
-        npm
+        base-devel openssl zlib xz tk
     ;;
 
 "linux-ubuntu")
