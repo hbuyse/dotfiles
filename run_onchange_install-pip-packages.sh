@@ -30,6 +30,7 @@ if cmdexists pip; then
     declare -A PIP_PKGS=(
         ["cmake-language-server"]="0.1.7"
         ["robotframework-lsp"]="1.12.0"
+        ["codespell"]="2.2.6"
     )
 
     for pkg in "${!PIP_PKGS[@]}"; do
