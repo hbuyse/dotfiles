@@ -72,7 +72,11 @@ HIST_STAMPS="dd.mm.yyyy"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 in_chroot() {
+{{- if eq .chezmoi.os "linux" }}
+    [ "$(awk '$5=="/" {print $1}' </proc/1/mountinfo)" != "$(awk '$5=="/" {print $1}' </proc/$$/mountinfo)" ] && return 0 || return 1;
+{{- else }}
 	[[ "$(ls -di /)" != "2 /" ]] && return 0 || return 1;
+{{- end }}
 }
 
 # Which plugins would you like to load?
