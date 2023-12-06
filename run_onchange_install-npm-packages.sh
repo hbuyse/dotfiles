@@ -32,18 +32,18 @@ display_info "${0}"
 
 # Install npm packages
 if cmdexists npm; then
-	# Create NPM directory
-	source ${CHEZMOI_SOURCE_DIR}/dot_npmrc
-	mkdir -p ${prefix}
+    # Create NPM directory
+    source "${CHEZMOI_SOURCE_DIR}/dot_npmrc"
+    mkdir -p "${prefix:?}"
 
     declare -A NPM_PKGS=(
         ["bash-language-server"]="5.0.0"
         ["diff-so-fancy"]="1.4.3"
         ["neovim"]="4.10.1"
         ["npm"]="10.2.4"
-        ["pyright"]="1.1.337"
+        ["pyright"]="1.1.338"
         ["typescript"]="5.3.2"
-        ["typescript-language-server"]="4.1.2"
+        ["typescript-language-server"]="4.1.3"
         ["vscode-langservers-extracted"]="4.8.0"
         ["yaml-language-server"]="1.14.0"
     )
