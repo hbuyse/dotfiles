@@ -54,6 +54,7 @@ install_packages() {
     # Install only the packages that are not already installed
     if [ ${#packages_not_installed[@]} -ne 0 ]; then
         prompt "Installing ${packages_not_installed[*]}: "
+        # shellcheck disable=SC2086
         "${SUDO}" ${install_cmd} "${packages_not_installed[@]}"
         display_ko_ok $?
     fi
@@ -100,14 +101,6 @@ case "${OS}-${ID}" in
         autorandr \
         rofi \
         npm
-
-    if ! cmdexists paru; then
-        git clone https://aur.archlinux.org/paru.git /tmp/paru
-        (cd /tmp/paru && makepkg -si)
-        rm -rf /tmp/paru
-    fi
-
-    paru -Sy cava
     ;;
 
 "linux-ubuntu")
