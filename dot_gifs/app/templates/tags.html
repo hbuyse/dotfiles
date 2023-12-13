@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if tags %}
+    {% for tag, occurences in tags %}
+      {% if loop.index0 % 4 == 0 %}
+        <ul class="list-group list-group-horizontal">
+          {% endif %}
+              <li class="list-group-item flex-fill d-flex justify-content-between align-items-center">
+                    {{ tag }}
+                    <span class="badge bg-primary rounded-pill">{{ occurences }}</span>
+                  </li>
+          {% if loop.index0 % 4 == 3 %}
+            </ul> <!-- class: list-group-horizontal -->
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <p>No tags found</p>
+  {% endif %}
+{% endblock %}
