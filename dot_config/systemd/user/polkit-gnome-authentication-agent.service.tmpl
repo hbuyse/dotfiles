@@ -3,11 +3,16 @@ Description=Gnome Polkit Authentication
 Documentation=man:polkit(8)
 
 [Service]
+Type=simple
 {{- if and (index .chezmoi.osRelease "idLike") (eq .chezmoi.osRelease.idLike "debian") }}
 ExecStart=/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 {{- else }}
 ExecStart=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 {{- end }}
+ExecStop=/bin/kill -2 $MAINPID
+Restart=on-failure
+RestartSec=1
+TimeoutStopSec=10
 
 [Install]
 WantedBy=default.target
