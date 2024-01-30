@@ -201,7 +201,7 @@
     executable = true
 {{- end }} {{/* .chezmoi.os "linux" */}}
 
-{{ $fzfVersion := "0.44.1" -}}
+{{ $fzfVersion := "0.46.0" -}}
 [ ".local/bin/fzf" ]
     type = "file"
     url = "https://github.com/junegunn/fzf/releases/download/{{ $fzfVersion }}/fzf-{{ $fzfVersion }}-{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
