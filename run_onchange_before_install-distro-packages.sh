@@ -136,7 +136,9 @@ case "${OS}-${ID}" in
         python3-dev \
         zsh \
         curl \
-        cava
+        cava \
+        tshark \
+        bsdmainutils
 
     # Install dunst
     DUNST_VERSION="1.9.2"
