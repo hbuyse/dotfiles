@@ -3,6 +3,7 @@
     email = {{ .email | quote }}
 
 [include]
+    # Should contain private informations
     path = local ; find "local" relative to the current file
 
 [core]
@@ -69,6 +70,11 @@
     ; Allow files following the diff=bin (defined in .git.config/attributes) to be correctly differentiate
     binary = true
     textconv = /usr/bin/hexdump -v -C
+
+[diff "pcap"]
+    ; Allow files following the diff=pcap (defined in .git.config/attributes) to be correctly differenciate
+    binary = true
+    textconv = /usr/bin/tshark -x -V -P -r
 
 [init]
     defaultBranch = main

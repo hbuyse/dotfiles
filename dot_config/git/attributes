@@ -1,6 +1,6 @@
 # PCAP files
-*.dump binary diff=bin
-*.pcap binary diff=bin
+*.dump binary diff=pcap
+*.pcap binary diff=pcap
 
 # Binaries
 *.bin binary diff=bin
