@@ -39,13 +39,13 @@ if cmdexists npm; then
     mkdir -p "${prefix}"
 
     declare -A NPM_PKGS=(
-        ["bash-language-server"]="5.0.0"
+        ["bash-language-server"]="5.1.2"
         ["diff-so-fancy"]="1.4.3"
         ["neovim"]="4.10.1"
-        ["npm"]="10.2.4"
-        ["pyright"]="1.1.338"
-        ["typescript"]="5.3.2"
-        ["typescript-language-server"]="4.1.3"
+        ["npm"]="10.4.0"
+        ["pyright"]="1.1.349"
+        ["typescript"]="5.3.3"
+        ["typescript-language-server"]="4.3.1"
         ["vscode-langservers-extracted"]="4.8.0"
         ["yaml-language-server"]="1.14.0"
     )
