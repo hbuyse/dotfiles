@@ -12,7 +12,7 @@ repos:
           exclude: .chezmoiexternal.toml
         - id: check-added-large-files
     - repo: https://github.com/JohnnyMorganz/StyLua
-      rev: v0.18.2
+      rev: v0.20.0
       hooks:
         - id: stylua
           args: [--search-parent-directories]
@@ -23,7 +23,7 @@ repos:
         - id: shfmt
           args: [-i 4, -sr, -bn]
     - repo: https://github.com/psf/black
-      rev: 23.9.1
+      rev: 24.1.1
       hooks:
         - id: black
     - repo: https://github.com/google/yamlfmt
@@ -31,7 +31,7 @@ repos:
       hooks:
         - id: yamlfmt
     - repo: https://github.com/lunarmodules/luacheck.git
-      rev: v1.1.1
+      rev: v1.1.2
       hooks:
         - id: luacheck
           args: [--globals, vim, --]
