@@ -1,0 +1,57 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Import additional configuration files.
+#
+# Imports are loaded in order, skipping all missing files, with the importing
+# file being loaded last. If a field is already present in a previous import, it
+# will be replaced.
+#
+# All imports must either be absolute paths starting with `/`, or paths relative
+# to the user's home directory starting with `~/`.
+import = [
+    "~/.config/alacritty/themes/themes/gruvbox_dark.toml",
+    "~/.config/alacritty/cursor.toml",
+    "~/.config/alacritty/font.toml",
+    "~/.config/alacritty/scrolling.toml",
+    "~/.config/alacritty/shell.toml",
+    "~/.config/alacritty/window.toml"
+]
+
+# Live config reload (changes require restart)
+# Default: true
+live_config_reload = true
+
+# Any items in the `env` entry below will be added as
+# environment variables. Some entries may override variables
+# set by alacritty itself.
+[env]
+# TERM variable
+#
+# This value is used to set the `$TERM` environment variable for
+# each instance of Alacritty. If it is not present, alacritty will
+# check the local terminfo database and use `alacritty` if it is
+# available, otherwise `xterm-256color` is used.
+TERM = "xterm-256color"
+
+# Colors are specified using their hexadecimal values with a # prefix: #RRGGBB
+[colors]
+
+# Cursor colors
+#
+# Colors which should be used to draw the terminal cursor.
+#
+# Allowed values are CellForeground/CellBackground, which reference the
+# affected cell, or hexadecimal colors like #ff00ff.
+cursor = { cursor = "CellForeground", text = "CellBackground"}
+
+# Colors used for drawing selections.
+#
+# Allowed values are hexadecimal colors like #ff00ff, or CellForeground/CellBackground, which references the affected cell.
+# Default: { text = "CellBackground", background = "CellForeground" }
+selection = { cursor = "CellForeground", text = "CellBackground"}
+
+# Colors for the cursor when the vi mode is active.
+#
+# Allowed values are hexadecimal colors like #ff00ff, or CellForeground/CellBackground, which references the affected cell.
+# Default: { text = "CellBackground", cursor = "CellForeground" }
+vi_mode_cursor = { cursor = "CellForeground", text = "CellBackground"}

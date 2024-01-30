@@ -115,7 +115,7 @@ if cmdexists cargo; then
 
     if [[ "${OS}" == "linux" ]]; then
         CARGO_PKGS+=(
-            ["alacritty"]="0.12.3"
+            ["alacritty"]="0.13.1"
         )
     fi
 
