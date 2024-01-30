@@ -1,0 +1,4 @@
+profile Virtual {
+	output "Virtual-1" mode 1600x900 position 0,0
+	exec notify-send "Kanshi" "Using profile Virtual"
+}
