@@ -153,7 +153,7 @@
 	url = "https://github.com/nextcloud-releases/desktop/releases/download/v{{ $nextcloudVersion }}/Nextcloud-{{ $nextcloudVersion }}-x86_64.AppImage"
 	executable = true
 
-{{ $batVersion := "0.23.0" -}}
+{{ $batVersion := "0.24.0" -}}
 [ ".local/bin/bat" ]
     type = "file"
     url = "https://github.com/sharkdp/bat/releases/download/v{{ $batVersion }}/bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu.tar.gz"
