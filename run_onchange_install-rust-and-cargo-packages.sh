@@ -110,7 +110,6 @@ if cmdexists cargo; then
         ["stylua"]="0.20.0"
         ["ripgrep"]="14.1.0"
         ["du-dust"]="0.9.0"
-        ["bat"]="0.23.0"
     )
 
     if [[ "${OS}" == "linux" ]]; then
