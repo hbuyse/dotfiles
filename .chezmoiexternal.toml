@@ -167,7 +167,7 @@
 	url = "https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage"
     executable = true
 
-{{ $luaLsVersion := "3.6.25" -}}
+{{ $luaLsVersion := "3.7.4" -}}
 [ ".local/lua-language-server" ]
 	type = "archive"
 	url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-{{ .chezmoi.os }}-x64.tar.gz"
