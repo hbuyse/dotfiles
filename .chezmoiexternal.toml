@@ -144,7 +144,7 @@
 
 [".local/bin/betterlockscreen"]
 	type = "file"
-	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.0.4/betterlockscreen"
+	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.2.0/betterlockscreen"
 	executable = true
 
 {{ $nextcloudVersion := "3.11.0" -}}
