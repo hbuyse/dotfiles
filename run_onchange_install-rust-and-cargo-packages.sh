@@ -106,10 +106,10 @@ fi
 if cmdexists cargo; then
     declare -A CARGO_PKGS=(
         ["bottom"]="0.9.6"
-        ["fd-find"]="8.7.0"
-        ["stylua"]="0.18.2"
-        ["ripgrep"]="13.0.0"
-        ["du-dust"]="0.8.6"
+        ["fd-find"]="9.0.0"
+        ["stylua"]="0.20.0"
+        ["ripgrep"]="14.1.0"
+        ["du-dust"]="0.9.0"
         ["bat"]="0.23.0"
     )
 
