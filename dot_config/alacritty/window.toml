@@ -1,0 +1,57 @@
+[window]
+# Window decorations
+#
+# Full:                     Borders and title bar.
+# None:                     Neither borders nor title bar.
+# Transparent (macOS only): Title bar, transparent background and title bar buttons.
+# Buttonless (macOS only):  Title bar, transparent background and no title bar buttons.
+# Default: "Full"
+decorations = "None"
+
+# Window dimensions (changes require restart).
+
+# Number of lines/columns (not pixels) in the terminal. Both lines and columns must be non-zero for this to take effect.
+# The number of columns must be at least 2, while using a value of 0 for columns and lines will fall back to the
+# window manager's recommended size
+dimensions = { columns = 0, lines = 0 }
+
+# Startup Mode (changes require restart)
+#
+# Windowed:                      Regular window.
+# Maximized:                     The window will be maximized on startup.
+# Fullscreen:                    The window will be fullscreened on startup.
+# SimpleFullscreen (macOS only): Same as Fullscreen, but you can stack windows on top.
+#Default: "Windowed"
+startup_mode = "Windowed"
+
+# Window title
+title = "Alacritty"
+
+# Allow terminal applications to change Alacritty's window title.
+dynamic_title = true
+
+# Override the variant of the GTK theme. Commonly supported values are `dark`
+# and `light`. Set this to `None` to use the default theme variant.
+# Override the variant of the System theme/GTK theme/Wayland client side decorations.
+# Set this to "None" to use the system's default theme variant.
+# Allowed values: "Dark" | "Light" | "None"
+decorations_theme_variant = "None"
+
+# Spread additional padding evenly around the terminal content.
+dynamic_padding = false
+
+# Window class (Linux/BSD only):
+class = { general = "Alacritty", instance = "Alacritty" }
+
+# Window position (changes require restart)
+#
+# Specified in number of pixels.
+# If the position is not set, the window manager will handle the placement.
+# position = { x = 0, y = 0 }
+position = "None"
+
+# Window padding (changes require restart)
+#
+# Blank space added around the window in pixels. This padding is scaled
+# by DPI and the specified value is always added at both opposing sides.
+padding = { x = 1, y = 1 }

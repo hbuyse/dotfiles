@@ -1,0 +1,7 @@
+[scrolling]
+# Maximum number of lines in the scrollback buffer.
+# Specifying 0 will disable scrolling.
+# Limited to 100000.
+history = 10000
+# Number of line scrolled for every input scroll increment.
+multiplier = 3
