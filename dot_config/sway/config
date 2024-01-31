@@ -14,7 +14,7 @@
 # include /etc/sway/variables
 
 # User variables
-include $HOME/.config/sway/variables.d/*.conf
+include $HOME/.config/sway/variables
 
 # include /etc/sway/outputs/*.conf
 # include /etc/sway/inputs/*.conf
