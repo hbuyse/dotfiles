@@ -22,7 +22,7 @@ set $ws9 number 9
 set $ws10 number 10
 
 # Override terminal
-set $term /home/henrib/.cargo/bin/alacritty
+set $term $HOME/.cargo/bin/alacritty
 
 # Gruvbox colors
 set $bg #282828
@@ -35,3 +35,11 @@ set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
 set $white #ffffff
+#
+########
+# ROFI #
+########
+
+# start rofi (a program launcher)
+set $menu       rofi -sidebar-mode -show drun -combi-modi "drun,run,ssh,window"
+set $powermenu  $HOME/.config/rofi/powermenu.sh
