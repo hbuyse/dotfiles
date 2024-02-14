@@ -210,6 +210,12 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
 
+{{ $direnvVersion := "2.33.0" -}}
+[ ".local/bin/direnv" ]
+    type = "file"
+    url = "https://github.com/direnv/direnv/releases/download/v{{ $direnvVersion }}/direnv.{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
+    executable = true
+
 [".config/alacritty/themes"]
     type = "git-repo"
     url = "https://github.com/alacritty/alacritty-theme"
