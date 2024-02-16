@@ -2,7 +2,7 @@
 use_python() {
     if [ -n "$(which pyenv)" ]; then
         local pyversion=$1
-        pyenv local ${pyversion}
+        pyenv local "${pyversion}"
     fi
 }
 
@@ -10,32 +10,54 @@ layout_virtualenv() {
     local pyversion=$1
     local pvenv=$2
     if [ -n "$(which pyenv virtualenv)" ]; then
-        pyenv virtualenv --force --quiet ${pyversion} ${pvenv}-${pyversion}
+        pyenv virtualenv --force --quiet "${pyversion} ${pvenv}-${pyversion}"
     fi
     pyenv local --unset
 }
 
 layout_activate() {
     if [ -n "$(which pyenv)" ]; then
-        source $(pyenv root)/versions/$1/bin/activate
+        source "$(pyenv root)/versions/$1/bin/activate"
     fi
 }
 
+# Poetry Python project layout
+# Until https://github.com/direnv/direnv/pull/995 is released
+#
+# Usage: layout poetry
+#
+# Similar to layout_python, but uses Poetry [1] to build a virtualenv from the
+# pyproject.toml [2] located in the same directory.
+#
+# Poetry by default will create a virtual environment under
+# {cache-dir}/virtualenvs where cache-dir equates to $XDG_CACHE_HOME/pypoetry
+# or use the {project-dir}/.venv directory when one is available.
+#
+# [1]: https://python-poetry.org/
+# [2]: https://peps.python.org/pep-0518/
+#
 layout_poetry() {
-  if [[ ! -f pyproject.toml ]]; then
-    log_error 'No pyproject.toml found. Use `poetry new` or `poetry init` to create one first.'
-    exit 2
-  fi
+    PYPROJECT_TOML="${PYPROJECT_TOML:-pyproject.toml}"
+    if [[ ! -f "$PYPROJECT_TOML" ]]; then
+        log_status "No pyproject.toml found. Executing \`poetry init\` to create a \`$PYPROJECT_TOML\` first."
+        poetry init
+    fi
 
-  local VENV=$(poetry env list --full-path | cut -d' ' -f1)
-  if [[ -z $VENV || ! -d $VENV/bin ]]; then
-    log_error 'No poetry virtual environment found. Use `poetry install` to create one first.'
-    exit 2
-  fi
+    if [[ -d ".venv" ]]; then
+        VIRTUAL_ENV="$(pwd)/.venv"
+    else
+        VIRTUAL_ENV=$(poetry env info --path 2>/dev/null ; true)
+    fi
 
-  export VIRTUAL_ENV=$VENV
-  export POETRY_ACTIVE=1
-  PATH_add "$VENV/bin"
+    if [[ -z $VIRTUAL_ENV || ! -d $VIRTUAL_ENV ]]; then
+        log_status "No virtual environment exists. Executing \`poetry install\` to create one."
+        poetry install
+        VIRTUAL_ENV=$(poetry env info --path)
+    fi
+
+    PATH_add "$VIRTUAL_ENV/bin"
+    export POETRY_ACTIVE=1
+    export VIRTUAL_ENV
 }
 
 # vim: set ts=4 sw=4 tw=0 et ft=sh :
