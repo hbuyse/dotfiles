@@ -1,85 +1,86 @@
 [user]
-    name = {{ .name | quote }}
-    email = {{ .email | quote }}
+name = {{ .name | quote }}
+email = {{ .email | quote }}
 
 [include]
-    # Should contain private informations
-    path = local ; find "local" relative to the current file
+path = color
+# Should contain private informations
+path = local ; find "local" relative to the current file
 
 [core]
-    pager = diff-so-fancy | less --tabs=4 -RFX ; npm install -g diff-so-fancy
-    editor = nvim
-    attributesFile = ~/.config/git/attributes
+pager = diff-so-fancy | less --tabs=4 -RFX ; npm install -g diff-so-fancy
+editor = nvim
+attributesFile = ~/.config/git/attributes
 
 [color]
-    ui = true
+ui = true
 
 [color "diff-highlight"]
-    oldNormal = red bold
-    newNormal = green bold
-    newHighlight = green bold 22
-    oldHighlight = red bold 52
+oldNormal = red bold
+newNormal = green bold
+newHighlight = green bold 22
+oldHighlight = red bold 52
 
 [color "diff"]
-    meta = 11
-    frag = magenta bold
-    commit = yellow bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+meta = 11
+frag = magenta bold
+commit = yellow bold
+old = red bold
+new = green bold
+whitespace = red reverse
 
 [grep]
-    lineNumber = true
+lineNumber = true
 
 [merge]
-    tool = meld
+tool = meld
 
 [alias]
-    lg = log --color --graph --pretty=logger --abbrev-commit
-    rl = reflog --pretty=reflog
+lg = log --color --graph --pretty=logger --abbrev-commit
+rl = reflog --pretty=reflog
 
 [pretty]
-    logger = %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)
-    ; reflog, with relative date:
-    reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %gs
+logger = %C(red)%h%C(reset) -%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)
+# reflog, with relative date:
+reflog = %C(auto)%h %<|(17)%gd %C(blue)%ci%C(reset) %gs
 
 [fetch]
-    ; If true, fetch will automatically behave as if the --prune option was given on the command line.
-    ; See also remote.<name>.prune and the PRUNING section of git-fetch[1].
-    prune = true
-    pruneTags = true
-    ; Specifies the maximal number of fetch operations to be run in parallel at a time (submodules, or remotes when
-    ; the --multiple option of git-fetch[1] is in effect).
-    ; A value of 0 will give some reasonable default. If unset, it defaults to 1.
-    parallel = 0
+# If true, fetch will automatically behave as if the --prune option was given on the command line.
+# See also remote.<name>.prune and the PRUNING section of git-fetch[1].
+prune = true
+pruneTags = true
+# Specifies the maximal number of fetch operations to be run in parallel at a time (submodules, or remotes when
+# the --multiple option of git-fetch[1] is in effect).
+# A value of 0 will give some reasonable default. If unset, it defaults to 1.
+parallel = 0
 
 [push]
-    followTags = true
+followTags = true
 
 [mergetool "vimdiff"]
-    path = nvim
+path = nvim
 
 [stash]
-    showPatch = true
+showPatch = true
 
 [rebase]
-    stat = true
-    autoStash = true
+stat = true
+autoStash = true
 
 [diff "bin"]
-    ; Allow files following the diff=bin (defined in .git.config/attributes) to be correctly differentiate
-    binary = true
-    textconv = /usr/bin/hexdump -v -C
+# Allow files following the diff=bin (defined in .git.config/attributes) to be correctly differenciate
+binary = true
+textconv = hexdump -C
 
 [diff "pcap"]
-    ; Allow files following the diff=pcap (defined in .git.config/attributes) to be correctly differenciate
-    binary = true
-    textconv = /usr/bin/tshark -x -V -P -r
+# Allow files following the diff=pcap (defined in .git.config/attributes) to be correctly differenciate
+binary = true
+textconv = tshark -x -V -P -r
 
 [init]
-    defaultBranch = main
+defaultBranch = main
 
 [diff]
-    tool = meld
+tool = meld
 
 ;  vim: set ts=4 sw=4 tw=0 et ft=gitconfig :
