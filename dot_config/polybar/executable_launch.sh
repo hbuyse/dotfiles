@@ -42,6 +42,7 @@ else
     disown
 fi
 
-notify-send "Polybar started" "$(join_by $'\n' "${POLYBAR_START[*]}")"
+# shellcheck disable=SC2048,SC2086
+notify-send "Polybar started" "$(join_by $'\n' ${POLYBAR_START[*]})"
 
 # vim: set ts=4 sw=4 tw=0 et :
