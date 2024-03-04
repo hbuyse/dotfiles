@@ -3,6 +3,7 @@
 
 README.md
 utils.sh
+install-distro-packages.json
 
 {{- if eq .chezmoi.os "freebsd" }}
 .tmux.conf
