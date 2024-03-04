@@ -1,0 +1,137 @@
+{
+  "neovim": {
+    "archlinux": [
+      "neovim"
+    ],
+    "freebsd": [
+      "neovim"
+    ]
+  },
+  "development tools": {
+    "ubuntu": [
+      "curl",
+      "libcurl4-openssl-dev",
+      "libevent-dev",
+      "pkg-config",
+      "cmake",
+      "ccmake",
+      "meld"
+    ],
+    "archlinux": [
+      "curl",
+      "libevent",
+      "npm",
+      "clang",
+      "git",
+      "cmake",
+      "ccmake",
+      "meld",
+      "git",
+      "git-lfs",
+      "nodejs",
+      "python3-pip",
+      "python3-dev",
+      "tshark",
+      "bsdmainutils"
+    ],
+    "freebsd": [
+      "cmake",
+      "curl",
+      "git",
+      "gmake",
+      "gettext",
+      "libtool",
+      "pkgconf",
+      "rust-analyzer",
+      "termshark",
+      "npm",
+      "py39-pip"
+    ]
+  },
+  "pyenv": {
+    "ubuntu": [
+      "build-essential",
+      "libssl-dev",
+      "zlib1g-dev",
+      "libbz2-dev",
+      "libreadline-dev",
+      "libsqlite3-dev",
+      "curl",
+      "libncursesw5-dev",
+      "xz-utils",
+      "tk-dev",
+      "libxml2-dev",
+      "libxmlsec1-dev",
+      "libffi-dev",
+      "liblzma-dev"
+    ],
+    "archlinux": [
+      "pyenv"
+    ]
+  },
+  "shell": {
+    "ubuntu": [
+      "zsh",
+      "wget",
+      "htop",
+      "ripgrep",
+      "fd-find",
+      "tree"
+    ],
+    "archlinux": [
+      "zsh",
+      "fzf",
+      "tmux",
+      "htop",
+      "ripgrep",
+      "wget",
+      "fd",
+      "tree"
+    ],
+    "freebsd": [
+      "zsh",
+      "fzf",
+      "htop",
+      "ripgrep",
+      "wget",
+      "fd-find",
+      "tree"
+    ]
+  },
+  "chezmoi": {
+    "archlinux": [
+      "chezmoi",
+      "age"
+    ],
+    "freebsd": [
+      "chezmoi",
+      "age"
+    ]
+  },
+  "web-browsers": {
+    "ubuntu": [
+      "firefox",
+      "firefox-locale-en",
+      "firefox-locale-fr"
+    ],
+    "archlinux": [
+      "firefox",
+      "firefox-i18n-en-us",
+      "firefox-i18n-fr"
+    ]
+  },
+  "i3": {
+    "ubuntu": [
+      "feh"
+    ],
+    "archlinux": [
+      "i3-vm",
+      "feh",
+      "autorandr",
+      "rofi",
+      "xautolock",
+      "polybar",
+      "dunst"
+    ]
+  }
+}
