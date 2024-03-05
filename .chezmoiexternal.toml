@@ -188,7 +188,7 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--xz", "--to-stdout", "shellcheck-v{{ $shellcheckVersion }}/shellcheck"]
 
-{{ $bitwardenVersion := "2024.1.0" -}}
+{{ $bitwardenVersion := "2024.2.0" -}}
 [ ".local/bin/bitwarden" ]
     type = "file"
 	url = "https://github.com/bitwarden/clients/releases/download/desktop-v{{ $bitwardenVersion }}/Bitwarden-{{ $bitwardenVersion }}-x86_64.AppImage"
