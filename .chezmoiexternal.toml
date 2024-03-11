@@ -147,7 +147,7 @@
 	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.2.0/betterlockscreen"
 	executable = true
 
-{{ $nextcloudVersion := "3.12.0" -}}
+{{ $nextcloudVersion := "3.12.1" -}}
 [ ".local/bin/nextcloud" ]
 	type = "file"
 	url = "https://github.com/nextcloud-releases/desktop/releases/download/v{{ $nextcloudVersion }}/Nextcloud-{{ $nextcloudVersion }}-x86_64.AppImage"
@@ -162,9 +162,10 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu/bat"]
 
+{{ $neovimVersion := "0.9.5" -}}
 [ ".local/bin/nvim" ]
     type = "file"
-	url = "https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage"
+	url = "https://github.com/neovim/neovim/releases/download/v{{ $neovimVersion }}/nvim.appimage"
     executable = true
 
 {{ $luaLsVersion := "3.7.4" -}}
@@ -173,13 +174,13 @@
 	url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-{{ .chezmoi.os }}-x64.tar.gz"
 	exact = false
 
-{{ $shfmtVersion := "3.7.0" -}}
+{{ $shfmtVersion := "3.8.0" -}}
 [ ".local/bin/shfmt" ]
     type = "file"
 	url = "https://github.com/mvdan/sh/releases/download/v{{ $shfmtVersion }}/shfmt_v{{ $shfmtVersion }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}"
     executable = true
 
-{{ $shellcheckVersion := "0.9.0" -}}
+{{ $shellcheckVersion := "0.10.0" -}}
 [ ".local/bin/shellcheck" ]
     type = "file"
     url = "https://github.com/koalaman/shellcheck/releases/download/v{{ $shellcheckVersion }}/shellcheck-v{{ $shellcheckVersion }}.{{ .chezmoi.os }}.x86_64.tar.xz"
@@ -201,7 +202,7 @@
     executable = true
 {{- end }} {{/* .chezmoi.os "linux" */}}
 
-{{ $fzfVersion := "0.46.0" -}}
+{{ $fzfVersion := "0.47.0" -}}
 [ ".local/bin/fzf" ]
     type = "file"
     url = "https://github.com/junegunn/fzf/releases/download/{{ $fzfVersion }}/fzf-{{ $fzfVersion }}-{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
@@ -210,7 +211,7 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
 
-{{ $direnvVersion := "2.33.0" -}}
+{{ $direnvVersion := "2.34.0" -}}
 [ ".local/bin/direnv" ]
     type = "file"
     url = "https://github.com/direnv/direnv/releases/download/v{{ $direnvVersion }}/direnv.{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
