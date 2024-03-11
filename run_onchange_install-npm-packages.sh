@@ -41,11 +41,11 @@ if cmdexists npm; then
     declare -A NPM_PKGS=(
         ["bash-language-server"]="5.1.2"
         ["diff-so-fancy"]="1.4.3"
-        ["neovim"]="4.10.1"
-        ["npm"]="10.4.0"
-        ["pyright"]="1.1.349"
-        ["typescript"]="5.3.3"
-        ["typescript-language-server"]="4.3.1"
+        ["neovim"]="5.0.1"
+        ["npm"]="10.5.0"
+        ["pyright"]="1.1.353"
+        ["typescript"]="5.4.2"
+        ["typescript-language-server"]="4.3.3"
         ["vscode-langservers-extracted"]="4.8.0"
         ["yaml-language-server"]="1.14.0"
     )
