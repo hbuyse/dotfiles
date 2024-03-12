@@ -35,7 +35,8 @@ set $aqua #689d68
 set $gray #a89984
 set $darkgray #1d2021
 set $white #ffffff
-#
+
+
 ########
 # ROFI #
 ########
@@ -43,3 +44,4 @@ set $white #ffffff
 # start rofi (a program launcher)
 set $menu       rofi -sidebar-mode -show drun -combi-modi "drun,run,ssh,window"
 set $powermenu  $HOME/.config/rofi/powermenu.sh
+#  vim: set ts=4 sw=4 tw=0 et ft=swayconfig :
