@@ -1,4 +1,11 @@
+# Profile used in Virtual Machine
 profile Virtual {
-	output "Virtual-1" mode 1600x900 position 0,0
+	output "Virtual-1" enable mode 1600x900@60Hz position 0,0
 	exec notify-send "Kanshi" "Using profile Virtual"
+}
+
+# Profile used when having only the monitor from the laptop
+profile laptop-one-screen {}
+	output "eDP-1" enable mode 1920x1080@60Hz position 0,0
+	exec notify-send "Kanshi" "Using profile 'Laptop One Screen'"
 }
