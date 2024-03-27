@@ -4,4 +4,5 @@
 USER_CONFIG=$HOME/.config/waybar/config.jsonc
 USER_STYLE=$HOME/.config/waybar/style.css
 
+killall -9 waybar
 waybar -c "${USER_CONFIG}" -s "${USER_STYLE}" &
