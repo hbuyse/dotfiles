@@ -97,5 +97,13 @@ return {
       -- ${name} will be replace with the file name
       vim.g.mkdp_page_title = '「${name}」'
     end,
+    cmd = {
+      'MarkdownPreviewToggle',
+      'MarkdownPreview',
+      'MarkdownPreviewStop',
+    },
+    keys = {
+      { '<F11>', 'MarkdownPreviewToggle' },
+    },
   },
 }
