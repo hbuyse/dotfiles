@@ -1,7 +1,10 @@
 return {
   { -- Markdown preview
     'iamcco/markdown-preview.nvim',
-    ft = 'markdown',
+    -- Load only if markdown file
+    ft = { 'markdown' },
+
+    -- Install if needed
     build = function()
       vim.fn['mkdp#util#install']()
     end,
@@ -93,10 +96,6 @@ return {
       -- preview page title
       -- ${name} will be replace with the file name
       vim.g.mkdp_page_title = '「${name}」'
-
-      -- recognized filetypes
-      -- these filetypes will have MarkdownPreview... commands
-      vim.g.mkdp_filetypes = { 'markdown' }
     end,
   },
 }
