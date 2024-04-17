@@ -34,4 +34,4 @@ repos:
       rev: v1.1.2
       hooks:
         - id: luacheck
-          args: [--globals, vim, --]
+          args: [--globals, vim, --no-max-comment-line-length, --]
