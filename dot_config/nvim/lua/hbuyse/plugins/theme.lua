@@ -1,22 +1,24 @@
 return {
-  {
-    'ellisonleao/gruvbox.nvim',
+  { ---- colorscheme.
+    'sainnhe/gruvbox-material',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      local palette = require('gruvbox').palette
-
-      vim.g.gruvbox_contrast_dark = 'medium'
-      vim.g.gruvbox_sign_column = 'bg1'
-      vim.g.gruvbox_hls_highlight = 'orange'
+      -- For dark version.
       vim.o.background = 'dark'
-      require('gruvbox').setup({
-        overrides = {
-          -- Set the colors for LSP floating window
-          NormalFloat = { bg = palette.dark1, fg = palette.light1 },
-          FloatBorder = { bg = palette.dark1, fg = palette.light1 },
-        },
-      })
-      vim.cmd('colorscheme gruvbox')
+      -- This configuration option should be placed before `colorscheme gruvbox-material`.
+      -- Available values: 'hard', 'medium'(default), 'soft'
+      vim.g.gruvbox_material_background = 'medium'
+      vim.g.gruvbox_material_foreground = 'mix'
+      -- For better performance
+      vim.g.gruvbox_material_better_performance = 1
+      vim.g.gruvbox_material_enable_italic = 1
+
+      vim.g.gruvbox_material_diagnostic_text_highlight = 1
+      -- vim.g.gruvbox_material_diagnostic_line_highlight = 1
+      vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
+      vim.g.gruvbox_material_sign_column_background = 'none'
+      vim.cmd('colorscheme gruvbox-material')
     end,
   },
   {
@@ -27,6 +29,7 @@ return {
     },
     opts = {
       options = {
+        theme = 'gruvbox-material',
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         icons_enabled = true,
@@ -70,7 +73,6 @@ return {
     'akinsho/bufferline.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
-      local palette = require('gruvbox').palette
       require('bufferline').setup({
         options = {
           mode = 'buffers',
@@ -93,10 +95,12 @@ return {
         },
         highlights = {
           separator = {
-            fg = palette.dark1,
+            -- https://github.com/ellisonleao/gruvbox.nvim/blob/6e4027ae957cddf7b193adfaec4a8f9e03b4555f/lua/gruvbox.lua#L77
+            fg = '#3c3836',
           },
           separator_selected = {
-            fg = palette.dark1,
+            -- https://github.com/ellisonleao/gruvbox.nvim/blob/6e4027ae957cddf7b193adfaec4a8f9e03b4555f/lua/gruvbox.lua#L77
+            fg = '#3c3836',
           },
         },
       })
