@@ -142,6 +142,7 @@ local function on_attach(client, bufnr)
   -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.documentHighlightProvider then
     lsp_document_highlight(bufnr)
+    require('nvim-navic').attach(client, bufnr)
   end
 
   if not vim.lsp.inlay_hint then
@@ -158,6 +159,9 @@ return {
   {
     -- Quickstart configs for Nvim LSP
     'neovim/nvim-lspconfig',
+    dependencies = {
+      'SmiteshP/nvim-navic',
+    },
     config = function()
       -- Override borders globally
       local border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' }

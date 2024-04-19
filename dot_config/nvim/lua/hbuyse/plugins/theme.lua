@@ -22,10 +22,59 @@ return {
     end,
   },
   {
+    'SmiteshP/nvim-navic',
+    config = true,
+    opts = {
+      icons = {
+        File = '󰈙 ',
+        Module = ' ',
+        Namespace = '󰌗 ',
+        Package = ' ',
+        Class = '󰌗 ',
+        Method = '󰆧 ',
+        Property = ' ',
+        Field = ' ',
+        Constructor = ' ',
+        Enum = '󰕘',
+        Interface = '󰕘',
+        Function = '󰊕 ',
+        Variable = '󰆧 ',
+        Constant = '󰏿 ',
+        String = '󰀬 ',
+        Number = '󰎠 ',
+        Boolean = '◩ ',
+        Array = '󰅪 ',
+        Object = '󰅩 ',
+        Key = '󰌋 ',
+        Null = '󰟢 ',
+        EnumMember = ' ',
+        Struct = '󰌗 ',
+        Event = ' ',
+        Operator = '󰆕 ',
+        TypeParameter = '󰊄 ',
+      },
+      lsp = {
+        auto_attach = false,
+        preference = nil,
+      },
+      highlight = true,
+      separator = '  ',
+      depth_limit = 0,
+      depth_limit_indicator = '..',
+      safe_output = true,
+      lazy_update_context = false,
+      click = false,
+      format_text = function(text)
+        return text
+      end,
+    },
+  },
+  {
     -- Blazing fast and easy to configure Neovim statusline written in Lua
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
+      'SmiteshP/nvim-navic',
     },
     opts = {
       options = {
@@ -65,6 +114,18 @@ return {
         lualine_z = {},
       },
       extensions = { 'fugitive' },
+      winbar = {
+        lualine_c = {
+          {
+            function()
+              return require('nvim-navic').get_location()
+            end,
+            cond = function()
+              return require('nvim-navic').is_available()
+            end,
+          },
+        },
+      },
     },
     config = true,
   },
