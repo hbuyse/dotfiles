@@ -34,4 +34,8 @@ return {
     'lewis6991/gitsigns.nvim',
     config = true,
   },
+  {
+    'FabijanZulj/blame.nvim',
+    config = true,
+  },
 }
