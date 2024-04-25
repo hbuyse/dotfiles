@@ -162,12 +162,6 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu/bat"]
 
-{{ $neovimVersion := "0.9.5" -}}
-[ ".local/bin/nvim" ]
-    type = "file"
-	url = "https://github.com/neovim/neovim/releases/download/v{{ $neovimVersion }}/nvim.appimage"
-    executable = true
-
 {{ $luaLsVersion := "3.7.4" -}}
 [ ".local/lua-language-server" ]
 	type = "archive"
@@ -201,6 +195,15 @@
 	url = "https://github.com/flameshot-org/flameshot/releases/download/v{{ $flameshotVersion }}/Flameshot-{{ $flameshotVersion }}.x86_64.AppImage"
     executable = true
 {{- end }} {{/* .chezmoi.os "linux" */}}
+
+{{ if eq .chezmoi.osRelease.id "ubuntu" -}}
+{{ $neovimVersion := "0.9.5" -}}
+[ ".local/bin/nvim" ]
+    type = "file"
+	url = "https://github.com/neovim/neovim/releases/download/v{{ $neovimVersion }}/nvim.appimage"
+    executable = true
+{{- end }} {{/* .chezmoi.osRelease.id "ubuntu" */}}
+
 
 {{ $fzfVersion := "0.47.0" -}}
 [ ".local/bin/fzf" ]
