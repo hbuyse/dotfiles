@@ -84,7 +84,8 @@ case "${OS}-${ID}" in
         zsh fzf tmux npm \
         clang git git-lfs curl htop \
         python-pip python-virtualenv python-virtualenvwrapper \
-        base-devel openssl zlib xz tk
+        base-devel openssl zlib xz tk \
+        neovim
     ;;
 
 "linux-ubuntu")
