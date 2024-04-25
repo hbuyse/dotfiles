@@ -6,14 +6,44 @@ return {
       log_level = vim.log.levels.ERROR,
       -- Conform will notify you when a formatter errors
       notify_on_error = true,
+      formatters = {
+        prettier = {
+          options = {
+            -- Use a specific prettier parser for a filetype
+            -- Otherwise, prettier will try to infer the parser from the file name
+            ft_parsers = {
+              -- javascript = "babel",
+              -- javascriptreact = "babel",
+              typescript = 'typescript',
+              -- typescriptreact = "typescript",
+              vue = 'vue',
+              css = 'css',
+              scss = 'scss',
+              less = 'less',
+              html = 'html',
+              json = 'json',
+              jsonc = 'json',
+              yaml = 'yaml',
+              markdown = 'markdown',
+              -- ["markdown.mdx"] = "mdx",
+              -- graphql = "graphql",
+              -- handlebars = "glimmer",
+            },
+          },
+        },
+      },
       formatters_by_ft = {
         c = { 'clang-format' },
-        json = { 'jq' },
+        json = { 'prettier' },
         lua = { 'stylua' },
         -- Conform will run multiple formatters sequentially
         python = { 'isort', 'black' },
         rust = { 'rustfmt' },
         sh = { 'shfmt' },
+        css = { 'prettier' },
+        yaml = { 'prettier' },
+        html = { 'prettier' },
+        jsonc = { 'prettier' },
         -- Use the "*" filetype to run formatters on all filetypes.
         ['*'] = { 'codespell' },
         -- Use the "_" filetype to run formatters on filetypes that don't have other formatters configured.
@@ -33,29 +63,5 @@ return {
         }
       end,
     },
-    init = function()
-      -- Format on save
-      local format_gid = vim.api.nvim_create_augroup('FormatAutogroup', {})
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        pattern = '*',
-        group = format_gid,
-        callback = function(args)
-          require('conform').format({ bufnr = args.buf })
-        end,
-      })
-
-      -- Old notify hook
-      -- local has_notify, notify = pcall(require, 'notify')
-      -- if has_notify then
-      --   vim.api.nvim_create_autocmd('User', {
-      --     pattern = 'FormatterPost',
-      --     group = format_gid,
-      --     desc = 'Post format hook',
-      --     callback = function()
-      --       notify('File formatted', nil, { title = 'formatter.nvim' })
-      --     end,
-      --   })
-      -- end
-    end,
   },
 }
