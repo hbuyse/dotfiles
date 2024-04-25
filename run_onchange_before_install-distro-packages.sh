@@ -85,7 +85,9 @@ case "${OS}-${ID}" in
         clang git git-lfs curl htop \
         python-pip python-virtualenv python-virtualenvwrapper \
         base-devel openssl zlib xz tk \
-        neovim
+        neovim \
+        git-delta \
+        libnotify
     ;;
 
 "linux-ubuntu")
@@ -256,7 +258,8 @@ case "${OS}-${ID}" in
         libtool \
         gettext \
         neovim \
-        npm
+        npm \
+        git-delta
     ;;
 *)
     echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
