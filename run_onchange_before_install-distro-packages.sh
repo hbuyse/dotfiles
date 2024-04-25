@@ -12,7 +12,7 @@ install_packages() {
 
     # Get the command to install package and check that package is installed
     case "${OS}-${ID}" in
-    "linux-manjaro")
+    "linux-manjaro" | "linux-arch")
         install_cmd="pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm"
         # Check that package is installed
         for pkg in "${packages_to_install[@]}"; do
@@ -75,7 +75,7 @@ if [ -n "${SUDO}" ]; then
 fi
 
 case "${OS}-${ID}" in
-"linux-manjaro")
+"linux-manjaro" | "linux-arch")
     # Install my package
     install_packages \
         chezmoi age \
