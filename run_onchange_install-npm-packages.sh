@@ -43,6 +43,7 @@ if cmdexists npm; then
         ["diff-so-fancy"]="1.4.3"
         ["neovim"]="5.0.1"
         ["npm"]="10.5.0"
+        ["prettier"]="3.2.5"
         ["pyright"]="1.1.353"
         ["typescript"]="5.4.2"
         ["typescript-language-server"]="4.3.3"
