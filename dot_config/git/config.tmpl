@@ -3,23 +3,25 @@ name = {{ .name | quote }}
 email = {{ .email | quote }}
 
 [include]
-path = color
+path = themes
 # Should contain private informations
 path = local ; find "local" relative to the current file
 
 [core]
-pager = diff-so-fancy | less --tabs=4 -RFX ; npm install -g diff-so-fancy
+pager = delta
 editor = nvim
 attributesFile = ~/.config/git/attributes
 
+[interactive]
+diffFilter = delta --color-only
+
+[delta]
+features = gruvmax-fang
+side-by-side = true
+navigate = true
+
 [color]
 ui = true
-
-[color "diff-highlight"]
-oldNormal = red bold
-newNormal = green bold
-newHighlight = green bold 22
-oldHighlight = red bold 52
 
 [color "diff"]
 meta = 11
@@ -34,6 +36,7 @@ lineNumber = true
 
 [merge]
 tool = meld
+conflictstyle = diff3
 
 [alias]
 lg = log --color --graph --pretty=logger --abbrev-commit
