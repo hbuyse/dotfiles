@@ -93,7 +93,7 @@ fi
 # shellcheck source=/dev/null
 source "${HOME}/.cargo/env"
 if ! cmdexists "rustc"; then
-    rustup install toolchain stable
+    rustup install stable
 fi
 
 # Install rust-analyzer
