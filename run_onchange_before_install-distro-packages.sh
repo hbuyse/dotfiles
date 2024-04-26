@@ -30,7 +30,13 @@ case "${OS}-${ID}" in
         base-devel openssl zlib xz tk \
         neovim \
         git-delta \
-        libnotify
+        libnotify \
+        bitwarden \
+        bat \
+        lua-language-server \
+        texlab shellcheck shfmt \
+        nextcloud-client \
+        direnv
     ;;
 
 "linux-ubuntu")
@@ -202,6 +208,7 @@ case "${OS}-${ID}" in
         gettext \
         neovim \
         npm \
+        direnv \
         git-delta
     ;;
 *)
