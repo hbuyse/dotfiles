@@ -51,7 +51,7 @@ install_packages() {
         # Check that package is installed
         for pkg in "${packages_to_install[@]}"; do
             # Check if not already installed
-            if ! pacman --query --search --quiet "${pkg}"; then
+            if ! pacman --query --search --quiet "${pkg}" | grep -qw "${pkg}" 2>&1; then
                 packages_not_installed+=("${pkg}")
             fi
         done
