@@ -85,7 +85,7 @@ if ! cmdexists rustup; then
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -q --no-modify-path --default-host "${RUST_DEFAULT_HOST}" --default-toolchain none --profile default -y
     rustup default stable
 # Use the redirection since rustup check throw a Broken Pipe when filtering with grep -q
-elif ! rustup check | grep "stable-${RUST_DEFAULT_HOST} - Up to date" > /dev/null; then
+elif ! rustup check | grep "stable-${RUST_DEFAULT_HOST} - Up to date" >/dev/null; then
     rustup update
 fi
 
@@ -98,7 +98,7 @@ fi
 
 # Install rust-analyzer
 if [[ "${OS}" == "linux" ]]; then
-    curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
+    curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - >"${HOME}/.local/bin/rust-analyzer"
     chmod +x "${HOME}/.local/bin/rust-analyzer"
 fi
 
