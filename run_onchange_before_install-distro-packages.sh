@@ -3,63 +3,6 @@
 # Load the shell lib
 . "${CHEZMOI_WORKING_TREE}/utils.sh"
 
-# Install packages based on the OS.
-# Check that the package is installed before installing it.
-install_packages() {
-    local packages_to_install=("$@")
-    local packages_not_installed=()
-    local install_cmd=""
-
-    # Get the command to install package and check that package is installed
-    case "${OS}-${ID}" in
-    "linux-manjaro" | "linux-arch")
-        install_cmd="pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm"
-        # Check that package is installed
-        for pkg in "${packages_to_install[@]}"; do
-            # Check if not already installed
-            if ! pacman --query --search --quiet "${pkg}"; then
-                packages_not_installed+=("${pkg}")
-            fi
-        done
-        ;;
-
-    "linux-ubuntu")
-        install_cmd="apt-get install --assume-yes --quiet"
-        # Check that package is installed
-        for pkg in "${packages_to_install[@]}"; do
-            # Check if not already installed
-            if ! dpkg --get-selections | grep -w "${pkg}" | awk '{ print $2 }' | grep -q -w 'install'; then
-                packages_not_installed+=("${pkg}")
-            fi
-        done
-        ;;
-
-    "freebsd-freebsd")
-        install_cmd="pkg install --automatic --yes"
-        # Check that package is installed
-        for pkg in "${packages_to_install[@]}"; do
-            # Check if already installed
-            if ! pkg info | grep -qw "${pkg}"; then
-                packages_not_installed+=("${pkg}")
-            fi
-        done
-        ;;
-
-    *)
-        echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
-        return
-        ;;
-    esac
-
-    # Install only the packages that are not already installed
-    if [ ${#packages_not_installed[@]} -ne 0 ]; then
-        prompt "Installing ${packages_not_installed[*]}: "
-        # shellcheck disable=SC2086
-        "${SUDO}" ${install_cmd} "${packages_not_installed[@]}"
-        display_ko_ok $?
-    fi
-}
-
 display_info "${0}"
 
 if [ "${CHEZMOI_UID}" -eq 0 ]; then
