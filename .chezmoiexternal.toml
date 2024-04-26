@@ -162,6 +162,15 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu/bat"]
 
+{{ $texlabVersion := "5.15.0" -}}
+[ ".local/bin/texlab" ]
+    type = "file"
+    url = "https://github.com/latex-lsp/texlab/releases/download/v{{ $texlabVersion }}/texlab-x86_64-linux.tar.gz"
+    executable = true
+    [".local/bin/texlab".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "texlab"]
+
 {{ $luaLsVersion := "3.7.4" -}}
 [ ".local/lua-language-server" ]
 	type = "archive"
