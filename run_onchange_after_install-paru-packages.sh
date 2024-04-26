@@ -6,7 +6,7 @@
 display_info "${0}"
 
 case "${OS}-${ID}" in
-"linux-manjaro")
+"linux-manjaro" | "linux-arch")
     if ! cmdexists paru; then
         git clone https://aur.archlinux.org/paru.git /tmp/paru
         (cd /tmp/paru && makepkg -si)
