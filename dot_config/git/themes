@@ -25,6 +25,53 @@
 #
 # 4. Feel free to include a comment line indicating who is the author of the
 #    theme. E.g. a link to your github user page.
+[delta "fancy-gruvbox"]
+    # General appearance
+    dark = true
+    syntax-theme = gruvbox-dark
+    # File
+    file-style = "#fabd2f"
+    file-added-label = [+]
+    file-copied-label = [==]
+    file-modified-label = [*]
+    file-removed-label = [-]
+    file-renamed-label = [->]
+    file-decoration-style = "#fabd2f" ul ol
+    # Hunk header
+    hunk-header-style = syntax auto
+    hunk-header-decoration-style = "#928374" ul
+    # Line numbers
+    line-numbers = true
+    line-numbers-left-style = "#928374"
+    line-numbers-right-style = "#928374"
+    line-numbers-minus-style = "#cc241d"
+    line-numbers-plus-style = "#98971a"
+    line-numbers-zero-style = "#928374"
+    line-numbers-left-format = " {nm:>3} │"
+    line-numbers-right-format = " {np:>3} │"
+    # Diff contents
+    inline-hint-style = syntax
+    minus-style = syntax "#330011"
+    minus-emph-style = syntax "#80002a"
+    minus-non-emph-style = syntax auto
+    plus-style = syntax "#001a00"
+    plus-emph-style = syntax "#003300"
+    plus-non-emph-style = syntax auto
+    whitespace-error-style = "#FB4934" reverse
+    # Commit hash
+    commit-style = "#D79921" bold
+    commit-decoration-style = omit
+    # Blame
+    blame-code-style = syntax
+    blame-format = "{author:<16} ({commit:>8}) {timestamp:<13} "
+    blame-palette = "#1d2021" "#282828" "#3c3836" "#504945"
+    # Merge conflicts
+    merge-conflict-begin-symbol = ⌃
+    merge-conflict-end-symbol = ⌄
+    merge-conflict-ours-diff-header-style = "#FABD2F" bold
+    merge-conflict-theirs-diff-header-style = "#FABD2F" bold overline
+    merge-conflict-ours-diff-header-decoration-style = ''
+    merge-conflict-theirs-diff-header-decoration-style = ''
 
 [delta "colibri"]
     # author: https://github.com/pablospe
@@ -536,3 +583,5 @@
     blame-format = "{author:<18} {commit:<6} {timestamp:<15}"
     blame-palette = "#000000" "#343434"
     zero-style = dim
+
+;  vim: set ts=4 sw=4 tw=0 et ft=gitconfig :
