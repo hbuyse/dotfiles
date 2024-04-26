@@ -14,9 +14,8 @@ case "${OS}-${ID}" in
     fi
 
     paru -Sy \
-        cava \
-        paru \
-        i3lock-color
+        i3lock-color \
+        spotify
     ;;
 *)
     echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
