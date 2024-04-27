@@ -118,3 +118,91 @@ npm_install() {
         display_ko_ok ${err}
     fi
 }
+
+cargo_install() {
+    local package="${1}"
+    local version_and_features="${2}"
+    local version
+    local features
+    local args
+
+    version="$(echo "${version_and_features}" | cut -d',' -f1)"
+    features="$(echo "${version_and_features}" | cut -d',' -f2-)"
+
+    if [ "${version}" == "${features}" ]; then
+        features=""
+    fi
+
+    if cargo install --list | grep -q "${package} v${version}"; then
+        prompt "Installing '${package} v${version}' using cargo"
+        display_already_installed
+    else
+        if cargo install --list | grep -q "${package}"; then
+            prompt "Updating '${package}' to version '${version}' using cargo"
+        else
+            prompt "Installing '${package} v${version}' using cargo"
+        fi
+
+        if [ -n "${features}" ]; then
+            args=("--features" "${features}")
+        fi
+
+        cargo install --quiet --locked --jobs=4 --version="${version}" "${args[@]}" "${package}"
+        display_ko_ok ${?}
+    fi
+}
+
+cargo_git_install() {
+    local git_uri="${1}"
+    local version_and_features="${2}"
+    local package
+    local version
+    local features
+    local args
+
+    package="$(basename "${git_uri}")"
+    version="$(echo "${version_and_features}" | cut -d',' -f1)"
+    features="$(echo "${version_and_features}" | cut -d',' -f2-)"
+
+    if [ "${version}" == "${features}" ]; then
+        features=""
+    fi
+
+    if cargo install --list | grep -q "${package} v${version}"; then
+        prompt "Installing '${package} v${version}' using cargo"
+        display_already_installed
+    else
+        if cargo install --list | grep -q "${package}"; then
+            prompt "Updating '${package}' to version '${version}' using cargo"
+        else
+            prompt "Installing '${package} v${version}' using cargo"
+        fi
+
+        if [ -n "${features}" ]; then
+            args=("--features" "${features}")
+        fi
+
+        cargo install --quiet --locked --jobs=4 --tag="v${version}" "${args[@]}" --git "${git_uri}"
+        display_ko_ok ${?}
+    fi
+}
+
+pip_install() {
+    local package="${1}"
+    local version="${2}"
+
+    if "${PIP_PATH}" freeze --local | grep -q "${package}==${version}"; then
+        prompt "Installing '${package} v${version}' using pip"
+        display_already_installed
+    else
+        local upgrade_opt=""
+        if "${PIP_PATH}" freeze --local | grep -q "${package}"; then
+            prompt "Updating '${package}' to version '${version}' using pip"
+            upgrade_opt="--upgrade"
+        else
+            prompt "Installing '${package} v${version}' using pip"
+        fi
+        "${PIP_PATH}" install --quiet --user ${upgrade_opt} "${package}==${version}"
+        display_ko_ok ${?}
+    fi
+}
