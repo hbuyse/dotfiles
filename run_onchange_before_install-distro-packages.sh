@@ -88,7 +88,6 @@ case "${OS}-${ID}" in
         python3-dev \
         zsh \
         curl \
-        cava \
         tshark \
         bsdmainutils
 
