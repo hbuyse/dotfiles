@@ -12,7 +12,6 @@ case "${OS}-${ID}" in
 
     # Enable all the following user services
     SERVICES=(
-        "dunst"
         "nextcloud"
         "polkit-gnome-authentication-agent"
     )
