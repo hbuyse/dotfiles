@@ -11,6 +11,7 @@
     "modules-right": [
       "custom/wf-recorder",
       "custom/weather",
+      "sway/scratchpad",
       "custom/playerctl",
       "idle_inhibitor",
       "sway/language",
@@ -51,6 +52,13 @@
       "format": "{}",
       "max-length": 50,
       "tooltip": true
+    },
+    "sway/scratchpad": {
+      "format": "{icon} {count}",
+      "show-empty": false,
+      "format-icons": ["", " "],
+      "tooltip": true,
+      "tooltip-format": "{app}: {title}"
     },
     "backlight": {
       "device": "intel_backlight",
