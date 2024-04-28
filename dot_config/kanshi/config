@@ -1,0 +1,26 @@
+# Profile used in Virtual Machine
+profile Virtual {
+	output "Virtual-1" enable mode 1600x900@60Hz position 0,0
+	exec notify-send "Kanshi" "Using profile Virtual"
+}
+
+# Profile used when having only the monitor from the laptop
+profile laptop-one-screen {
+	output "eDP-1" enable mode 1920x1080@60Hz position 0,0
+	exec notify-send "Kanshi" "Using profile 'Laptop One Screen'"
+}
+
+# Profile used at home when connected to the dock
+profile white-tower {
+	output "ASUSTek COMPUTER INC VG248 M1LMQS118673" mode 1920x1080@60.000Hz transform 90 position 0,0
+	output "ASUSTek COMPUTER INC VG248 M1LMQS118675" mode 1920x1080@60.000Hz transform normal position 1080,420
+	exec notify-send "Kanshi" "Using profile white-tower"
+}
+
+# Profile used at home when connected to the dock
+profile home-dock {
+	output "ASUSTek COMPUTER INC VG248 M1LMQS118673" mode 1920x1080@60.000Hz transform 90 position 0,0
+	output "ASUSTek COMPUTER INC VG248 M1LMQS118675" mode 1920x1080@60.000Hz transform normal position 1080,420
+	output "eDP-1" disable
+	exec notify-send "Kanshi" "Using profile home-dock"
+}
