@@ -52,28 +52,21 @@ window#waybar.hidden {
   opacity: 0.2;
 }
 
-#workspaces button {
-  /* To compensate for the top border and still have vertical centering */
-  padding: 0 0.5em;
-  margin: 4px 3px;
-  color: @theme_fg_color;
-  background-color: @theme_selected_bg_color;
-}
-
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
   background: @theme_selected_bg_color;
   border: none;
-  padding: 0 3px;
+  /* padding: 0 3px; */
 }
 
-#workspaces button.focused {
+#workspaces button.focused,
+#workspaces button.selected {
   /* border-color: @fg3; */
   border-bottom: 1px solid @orange-dim;
 }
 
 #workspaces button.urgent {
-  border-color: @error_color;
+  border: 1px solid @error_color;
   color: @error_color;
 }
 
@@ -98,7 +91,8 @@ window#waybar.hidden {
 #mode,
 #network,
 #pulseaudio,
-#tray {
+#tray,
+#workspaces button {
   padding-left: 10px;
   padding-right: 10px;
   margin: 4px 3px;
@@ -111,7 +105,6 @@ window#waybar.hidden {
 #custom-gpu-usage,
 #custom-menu,
 #custom-playerctl,
-#custom-power,
 #custom-weather,
 #disk.home,
 #disk.root,
@@ -120,9 +113,15 @@ window#waybar.hidden {
 #language,
 #memory,
 #network,
-#pulseaudio {
+#pulseaudio,
+#workspaces button {
   background: @theme_selected_bg_color;
   color: @theme_selected_fg_color;
+}
+
+#custom-power {
+  background: @theme_selected_bg_color;
+  color: @red-dim;
 }
 
 #idle_inhibitor.activated {
