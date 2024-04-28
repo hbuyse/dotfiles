@@ -7,6 +7,9 @@ return {
       -- Conform will notify you when a formatter errors
       notify_on_error = true,
       formatters = {
+        shfmt = {
+          prepend_args = { '-i', '4' },
+        },
         prettier = {
           options = {
             -- Use a specific prettier parser for a filetype
