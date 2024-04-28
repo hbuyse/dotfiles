@@ -92,6 +92,7 @@ window#waybar.hidden {
 #mode,
 #network,
 #pulseaudio,
+#scratchpad,
 #tray,
 #workspaces button {
   padding-left: 10px;
