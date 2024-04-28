@@ -126,6 +126,11 @@ cargo_install() {
     local features
     local args
 
+    if ! cmdexists cargo; then
+        # shellcheck source=/dev/null
+        source "${HOME}/.cargo/env"
+    fi
+
     version="$(echo "${version_and_features}" | cut -d',' -f1)"
     features="$(echo "${version_and_features}" | cut -d',' -f2-)"
 
@@ -159,6 +164,11 @@ cargo_git_install() {
     local version
     local features
     local args
+
+    if ! cmdexists cargo; then
+        # shellcheck source=/dev/null
+        source "${HOME}/.cargo/env"
+    fi
 
     package="$(basename "${git_uri}")"
     version="$(echo "${version_and_features}" | cut -d',' -f1)"
