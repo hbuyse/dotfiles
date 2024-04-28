@@ -114,6 +114,7 @@ window#waybar.hidden {
 #memory,
 #network,
 #pulseaudio,
+#tray,
 #workspaces button {
   background: @theme_selected_bg_color;
   color: @theme_selected_fg_color;
