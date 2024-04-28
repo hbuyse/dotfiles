@@ -28,6 +28,8 @@ utils.sh
 {{- if (or (not (index .chezmoi.osRelease "idLike")) (ne .chezmoi.osRelease.idLike "arch")) }}
 # Do not copy pacman folder (specific Arch Linux)
 .config/pacman
+{{- else }}
+.local/share/applications
 {{- end }}
 
 {{- if eq .chezmoi.os "linux" }}
