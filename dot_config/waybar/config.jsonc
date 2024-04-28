@@ -202,7 +202,7 @@
       "on-click": "swaymsg exec '$term -e htop'"
     },
     "tray": {
-      "icon-size": 21,
+      "icon-size": 16,
       "spacing": 10
     },
     "disk#home": {
