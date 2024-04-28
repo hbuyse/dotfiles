@@ -15,6 +15,7 @@
       "idle_inhibitor",
       "sway/language",
       "network",
+      "backlight",
       "pulseaudio",
       "clock",
       "custom/power"
@@ -50,6 +51,11 @@
       "format": "{}",
       "max-length": 50,
       "tooltip": true
+    },
+    "backlight": {
+      "device": "intel_backlight",
+      "format": "{icon} {percent}%",
+      "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
     },
     "idle_inhibitor": {
       "format": "{icon}",
