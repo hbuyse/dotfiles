@@ -14,7 +14,6 @@
       "custom/playerctl",
       "idle_inhibitor",
       "sway/language",
-      "keyboard-state",
       "network",
       "pulseaudio",
       "clock",
@@ -42,16 +41,6 @@
       "min-length": 5,
       "tooltip": false,
       "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
-    },
-    "keyboard-state": {
-      "numlock": true,
-      "capslock": true,
-      "scrolllock": true,
-      "format": "{name} {icon}",
-      "format-icons": {
-        "locked": "",
-        "unlocked": ""
-      }
     },
     "sway/mode": {
       "format": "<span style=\"italic\">{}</span>",
