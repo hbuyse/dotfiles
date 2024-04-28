@@ -10,11 +10,12 @@ SERVICES=(
     "lxpolkit"
 )
 case "${OS}-${ID}" in
-"linux-arch" | "linux-manjaro" | "linux-opensuse-tumbleweed")
-    # No more services to add
+"linux-manjaro" | "linux-arch" | "linux-opensuse-tumbleweed")
+    SERVICES+=(
+        "mako"
+    )
     ;;
 "linux-ubuntu")
-    # Enable all the following user services
     SERVICES+=(
         "dunst"
     )
@@ -28,6 +29,7 @@ esac
 # Reload the services
 systemctl --user daemon-reload
 
+# Enable all services
 for sv in "${SERVICES[@]}"; do
     systemctl --user enable --now "${sv}.service"
 done
