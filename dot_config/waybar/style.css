@@ -96,26 +96,6 @@ window#waybar.hidden {
   padding-left: 10px;
   padding-right: 10px;
   margin: 4px 3px;
-}
-
-#battery,
-#clock,
-#cpu,
-#custom-clipboard,
-#custom-gpu-usage,
-#custom-menu,
-#custom-playerctl,
-#custom-weather,
-#disk.home,
-#disk.root,
-#disk.usr,
-#idle_inhibitor,
-#language,
-#memory,
-#network,
-#pulseaudio,
-#tray,
-#workspaces button {
   background: @theme_selected_bg_color;
   color: @theme_selected_fg_color;
 }
@@ -169,11 +149,6 @@ label:focus {
 
 #custom-wf-recorder {
   color: @error_color;
-  padding-right: 10px;
-}
-
-#tray {
-  padding-left: 10px;
   padding-right: 10px;
 }
 
