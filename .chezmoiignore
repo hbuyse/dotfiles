@@ -25,10 +25,6 @@ utils.sh
 .local/share
 {{- end }}
 
-{{- if eq .chezmoi.osRelease.id "void" }}
-.config/systemd
-{{- end }}
-
 {{- if (or (not (index .chezmoi.osRelease "idLike")) (ne .chezmoi.osRelease.idLike "arch")) }}
 # Do not copy pacman folder (specific Arch Linux)
 .config/pacman
