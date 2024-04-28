@@ -1,0 +1,59 @@
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+# workspace names
+set $ws1 "1:term"
+set $ws2 "2:dev"
+set $ws3 "3:web"
+set $ws4 "4:mail"
+set $ws5 "5:message"
+set $ws6 "6:spotify"
+set $ws7 "7"
+set $ws8 "8:docker"
+set $ws9 "9passwords"
+set $ws10 "10:zoom"
+
+# Override terminal
+set $term $HOME/.local/bin/preferred-terminal
+
+# Gruvbox colors
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $white #ffffff
+
+
+########
+# ROFI #
+########
+
+# start rofi (a program launcher)
+set $menu       rofi -sidebar-mode -show drun -combi-modi "drun,run,ssh,window"
+set $powermenu  $HOME/.config/rofi/powermenu.sh
+
+# brightness control
+set $brightness_step bash -c 'echo $(( $(light -Mr) / 100 * 5 < 1 ? 1 : $(( $(light -Mr) / 100 * 5 )) ))'
+set $brightness_up light -r -A $($brightness_step) && $onscreen_bar $(light -G | cut -d'.' -f1)
+set $brightness_down light -r -U $($brightness_step) && $onscreen_bar $(light -G | cut -d'.' -f1)
+
+# Volume controll
+set $volume_down pulsemixer --change-volume -5 && $onscreen_bar $(pulsemixer --get-volume)
+set $volume_up pulsemixer --change-volume +5 && $onscreen_bar $(pulsemixer --get-volume)
+set $volume_mute pulsemixer --toggle-mute && $(pulsemixer --get-volume)
+
+set $pulseaudio $term_float pulsemixer
+#  vim: set ts=4 sw=4 tw=0 et ft=swayconfig :
