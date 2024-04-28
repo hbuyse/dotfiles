@@ -181,7 +181,11 @@
     ],
     "battery": {
       "format": "{icon}  {capacity}%",
-      "format-icons": ["", "", "", "", ""]
+      "format-icons": ["", "", "", "", ""],
+      "states": {
+        "warning": 25,
+        "critical": 10
+      }
     },
     "cpu": {
       "interval": 5,
