@@ -74,6 +74,7 @@ window#waybar.hidden {
   background: @background_color;
 }
 
+#backlight,
 #battery,
 #clock,
 #cpu,
