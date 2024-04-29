@@ -48,6 +48,7 @@ case "${OS}-${ID}" in
             ["stylua"]="0.20.0"
             ["ripgrep"]="14.1.0"
             ["du-dust"]="0.9.0"
+            ["git-delta"]="0.17.0"
         )
 
         if [[ "${OS}" == "linux" ]]; then
