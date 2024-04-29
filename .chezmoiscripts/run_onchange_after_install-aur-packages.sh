@@ -9,7 +9,8 @@ case "${OS}-${ID}" in
 "linux-manjaro" | "linux-arch")
     aur_install_packages \
         i3lock-color \
-        spotify
+        spotify \
+        swaylock-effects
     ;;
 *)
     echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
