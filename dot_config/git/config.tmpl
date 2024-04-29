@@ -4,7 +4,7 @@ email = {{ .email | quote }}
 
 [include]
 path = themes
-# Should contain private informations
+# Should contain private information
 path = local ; find "local" relative to the current file
 
 [core]
@@ -71,12 +71,12 @@ stat = true
 autoStash = true
 
 [diff "bin"]
-# Allow files following the diff=bin (defined in .git.config/attributes) to be correctly differenciate
+# Allow files following the diff=bin (defined in .git.config/attributes) to be correctly differentiate
 binary = true
 textconv = hexdump -C
 
 [diff "pcap"]
-# Allow files following the diff=pcap (defined in .git.config/attributes) to be correctly differenciate
+# Allow files following the diff=pcap (defined in .git.config/attributes) to be correctly differentiate
 binary = true
 textconv = tshark -x -V -P -r
 
