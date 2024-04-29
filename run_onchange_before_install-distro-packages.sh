@@ -5,18 +5,6 @@
 
 display_info "${0}"
 
-if [ "${CHEZMOI_UID}" -eq 0 ]; then
-    readonly SUDO=""
-else
-    readonly SUDO="sudo"
-fi
-
-if [ -n "${SUDO}" ]; then
-    prompt "Asking for 'sudo' rights: "
-    sudo -p "" -v
-    display_ko_ok ${?}
-fi
-
 case "${OS}-${ID}" in
 "linux-manjaro" | "linux-arch")
     # Install my package
