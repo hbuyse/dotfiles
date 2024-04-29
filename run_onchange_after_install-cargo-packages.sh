@@ -24,7 +24,18 @@ case "${OS}-${ID}" in
     exit 0
     ;;
 
-"linux-ubuntu" | "freebsd-freebsd")
+"freebsd-freebsd")
+    install_packages \
+        ripgrep \
+        bottom \
+        fd \
+        stylua \
+        dust \
+        alacritty \
+        texlab
+    ;;
+
+"linux-ubuntu")
     # shellcheck source=/dev/null
     source "${HOME}/.cargo/env"
 
