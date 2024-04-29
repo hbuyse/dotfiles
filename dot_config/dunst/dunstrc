@@ -34,7 +34,7 @@ enable_regex_posix = true
 width = 500
 notification_limit = 5
 
-# Turn on the progess bar
+# Turn on the progress bar
 progress_bar = true
 #
 # Set the progress bar height. This includes the frame, so make sure

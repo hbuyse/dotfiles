@@ -102,7 +102,7 @@ for opt, val in pairs(opts) do
 end
 
 for opt, val in pairs(wopts) do
-  -- Special case of 'listchars' dictionnary
+  -- Special case of 'listchars' dictionary
   if type(val) == 'table' then
     local tmp = nil
     for k, v in pairs(val) do
