@@ -47,5 +47,9 @@ case "${OS}-${ID}" in
         done
     fi
     ;;
-*) ;;
+
+*)
+    echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
+    exit 0
+    ;;
 esac
