@@ -13,7 +13,14 @@ fi
 
 case "${OS}-${ID}" in
 "linux-manjaro" | "linux-arch")
-    install_packages ripgrep bottom fd stylua dust alacritty texlab
+    install_packages \
+        ripgrep \
+        bottom \
+        fd \
+        stylua \
+        dust \
+        alacritty \
+        texlab
     exit 0
     ;;
 
