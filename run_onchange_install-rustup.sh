@@ -25,7 +25,7 @@ case "${OS}-${ID}" in
         source "${HOME}/.cargo/env"
         rustup default stable
     # Use the redirection since rustup check throw a Broken Pipe when filtering with grep -q
-    elif ! rustup check | grep "stable-${RUST_DEFAULT_HOST} - Up to date" >/dev/null; then
+    elif ! rustup check | grep "stable-${RUST_DEFAULT_HOST} - Up to date" > /dev/null; then
         rustup update
     fi
 

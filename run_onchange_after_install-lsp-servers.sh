@@ -43,7 +43,7 @@ case "${OS}-${ID}" in
     ;;
 "linux-ubuntu")
     LSP_SERVERS_AS_PKG+=("clangd") # clangd
-    # texlab and lua-language-server are installed throught the externals
+    # texlab and lua-language-server are installed through the externals
     # LSP_SERVERS_AS_PKG+=("texlab")
     # LSP_SERVERS_AS_PKG+=("lua-language-server")
     LSP_SERVERS_AS_NPM["bash-language-server"]="5.1.2"
@@ -54,7 +54,7 @@ case "${OS}-${ID}" in
 
     # Install rust-analyzer
     if [[ "${OS}" == "linux" ]]; then
-        curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - >"${HOME}/.local/bin/rust-analyzer"
+        curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
         chmod +x "${HOME}/.local/bin/rust-analyzer"
     fi
     ;;

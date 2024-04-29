@@ -22,11 +22,11 @@ display_ko_ok() {
 }
 
 cmdexists() {
-    command -v "$1" >/dev/null && return 0 || return 1
+    command -v "$1" > /dev/null && return 0 || return 1
 }
 
 display_info() {
-    # Display some informations about the install
+    # Display some information about the install
     echo "==================================="
     echo "Script: ${1}"
     echo "-----------------------------------"
