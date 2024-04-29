@@ -38,6 +38,10 @@ case "${OS}-${ID}" in
             )
         fi
 
+        for pkg in "${!CARGO_PKGS[@]}"; do
+            cargo_install "${pkg}" "${CARGO_PKGS[${pkg}]}"
+        done
+
         for pkg in "${!CARGO_GIT_PKGS[@]}"; do
             cargo_git_install "${pkg}" "${CARGO_GIT_PKGS[${pkg}]}"
         done
