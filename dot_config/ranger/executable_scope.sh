@@ -58,7 +58,7 @@ if [ "$preview_images" = "True" ]; then
         convert "$path" "$cached" && exit 6 || exit 1
         ;;
     # Image previews for image files. w3mimgdisplay will be called for all
-    # image files (unless overriden as above), but might fail for
+    # image files (unless overridden as above), but might fail for
     # unsupported types.
     image/*)
         exit 7

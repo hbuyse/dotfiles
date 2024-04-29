@@ -56,7 +56,7 @@ for _, mode in ipairs(modes) do
   end
 end
 
--- In INSERT mode, doing 'jk' is equivalent to <Esc> (retunr to NORMAL mode)
+-- In INSERT mode, doing 'jk' is equivalent to <Esc> (return to NORMAL mode)
 kmap('i', 'jk', '<Esc>', 'jk == <Esc>')
 
 -- Do nothing

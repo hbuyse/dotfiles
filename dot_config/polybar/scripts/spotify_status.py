@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import sys
 import argparse
+import sys
 
 import dbus
 
@@ -22,7 +22,7 @@ def truncate(name, trunclen):
 
 
 class Spotify:
-    """Spotity class get its datas from dbus"""
+    """Spotify class get its data from dbus"""
 
     def __init__(self):
         self._session_bus = dbus.SessionBus()
