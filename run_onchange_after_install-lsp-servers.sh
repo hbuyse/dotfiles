@@ -5,12 +5,6 @@
 
 display_info "${0}"
 
-if [ "${CHEZMOI_UID}" -eq 0 ]; then
-    readonly SUDO=""
-else
-    readonly SUDO="sudo"
-fi
-
 LSP_SERVERS_AS_PKG=()
 declare -A LSP_SERVERS_AS_NPM=()
 

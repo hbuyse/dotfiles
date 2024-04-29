@@ -9,6 +9,18 @@ readonly OS="${CHEZMOI_OS}"
 readonly ID="${CHEZMOI_OS_RELEASE_ID}"
 readonly IDLIKE="${CHEZMOI_OS_RELEASE_ID_LIKE}"
 
+if [ "${CHEZMOI_UID}" -eq 0 ]; then
+    readonly SUDO=""
+else
+    readonly SUDO="sudo"
+fi
+
+if [ -n "${SUDO}" ]; then
+    prompt "Asking for 'sudo' rights: "
+    sudo -p "" -v
+    display_ko_ok ${?}
+fi
+
 prompt() {
     echo -en "$*: "
 }
@@ -89,7 +101,7 @@ install_packages() {
     if [ ${#packages_not_installed[@]} -ne 0 ]; then
         prompt "Installing ${packages_not_installed[*]}: "
         # shellcheck disable=SC2086
-        "${SUDO}" ${install_cmd} "${packages_not_installed[@]}"
+        ${SUDO} ${install_cmd} "${packages_not_installed[@]}"
         display_ko_ok $?
     fi
 }
