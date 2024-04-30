@@ -16,9 +16,8 @@ else
 fi
 
 if [ -n "${SUDO}" ]; then
-    prompt "Asking for 'sudo' rights: "
-    sudo -p "" -v
-    display_ko_ok ${?}
+    echo -en "Asking for 'sudo' rights: "
+    sudo -p "" -v && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
 fi
 
 prompt() {
