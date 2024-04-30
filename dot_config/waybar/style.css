@@ -1,4 +1,4 @@
-@import "colors.css";
+@import "colors/gruvbox.css";
 
 @keyframes blink-warning {
   70% {
