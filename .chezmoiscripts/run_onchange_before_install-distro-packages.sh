@@ -24,7 +24,8 @@ case "${OS}-${ID}" in
         luarocks \
         strace \
         fastfetch \
-        lxsession-gtk3 # lxpolkit
+        lxsession-gtk3 \
+        pacman-contrib
     ;;
 
 "linux-opensuse-tumbleweed")
