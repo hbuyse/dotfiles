@@ -39,15 +39,6 @@
   font-size: 14px;
 }
 
-#window {
-  margin-left: 10px;
-}
-
-window#waybar {
-  margin-left: 10px;
-  border-radius: 0;
-}
-
 window#waybar.hidden {
   opacity: 0.2;
 }

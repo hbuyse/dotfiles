@@ -3,10 +3,7 @@
     "layer": "top",
     "position": "top",
     "height": 32,
-    "modules-left": [
-      "sway/workspaces"
-      // "sway/window"
-    ],
+    "modules-left": ["sway/workspaces"],
     "modules-center": ["sway/mode"],
     "modules-right": [
       "custom/wf-recorder",
