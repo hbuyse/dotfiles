@@ -241,12 +241,12 @@ class PowerSupplies:
         time = datetime.timedelta(0)
         status = self.status
 
-        if status == "Charging":
+        if status in ["Discharging", "Not charging"]:
+            time = datetime.timedelta(hours=self.energy_now / self.power_now)
+        elif status == "Charging":
             time = datetime.timedelta(
                 hours=(self.energy_full - self.energy_now) / self.power_now
             )
-        elif status == "Discharging":
-            time = datetime.timedelta(hours=self.energy_now / self.power_now)
 
         return time
 
