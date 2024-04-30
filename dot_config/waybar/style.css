@@ -104,26 +104,31 @@ window#waybar.hidden {
   background: @orange-dim;
 }
 
-#battery {
+#battery,
+#custom-battery {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
-#battery.warning {
+#battery.warning,
+#custom-battery.warning {
   color: @warning_color;
 }
 
-#battery.critical {
+#battery.critical,
+#custom-battery.critical {
   color: @error_color;
 }
 
-#battery.warning.discharging {
+#battery.warning.discharging,
+#custom-battery.warning-discharging {
   animation-name: blink-warning;
   animation-duration: 3s;
 }
 
-#battery.critical.discharging {
+#battery.critical.discharging,
+#custom-battery.critical-discharging {
   animation-name: blink-critical;
   animation-duration: 2s;
 }
