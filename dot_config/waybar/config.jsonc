@@ -39,7 +39,7 @@
       }
     },
     "sway/language": {
-      "format": "  {}",
+      "format": "  {short}",
       "min-length": 5,
       "tooltip": false,
       "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
