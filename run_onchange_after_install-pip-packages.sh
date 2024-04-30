@@ -24,8 +24,16 @@ if cmdexists pip; then
     declare -A PIP_PKGS=(
         ["cmake-language-server"]="0.1.7"
         ["robotframework-lsp"]="1.11.0"
-        ["codespell"]="2.2.6"
     )
+
+    case "${OS}-${ID}" in
+    "linux-ubuntu" | "freebsd-freebsd")
+        PIP_PKGS+=(["codespell"]="2.2.6")
+        ;;
+    *)
+        install_packages codespell
+        ;;
+    esac
 
     for pkg in "${!PIP_PKGS[@]}"; do
         pip_install "${pkg}" "${PIP_PKGS[${pkg}]}"
