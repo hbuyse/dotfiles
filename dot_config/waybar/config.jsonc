@@ -152,7 +152,7 @@
       "format": "{icon} {}",
       "tooltip": true,
       "interval": 3600,
-      "exec": "~/.config/waybar/weather.py --city=Paris",
+      "exec": "~/.config/waybar/scripts/weather.py --city=Paris",
       "return-type": "json",
       "format-icons": {
         "Unknown": "✨",
