@@ -273,7 +273,7 @@ def main():
     """Main program"""
     powersupplies = PowerSupplies()
 
-    charge_icon = ' ' if powersupplies.status == "Charging" else ""
+    charge_icon = " " if powersupplies.status == "Charging" else ""
     remaining_time = powersupplies.time_remaining
 
     remaining_time_str = ""
