@@ -22,8 +22,8 @@ fi
 
 if cmdexists pip; then
     declare -A PIP_PKGS=(
-        ["cmake-language-server"]="0.1.7"
-        ["robotframework-lsp"]="1.11.0"
+        ["cmake-language-server"]="0.1.10"
+        ["robotframework-lsp"]="1.12.0"
     )
 
     case "${OS}-${ID}" in
