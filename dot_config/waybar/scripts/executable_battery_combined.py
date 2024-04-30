@@ -282,15 +282,31 @@ def main():
             int(remaining_time.seconds / 3600), int(remaining_time.seconds % 3600 / 60)
         )
 
+    classes = []
+
+    if int(powersupplies.percentage) < 10:
+        classes.append("critical")
+    elif int(powersupplies.percentage) < 25:
+        classes.append("warning")
+
+    if powersupplies.status in ["Discharging", "Not charging"]:
+        classes.append("discharging")
+
     tooltips = []
     for pw in powersupplies._pws:
         tooltips.append(f"<b>{pw._name}</b>: {pw.percentage}%")
 
-    print(json.dumps({
-        "text": f"{powersupplies.percentage}% {remaining_time_str}{charge_icon}",
-        "percentage": int(powersupplies.percentage),
-        "tooltip": "\n".join(tooltips)
-        }))
+    print(
+        json.dumps(
+            {
+                "text": f"{powersupplies.percentage}% {remaining_time_str}{charge_icon}",
+                "percentage": int(powersupplies.percentage),
+                "tooltip": "\n".join(tooltips),
+                "class": "-".join(classes),
+            }
+        )
+    )
+
 
 if __name__ == "__main__":
     main()
