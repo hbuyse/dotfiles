@@ -7,6 +7,7 @@
     "modules-center": ["sway/mode"],
     "modules-right": [
       "custom/wf-recorder",
+      "custom/updates",
       "custom/weather",
       "sway/scratchpad",
       "custom/playerctl",
@@ -175,6 +176,15 @@
         "ThunderySnowShowers": "⛈",
         "VeryCloudy": ""
       }
+    },
+    "custom/updates": {
+      "format": "{}",
+      "tooltip": true,
+      "interval": 3600,
+      "exec": "~/.config/waybar/scripts/updates.sh",
+      "return-type": "json",
+      "exec-if": "exit 0",
+      "signal": 8
     }
   },
   {
