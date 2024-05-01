@@ -143,8 +143,7 @@ label:focus {
 }
 
 #pulseaudio.muted {
-  background: @theme_bg_color;
-  color: @wm_icon_bg;
+  border: 1px solid @error_color;
 }
 
 #custom-wf-recorder {
