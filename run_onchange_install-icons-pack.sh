@@ -5,19 +5,24 @@
 
 display_info "${0}"
 
-# Install Papirus icon theme
-ICON_DIR="${HOME}/.local/share/icons"
-ICON_THEME="Papirus"
-PAPIRUS_VERSION="20231101"
-if [ ! -d "${ICON_DIR}/${ICON_THEME}" ]; then
-    prompt "Installing Papirus Icon theme in version '${PAPIRUS_VERSION}'"
-else
-    prompt "Updating Papirus Icon theme to version '${PAPIRUS_VERSION}'"
-fi
-wget -qO- https://git.io/papirus-icon-theme-install \
-    | DESTDIR="${ICON_DIR}" \
-        ICON_THEMES="${ICON_THEME}" \
-        TAG="${PAPIRUS_VERSION}" \
-        EXTRA_THEMES="" \
-        sh
-display_ko_ok $?
+function install_icons_papirus {
+    # Install Papirus icon theme
+    local icon_dir="${HOME}/.local/share/icons"
+    local extra_theme="Papirus-Dark"
+    local papirus_version="20240201"
+
+    if [ ! -d "${icon_dir}/Papirus" ]; then
+        prompt "Installing Papirus Icon theme in version '${papirus_version}'"
+    else
+        prompt "Updating Papirus Icon theme to version '${papirus_version}'"
+    fi
+
+    wget -qO- "https://git.io/papirus-icon-theme-install" \
+        | DESTDIR="${icon_dir}" \
+            TAG="${papirus_version}" \
+            EXTRA_THEMES="${extra_theme}" \
+            sh
+    display_ko_ok $?
+}
+
+install_icons_papirus
