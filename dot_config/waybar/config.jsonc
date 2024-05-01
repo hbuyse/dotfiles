@@ -84,9 +84,7 @@
       "tooltip-format": "{icon}  {volume}% {format_source}",
       "on-click": "swaymsg exec '$term -e pulsemixer'",
       "on-click-middle": "swaymsg exec '$volume_mute'",
-      "on-click-right": "swaymsg exec 'pavucontrol'",
-      "on-scroll-up": "swaymsg exec '$volume_up'",
-      "on-scroll-down": "swaymsg exec '$volume_down'"
+      "on-click-right": "swaymsg exec 'pavucontrol'"
     },
     "network": {
       "format-wifi": "{icon}  {ipaddr}",
