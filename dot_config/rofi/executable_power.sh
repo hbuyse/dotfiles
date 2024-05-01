@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 lock() {
-    swaylock
+    swaylock -f
     return 0
 }
 
