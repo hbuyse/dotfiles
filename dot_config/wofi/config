@@ -1,0 +1,43 @@
+# Specifies the mode to run in. A list of modes can be found in wofi(7).
+show=drun
+
+# Sets the prompt to be display in the search box, default is the name of the mode.
+prompt=Type to filter
+
+# Sets the x offset from the location in pixels, default is 0
+xoffset=0
+
+#  Sets the y offset from the location in pixels, default is 0.
+yoffset=0
+
+# Specifies the menu width in pixels or percent of screen size, default is 50%.
+# Pixels are used unless the number ends with a %
+width=25%
+
+# Specifies the menu height in pixels or percent of screen size, default is 50%.
+# Pixels are used unless the number ends with a %
+height=100%
+
+# Show images
+allow_images=true
+
+# Allow Markup
+allow_markup=true
+
+# No scrollbar
+hide_scroll=true
+
+# No actions (eg: Firefox - New window)
+no_actions=true
+
+# If true enables case insensitive search, default is false
+insensitive=false
+
+# Specifies whether wofi should be dynamically shrunk to fit the number of visible lines or if it should
+# always stay the same size. Default is false.
+dynamic_lines=false
+
+# Specifies the layer to open on. The options are background, bottom, top, and overlay. Default is top
+layer=overlay
+
+#  vim: set ts=4 sw=4 tw=0 noet ft=dosini :
