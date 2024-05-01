@@ -234,7 +234,7 @@
       "format-icons": ["", "", "", "", ""],
       "tooltip": true,
       "interval": 60,
-      "exec": "~/.config/waybar/scripts/battery_combined.py",
+      "exec": "python3 ~/.config/waybar/scripts/battery_combined.py",
       "return-type": "json",
       "exec-if": "exit 0",
       "signal": 8
