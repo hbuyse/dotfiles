@@ -25,4 +25,23 @@ function install_icons_papirus {
     display_ko_ok $?
 }
 
+function install_cursor_icons_vimix {
+    local vimix_version="2020-02-24"
+    prompt "Downloading Vimix vursors in version '${vimix_version}'"
+    wget -qO- "https://github.com/vinceliuice/Vimix-cursors/archive/refs/tags/${vimix_version}.tar.gz" | tar -C "/tmp" -xz -f-
+    display_ko_ok $?
+
+    prompt "Installing Vimix-cursors"
+    (
+        cd "/tmp/Vimix-cursors-${vimix_version}" || return
+        ./install.sh > /dev/null 2>&1
+    )
+    display_ko_ok $?
+
+    prompt "Removing /tmp/Vimix-cursors-${vimix_version}"
+    rm -rf "/tmp/Vimix-cursors-${vimix_version}"
+    display_ko_ok $?
+}
+
 install_icons_papirus
+install_cursor_icons_vimix
