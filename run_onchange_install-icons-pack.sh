@@ -43,5 +43,21 @@ function install_cursor_icons_vimix {
     display_ko_ok $?
 }
 
+function install_cursor_icons_breeze {
+    case "${OS}-${ID}" in
+    "linux-manjaro")
+        install_packages xcursor-breeze
+        ;;
+    "linux-arch") ;;
+    "linux-ubuntu")
+        install_packages breeze-cursor-theme
+        ;;
+    *)
+        return
+        ;;
+    esac
+}
+
 install_icons_papirus
 install_cursor_icons_vimix
+install_cursor_icons_breeze
