@@ -301,7 +301,7 @@ def main():
             {
                 "text": f"{powersupplies.percentage}% {remaining_time_str}{charge_icon}",
                 "percentage": int(powersupplies.percentage),
-                "tooltip": "\n".join(tooltips),
+                "tooltip": f"<span font_desc='Hack Nerd Font Mono'>{chr(10).join(tooltips)}</span>",
                 "class": "-".join(classes),
             }
         )
