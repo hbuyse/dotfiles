@@ -299,7 +299,16 @@ def main():
     print(
         json.dumps(
             {
-                "text": f"{powersupplies.percentage}% {remaining_time_str}{charge_icon}",
+                "text": " ".join(
+                    filter(
+                        None,
+                        [
+                            str(powersupplies.percentage) + "%",
+                            remaining_time_str,
+                            charge_icon,
+                        ],
+                    )
+                ),
                 "percentage": int(powersupplies.percentage),
                 "tooltip": f"<span font_desc='Hack Nerd Font Mono'>{chr(10).join(tooltips)}</span>",
                 "class": "-".join(classes),
