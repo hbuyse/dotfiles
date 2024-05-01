@@ -44,3 +44,4 @@ application/ppdf=FoxitReader.desktop
 application/xfdf=FoxitReader.desktop
 application/fdf=FoxitReader.desktop
 x-scheme-handler/nc=com.nextcloud.desktopclient.nextcloud.desktop
+# vim: set ts=4 sw=4 tw=0 noet ft=dosini :
