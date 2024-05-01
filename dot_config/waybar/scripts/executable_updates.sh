@@ -42,7 +42,8 @@ case "$DISTRIB" in
 
     nbUpdates=${#updates[@]}
 
-    tooltip="<b>$nbUpdates  updates</b>\n"
+    tooltip="<span font_desc='Hack Nerd Font Mono'>"
+    tooltip+="<b>$nbUpdates  updates</b>\n"
     tooltip+=" <b>$(stringToLen "PkgName" 20) $(stringToLen "PrevVersion" 20) $(stringToLen "NextVersion" 20)</b>\n"
 
     for i in "${updates[@]}"; do
@@ -51,7 +52,10 @@ case "$DISTRIB" in
         next="$(stringToLen "$(echo "$i" | awk '{print $4}')" 20)" # skipping '->' string
         tooltip+="<b> $update </b>$prev $next\n"
     done
+
+    # Remove last '\n'
     tooltip=${tooltip::-2}
+    tooltip+="</span>"
     ;;
 "debian")
     check apt || {
@@ -65,7 +69,8 @@ case "$DISTRIB" in
 
     nbUpdates=${#updates[@]}
 
-    tooltip="<b>$nbUpdates  updates</b>\n"
+    tooltip="<span font_desc='Hack Nerd Font Mono'>\n"
+    tooltip+="<b>$nbUpdates  updates</b>\n"
     tooltip+=" <b>$(stringToLen "PkgName" 20) $(stringToLen "PrevVersion" 20) $(stringToLen "NextVersion" 20)</b>\n"
 
     for i in "${updates[@]}"; do
@@ -74,14 +79,16 @@ case "$DISTRIB" in
         next="$(stringToLen "$(echo "$i" | awk '{print $7}')" 20)" # skipping '->' string
         tooltip+="<b> $update </b>$prev $next\n"
     done
+    # Remove last '\n'
     tooltip=${tooltip::-2}
+    tooltip+="</span>\n"
     ;;
 *)
     exit 0
     ;;
 esac
 
-[ "$nbUpdates" -eq 0 ] && nbUpdates="" || nbUpdates="  $nbUpdates"
-echo "{ \"text\": \"$nbUpdates\", \"tooltip\": \"$tooltip\"}"
+[ "$nbUpdates" -eq 0 ] && nbUpdates="" || nbUpdates=" $nbUpdates"
+echo "{ \"text\": \"${nbUpdates}\", \"tooltip\": \"${tooltip}\"}"
 
 # vim: ft=sh
