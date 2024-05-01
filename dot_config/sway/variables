@@ -45,11 +45,9 @@ set $white #ffffff
 set $menu       rofi -sidebar-mode -show drun -combi-modi "drun,run,ssh,window"
 set $powermenu  $HOME/.config/rofi/powermenu.sh
 
-# brightness control
-
-# Volume controll
-set $volume_down pulsemixer --change-volume -5 && $onscreen_bar $(pulsemixer --get-volume)
-set $volume_up pulsemixer --change-volume +5 && $onscreen_bar $(pulsemixer --get-volume)
+# Volume control
+set $volume_down pulsemixer --change-volume -1 && $onscreen_bar $(pulsemixer --get-volume)
+set $volume_up pulsemixer --change-volume +1 && $onscreen_bar $(pulsemixer --get-volume)
 set $volume_mute pulsemixer --toggle-mute && $(pulsemixer --get-volume)
 
 set $pulseaudio $term_float pulsemixer
