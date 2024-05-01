@@ -20,7 +20,8 @@ case "${OS}-${ID}" in
         stylua \
         dust \
         alacritty \
-        texlab
+        texlab \
+        zoxide
     exit 0
     ;;
 
@@ -32,7 +33,8 @@ case "${OS}-${ID}" in
         stylua \
         dust \
         alacritty \
-        texlab
+        texlab \
+        zoxide
     ;;
 
 "linux-ubuntu")
@@ -49,13 +51,9 @@ case "${OS}-${ID}" in
             ["ripgrep"]="14.1.0"
             ["du-dust"]="0.9.0"
             ["git-delta"]="0.17.0"
+            ["alacritty"]="0.13.1"
+            ["zoxide"]="0.9.4"
         )
-
-        if [[ "${OS}" == "linux" ]]; then
-            CARGO_PKGS+=(
-                ["alacritty"]="0.13.1"
-            )
-        fi
 
         for pkg in "${!CARGO_PKGS[@]}"; do
             cargo_install "${pkg}" "${CARGO_PKGS[${pkg}]}"
