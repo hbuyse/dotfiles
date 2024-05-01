@@ -84,8 +84,10 @@ window#waybar.hidden {
 #memory,
 #mode,
 #network,
+#privacy,
 #pulseaudio,
 #scratchpad,
+#systemd-failed-units,
 #tray,
 #workspaces button {
   padding-left: 10px;

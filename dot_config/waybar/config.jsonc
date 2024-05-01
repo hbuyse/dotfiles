@@ -189,6 +189,7 @@
     "layer": "top",
     "position": "bottom",
     "height": 30,
+    "modules-left": ["systemd-failed-units", "privacy"],
     "modules-right": [
       "disk#root",
       "disk#home",
@@ -199,6 +200,35 @@
       "custom/battery",
       "tray"
     ],
+    "systemd-failed-units": {
+      "hide-on-ok": true,
+      "format": "✗ {nr_failed}",
+      "format-ok": "✓",
+      "system": true,
+      "user": true
+    },
+    "privacy": {
+      "icon-spacing": 4,
+      "icon-size": 18,
+      "transition-duration": 250,
+      "modules": [
+        {
+          "type": "screenshare",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+        },
+        {
+          "type": "audio-out",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+        },
+        {
+          "type": "audio-in",
+          "tooltip": true,
+          "tooltip-icon-size": 24
+        }
+      ]
+    },
     "custom/battery": {
       "format": "{icon}  {}",
       "format-icons": ["", "", "", "", ""],
