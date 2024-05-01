@@ -1,0 +1,63 @@
+@import "{{ .chezmoi.homeDir }}/.config/wofi/colors.css";
+
+* {
+  font-family: "Hack Nerd Font Mono", "DejaVu Sans", "Font Awesome 5 Free";
+  font-size: 1em;
+}
+
+#window {
+  margin: 0px;
+  background-color: @background;
+  border-radius: 0px 10px 10px 0px;
+}
+
+#outer-box {
+  margin: 5px;
+  background-color: @background;
+}
+
+#input {
+  padding: 0.5em;
+  margin: 5px;
+  border-radius: 0px;
+  border: none;
+  background-color: transparent;
+  color: @foreground;
+}
+
+#input > image.left {
+  -gtk-icon-transform: scaleX(0);
+}
+
+#inner-box {
+  background-color: transparent;
+}
+
+#scroll {
+  margin: 0px;
+  border: none;
+}
+
+#entry {
+  padding: 10px;
+  margin: 5px;
+}
+
+#expander-box {
+  background-color: transparent;
+}
+
+#entry img {
+  size: 2.5ch;
+}
+
+#text {
+  margin: 5px 5px 5px 20px;
+  color: @foreground;
+}
+
+#entry:selected {
+  background-color: @selected-normal-background;
+  border-right: 5px solid @active-background;
+}
+/* vim: set ts=4 sw=4 tw=0 noet ft=css :*/
