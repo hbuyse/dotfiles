@@ -15,30 +15,30 @@ else
     readonly SUDO="sudo"
 fi
 
-check_sudo() {
+function check_sudo() {
     if [ -n "${SUDO}" ]; then
         echo -en "Asking for 'sudo' rights: "
         sudo -p "" -v && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
     fi
 }
 
-prompt() {
+function prompt() {
     echo -en "$*: "
 }
 
-display_already_installed() {
+function display_already_installed() {
     echo -e "${YELLOW}already installed${DEFAULT}"
 }
 
-display_ko_ok() {
+function display_ko_ok() {
     [ "${1}" -eq 0 ] && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
 }
 
-cmdexists() {
+function cmdexists() {
     command -v "$1" > /dev/null && return 0 || return 1
 }
 
-display_info() {
+function display_info() {
     # Display some information about the install
     echo "==================================="
     echo "Script: ${1}"
@@ -52,7 +52,7 @@ display_info() {
 
 # Install packages based on the OS.
 # Check that the package is installed before installing it.
-install_packages() {
+function install_packages() {
     local packages_to_install=("$@")
     local packages_not_installed=()
     local install_cmd=""
@@ -99,7 +99,7 @@ install_packages() {
     esac
 
     # Install only the packages that are not already installed
-    if [ ${#packages_not_installed[@]} -ne 0 ]; then
+    if [ ${#packages_not_installed[@]} -eq 0 ]; then
         check_sudo
 
         prompt "Installing ${packages_not_installed[*]}: "
@@ -109,7 +109,7 @@ install_packages() {
     fi
 }
 
-npm_install() {
+function npm_install() {
     local package="${1}"
     local version="${2}"
     local pkg_and_version="${package}@${version}"
@@ -134,7 +134,7 @@ npm_install() {
     fi
 }
 
-cargo_install() {
+function cargo_install() {
     local package="${1}"
     local version_and_features="${2}"
     local version
@@ -172,7 +172,7 @@ cargo_install() {
     fi
 }
 
-cargo_git_install() {
+function cargo_git_install() {
     local git_uri="${1}"
     local version_and_features="${2}"
     local package
@@ -212,7 +212,7 @@ cargo_git_install() {
     fi
 }
 
-pip_install() {
+function pip_install() {
     local package="${1}"
     local version="${2}"
 
