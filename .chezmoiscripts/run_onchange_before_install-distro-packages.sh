@@ -21,8 +21,7 @@ case "${OS}-${ID}" in
         libnotify \
         bitwarden \
         bat \
-        lua-language-server \
-        texlab shellcheck shfmt \
+        shellcheck shfmt \
         nextcloud-client \
         direnv
     ;;
