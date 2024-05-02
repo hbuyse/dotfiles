@@ -59,6 +59,7 @@ esac
 
 install_packages "${LSP_SERVERS_AS_PKG[@]}"
 
-for pkg in "${!LSP_SERVERS_AS_NPM[@]}"; do
-    npm_install "${pkg}" "${LSP_SERVERS_AS_NPM[${pkg}]}"
+for key in "${!LSP_SERVERS_AS_NPM[@]}"; do
+    value=${LSP_SERVERS_AS_NPM[${pkg}]}
+    npm_install "${key}" "${value}"
 done
