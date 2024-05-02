@@ -127,7 +127,7 @@ case "${OS}-${ID}" in
     fi
 
     # Install i3lock color
-    I3LOCK_COLOR_VERSION="2.13.c.4"
+    I3LOCK_COLOR_VERSION="2.13.c.5"
     prompt "Installing i3lock-color v${I3LOCK_COLOR_VERSION}"
     if cmdexists i3lock && i3lock --version 2>&1 | grep -q ${I3LOCK_COLOR_VERSION}; then
         display_already_installed
@@ -149,7 +149,7 @@ case "${OS}-${ID}" in
             libxcb-xinerama0-dev \
             libxcb-randr0-dev \
             libxcb-image0-dev \
-            libxcb-util-dev \
+            libxcb-util0-dev \
             libxcb-xrm-dev \
             libxkbcommon-dev \
             libxkbcommon-x11-dev \
