@@ -5,15 +5,18 @@
 
 display_info "${0}"
 
+if [ "${OS}-${ID}" = "linux-arch" ]; then
+    install_packages \
+        git \
+        base-devel
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    makepkg --syncdeps --install --needed --noconfirm --nocheck --dir /tmp/yay
+    rm -rf /tmp/yay
+fi
+
 case "${OS}-${ID}" in
 "linux-manjaro" | "linux-arch")
-    if ! cmdexists paru; then
-        git clone https://aur.archlinux.org/paru.git /tmp/paru
-        (cd /tmp/paru && makepkg -si)
-        rm -rf /tmp/paru
-    fi
-
-    paru -Sy \
+    yay --sync --refresh --answerclean NotInstalled --answerdiff NotInstalled \
         i3lock-color \
         spotify
     ;;
