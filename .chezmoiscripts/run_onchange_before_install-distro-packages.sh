@@ -23,7 +23,8 @@ case "${OS}-${ID}" in
         bat \
         shellcheck shfmt \
         nextcloud-client \
-        direnv
+        direnv \
+        luarocks
     ;;
 
 "linux-ubuntu")
