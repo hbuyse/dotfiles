@@ -31,14 +31,14 @@ case "${OS}-${ID}" in
 "linux-ubuntu")
     check_sudo
 
-    prompt "Update mirrors to latest update: "
+    prompt "Update mirrors to latest update"
     ${SUDO} apt-get update --quiet --quiet
     display_ko_ok $?
 
     # Add PPAs
     echo "Installing PPAs"
     for i in "git-core/ppa" "yubico/stable"; do
-        prompt "- ${i}:"
+        prompt "- ${i}"
         if grep -riq "${i}" "/etc/apt/sources.list.d"; then
             display_already_installed
         else
@@ -53,11 +53,11 @@ case "${OS}-${ID}" in
     install_packages ca-certificates curl gnupg
     ${SUDO} mkdir -p /etc/apt/keyrings
 
-    prompt "- Downloading GPG key: "
+    prompt "- Downloading GPG key"
     curl -fsSL "https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key" | ${SUDO} gpg --yes --dearmor -o "/etc/apt/keyrings/nodesource.gpg"
     display_ko_ok $?
 
-    prompt "- Adding repo: "
+    prompt "- Adding repo"
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | ${SUDO} tee "/etc/apt/sources.list.d/nodesource.list" > "/dev/null"
     display_ko_ok $?
 
@@ -73,7 +73,7 @@ case "${OS}-${ID}" in
     fi
 
     # Refresh packages list
-    prompt "Updating packages list: "
+    prompt "Updating packages list"
     ${SUDO} apt-get update --quiet --quiet
     display_ko_ok $?
 
@@ -95,13 +95,13 @@ case "${OS}-${ID}" in
 
     # Install dunst
     DUNST_VERSION="1.9.2"
-    prompt "Installing dunst v${DUNST_VERSION}: "
+    prompt "Installing dunst v${DUNST_VERSION}"
     if cmdexists dunst || ! dunst --version | grep -q ${DUNST_VERSION}; then
         display_already_installed
     else
         # Dunst dependencies
         echo
-        prompt "- Installing dependencies: "
+        prompt "- Installing dependencies"
         install_packages \
             libdbus-1-dev \
             libx11-dev \
@@ -114,11 +114,11 @@ case "${OS}-${ID}" in
             libxdg-basedir-dev
         display_ko_ok $?
 
-        prompt "- Downloading and extracting source code:"
+        prompt "- Downloading and extracting source code"
         curl --location --silent "https://github.com/dunst-project/dunst/archive/refs/tags/v${DUNST_VERSION}.tar.gz" | tar -xz -C /tmp -f -
         display_ko_ok $?
 
-        prompt "- Compiling source code: "
+        prompt "- Compiling source code"
         make -C /tmp/dunst-${DUNST_VERSION} PREFIX="${HOME}/.local" install
         display_ko_ok $?
 
@@ -127,12 +127,12 @@ case "${OS}-${ID}" in
 
     # Install i3lock color
     I3LOCK_COLOR_VERSION="2.13.c.4"
-    prompt "Installing i3lock-color v${I3LOCK_COLOR_VERSION}: "
+    prompt "Installing i3lock-color v${I3LOCK_COLOR_VERSION}"
     if cmdexists i3lock && i3lock --version 2>&1 | grep -q ${I3LOCK_COLOR_VERSION}; then
         display_already_installed
     else
         # Install i3lock-color
-        prompt "- Installing dependencies: "
+        prompt "- Installing dependencies"
         install_packages \
             autoconf \
             gcc \
@@ -155,11 +155,11 @@ case "${OS}-${ID}" in
             libjpeg-dev
         display_ko_ok $?
 
-        prompt "- Downloading and extracting source code:"
+        prompt "- Downloading and extracting source code"
         curl --location --silent "https://github.com/Raymo111/i3lock-color/archive/refs/tags/${I3LOCK_COLOR_VERSION}.tar.gz" | tar -xz -C /tmp -f -
         display_ko_ok $?
 
-        prompt "- Compiling source code: "
+        prompt "- Compiling source code"
         autoreconf -fiv /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}
         mkdir -p /tmp/i3lock-color-${I3LOCK_COLOR_VERSION}/build
         (
@@ -179,11 +179,11 @@ case "${OS}-${ID}" in
     if [ ! -f ${FREEBSD_PKG_REPOS}/FreeBSD.conf ]; then
         check_sudo
 
-        prompt "Copy pkg config to ${FREEBSD_PKG_REPOS}/FreeBSD.conf: "
+        prompt "Copy pkg config to ${FREEBSD_PKG_REPOS}/FreeBSD.conf"
         ${SUDO} mkdir -p ${FREEBSD_PKG_REPOS}
         ${SUDO} cp /etc/pkg/FreeBSD.conf ${FREEBSD_PKG_REPOS}/FreeBSD.conf
         display_ko_ok $?
-        prompt "Change URL to HTTPS: "
+        prompt "Change URL to HTTPS"
         ${SUDO} sed -i -e 's/pkg\+http:/pkg\+https:/' -e 's/latest/quaterly/' ${FREEBSD_PKG_REPOS}/FreeBSD.conf
         display_ko_ok $?
     fi
