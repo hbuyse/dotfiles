@@ -24,7 +24,8 @@ case "${OS}-${ID}" in
         shellcheck shfmt \
         nextcloud-client \
         direnv \
-        luarocks
+        luarocks \
+        strace
     ;;
 
 "linux-ubuntu")
