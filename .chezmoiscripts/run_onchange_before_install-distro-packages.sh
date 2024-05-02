@@ -35,7 +35,7 @@ case "${OS}-${ID}" in
 
     # Add PPAs
     echo "Installing PPAs"
-    for i in "git-core/ppa" "yubico/stable" "regolith-linux/stable" "hsheth2/ppa"; do
+    for i in "git-core/ppa" "yubico/stable"; do
         prompt "- ${i}:"
         if grep -riq "${i}" "/etc/apt/sources.list.d"; then
             display_already_installed
