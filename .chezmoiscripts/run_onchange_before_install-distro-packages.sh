@@ -13,7 +13,7 @@ case "${OS}-${ID}" in
         firefox \
         i3-wm feh autorandr rofi npm xautolock polybar \
         zsh fzf tmux npm \
-        clang git git-lfs curl htop \
+        clang git curl htop \
         python-pip python-virtualenv python-virtualenvwrapper \
         base-devel openssl zlib xz tk \
         neovim \
@@ -81,7 +81,7 @@ case "${OS}-${ID}" in
         libpam-yubico \
         libpam-u2f \
         meld \
-        git git-lfs \
+        git \
         nodejs \
         i3 \
         python3-pip \
@@ -192,7 +192,7 @@ case "${OS}-${ID}" in
         chezmoi \
         termshark \
         tree \
-        git-lfs \
+        git \
         npm \
         ripgrep \
         fd-find \
