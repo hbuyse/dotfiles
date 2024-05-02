@@ -59,6 +59,17 @@ case "${OS}-${ID}" in
     echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | sudo tee "/etc/apt/sources.list.d/nodesource.list" > "/dev/null"
     display_ko_ok $?
 
+    if [ ! -f "/etc/apt/sources.list.d/sur5r-i3.list" ]; then
+        prompt "Installing i3 repo"
+        (
+            /usr/lib/apt/apt-helper download-file "https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2024.03.04_all.deb" /tmp/keyring.deb SHA256:f9bb4340b5ce0ded29b7e014ee9ce788006e9bbfe31e96c09b2118ab91fca734
+            ${SUDO} apt install /tmp/keyring.deb
+            rm -f /tmp/keyring.deb
+            echo "deb http://debian.sur5r.net/i3/ ${CHEZMOI_OS_RELEASE_VERSION_CODENAME} universe" | ${SUDO} tee /etc/apt/sources.list.d/sur5r-i3.list > "/dev/null"
+        )
+        display_ko_ok $?
+    fi
+
     # Refresh packages list
     prompt "Updating packages list: "
     ${SUDO} apt-get update --quiet --quiet
@@ -72,7 +83,7 @@ case "${OS}-${ID}" in
         meld \
         git git-lfs \
         nodejs \
-        i3-gaps \
+        i3 \
         python3-pip \
         python3-dev \
         zsh \
