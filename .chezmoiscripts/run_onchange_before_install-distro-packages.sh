@@ -56,7 +56,7 @@ case "${OS}-${ID}" in
     display_ko_ok $?
 
     prompt "- Adding repo: "
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | sudo tee "/etc/apt/sources.list.d/nodesource.list" > "/dev/null"
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_MAJOR}.x nodistro main" | ${SUDO} tee "/etc/apt/sources.list.d/nodesource.list" > "/dev/null"
     display_ko_ok $?
 
     if [ ! -f "/etc/apt/sources.list.d/sur5r-i3.list" ]; then
