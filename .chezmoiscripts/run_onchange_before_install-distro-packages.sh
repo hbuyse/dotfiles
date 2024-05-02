@@ -94,7 +94,7 @@ case "${OS}-${ID}" in
         bsdmainutils
 
     # Install dunst
-    DUNST_VERSION="1.9.2"
+    DUNST_VERSION="1.11.0"
     prompt "Installing dunst v${DUNST_VERSION}"
     if cmdexists dunst || ! dunst --version | grep -q ${DUNST_VERSION}; then
         display_already_installed
@@ -111,7 +111,8 @@ case "${OS}-${ID}" in
             libglib2.0-dev \
             libpango1.0-dev \
             libgtk-3-dev \
-            libxdg-basedir-dev
+            libxdg-basedir-dev \
+            libgdk-pixbuf-2.0-dev
         display_ko_ok $?
 
         prompt "- Downloading and extracting source code"
