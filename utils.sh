@@ -15,10 +15,12 @@ else
     readonly SUDO="sudo"
 fi
 
-if [ -n "${SUDO}" ]; then
-    echo -en "Asking for 'sudo' rights: "
-    sudo -p "" -v && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
-fi
+check_sudo() {
+    if [ -n "${SUDO}" ]; then
+        echo -en "Asking for 'sudo' rights: "
+        sudo -p "" -v && echo -e "${GREEN}OK${DEFAULT}" || echo -e "${RED}KO${DEFAULT}"
+    fi
+}
 
 prompt() {
     echo -en "$*: "
@@ -98,6 +100,8 @@ install_packages() {
 
     # Install only the packages that are not already installed
     if [ ${#packages_not_installed[@]} -ne 0 ]; then
+        check_sudo
+
         prompt "Installing ${packages_not_installed[*]}: "
         # shellcheck disable=SC2086
         ${SUDO} ${install_cmd} "${packages_not_installed[@]}"

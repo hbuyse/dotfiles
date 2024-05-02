@@ -28,6 +28,8 @@ case "${OS}-${ID}" in
     ;;
 
 "linux-ubuntu")
+    check_sudo
+
     prompt "Update mirrors to latest update: "
     ${SUDO} apt-get update --quiet --quiet
     display_ko_ok $?
@@ -163,6 +165,8 @@ case "${OS}-${ID}" in
     # Copy /etc/pkg/FreeBSD.conf and change to https
     FREEBSD_PKG_REPOS="/usr/local/etc/pkg/repos"
     if [ ! -f ${FREEBSD_PKG_REPOS}/FreeBSD.conf ]; then
+        check_sudo
+
         prompt "Copy pkg config to ${FREEBSD_PKG_REPOS}/FreeBSD.conf: "
         ${SUDO} mkdir -p ${FREEBSD_PKG_REPOS}
         ${SUDO} cp /etc/pkg/FreeBSD.conf ${FREEBSD_PKG_REPOS}/FreeBSD.conf
