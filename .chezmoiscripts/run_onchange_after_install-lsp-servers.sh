@@ -57,13 +57,7 @@ case "${OS}-${ID}" in
     ;;
 esac
 
-if [ ${#LSP_SERVERS_AS_PKG[@]} -gt 0 ] && [ -n "${SUDO}" ]; then
-    prompt "Asking for 'sudo' rights: "
-    sudo -p "" -v
-    display_ko_ok ${?}
-
-    install_packages "${LSP_SERVERS[@]}"
-fi
+install_packages "${LSP_SERVERS_AS_PKG[@]}"
 
 for pkg in "${!LSP_SERVERS_AS_NPM[@]}"; do
     npm_install "${pkg}" "${LSP_SERVERS_AS_NPM[${pkg}]}"
