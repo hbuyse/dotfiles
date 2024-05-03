@@ -226,6 +226,15 @@
     [".local/bin/fzf".filter]
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
+
+{{ $yamlfmtVersion := "0.11.0" -}}
+[ ".local/bin/yamlfmt" ]
+    type = "file"
+    url = "https://github.com/google/yamlfmt/releases/download/v{{ $yamlfmtVersion }}/yamlfmt_{{ $yamlfmtVersion }}_{{ .chezmoi.kernel.ostype }}_x86_64.tar.gz"
+    executable = true
+    [".local/bin/yamlfmt".filter]
+        command = "tar"
+        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "yamlfmt"]
 {{- end }} {{/* .chezmoi.osRelease.id "ubuntu" */}}
 
 [".config/alacritty/themes"]
