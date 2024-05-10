@@ -26,6 +26,12 @@ case "${OS}-${ID}" in
         fastfetch \
         lxsession-gtk3 \
         pacman-contrib
+
+    if [ "${XDG_SESSION_TYPE}" = "x11" ]; then
+        install_packages i3-wm feh autorandr rofi npm xautolock polybar picom
+    else
+        install_packages sway kanshi wofi waybar
+    fi
     ;;
 
 "linux-opensuse-tumbleweed")
