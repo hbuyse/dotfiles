@@ -4,8 +4,6 @@
 . "${CHEZMOI_WORKING_TREE}/utils.sh"
 
 # Need to hardcode them since we are using bash as shell interpreter (not zsh)
-# PIP_PATH is used in utils.sh
-export PIP_PATH="${HOME}/.pyenv/shims/pip"
 PYENV_PATH="${HOME}/.pyenv/bin/pyenv"
 
 display_info "${0}"

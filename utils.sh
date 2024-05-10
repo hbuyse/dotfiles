@@ -216,18 +216,18 @@ function pip_install() {
     local package="${1}"
     local version="${2}"
 
-    if "${PIP_PATH}" freeze --local | grep -q "${package}==${version}"; then
+    if python3 -m pip freeze --user | grep -q "${package}==${version}"; then
         prompt "Installing '${package} v${version}' using pip"
         display_already_installed
     else
         local upgrade_opt=""
-        if "${PIP_PATH}" freeze --local | grep -q "${package}"; then
+        if python3 -m pip freeze --user | grep -q "${package}"; then
             prompt "Updating '${package}' to version '${version}' using pip"
             upgrade_opt="--upgrade"
         else
             prompt "Installing '${package} v${version}' using pip"
         fi
-        "${PIP_PATH}" install --quiet --user ${upgrade_opt} "${package}==${version}"
+        python3 -m pip install --quiet --user ${upgrade_opt} "${package}==${version}"
         display_ko_ok ${?}
     fi
 }
