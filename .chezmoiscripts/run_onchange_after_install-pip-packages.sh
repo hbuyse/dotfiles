@@ -11,7 +11,7 @@ display_info "${0}"
 PYTHON_VERSION="3.12"
 if ! python3 --version | grep -q "${PYTHON_VERSION}"; then
     prompt "Install Python ${PYTHON_VERSION}"
-    "${PYENV_PATH}" install -f "${PYTHON_VERSION}"
+    "${PYENV_PATH}" install -s "${PYTHON_VERSION}"
     display_ko_ok ${?}
 
     prompt "Setting Python ${PYTHON_VERSION} as Python Interpreter"
