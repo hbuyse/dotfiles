@@ -8,7 +8,7 @@ PYENV_PATH="${HOME}/.pyenv/bin/pyenv"
 
 display_info "${0}"
 
-PYTHON_VERSION="3.10"
+PYTHON_VERSION="3.12"
 if ! command -v python3 | grep "${HOME}" > /dev/null; then
     prompt "Install Python ${PYTHON_VERSION}"
     "${PYENV_PATH}" install -f "${PYTHON_VERSION}"
