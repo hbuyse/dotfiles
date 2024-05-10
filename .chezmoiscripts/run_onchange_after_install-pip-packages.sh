@@ -4,20 +4,18 @@
 . "${CHEZMOI_WORKING_TREE}/utils.sh"
 
 # Need to hardcode them since we are using bash as shell interpreter (not zsh)
-PYENV_PATH="${HOME}/.pyenv/bin/pyenv"
+PYENV_PATH="${PYENV_ROOT:-${HOME}/.pyenv}/bin/pyenv"
 
 display_info "${0}"
 
 PYTHON_VERSION="3.12"
-if ! python3 --version | grep -q "${PYTHON_VERSION}"; then
-    prompt "Install Python ${PYTHON_VERSION}"
-    "${PYENV_PATH}" install -s "${PYTHON_VERSION}"
-    display_ko_ok ${?}
+prompt "Install Python ${PYTHON_VERSION}"
+"${PYENV_PATH}" install -s "${PYTHON_VERSION}"
+display_ko_ok ${?}
 
-    prompt "Setting Python ${PYTHON_VERSION} as Python Interpreter"
-    "${PYENV_PATH}" global "${PYTHON_VERSION}"
-    display_ko_ok ${?}
-fi
+prompt "Setting Python ${PYTHON_VERSION} as Python Interpreter"
+"${PYENV_PATH}" global "${PYTHON_VERSION}"
+display_ko_ok ${?}
 
 if cmdexists pip; then
     declare -A PIP_PKGS=(
