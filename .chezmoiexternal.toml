@@ -193,18 +193,14 @@
     type = "file"
     url = "https://github.com/sharkdp/bat/releases/download/v{{ $batVersion }}/bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu.tar.gz"
     executable = true
-    [".local/bin/bat".filter]
-        command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu/bat"]
+    path = "bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu/bat"
 
 {{ $texlabVersion := "5.15.0" -}}
 [ ".local/bin/texlab" ]
-    type = "file"
+    type = "archive-file"
     url = "https://github.com/latex-lsp/texlab/releases/download/v{{ $texlabVersion }}/texlab-x86_64-{{ .chezmoi.os }}.tar.gz"
     executable = true
-    [".local/bin/texlab".filter]
-        command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "texlab"]
+    path = "texlab"
 
 {{ $nextcloudVersion := "3.13.0" -}}
 [ ".local/bin/nextcloud" ]
@@ -220,22 +216,18 @@
 
 {{ $fzfVersion := "0.51.0" -}}
 [ ".local/bin/fzf" ]
-    type = "file"
+    type = "archive-file"
     url = "https://github.com/junegunn/fzf/releases/download/{{ $fzfVersion }}/fzf-{{ $fzfVersion }}-{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
     executable = true
-    [".local/bin/fzf".filter]
-        command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "fzf"]
+    path = "fzf"
+{{- end }}{{/* .chezmoi.osRelease.id "ubuntu" */}}
 
-{{ $yamlfmtVersion := "0.11.0" -}}
+{{ $yamlfmtVersion := "0.12.1" -}}
 [ ".local/bin/yamlfmt" ]
-    type = "file"
+    type = "archive-file"
     url = "https://github.com/google/yamlfmt/releases/download/v{{ $yamlfmtVersion }}/yamlfmt_{{ $yamlfmtVersion }}_{{ .chezmoi.kernel.ostype }}_x86_64.tar.gz"
     executable = true
-    [".local/bin/yamlfmt".filter]
-        command = "tar"
-        args = ["--extract", "--file", "/dev/stdin", "--gzip", "--to-stdout", "yamlfmt"]
-{{- end }} {{/* .chezmoi.osRelease.id "ubuntu" */}}
+    path = "yamlfmt"
 
 [".config/alacritty/themes"]
     type = "git-repo"
