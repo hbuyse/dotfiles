@@ -28,11 +28,11 @@ if cmdexists pip; then
     )
 
     case "${OS}-${ID}" in
-    "linux-ubuntu" | "freebsd-freebsd")
-        PIP_PKGS+=(["codespell"]="2.2.6")
+    "linux-arch" | "linux-manjaro")
+        install_packages codespell
         ;;
     *)
-        install_packages codespell
+        PIP_PKGS+=(["codespell"]="2.2.6")
         ;;
     esac
 
