@@ -15,6 +15,7 @@
 [data]
 	email = {{ $email | quote }}
 	name = {{ $name | quote }}
+	session_type = {{ env "XDG_SESSION_TYPE" | quote }}
 
 [age]
 	identity = "{{ .chezmoi.homeDir }}/.age-key.txt"
