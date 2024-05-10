@@ -1,156 +1,156 @@
 [".oh-my-zsh"]
-	type = "archive"
-	url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
-	exact = false
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [".oh-my-zsh/custom/plugins/zsh-history-substring-search"]
-	type = "archive"
-	url = "https://github.com/zsh-users/zsh-history-substring-search/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-history-substring-search/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
-	type = "archive"
-	url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
-	type = "archive"
-	url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-autosuggestions/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [".oh-my-zsh/custom/plugins/you-should-use"]
-	type = "archive"
-	url = "https://github.com/MichaelAquilina/zsh-you-should-use/archive/refs/tags/1.7.3.tar.gz"
-	exact = true
-	stripComponents = 1
+    type = "archive"
+    url = "https://github.com/MichaelAquilina/zsh-you-should-use/archive/refs/tags/1.7.3.tar.gz"
+    exact = true
+    stripComponents = 1
 
 [".oh-my-zsh/custom/plugins/chroot"]
-	type = "archive"
-	url = "https://gist.github.com/hbuyse/854435b018de288c956513561d32504b/archive/master.tar.gz"
-	exact = true
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://gist.github.com/hbuyse/854435b018de288c956513561d32504b/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [".oh-my-zsh/custom/plugins/zsh-completions"]
-	type = "archive"
-	url = "https://github.com/zsh-users/zsh-completions/archive/refs/tags/0.35.0.tar.gz"
-	exact = true
-	stripComponents = 1
+    type = "archive"
+    url = "https://github.com/zsh-users/zsh-completions/archive/refs/tags/0.35.0.tar.gz"
+    exact = true
+    stripComponents = 1
 
 [".oh-my-zsh/custom/themes/powerlevel10k"]
-	type = "archive"
-	url = "https://github.com/romkatv/powerlevel10k/archive/v1.20.0.tar.gz"
-	exact = false
-	stripComponents = 1
+    type = "archive"
+    url = "https://github.com/romkatv/powerlevel10k/archive/v1.20.0.tar.gz"
+    exact = false
+    stripComponents = 1
 
 [".pyenv"]
-	type = "archive"
-	url = "https://github.com/pyenv/pyenv/archive/refs/tags/v2.3.35.tar.gz"
-	exact = false
-	stripComponents = 1
+    type = "archive"
+    url = "https://github.com/pyenv/pyenv/archive/refs/tags/v2.3.35.tar.gz"
+    exact = false
+    stripComponents = 1
 
 [ ".pyenv/plugins/pyenv-ccache" ]
-	type = "archive"
-	url = "https://github.com/pyenv/pyenv-ccache/archive/refs/heads/master.tar.gz"
-	exact = false
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/pyenv/pyenv-ccache/archive/refs/heads/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [ ".pyenv/plugins/pyenv-doctor" ]
-	type = "archive"
-	url = "https://github.com/pyenv/pyenv-doctor/archive/refs/heads/master.tar.gz"
-	exact = false
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/pyenv/pyenv-doctor/archive/refs/heads/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [ ".pyenv/plugins/pyenv-installer" ]
-	type = "archive"
-	url = "https://github.com/pyenv/pyenv-installer/archive/refs/heads/master.tar.gz"
-	exact = false
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/pyenv/pyenv-installer/archive/refs/heads/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [ ".pyenv/plugins/pyenv-update" ]
-	type = "archive"
-	url = "https://github.com/pyenv/pyenv-update/archive/refs/heads/master.tar.gz"
-	exact = false
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/pyenv/pyenv-update/archive/refs/heads/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [ ".pyenv/plugins/pyenv-virtualenv" ]
-	type = "archive"
-	url = "https://github.com/pyenv/pyenv-virtualenv/archive/refs/heads/master.tar.gz"
-	exact = false
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/pyenv/pyenv-virtualenv/archive/refs/heads/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 [ ".pyenv/plugins/pyenv-which-ext" ]
-	type = "archive"
-	url = "https://github.com/pyenv/pyenv-which-ext/archive/refs/heads/master.tar.gz"
-	exact = false
-	stripComponents = 1
-	refreshPeriod = "168h"
+    type = "archive"
+    url = "https://github.com/pyenv/pyenv-which-ext/archive/refs/heads/master.tar.gz"
+    exact = false
+    stripComponents = 1
+    refreshPeriod = "168h"
 
 {{ if eq .chezmoi.os "linux" -}}
 [".local/share/themes/Gruvbox-Dark-Border"]
-	type = "archive"
-	url = "https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme/archive/refs/heads/master.tar.gz"
-	exact = false
-	refreshPeriod = "168h"
-	stripComponents = 3
+    type = "archive"
+    url = "https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme/archive/refs/heads/master.tar.gz"
+    exact = false
+    refreshPeriod = "168h"
+    stripComponents = 3
     include = ["Gruvbox-GTK-Theme-master/themes/Gruvbox-Dark-B/**"]
 
 [".local/share/themes/Gruvbox-Dark-BorderLess"]
-	type = "archive"
-	url = "https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme/archive/refs/heads/master.tar.gz"
-	exact = false
-	refreshPeriod = "168h"
-	stripComponents = 3
+    type = "archive"
+    url = "https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme/archive/refs/heads/master.tar.gz"
+    exact = false
+    refreshPeriod = "168h"
+    stripComponents = 3
     include = ["Gruvbox-GTK-Theme-master/themes/Gruvbox-Dark-BL/**"]
 
 {{ $nerdFontsVersion := "3.1.1" -}}
 [".local/share/fonts/Hack"]
-	type = "archive"
-	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Hack.tar.xz"
-	exact = true
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Hack.tar.xz"
+    exact = true
 
 [".local/share/fonts/Iosevka"]
-	type = "archive"
-	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Iosevka.tar.xz"
-	exact = true
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Iosevka.tar.xz"
+    exact = true
 
 [".local/share/fonts/Meslo"]
-	type = "archive"
-	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Meslo.tar.xz"
-	exact = true
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Meslo.tar.xz"
+    exact = true
 
 [".local/share/fonts/Ubuntu"]
-	type = "archive"
-	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Ubuntu.tar.xz"
-	exact = true
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Ubuntu.tar.xz"
+    exact = true
 
 [".local/share/fonts/UbuntuMono"]
-	type = "archive"
-	url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/UbuntuMono.tar.xz"
-	exact = true
+    type = "archive"
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/UbuntuMono.tar.xz"
+    exact = true
 
 [".local/bin/betterlockscreen"]
-	type = "file"
-	url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.2.0/betterlockscreen"
-	executable = true
+    type = "file"
+    url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.2.0/betterlockscreen"
+    executable = true
 
 {{ $flameshotVersion := "12.1.0" -}}
 [ ".local/bin/flameshot" ]
     type = "file"
-	url = "https://github.com/flameshot-org/flameshot/releases/download/v{{ $flameshotVersion }}/Flameshot-{{ $flameshotVersion }}.x86_64.AppImage"
+    url = "https://github.com/flameshot-org/flameshot/releases/download/v{{ $flameshotVersion }}/Flameshot-{{ $flameshotVersion }}.x86_64.AppImage"
     executable = true
 {{- end }} {{/* .chezmoi.os "linux" */}}
 
@@ -158,19 +158,19 @@
 {{ $neovimVersion := "0.9.5" -}}
 [ ".local/bin/nvim" ]
     type = "file"
-	url = "https://github.com/neovim/neovim/releases/download/v{{ $neovimVersion }}/nvim.appimage"
+    url = "https://github.com/neovim/neovim/releases/download/v{{ $neovimVersion }}/nvim.appimage"
     executable = true
 
 {{ $bitwardenVersion := "2024.2.0" -}}
 [ ".local/bin/bitwarden" ]
     type = "file"
-	url = "https://github.com/bitwarden/clients/releases/download/desktop-v{{ $bitwardenVersion }}/Bitwarden-{{ $bitwardenVersion }}-x86_64.AppImage"
+    url = "https://github.com/bitwarden/clients/releases/download/desktop-v{{ $bitwardenVersion }}/Bitwarden-{{ $bitwardenVersion }}-x86_64.AppImage"
     executable = true
 
 {{ $shfmtVersion := "3.8.0" -}}
 [ ".local/bin/shfmt" ]
     type = "file"
-	url = "https://github.com/mvdan/sh/releases/download/v{{ $shfmtVersion }}/shfmt_v{{ $shfmtVersion }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}"
+    url = "https://github.com/mvdan/sh/releases/download/v{{ $shfmtVersion }}/shfmt_v{{ $shfmtVersion }}_{{ .chezmoi.os }}_{{ .chezmoi.arch }}"
     executable = true
 
 {{ $shellcheckVersion := "0.10.0" -}}
@@ -184,9 +184,9 @@
 
 {{ $luaLsVersion := "3.7.4" -}}
 [ ".local/lua-language-server" ]
-	type = "archive"
-	url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-{{ .chezmoi.os }}-x64.tar.gz"
-	exact = false
+    type = "archive"
+    url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-{{ .chezmoi.os }}-x64.tar.gz"
+    exact = false
 
 {{ $batVersion := "0.24.0" -}}
 [ ".local/bin/bat" ]
@@ -208,9 +208,9 @@
 
 {{ $nextcloudVersion := "3.13.0" -}}
 [ ".local/bin/nextcloud" ]
-	type = "file"
-	url = "https://github.com/nextcloud-releases/desktop/releases/download/v{{ $nextcloudVersion }}/Nextcloud-{{ $nextcloudVersion }}-x86_64.AppImage"
-	executable = true
+    type = "file"
+    url = "https://github.com/nextcloud-releases/desktop/releases/download/v{{ $nextcloudVersion }}/Nextcloud-{{ $nextcloudVersion }}-x86_64.AppImage"
+    executable = true
 
 {{ $direnvVersion := "2.34.0" -}}
 [ ".local/bin/direnv" ]
