@@ -99,10 +99,10 @@ function install_packages() {
     esac
 
     # Install only the packages that are not already installed
-    if [ ${#packages_not_installed[@]} -eq 0 ]; then
+    if [ ${#packages_not_installed[@]} -ne 0 ]; then
         check_sudo
 
-        prompt "Installing ${packages_not_installed[*]}: "
+        prompt "Installing ${packages_not_installed[*]}"
         # shellcheck disable=SC2086
         ${SUDO} ${install_cmd} "${packages_not_installed[@]}"
         display_ko_ok $?
