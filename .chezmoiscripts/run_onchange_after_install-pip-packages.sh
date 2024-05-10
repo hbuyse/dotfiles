@@ -23,15 +23,15 @@ if cmdexists pip; then
     declare -A PIP_PKGS=(
         ["cmake-language-server"]="0.1.10"
         ["robotframework-lsp"]="1.12.0"
-        ["pre-commit"]="3.7.0"
     )
 
     case "${OS}-${ID}" in
     "linux-arch" | "linux-manjaro")
-        install_packages codespell
+        install_packages codespell pre-commit
         ;;
     *)
         PIP_PKGS+=(["codespell"]="2.2.6")
+        PIP_PKGS+=(["pre-commit"]="3.7.0")
         ;;
     esac
 
