@@ -222,6 +222,13 @@
     url = "https://github.com/junegunn/fzf/releases/download/{{ $fzfVersion }}/fzf-{{ $fzfVersion }}-{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
     executable = true
     path = "fzf"
+
+{{ $fastfetchVersion := "2.13.1" -}}
+[ ".local/bin/fastfetch" ]
+    type = "archive-file"
+    url = "https://github.com/fastfetch-cli/fastfetch/releases/download/{{ $fastfetchVersion }}/fastfetch-linux-amd64.tar.gz"
+    executable = true
+    path = "fastfetch-linux-amd64/usr/bin/fastfetch"
 {{- end }}{{/* .chezmoi.osRelease.id "ubuntu" */}}
 
 {{ $yamlfmtVersion := "0.12.1" -}}

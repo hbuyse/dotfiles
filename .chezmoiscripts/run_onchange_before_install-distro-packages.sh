@@ -25,7 +25,8 @@ case "${OS}-${ID}" in
         nextcloud-client \
         direnv \
         luarocks \
-        strace
+        strace \
+        fastfetch
     ;;
 
 "linux-ubuntu")
@@ -213,7 +214,8 @@ case "${OS}-${ID}" in
         neovim \
         npm \
         direnv \
-        git-delta
+        git-delta \
+        fastfetch
     ;;
 *)
     echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
