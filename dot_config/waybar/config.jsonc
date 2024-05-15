@@ -6,6 +6,7 @@
     "modules-left": ["sway/workspaces"],
     "modules-center": ["sway/mode", "custom/wf-recorder"],
     "modules-right": [
+      "custom/sunset",
       "custom/updates",
       "custom/weather",
       "sway/scratchpad",
