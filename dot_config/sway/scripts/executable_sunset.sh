@@ -2,6 +2,10 @@
 
 config="$HOME/.config/wlsunset/config"
 
+send_signal() {
+    pkill -x -SIGRTMIN+6 'waybar'
+}
+
 #Startup function
 start() {
     [ -f "$config" ] && . "$config"
@@ -35,11 +39,11 @@ start() {
 case "$1" in
 'off')
     pkill -x wlsunset
-    waybar-signal sunset
+    send_signal
     ;;
 'on')
     start
-    waybar-signal sunset
+    send_signal
     ;;
 'toggle')
     if pkill -x -0 wlsunset; then
@@ -47,7 +51,7 @@ case "$1" in
     else
         start
     fi
-    waybar-signal sunset
+    send_signal
     ;;
 'check')
     command -v wlsunset
@@ -57,11 +61,11 @@ esac
 
 #Returns a string for Waybar
 if pkill -x -0 wlsunset; then
-    class="on"
+    class="activated"
     text="location-based gamma correction"
 else
-    class="off"
+    class="deactivated"
     text="no gamma correction"
 fi
 
-printf '{"alt":"%s","tooltip":"%s"}\n' "$class" "$text"
+printf '{"alt":"%s", "class": "%s", "tooltip":"%s"}\n' "$class" "$class" "$text"
