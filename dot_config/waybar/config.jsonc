@@ -10,7 +10,7 @@
       "custom/weather",
       "sway/scratchpad",
       "custom/playerctl",
-      "idle_inhibitor",
+      "custom/idle_inhibitor",
       "sway/language",
       "network",
       "backlight",
@@ -75,14 +75,6 @@
       "device": "intel_backlight",
       "format": "{icon} {percent}%",
       "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
-    },
-    "idle_inhibitor": {
-      "format": "{icon}",
-      "format-icons": {
-        "activated": " ",
-        "deactivated": " "
-      },
-      "timeout": 30
     },
     "pulseaudio": {
       "format": "{icon} {volume}% {format_source}",
@@ -193,9 +185,22 @@
       "tooltip": true,
       "interval": 3600,
       "exec": "~/.config/waybar/scripts/updates.sh",
+      "return-type": "json"
+    },
+
+    "custom/idle_inhibitor": {
+      "interval": 60,
       "return-type": "json",
-      "exec-if": "exit 0",
-      "signal": 8
+      "format": "{icon}",
+      "format-icons": {
+        "activated": " ",
+        "deactivated": " "
+      },
+      "exec": "~/.config/sway/scripts/inhibit-idle.sh",
+      "exec-if": "~/.config/sway/scripts/inhibit-idle.sh check",
+      "on-click": "~/.config/sway/scripts/inhibit-idle.sh off; ~/.config/sway/scripts/inhibit-idle.sh interactive",
+      "on-click-middle": "~/.config/sway/scripts/inhibit-idle.sh off",
+      "signal": 15
     }
   },
   {
