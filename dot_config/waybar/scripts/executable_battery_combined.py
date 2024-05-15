@@ -310,7 +310,7 @@ def main():
                     )
                 ),
                 "percentage": int(powersupplies.percentage),
-                "tooltip": f"<span font_desc='Hack Nerd Font Mono'>{chr(10).join(tooltips)}</span>",
+                "tooltip": f"{chr(10).join(tooltips)}",
                 "class": "-".join(classes),
             }
         )
