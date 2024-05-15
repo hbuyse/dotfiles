@@ -39,6 +39,11 @@
   font-size: 14px;
 }
 
+tooltip label {
+  font-family: "Hack Nerd Font Mono", "Ubuntu Mono", "monospace";
+  font-size: 12px;
+}
+
 window#waybar.hidden {
   opacity: 0.2;
 }
