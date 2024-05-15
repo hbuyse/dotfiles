@@ -123,14 +123,13 @@
       }
     },
     "custom/wf-recorder": {
-      "interval": "once",
-      "return-type": "json",
       "format": "{}",
+      "return-type": "json",
+      "interval": 1,
       "tooltip-format": "{tooltip}",
-      "exec": "echo '{\"class\": \"recording\",\"text\":\"\",\"tooltip\":\"press $mod+Esc to stop recording\"}'",
-      "exec-if": "pgrep wf-recorder",
-      "on-click": "killall -s SIGINT wf-recorder",
-      "signal": 8
+      "exec": "echo '{\"class\": \"recording\",\"text\":\" \",\"tooltip\":\"press Mod+Esc to stop recording\"}'",
+      "exec-if": "/usr/bin/pgrep wf-recorder",
+      "on-click": "killall --signal SIGINT wf-recorder"
     },
     "custom/playerctl": {
       "interval": "once",
