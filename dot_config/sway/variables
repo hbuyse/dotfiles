@@ -44,7 +44,7 @@ set $white #ffffff
 # start rofi (a program launcher)
 #set $menu       rofi -sidebar-mode -show drun -combi-modi "drun,run,ssh,window"
 set $menu       pgrep -x wofi >/dev/null 2>&1 || wofi
-set $powermenu  $HOME/.config/rofi/powermenu.sh
+set $powermenu  $HOME/.config/sway/scripts/powermenu.sh
 
 # Volume control
 set $volume_down pulsemixer --change-volume -1 && $onscreen_bar $(pulsemixer --get-volume)
