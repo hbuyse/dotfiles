@@ -71,6 +71,7 @@ window#waybar.hidden {
 #cpu,
 #custom-battery,
 #custom-clipboard,
+#custom-idle_inhibitor,
 #custom-menu,
 #custom-playerctl,
 #custom-power,
@@ -79,7 +80,6 @@ window#waybar.hidden {
 #disk.home,
 #disk.root,
 #disk.usr,
-#idle_inhibitor,
 #language,
 #memory,
 #mode,
@@ -102,6 +102,7 @@ window#waybar.hidden {
   color: @red-dim;
 }
 
+#custom-idle_inhibitor.activated,
 #idle_inhibitor.activated {
   background: @orange-dim;
 }
