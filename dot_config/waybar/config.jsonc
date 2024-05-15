@@ -252,6 +252,7 @@
       "tooltip": true,
       "interval": 60,
       "exec": "python3 ~/.config/waybar/scripts/battery_combined.py",
+      "exec-if": "[ -e /sys/class/power_supply/BAT0 ]",
       "return-type": "json"
     },
     "cpu": {
