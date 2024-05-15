@@ -214,7 +214,6 @@
       "disk#usr",
       "memory",
       "cpu",
-      // "battery",
       "custom/battery",
       "tray"
     ],
@@ -253,17 +252,7 @@
       "tooltip": true,
       "interval": 60,
       "exec": "python3 ~/.config/waybar/scripts/battery_combined.py",
-      "return-type": "json",
-      "exec-if": "exit 0",
-      "signal": 8
-    },
-    "battery": {
-      "format": "{icon}  {capacity}%",
-      "format-icons": ["", "", "", "", ""],
-      "states": {
-        "warning": 25,
-        "critical": 10
-      }
+      "return-type": "json"
     },
     "cpu": {
       "interval": 5,
