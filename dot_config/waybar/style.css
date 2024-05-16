@@ -55,7 +55,8 @@ window#waybar.hidden {
   /* padding: 0 3px; */
 }
 
-#workspaces button.focused,
+#workspaces button.active, /* active in hyprland */
+#workspaces button.focused, /* active in sway */
 #workspaces button.selected {
   /* border-color: @fg3; */
   border-bottom: 1px solid @orange-dim;
