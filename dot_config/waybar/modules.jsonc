@@ -256,5 +256,24 @@
     "interval": 30,
     "path": "/usr",
     "format": "<span color='#83a598'>{path}</span>: {percentage_used}%"
+  },
+  "hyprland/language": {
+    "format": "  {short}"
+  },
+  "hyprland/workspaces": {
+    "all-outputs": false,
+    "format": "{icon} {name}",
+    "format-icons": {
+      "term": "",
+      "dev": "",
+      "web": "󰈹",
+      "mail": "󰇮",
+      "message": "󰍡",
+      "spotify": "",
+      "docker": "",
+      "passwords": "",
+      "zoom": "",
+      "default": "󰌽"
+    }
   }
 }
