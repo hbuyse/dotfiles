@@ -27,6 +27,7 @@
     "height": 30,
     "modules-left": ["systemd-failed-units", "privacy"],
     "modules-right": [
+      "power-profiles-daemon",
       "disk#root",
       "disk#home",
       "disk#usr",
