@@ -1,0 +1,260 @@
+{
+  "sway/workspaces": {
+    "all-outputs": false,
+    "disable-scroll": false,
+    "format": "{icon} {name}",
+    "format-icons": {
+      "1:term": "",
+      "2:dev": "",
+      "3:web": "󰈹",
+      "4:mail": "󰇮",
+      "5:message": "󰍡",
+      "6:spotify": "",
+      "7": "󰌽",
+      "8:docker": "",
+      "9:passwords": "",
+      "10:zoom": ""
+    }
+  },
+  "sway/language": {
+    "format": "  {short}",
+    "min-length": 5,
+    "tooltip": false,
+    "on-click": "swaymsg input $(swaymsg -t get_inputs --raw | jq '[.[] | select(.type == \"keyboard\")][0] | .identifier') xkb_switch_layout next"
+  },
+  "sway/mode": {
+    "format": "<span style=\"italic\">{}</span>",
+    "tooltip": false
+  },
+  "sway/window": {
+    "format": "{}",
+    "max-length": 50,
+    "tooltip": true
+  },
+  "sway/scratchpad": {
+    "format": "{icon} {count}",
+    "show-empty": false,
+    "format-icons": ["", " "],
+    "tooltip": true,
+    "tooltip-format": "{app}: {title}"
+  },
+  "custom/sunset": {
+    "interval": "once",
+    "tooltip": true,
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "󰌵",
+      "deactivated": "󰌶"
+    },
+    "exec": "fallback_latitude=48.8 fallback_longitude=2.3 latitude= longitude= ~/.config/sway/scripts/sunset.sh",
+    "on-click": "~/.config/sway/scripts/sunset.sh toggle",
+    "exec-if": "~/.config/sway/scripts/sunset.sh check",
+    "signal": 6
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{icon} {volume}%",
+    "format-muted": " {format_source}",
+    "format-source": "  {volume}%",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "default": ["", "", ""]
+    },
+    "tooltip-format": "{icon}  {volume}% {format_source}",
+    "on-click": "swaymsg exec '$term -e pulsemixer'",
+    "on-click-middle": "swaymsg exec '$volume_mute'",
+    "on-click-right": "swaymsg exec 'pavucontrol'"
+  },
+  "network": {
+    "format-wifi": "{icon}  {ipaddr}",
+    "format-ethernet": " {ipaddr}",
+    "format-disconnected": "",
+    "tooltip-format-wifi": "{ifname} on {essid}",
+    "tooltip-format": "󰩟  {ipaddr}\n󱀣  {netmask}\n󱂇  {gwaddr}",
+    "on-click": "swaymsg exec '$term -e nmtui'",
+    "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨", "󰤨"]
+  },
+  "clock": {
+    "format": "{:%d/%m %H:%M}",
+    "format-alt": "{:%e %b %Y %H:%M}",
+    "tooltip": true,
+    "interval": 5,
+    "tooltip-format": "<tt><span size='9pt'>{calendar}</span></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "", // No week number
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "custom/wf-recorder": {
+    "format": "{}",
+    "return-type": "json",
+    "interval": 1,
+    "tooltip-format": "{tooltip}",
+    "exec": "echo '{\"class\": \"recording\",\"text\":\" \",\"tooltip\":\"press Mod+Esc to stop recording\"}'",
+    "exec-if": "/usr/bin/pgrep wf-recorder",
+    "on-click": "killall --signal SIGINT wf-recorder"
+  },
+  "custom/playerctl": {
+    "interval": "once",
+    "tooltip": true,
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "Playing": "",
+      "Paused": ""
+    },
+    "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"tooltip\": \"{{playerName}}:  {{markup_escape(title)}} - {{markup_escape(artist)}}\" }'",
+    "on-click": "playerctl play-pause; pkill -RTMIN+5 waybar",
+    "on-click-right": "playerctl next; pkill -RTMIN+5 waybar",
+    "on-scroll-up": "playerctl position 10+; pkill -RTMIN+5 waybar",
+    "on-scroll-down": "playerctl position 10-; pkill -RTMIN+5 waybar",
+    "signal": 5
+  },
+  "custom/power": {
+    "format": "",
+    "on-click": "~/.config/sway/scripts/powermenu.sh"
+  },
+  "custom/weather": {
+    "icon-size": 42,
+    "format": "{icon} {}",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "~/.config/waybar/scripts/weather.py --city=Paris",
+    "return-type": "json",
+    "format-icons": {
+      "Unknown": "✨",
+      "Cloudy": "",
+      "Fog": "🌫",
+      "HeavyRain": "🌧",
+      "HeavyShowers": "🌧",
+      "HeavySnow": "❄️",
+      "HeavySnowShowers": "❄️",
+      "LightRain": "🌦",
+      "LightShowers": "🌦",
+      "LightSleet": "🌧",
+      "LightSleetShowers": "🌧",
+      "LightSnow": "🌨",
+      "LightSnowShowers": "🌨",
+      "PartlyCloudy": "⛅️",
+      "Sunny": "☀️",
+      "ThunderyHeavyRain": "🌩",
+      "ThunderyShowers": "⛈",
+      "ThunderySnowShowers": "⛈",
+      "VeryCloudy": ""
+    }
+  },
+  "custom/updates": {
+    "format": "{}",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "~/.config/waybar/scripts/updates.sh",
+    "return-type": "json"
+  },
+
+  "custom/idle_inhibitor": {
+    "interval": 60,
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "activated": " ",
+      "deactivated": " "
+    },
+    "exec": "~/.config/sway/scripts/inhibit-idle.sh",
+    "exec-if": "~/.config/sway/scripts/inhibit-idle.sh check",
+    "on-click": "~/.config/sway/scripts/inhibit-idle.sh off; ~/.config/sway/scripts/inhibit-idle.sh interactive",
+    "on-click-middle": "~/.config/sway/scripts/inhibit-idle.sh off",
+    "signal": 15
+  },
+  "systemd-failed-units": {
+    "hide-on-ok": true,
+    "format": "✗ {nr_failed}",
+    "format-ok": "✓",
+    "system": true,
+    "user": true
+  },
+  "privacy": {
+    "icon-spacing": 4,
+    "icon-size": 18,
+    "transition-duration": 250,
+    "modules": [
+      {
+        "type": "screenshare",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-out",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      },
+      {
+        "type": "audio-in",
+        "tooltip": true,
+        "tooltip-icon-size": 24
+      }
+    ]
+  },
+  "custom/battery": {
+    "format": "{icon}  {}",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip": true,
+    "interval": 60,
+    "exec": "python3 ~/.config/waybar/scripts/battery_combined.py",
+    "exec-if": "[ -e /sys/class/power_supply/BAT0 ]",
+    "return-type": "json"
+  },
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "on-click": "swaymsg exec '$term -e htop'"
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}%",
+    "states": {
+      "warning": 70,
+      "critical": 90
+    },
+    "on-click": "swaymsg exec '$term -e htop'"
+  },
+  "tray": {
+    "icon-size": 16,
+    "spacing": 10
+  },
+  "disk#home": {
+    "interval": 30,
+    "path": "/home",
+    "format": "<span color='#83a598'>{path}</span>: {percentage_used}%"
+  },
+  "disk#root": {
+    "interval": 30,
+    "path": "/",
+    "format": "<span color='#83a598'>{path}</span>: {percentage_used}%"
+  },
+  "disk#usr": {
+    "interval": 30,
+    "path": "/usr",
+    "format": "<span color='#83a598'>{path}</span>: {percentage_used}%"
+  }
+}
