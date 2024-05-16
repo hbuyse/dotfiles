@@ -34,6 +34,6 @@ insensitive=false
 dynamic_lines=false
 
 # Specifies the layer to open on. The options are background, bottom, top, and overlay. Default is top
-layer=top
+layer=overlay
 
 #  vim: set ts=4 sw=4 tw=0 noet ft=dosini :
