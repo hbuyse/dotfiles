@@ -14,6 +14,7 @@
       "custom/idle_inhibitor",
       "sway/language",
       "network",
+      "bluetooth",
       "backlight",
       "pulseaudio",
       "clock",

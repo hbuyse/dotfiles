@@ -13,6 +13,7 @@
       "custom/idle_inhibitor",
       "hyprland/language",
       "network",
+      "bluetooth",
       "backlight",
       "pulseaudio",
       "clock",
