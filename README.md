@@ -8,7 +8,7 @@ First, download your age-key.txt file.
 Then, you can copy this line of code:
 
 ```
-BINDIR=${HOME}/.local/bin sh -c "$(curl -fsLS chezmoi.io/get)" -- init --apply hbuyse
+sh -c "$(curl -fsLS chezmoi.io/getlb)" -- init --apply hbuyse
 ```
 
 ## Neovim Lua guide
