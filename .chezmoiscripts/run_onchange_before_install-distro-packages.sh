@@ -25,7 +25,8 @@ case "${OS}-${ID}" in
         strace \
         fastfetch \
         lxsession-gtk3 \
-        pacman-contrib
+        pacman-contrib \
+        power-profiles-daemon
 
     if [ "${XDG_SESSION_TYPE}" = "x11" ]; then
         install_packages i3-wm feh autorandr rofi npm xautolock polybar
