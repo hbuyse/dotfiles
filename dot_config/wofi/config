@@ -12,7 +12,7 @@ width=30%
 
 # Specifies the menu height in pixels or percent of screen size, default is 50%.
 # Pixels are used unless the number ends with a %
-height=1018
+height=100%
 
 # Show images
 allow_images=true
