@@ -106,7 +106,7 @@
       "format-alt": "{:%e %b %Y %H:%M}",
       "tooltip": true,
       "interval": 5,
-      "tooltip-format": "<tt><small>{calendar}</small></tt>",
+      "tooltip-format": "<tt><span size='9pt'>{calendar}</span></tt>",
       "calendar": {
         "mode": "year",
         "mode-mon-col": 3,
