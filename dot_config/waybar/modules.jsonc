@@ -10,10 +10,10 @@
       "4:mail": "󰇮",
       "5:message": "󰍡",
       "6:spotify": "",
-      "7": "󰌽",
       "8:docker": "",
       "9:passwords": "",
-      "10:zoom": ""
+      "10:zoom": "",
+      "default": "󰌽"
     }
   },
   "sway/language": {
