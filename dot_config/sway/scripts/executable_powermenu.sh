@@ -1,11 +1,34 @@
 #!/usr/bin/env bash
 
-lock() {
-    pkill -USR1 swayidle
-    return 0
+function lock() {
+    case "${XDG_SESSION_TYPE}-${XDG_SESSION_DESKTOP}" in
+    "wayland-sway")
+        pkill -USR1 swayidle
+        ;;
+    "wayland-hyprland")
+        hyprlock --immediate
+        ;;
+    "x11-i3")
+        xautolock -locknow
+        ;;
+    esac
 }
 
-list() {
+function logout() {
+    case "${XDG_SESSION_TYPE}-${XDG_SESSION_DESKTOP}" in
+    "wayland-sway")
+        swaymsg exit
+        ;;
+    "wayland-hyprland")
+        hyprctl dispatch exit
+        ;;
+    "x11-i3")
+        i3-msg exit
+        ;;
+    esac
+}
+
+function list() {
     local size
     local icon_name
     local icon_folder
@@ -55,7 +78,7 @@ function run() {
             lock
             ;;
         "Logout")
-            swaymsg exit
+            logout
             ;;
         "Shutdown")
             lock && systemctl poweroff
