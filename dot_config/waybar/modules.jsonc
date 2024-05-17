@@ -288,6 +288,7 @@
     }
   },
   "bluetooth": {
+    "format-no-controller": "",
     "format-disabled": "<U+F00B2>",
     "format-connected": "<U+F00B1> {num_connections}",
     "tooltip-format": "{controller_alias}\t{controller_address}",
