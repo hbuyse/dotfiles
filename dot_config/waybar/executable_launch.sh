@@ -5,7 +5,7 @@ LOG_FILE="$(mktemp -t XXXX.waybar.log)"
 
 pkill -x waybar
 
-for i in "${XDG_SESSION_DESKTOP}" config; do
+for i in "${XDG_SESSION_DESKTOP}" "${XDG_CURRENT_DESKTOP}" config; do
     USER_CONFIG_PATH="$HOME/.config/waybar/$i.jsonc"
     if [ -f "$USER_CONFIG_PATH" ]; then
         USER_CONFIG=$USER_CONFIG_PATH
