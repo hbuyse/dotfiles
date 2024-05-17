@@ -289,11 +289,14 @@
   },
   "bluetooth": {
     "format-no-controller": "",
-    "format-disabled": "<U+F00B2>",
-    "format-connected": "<U+F00B1> {num_connections}",
+    "tooltip-format-no-controller": "No controller available",
     "tooltip-format": "{controller_alias}\t{controller_address}",
+    "format-connected": "󰂱 {num_connections}",
     "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
-    "tooltip-format-disabled": "",
-    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "format-disabled": "󰂲",
+    "tooltip-format-disabled": "Bluetooth disabled",
+    "on-click": "~/.config/waybar/scripts/bluetooth.sh toggle_power",
+    "on-click-right": "~/.config/waybar/scripts/bluetooth.sh toggle_status",
   }
 }
