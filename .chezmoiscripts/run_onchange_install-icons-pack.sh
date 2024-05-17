@@ -91,9 +91,23 @@ function install_theme_matcha {
     "linux-arch")
         yay -S --noconfirm --noanswerdiff matcha-gtk-theme
         ;;
-    # "linux-ubuntu")
-    #     install_packages breeze-cursor-theme
-    #     ;;
+    "linux-ubuntu")
+        local matcha_version="2024-05-01"
+        prompt "Downloading Matcha-gtk-theme in version '${matcha_version}'"
+        wget -qO- "https://github.com/vinceliuice/Matcha-gtk-theme/archive/refs/tags/${matcha_version}.tar.gz" | tar -C "/tmp" -xz -f-
+        display_ko_ok $?
+
+        prompt "Installing Matcha-gtk-theme"
+        (
+            cd "/tmp/Matcha-gtk-theme-${matcha_version}" || return
+            ./install.sh -l > /dev/null 2>&1
+        )
+        display_ko_ok $?
+
+        prompt "Removing /tmp/Matcha-gtk-theme-${matcha_version}"
+        rm -rf "/tmp/Matcha-gtk-theme-${matcha_version}"
+        display_ko_ok $?
+        ;;
     *)
         return
         ;;
