@@ -116,7 +116,7 @@
     stripComponents = 3
     include = ["Gruvbox-GTK-Theme-master/themes/Gruvbox-Dark-BL/**"]
 
-{{ $nerdFontsVersion := "3.1.1" -}}
+{{ $nerdFontsVersion := "3.2.1" -}}
 [".local/share/fonts/Hack"]
     type = "archive"
     url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v{{ $nerdFontsVersion }}/Hack.tar.xz"
