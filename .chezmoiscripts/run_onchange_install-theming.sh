@@ -114,14 +114,28 @@ function install_theme_matcha {
     esac
 }
 
-function install_theme_gruvbox {
+function install_theme_colloid {
     case "${OS}-${ID}" in
     "linux-arch" | "linux-manjaro")
         yay -S --noconfirm --noanswerdiff colloid-gtk-theme-git
         ;;
-    # "linux-ubuntu")
-    #     install_packages breeze-cursor-theme
-    #     ;;
+    "linux-ubuntu")
+        local colloid_version="2024-05-13"
+        prompt "Downloading Colloid-gtk-theme in version '${colloid_version}'"
+        wget -qO- "https://github.com/vinceliuice/Colloid-gtk-theme/archive/refs/tags/${colloid_version}.tar.gz" | tar -C "/tmp" -xz -f-
+        display_ko_ok $?
+
+        prompt "Installing Colloid-gtk-theme"
+        (
+            cd "/tmp/Colloid-gtk-theme-${colloid_version}" || return
+            ./install.sh -l > /dev/null 2>&1
+        )
+        display_ko_ok $?
+
+        prompt "Removing /tmp/Colloid-gtk-theme-${colloid_version}"
+        rm -rf "/tmp/Colloid-gtk-theme-${colloid_version}"
+        display_ko_ok $?
+        ;;
     *)
         return
         ;;
@@ -132,4 +146,4 @@ install_icons_papirus
 install_cursor_icons_vimix
 install_cursor_icons_breeze
 install_theme_matcha
-install_theme_gruvbox
+install_theme_colloid
