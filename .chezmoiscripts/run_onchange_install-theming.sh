@@ -41,7 +41,7 @@ function install_icons_papirus {
 function install_cursor_icons_vimix {
     case "${OS}-${ID}" in
     "linux-manjaro" | "linux-arch")
-        yay -S --noconfirm --noanswerdiff vimix-cursors
+        aur_install_packages vimix-cursors
         ;;
     "linux-ubuntu")
         local vimix_version="2020-02-24"
@@ -72,7 +72,7 @@ function install_cursor_icons_breeze {
         install_packages xcursor-breeze
         ;;
     "linux-arch")
-        yay -S --noconfirm --noanswerdiff xcursor-breeze
+        aur_install_packages xcursor-breeze
         ;;
     "linux-ubuntu")
         install_packages breeze-cursor-theme
@@ -89,7 +89,7 @@ function install_theme_matcha {
         install_packages matcha-gtk-theme
         ;;
     "linux-arch")
-        yay -S --noconfirm --noanswerdiff matcha-gtk-theme
+        aur_install_packages matcha-gtk-theme
         ;;
     "linux-ubuntu")
         local matcha_version="2024-05-01"
@@ -117,7 +117,7 @@ function install_theme_matcha {
 function install_theme_colloid {
     case "${OS}-${ID}" in
     "linux-arch" | "linux-manjaro")
-        yay -S --noconfirm --noanswerdiff colloid-gtk-theme-git
+        aur_install_packages colloid-gtk-theme-git
         ;;
     "linux-ubuntu")
         local colloid_version="2024-05-13"
