@@ -52,6 +52,52 @@ function display_info() {
 
 # Install packages based on the OS.
 # Check that the package is installed before installing it.
+function aur_install_packages() {
+    local packages_to_install=("$@")
+    local packages_not_installed=()
+    local install_cmd=""
+
+    if [ "${OS}-${ID}" = "linux-arch" ]; then
+        install_packages \
+            git \
+            base-devel
+        git clone https://aur.archlinux.org/yay.git /tmp/yay
+        makepkg --syncdeps --install --needed --noconfirm --nocheck --dir /tmp/yay
+        rm -rf /tmp/yay
+    fi
+
+    # Get the command to install package and check that package is installed
+    case "${OS}-${ID}" in
+    "linux-manjaro" | "linux-arch")
+        install_cmd="yay --sync --refresh --refresh --needed --answerclean NotInstalled --answerdiff NotInstalled"
+        # Check that package is installed
+        for pkg in "${packages_to_install[@]}"; do
+            # Check if not already installed
+            if ! yay --query --search --quiet "${pkg}" | grep -qw "${pkg}" 2>&1; then
+                packages_not_installed+=("${pkg}")
+            fi
+        done
+        ;;
+
+    *)
+        echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
+        return
+        ;;
+    esac
+
+    # Install only the packages that are not already installed
+    if [ ${#packages_not_installed[@]} -ne 0 ]; then
+        check_sudo
+
+        prompt "Installing ${packages_not_installed[*]} using AUR"
+        # shellcheck disable=SC2086
+        ${SUDO} ${install_cmd} "${packages_not_installed[@]}"
+        display_ko_ok $?
+    fi
+}
+
+# Install packages based on the OS.
+# Check that the package is installed before installing it.
 function install_packages() {
     local packages_to_install=("$@")
     local packages_not_installed=()
