@@ -16,9 +16,9 @@ case "${OS}-${ID}" in
     )
     ;;
 "linux-ubuntu")
-    SERVICES+=(
-        "dunst"
-    )
+    # SERVICES+=(
+    #     "dunst"
+    # )
     ;;
 *)
     echo "Unsupported OS-distribution: '${OS}-${ID}'"
