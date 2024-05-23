@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 status() {
     pgrep -f "systemd-inhibit --what=idle" > /dev/null 2>&1
