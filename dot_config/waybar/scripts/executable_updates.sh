@@ -63,18 +63,25 @@ case "$DISTRIB" in
     IFS=$'\n'$'\r'
 
     killall -q apt
-    mapfile -t updates < <(apt list --upgradable)
+    mapfile -t updates < <(apt list --upgradable 2> /dev/null)
 
-    nbUpdates=${#updates[@]}
+    nbLines=${#updates[@]}
+    nbUpdates=$((${#updates[@]} - 1))
 
-    tooltip="<b>$nbUpdates  updates</b>\n"
+    tooltip="<b>${nbUpdates}  updates</b>\n"
     tooltip+=" <b>$(stringToLen "PkgName" 20) $(stringToLen "PrevVersion" 20) $(stringToLen "NextVersion" 20)</b>\n"
 
-    for i in "${updates[@]}"; do
-        update="$(stringToLen "$(echo "$i" | awk '{print $1}')" 20)"
-        prev="$(stringToLen "$(echo "$i" | awk '{print $3}')" 20)"
-        next="$(stringToLen "$(echo "$i" | awk '{print $7}')" 20)" # skipping '->' string
-        tooltip+="<b> $update </b>$prev $next\n"
+    for ((i = 0; i < "${nbLines}"; i++)); do
+        if [ "${i}" -eq 0 ]; then continue; fi
+
+        update="${updates[${i}]}"
+
+        pkg="$(stringToLen "$(echo "$update" | awk '{print $1}')" 20)"
+        next="$(stringToLen "$(echo "$update" | awk '{print $2}')" 20)"
+        oldversion="$(echo "$update" | awk '{print $6}')"
+        oldversion=${oldversion::-1}
+        prev="$(stringToLen "${oldversion}" 20)" # skipping '->' string
+        tooltip+="<b> $pkg </b>$prev $next\n"
     done
     # Remove last '\n'
     tooltip=${tooltip::-2}
