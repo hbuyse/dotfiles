@@ -92,6 +92,13 @@ return {
           { cmd = require('telescope').extensions.notify.notify, desc = '[S]earch [N]otifications' }
       end
 
+      -- Aerial support
+      local has_aerial, _ = pcall(require, 'aerial')
+      if has_aerial then
+        require('telescope').load_extension('aerial')
+        nkeymaps['<leader>ss'] = { cmd = require('telescope').extensions.aerial.aerial, desc = '[S]earch [S]ymbols' }
+      end
+
       for k, v in pairs(nkeymaps) do
         vim.keymap.set('n', k, v.cmd, { noremap = true, silent = true, desc = v.desc })
       end
