@@ -61,28 +61,24 @@ return {
       },
     },
     init = function()
-      local telescope = require('telescope')
-      telescope.load_extension('file_browser')
-
-      require('telescope').load_extension('file_browser')
-
+      local builtin = require('telescope.builtin')
       local nkeymaps = {
-        ['<C-p>'] = { cmd = require('telescope.builtin').find_files, desc = 'Search Files' },
-        ['<leader>sb'] = { cmd = require('telescope.builtin').buffers, desc = '[S]earch [B]uffers' },
-        ['<leader>sd'] = { cmd = require('telescope.builtin').diagnostics, desc = '[S]earch [D]iagnostics' },
-        ['<leader>sf'] = { cmd = require('telescope.builtin').find_files, desc = '[S]earch [F]iles' },
-        ['<leader>sg'] = { cmd = require('telescope.builtin').live_grep, desc = '[S]earch by [G]rep' },
-        ['<leader>sh'] = { cmd = require('telescope.builtin').help_tags, desc = '[S]earch [H]elp' },
-        ['<leader>sr'] = { cmd = require('telescope.builtin').lsp_references, desc = '[S]earch [R]eferences' },
+        ['<C-p>'] = { cmd = builtin.find_files, desc = 'Search Files' },
+        ['<leader>sb'] = { cmd = builtin.buffers, desc = '[S]earch [B]uffers' },
+        ['<leader>sd'] = { cmd = builtin.diagnostics, desc = '[S]earch [D]iagnostics' },
+        ['<leader>sf'] = { cmd = builtin.find_files, desc = '[S]earch [F]iles' },
+        ['<leader>sg'] = { cmd = builtin.live_grep, desc = '[S]earch by [G]rep' },
+        ['<leader>sh'] = { cmd = builtin.help_tags, desc = '[S]earch [H]elp' },
+        ['<leader>sr'] = { cmd = builtin.lsp_references, desc = '[S]earch [R]eferences' },
         ['<leader>sw'] = {
           cmd = function()
-            require('telescope.builtin').grep_string({ word_match = '-w' })
+            builtin.grep_string({ word_match = '-w' })
           end,
           desc = '[S]earch current [W]ord',
         },
         ['<leader>dt'] = {
           cmd = function()
-            require('telescope.builtin').git_files({ cwd = os.getenv('HOME') .. '/.local/share/chezmoi' })
+            builtin.git_files({ cwd = os.getenv('HOME') .. '/.local/share/chezmoi' })
           end,
           desc = 'Search in [D]o[T]files',
         },
