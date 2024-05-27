@@ -113,20 +113,22 @@ local function lsp_inlay_hints(bufnr)
 
   -- Initial inlay hint display.
   local mode = vim.api.nvim_get_mode().mode
-  vim.lsp.inlay_hint(bufnr, mode == 'n' or mode == 'v')
+  if mode == 'n' or mode == 'v' then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
 
   vim.api.nvim_create_autocmd('InsertEnter', {
     group = inlay_hints_group,
     buffer = bufnr,
     callback = function()
-      vim.lsp.inlay_hint(bufnr, false)
+      vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
     end,
   })
   vim.api.nvim_create_autocmd('InsertLeave', {
     group = inlay_hints_group,
     buffer = bufnr,
     callback = function()
-      vim.lsp.inlay_hint(bufnr, true)
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end,
   })
 end
