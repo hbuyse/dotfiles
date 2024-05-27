@@ -88,7 +88,6 @@ if has_lazy then
   kmap('n', '<F12>', lazy.home, 'Open Lazy homepage')
 end
 
-kmap('n', '<F3>', '<cmd>InspectTree<CR>')
 kmap('n', '<C-s>', '<cmd>vsplit<CR>')
 kmap('n', '<C-h>', '<cmd>split<CR>')
 
