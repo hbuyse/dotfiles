@@ -76,15 +76,10 @@ return {
       },
       lazy = false,
     },
-    keys = function()
-      local l = {
-        { '<leader>th', vim.show_pos, desc = '[T]reesitter [H]ighlight' },
-        { '<leader>tp', vim.treesitter.inspect_tree, desc = '[T]reesitter [P]layground' },
-      }
-      if not vim.version.lt(vim.version(), { 0, 10, 0 }) then
-        table.insert(l, { '<leader>tq', '<cmd>PreviewQuery<CR>', desc = '[T]reesitter [Q]uery Editor' })
-      end
-      return l
-    end,
+    keys = {
+      { '<leader>th', vim.show_pos, desc = '[T]reesitter [H]ighlight' },
+      { '<leader>tp', vim.treesitter.inspect_tree, desc = '[T]reesitter [P]layground' },
+      { '<leader>tq', vim.treesitter.query.edit, desc = '[T]reesitter [Q]uery Editor' },
+    },
   },
 }
