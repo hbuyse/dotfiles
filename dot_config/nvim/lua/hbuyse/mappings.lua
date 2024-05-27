@@ -89,5 +89,7 @@ if has_lazy then
 end
 
 kmap('n', '<F3>', '<cmd>InspectTree<CR>')
+kmap('n', '<C-s>', '<cmd>vsplit<CR>')
+kmap('n', '<C-h>', '<cmd>split<CR>')
 
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
