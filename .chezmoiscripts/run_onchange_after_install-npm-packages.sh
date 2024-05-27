@@ -15,7 +15,7 @@ if cmdexists npm; then
 
     declare -A NPM_PKGS=(
         ["neovim"]="5.0.1"
-        ["npm"]="10.5.0"
+        ["npm"]="10.8.0"
         ["prettier"]="3.2.5"
         ["typescript"]="5.4.2"
     )
