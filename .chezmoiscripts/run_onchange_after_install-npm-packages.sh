@@ -14,7 +14,6 @@ if cmdexists npm; then
     mkdir -p "${prefix}"
 
     declare -A NPM_PKGS=(
-        ["diff-so-fancy"]="1.4.3"
         ["neovim"]="5.0.1"
         ["npm"]="10.5.0"
         ["prettier"]="3.2.5"
