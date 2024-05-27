@@ -25,6 +25,12 @@ return {
           char = { '|', '¦', '┆', '┊' },
         },
         exclude = {
+          buftypes = {
+            'nofile',
+            'prompt',
+            'quickfix',
+            'terminal',
+          },
           filetypes = {
             'startify',
             'dashboard',
