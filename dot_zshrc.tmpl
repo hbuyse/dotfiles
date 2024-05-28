@@ -108,6 +108,8 @@ if ! in_chroot; then
 	plugins+=(virtualenvwrapper)
 	plugins+=(poetry)
 	plugins+=(rust)
+	ZOXIDE_CMD_OVERRIDE="cd"
+	plugins+=(zoxide)
 fi
 
 # Custom oh-my-zsh plugins
