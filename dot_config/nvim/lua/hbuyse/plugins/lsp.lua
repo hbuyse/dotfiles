@@ -246,6 +246,18 @@ return {
           end,
         },
         perlls = {},
+        perlnavigator = {
+          cmd = { 'perlnavigator' },
+          settings = {
+            perlnavigator = {
+              perlPath = 'perl',
+              enableWarnings = true,
+              perltidyProfile = '',
+              perlcriticProfile = '',
+              perlcriticEnabled = true,
+            },
+          },
+        },
         pyright = {},
         robotframework_ls = {},
         rust_analyzer = {
