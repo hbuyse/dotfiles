@@ -137,7 +137,7 @@ end
 ---@param client table LSP client
 ---@param bufnr integer Buffer number
 local function on_attach(client, bufnr)
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_set_option_value('omnifunc', 'v:lua.vim.lsp.omnifunc', { buf = bufnr })
 
   lsp_keymaps(client, bufnr)
 
@@ -183,7 +183,7 @@ return {
       vim.diagnostic.config({
         virtual_text = {
           prefix = '●',
-          source = 'always', -- Or "if_many"
+          source = true, -- Or "if_many"
         },
         signs = true,
         underline = true,

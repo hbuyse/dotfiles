@@ -14,12 +14,12 @@ local bopts = {
 }
 
 for opt, val in pairs(wopts) do
-  vim.api.nvim_win_set_option(0, opt, val)
-  vim.api.nvim_set_option(opt, val)
+  vim.api.nvim_set_option_value(opt, val, { win = 0 })
+  -- vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
 end
 
 for opt, val in pairs(bopts) do
-  vim.api.nvim_buf_set_option(0, opt, val)
-  vim.api.nvim_set_option(opt, val)
+  vim.api.nvim_set_option_value(opt, val, { bufnr = 0 })
+  -- vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
 end
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :

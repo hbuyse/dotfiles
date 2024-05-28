@@ -98,7 +98,7 @@ local bopts = {
 }
 
 for opt, val in pairs(opts) do
-  vim.api.nvim_set_option(opt, val)
+  vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
 end
 
 for opt, val in pairs(wopts) do
@@ -115,13 +115,13 @@ for opt, val in pairs(wopts) do
     val = tmp
   end
 
-  vim.api.nvim_win_set_option(0, opt, val)
-  vim.api.nvim_set_option(opt, val)
+  vim.api.nvim_set_option_value(opt, val, { win = 0 })
+  vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
 end
 
 for opt, val in pairs(bopts) do
-  vim.api.nvim_buf_set_option(0, opt, val)
-  vim.api.nvim_set_option(opt, val)
+  vim.api.nvim_set_option_value(opt, val, { buf = 0 })
+  vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
 end
 
 local gvars = {
@@ -140,6 +140,6 @@ for var, val in pairs(gvars) do
   vim.api.nvim_set_var(var, val)
 end
 
-vim.api.nvim_exec([[ filetype plugin on ]], false)
+vim.api.nvim_exec2([[ filetype plugin on ]], {})
 
 require('hbuyse')
