@@ -184,7 +184,7 @@
         command = "tar"
         args = ["--extract", "--file", "/dev/stdin", "--xz", "--to-stdout", "shellcheck-v{{ $shellcheckVersion }}/shellcheck"]
 
-{{ $luaLsVersion := "3.7.4" -}}
+{{ $luaLsVersion := "3.9.1" -}}
 [ ".local/lua-language-server" ]
     type = "archive"
     url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-{{ .chezmoi.os }}-x64.tar.gz"
