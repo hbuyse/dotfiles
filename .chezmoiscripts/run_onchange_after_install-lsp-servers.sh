@@ -45,6 +45,7 @@ case "${OS}-${ID}" in
     LSP_SERVERS_AS_NPM["typescript-language-server"]="4.3.3"
     LSP_SERVERS_AS_NPM["vscode-langservers-extracted"]="4.8.0"
     LSP_SERVERS_AS_NPM["yaml-language-server"]="1.14.0"
+    LSP_SERVERS_AS_NPM["perlnavigator-server"]="0.8.14"
 
     # Install rust-analyzer
     if [[ "${OS}" == "linux" ]]; then
