@@ -48,10 +48,8 @@ case "${OS}-${ID}" in
     LSP_SERVERS_AS_NPM["perlnavigator-server"]="0.8.14"
 
     # Install rust-analyzer
-    if [[ "${OS}" == "linux" ]]; then
-        curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
-        chmod +x "${HOME}/.local/bin/rust-analyzer"
-    fi
+    curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
+    chmod +x "${HOME}/.local/bin/rust-analyzer"
     ;;
 *)
     echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
