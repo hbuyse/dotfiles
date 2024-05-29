@@ -31,7 +31,7 @@ case "${OS}-${ID}" in
     if [ "${XDG_SESSION_TYPE}" = "x11" ]; then
         install_packages i3-wm feh autorandr rofi npm xautolock polybar
     else
-        install_packages sway kanshi wofi waybar
+        install_packages sway kanshi wofi waybar swayidle
     fi
     ;;
 
