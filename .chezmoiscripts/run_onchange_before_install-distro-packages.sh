@@ -26,7 +26,8 @@ case "${OS}-${ID}" in
         direnv \
         luarocks \
         strace \
-        fastfetch
+        fastfetch \
+        lxsession-gtk3 # lxpolkit
     ;;
 
 "linux-ubuntu")
@@ -92,7 +93,8 @@ case "${OS}-${ID}" in
         zsh \
         curl \
         tshark \
-        bsdmainutils
+        bsdmainutils \
+        lxpolkit
 
     # Install dunst
     DUNST_VERSION="1.11.0"

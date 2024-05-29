@@ -1,0 +1,15 @@
+[Unit]
+Description=LXPolKit
+Documentation=man:polkit(8) man:lxpolkit(1)
+After=polkit.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/lxpolkit
+Restart=on-failure
+RestartSec=1
+TimeoutStopSec=10
+
+[Install]
+WantedBy=default.target
+# vim: set ts=4 sw=4 tw=0 noet ft=systemd :

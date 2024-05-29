@@ -7,7 +7,7 @@ display_info "${0}"
 
 SERVICES=(
     "nextcloud"
-    "polkit-gnome-authentication-agent"
+    "lxpolkit"
 )
 case "${OS}-${ID}" in
 "linux-manjaro")
