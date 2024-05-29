@@ -1,12 +1,14 @@
 [Unit]
 Description=Nextcloud desktop user service
 Documentation=https://docs.nextcloud.com/desktop/latest/
-Wants=network-online.target
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
 
 [Service]
 ExecStart=%h/.local/bin/nextcloud --background
 Restart=on-failure
 RestartSec=5s
+LimitNOFILE=65535:65535
 
 [Install]
 WantedBy=default.target
