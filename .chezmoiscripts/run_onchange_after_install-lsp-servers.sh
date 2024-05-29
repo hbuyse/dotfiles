@@ -6,7 +6,9 @@
 display_info "${0}"
 
 LSP_SERVERS_AS_PKG=()
-declare -A LSP_SERVERS_AS_NPM=()
+declare -A LSP_SERVERS_AS_NPM=(
+    ["vscode-markdown-languageserver"]="0.5.0-alpha.7"
+)
 
 case "${OS}-${ID}" in
 "linux-manjaro" | "linux-arch")
@@ -19,7 +21,6 @@ case "${OS}-${ID}" in
     LSP_SERVERS_AS_PKG+=("vscode-css-languageserver")
     LSP_SERVERS_AS_PKG+=("vscode-html-languageserver")
     LSP_SERVERS_AS_PKG+=("vscode-json-languageserver")
-    LSP_SERVERS_AS_PKG+=("vscode-markdown-languageserver")
     LSP_SERVERS_AS_PKG+=("yaml-language-server")
     LSP_SERVERS_AS_PKG+=("rust-analyzer")
 
