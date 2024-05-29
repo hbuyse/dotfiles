@@ -245,7 +245,6 @@ return {
             })
           end,
         },
-        perlls = {},
         pyright = {},
         robotframework_ls = {},
         rust_analyzer = {
