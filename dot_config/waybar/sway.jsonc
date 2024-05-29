@@ -7,6 +7,7 @@
     "modules-center": ["sway/mode", "custom/wf-recorder"],
     "modules-right": [
       // "custom/playerctl",
+      "custom/notification",
       "custom/weather",
       "custom/sunset",
       "custom/idle_inhibitor",
