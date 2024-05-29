@@ -1,0 +1,17 @@
+[Unit]
+Description=Dynamic output configuration
+Documentation=man:kanshi(1)
+ConditionPathExists=%h/.config/kanshi/config
+PartOf=wayland-session.target
+Requires=wayland-session.target
+After=wayland-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/kanshi
+ExecStop=/bin/kill -INT $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+
+[Install]
+WantedBy=wayland-session.target
