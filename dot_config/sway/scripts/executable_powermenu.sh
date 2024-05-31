@@ -99,7 +99,7 @@ function run() {
         *) ;;
         esac
     else
-        output=$(list Papirus 24 | wofi --dmenu --prompt="$(uptime -p | sed -e 's/,//g')" | cut -d ':' -f 4)
+        output=$(list Papirus 24 | wofi --dmenu --cache-file="/dev/null" --prompt="$(uptime -p | sed -e 's/,//g')" | cut -d ':' -f 4)
         if [[ -n "${output}" ]]; then
             run $output
         fi

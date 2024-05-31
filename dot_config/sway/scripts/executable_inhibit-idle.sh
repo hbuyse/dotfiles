@@ -16,7 +16,7 @@ inhibit() {
 
 case $1'' in
 'interactive')
-    MINUTES=$(printf "1\n10\n15\n20\n30\n45\n60\n90\n120" | wofi --dmenu --prompt="Select how many minutes to inhibit idle:")
+    MINUTES=$(printf "1\n10\n15\n20\n30\n45\n60\n90\n120" | wofi --dmenu --cache-file="/dev/null" --prompt="Select how many minutes to inhibit idle:")
     inhibit $((MINUTES * 60))
     ;;
 'off')
