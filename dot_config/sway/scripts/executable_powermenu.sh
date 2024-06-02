@@ -106,5 +106,9 @@ function run() {
     fi
 }
 
+if [ -z "$XDG_SESSION_DESKTOP" ]; then
+    XDG_SESSION_DESKTOP="${XDG_CURRENT_DESKTOP}"
+fi
+
 run
 # vim: set ts=4 sw=4 tw=0 et :
