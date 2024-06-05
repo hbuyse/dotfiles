@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 lock() {
-    swaylock -f
+    systemctl --user kill --signal USR1 --kill-who=main swayidle.service
     return 0
 }
 

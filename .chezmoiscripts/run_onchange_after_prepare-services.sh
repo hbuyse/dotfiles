@@ -14,6 +14,7 @@ case "${OS}-${ID}" in
     SERVICES+=(
         "mako"
         "kanshi"
+        "swayidle"
     )
     ;;
 "linux-ubuntu")
