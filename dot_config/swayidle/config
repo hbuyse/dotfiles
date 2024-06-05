@@ -1,6 +1,6 @@
 timeout 270 'notify-send -u critical "swaylock" "Will lock in 30 seconds"'
-timeout 300 'swaylock -f'
+timeout 300 'systemctl --user start swaylock'
 timeout 310 'brightnessctl -q -s && brightnessctl -q set 10' resume 'brightnessctl -q -r'
 timeout 340 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
 before-sleep 'playerctl pause'
-before-sleep 'swaylock -f'
+before-sleep 'systemctl --user start swaylock'
