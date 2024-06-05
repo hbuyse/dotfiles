@@ -16,7 +16,7 @@ function lock() {
 
 function logout() {
     case "${XDG_SESSION_TYPE}-${XDG_SESSION_DESKTOP}" in
-    "wayland-sway")
+    "wayland-sway" | "wayland-sway-session")
         swaymsg exit
         ;;
     "wayland-hyprland")
