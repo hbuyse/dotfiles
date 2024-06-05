@@ -1,0 +1,13 @@
+[Unit]
+Description=Idle manager for Wayland
+Documentation=man:swayidle(1)
+Documentation=https://github.com/gdamjan/swayidle - fork with sd-notify and autolock
+PartOf=graphical-session.target
+After=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swayidle -w
+
+[Install]
+WantedBy=sway-session.target
