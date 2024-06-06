@@ -7,14 +7,14 @@ profile virtual {
 # Profile used when having only the monitor from the laptop
 profile laptop-one-screen {
 	output "eDP-1" enable mode 1920x1080@60Hz position 0,0
-	exec ~/.config/kanshi/notify.sh 'white-tower'
+	exec ~/.config/kanshi/notify.sh 'laptop-one-screen'
 }
 
 # Profile used at home with the white tower
 profile white-tower {
 	output "ASUSTek COMPUTER INC VG248 M1LMQS118673" mode 1920x1080@60.000Hz transform 90 position 0,0
 	output "ASUSTek COMPUTER INC VG248 M1LMQS118675" mode 1920x1080@60.000Hz transform normal position 1080,420
-	exec ~/.config/kanshi/notify.sh 'laptop-one-screen'
+	exec ~/.config/kanshi/notify.sh 'white-tower'
 }
 
 # Profile used at home when connected to the dock
