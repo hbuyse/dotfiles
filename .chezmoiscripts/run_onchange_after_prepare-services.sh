@@ -12,7 +12,7 @@ SERVICES=(
 case "${OS}-${ID}" in
 "linux-manjaro" | "linux-arch")
     SERVICES+=(
-        "mako"
+        "swaync"
         "kanshi"
         "swayidle"
     )
