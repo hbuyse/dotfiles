@@ -56,7 +56,7 @@ configuration {
 /*	display-windowcd: ;*/
 	display-run: " Command";
 /*	display-ssh: ;*/
-	display-drun: " Apps";
+	display-drun: "󰀻 Apps";
 /*	display-combi: ;*/
 /*	display-keys: ;*/
 /*	display-filebrowser: ;*/
