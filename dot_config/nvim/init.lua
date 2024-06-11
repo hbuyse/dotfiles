@@ -116,12 +116,12 @@ for opt, val in pairs(wopts) do
   end
 
   vim.api.nvim_set_option_value(opt, val, { win = 0 })
-  -- vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
+  vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
 end
 
 for opt, val in pairs(bopts) do
   vim.api.nvim_set_option_value(opt, val, { buf = 0 })
-  -- vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
+  vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
 end
 
 local gvars = {
