@@ -16,7 +16,6 @@ case "${OS}-${ID}" in
         clang git curl htop \
         python-pip python-virtualenv python-virtualenvwrapper \
         base-devel openssl zlib xz tk \
-        neovim \
         git-delta \
         libnotify \
         bitwarden \
@@ -213,7 +212,6 @@ case "${OS}-${ID}" in
         fzf \
         libtool \
         gettext \
-        neovim \
         npm \
         direnv \
         git-delta \
