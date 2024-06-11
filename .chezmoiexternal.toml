@@ -157,12 +157,6 @@
 {{- end }} {{/* .chezmoi.os "linux" */}}
 
 {{ if eq .chezmoi.osRelease.id "ubuntu" -}}
-{{ $neovimVersion := "0.10.0" -}}
-[ ".local/bin/nvim" ]
-    type = "file"
-    url = "https://github.com/neovim/neovim/releases/download/v{{ $neovimVersion }}/nvim.appimage"
-    executable = true
-
 {{ $bitwardenVersion := "2024.2.0" -}}
 [ ".local/bin/bitwarden" ]
     type = "file"
