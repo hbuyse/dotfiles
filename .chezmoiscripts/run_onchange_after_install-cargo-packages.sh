@@ -12,29 +12,18 @@ if [[ "${HOSTNAME}" == "truenas" ]]; then
 fi
 
 case "${OS}-${ID}" in
-"linux-manjaro" | "linux-arch")
+"linux-manjaro" | "linux-arch" | "freebsd-freebsd")
     install_packages \
         ripgrep \
         bottom \
         fd \
         stylua \
         dust \
+        git-delta \
         alacritty \
         texlab \
-        zoxide
-    exit 0
-    ;;
-
-"freebsd-freebsd")
-    install_packages \
-        ripgrep \
-        bottom \
-        fd \
-        stylua \
-        dust \
-        alacritty \
-        texlab \
-        zoxide
+        zoxide \
+        gitui
     ;;
 
 "linux-ubuntu")
@@ -45,10 +34,10 @@ case "${OS}-${ID}" in
     if cmdexists cargo; then
         declare -A CARGO_GIT_PKGS=()
         declare -A CARGO_PKGS=(
+            ["ripgrep"]="14.1.0"
             ["bottom"]="0.9.6"
             ["fd-find"]="9.0.0"
             ["stylua"]="0.20.0"
-            ["ripgrep"]="14.1.0"
             ["du-dust"]="0.9.0"
             ["git-delta"]="0.17.0"
             ["alacritty"]="0.13.1"

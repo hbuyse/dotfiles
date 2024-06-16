@@ -16,7 +16,6 @@ case "${OS}-${ID}" in
         clang git curl htop \
         python-pip python-virtualenv python-virtualenvwrapper \
         base-devel openssl zlib xz tk \
-        git-delta \
         libnotify \
         bitwarden \
         bat \
@@ -214,7 +213,6 @@ case "${OS}-${ID}" in
         gettext \
         npm \
         direnv \
-        git-delta \
         fastfetch
     ;;
 *)
