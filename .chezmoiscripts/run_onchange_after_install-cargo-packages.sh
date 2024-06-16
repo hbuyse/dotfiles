@@ -36,11 +36,11 @@ case "${OS}-${ID}" in
         declare -A CARGO_PKGS=(
             ["ripgrep"]="14.1.0"
             ["bottom"]="0.9.6"
-            ["fd-find"]="9.0.0"
+            ["fd-find"]="10.1.0"
             ["stylua"]="0.20.0"
             ["du-dust"]="0.9.0"
             ["git-delta"]="0.17.0"
-            ["alacritty"]="0.13.1"
+            ["alacritty"]="0.13.2"
             ["zoxide"]="0.9.4"
             ["gitui"]="0.26.3"
         )
