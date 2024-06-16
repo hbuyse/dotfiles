@@ -42,6 +42,7 @@ case "${OS}-${ID}" in
             ["git-delta"]="0.17.0"
             ["alacritty"]="0.13.1"
             ["zoxide"]="0.9.4"
+            ["gitui"]="0.26.3"
         )
 
         for pkg in "${!CARGO_PKGS[@]}"; do
