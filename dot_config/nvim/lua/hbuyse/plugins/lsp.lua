@@ -205,6 +205,7 @@ return {
         },
         cmake = {},
         cssls = {},
+        docker_compose_language_service = {},
         jsonls = {},
         lua_ls = {
           settings = {

@@ -8,6 +8,7 @@ display_info "${0}"
 LSP_SERVERS_AS_PKG=()
 declare -A LSP_SERVERS_AS_NPM=(
     ["vscode-markdown-languageserver"]="0.5.0-alpha.7"
+    ["@microsoft/compose-language-service"]="0.2.0"
 )
 
 case "${OS}-${ID}" in
