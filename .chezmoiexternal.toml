@@ -28,7 +28,7 @@
 
 [".oh-my-zsh/custom/plugins/you-should-use"]
     type = "archive"
-    url = "https://github.com/MichaelAquilina/zsh-you-should-use/archive/refs/tags/1.7.3.tar.gz"
+    url = "https://github.com/MichaelAquilina/zsh-you-should-use/archive/refs/tags/1.8.0.tar.gz"
     exact = true
     stripComponents = 1
 
