@@ -26,10 +26,5 @@ if [[ $(pgrep -x -c "${DAEMON}") -ne 0 ]]; then
         notify-send -u "critical" "Picom" "Error while reloading configuration"
     fi
 else
-    # Launch compton in background, using default config location ~/.config/compton/compton.conf
-    if [[ "${HOSTNAME}" == "cg8250" ]]; then
-        OPTS+=("--backend=xrender")
-    fi
-
     "${DAEMON}" "${OPTS[@]}"
 fi
