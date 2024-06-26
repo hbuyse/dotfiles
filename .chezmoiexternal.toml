@@ -145,7 +145,7 @@
 {{ if eq .session_type "x11" -}}
 [".local/bin/betterlockscreen"]
     type = "file"
-    url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.2.0/betterlockscreen"
+    url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.3.0/betterlockscreen"
     executable = true
 {{- end }}{{/* env "XDG_SESSION_TYPE" "x11" */}}
 
