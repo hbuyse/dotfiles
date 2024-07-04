@@ -3,7 +3,7 @@
 function lock() {
     case "${XDG_SESSION_TYPE}-${XDG_SESSION_DESKTOP}" in
     "wayland-sway" | "wayland-sway-session")
-        systemctl --user kill --signal USR1 --kill-who=powermenu swayidle.service
+        systemctl --user kill --signal USR1 swayidle.service
         ;;
     "wayland-hyprland")
         hyprlock --immediate
