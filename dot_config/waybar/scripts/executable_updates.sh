@@ -42,7 +42,7 @@ case "$DISTRIB" in
 
     nbUpdates=${#updates[@]}
 
-    tooltip="<b>$nbUpdates  updates</b>\n"
+    tooltip="<b>$nbUpdates 󰏕 updates</b>\n"
     tooltip+=" <b>$(stringToLen "PkgName" 20) $(stringToLen "PrevVersion" 20) $(stringToLen "NextVersion" 20)</b>\n"
 
     for i in "${updates[@]}"; do
@@ -68,7 +68,7 @@ case "$DISTRIB" in
     nbLines=${#updates[@]}
     nbUpdates=$((${#updates[@]} - 1))
 
-    tooltip="<b>${nbUpdates}  updates</b>\n"
+    tooltip="<b>${nbUpdates} 󰏕 updates</b>\n"
     tooltip+=" <b>$(stringToLen "PkgName" 20) $(stringToLen "PrevVersion" 20) $(stringToLen "NextVersion" 20)</b>\n"
 
     for ((i = 0; i < "${nbLines}"; i++)); do
@@ -91,7 +91,7 @@ case "$DISTRIB" in
     ;;
 esac
 
-[ "$nbUpdates" -eq 0 ] && nbUpdates="" || nbUpdates=" $nbUpdates"
+[ "$nbUpdates" -eq 0 ] && nbUpdates="" || nbUpdates=" $nbUpdates"
 echo "{ \"text\": \"${nbUpdates}\", \"tooltip\": \"${tooltip}\"}"
 
 # vim: ft=sh
