@@ -2,7 +2,7 @@
 
 function lock() {
     case "${XDG_SESSION_TYPE}-${XDG_SESSION_DESKTOP}" in
-    "wayland-sway")
+    "wayland-sway" | "wayland-sway-session")
         systemctl --user kill --signal USR1 --kill-who=powermenu swayidle.service
         ;;
     "wayland-hyprland")
@@ -16,7 +16,7 @@ function lock() {
 
 function logout() {
     case "${XDG_SESSION_TYPE}-${XDG_SESSION_DESKTOP}" in
-    "wayland-sway")
+    "wayland-sway" | "wayland-sway-session")
         swaymsg exit
         ;;
     "wayland-hyprland")
