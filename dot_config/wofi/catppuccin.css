@@ -1,0 +1,18 @@
+/* Gruvbox dark colors */
+@define-color base     #1e1e2e;
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+@define-color text     #cdd6f4;
+@define-color subtext1 #bac2de;
+@define-color red      #f38ba8;
+@define-color yellow   #f9e2af;
+@define-color gray     #6c7086;
+
+@define-color background-color @base;
+@define-color text-color       @subtext1;
+@define-color selbg            @yellow;
+@define-color actbg            @surface0;
+@define-color urgbg            @red;
+@define-color winbg            @text;
+@define-color border-color     @gray;

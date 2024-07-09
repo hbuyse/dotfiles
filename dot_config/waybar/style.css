@@ -1,4 +1,4 @@
-@import "colors/gruvbox.css";
+@import "themes/catppuccin-mocha.css";
 
 @keyframes blink-warning {
   70% {
@@ -59,7 +59,7 @@ window#waybar.hidden {
 #workspaces button.focused, /* active in sway */
 #workspaces button.selected {
   /* border-color: @fg3; */
-  border-bottom: 1px solid @orange-dim;
+  border-bottom: 1px solid @peach;
 }
 
 #workspaces button.urgent {
@@ -108,12 +108,12 @@ window#waybar.hidden {
 
 #custom-power {
   background: @theme_selected_bg_color;
-  color: @red-dim;
+  color: @red;
 }
 
 #custom-idle_inhibitor.activated,
 #idle_inhibitor.activated {
-  background: @orange-dim;
+  background: @peach;
 }
 
 #battery,
@@ -164,9 +164,9 @@ label:focus {
 }
 
 #memory {
-  border-bottom: 2px solid @green-dim;
+  border-bottom: 2px solid @green;
 }
 
 #cpu {
-  border-bottom: 2px solid @red-dim;
+  border-bottom: 2px solid @red;
 }
