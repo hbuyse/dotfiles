@@ -7,7 +7,7 @@
 
   to {
     color: @wm_icon_bg;
-    background-color: @warning_color;
+    background-color: shade(@warning_color, 0.5);
   }
 }
 
@@ -18,7 +18,7 @@
 
   to {
     color: @wm_icon_bg;
-    background-color: @error_color;
+    background-color: shade(@error_color, 0.5);
   }
 }
 
