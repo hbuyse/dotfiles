@@ -25,15 +25,15 @@ set $ws10 "10:zoom"
 set $term $HOME/.local/bin/preferred-terminal
 
 # Gruvbox colors
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d68
-set $gray #a89984
-set $darkgray #1d2021
+set $bg #1e1e2e
+set $red #f38ba8
+set $green #a6e3a1
+set $yellow #f9e2af
+set $blue #89b4fa
+set $purple #cba6f7
+set $aqua #94e2d5
+set $gray #9399b2
+set $darkgray #313244
 set $white #ffffff
 
 
