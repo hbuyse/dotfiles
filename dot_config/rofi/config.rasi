@@ -1,6 +1,6 @@
 configuration {
   modi: "drun,run,window";
-  font: "Hack Nerd Font Mono 10";
+  font: "Iosevka Nerd Font Mono 10";
   /*	location: 0;*/
   /*	yoffset: 0;*/
   /*	xoffset: 0;*/
