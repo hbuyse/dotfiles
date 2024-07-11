@@ -41,7 +41,7 @@
 
 tooltip label {
   font-family: "Iosevka Nerd Font Mono", "Ubuntu Mono", "monospace";
-  font-size: 12px;
+  font-size: 13px;
 }
 
 window#waybar.hidden {
