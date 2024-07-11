@@ -35,12 +35,12 @@
 #waybar {
   background: @theme_bg_color;
   color: @theme_fg_color;
-  font-family: "Hack Nerd Font", "Ubuntu", "Font Awesome";
+  font-family: "Iosevka Nerd Font", "Ubuntu", "Font Awesome";
   font-size: 14px;
 }
 
 tooltip label {
-  font-family: "Hack Nerd Font Mono", "Ubuntu Mono", "monospace";
+  font-family: "Iosevka Nerd Font Mono", "Ubuntu Mono", "monospace";
   font-size: 12px;
 }
 
