@@ -1,0 +1,19 @@
+/* Gruvbox dark colors */
+@define-color gruvbox-bg0           #282828;
+@define-color gruvbox-bg0-soft      #32302f;
+@define-color gruvbox-bg3           #665c54;
+@define-color gruvbox-fg0           #fbf1c7;
+@define-color gruvbox-fg1           #ebdbb2;
+@define-color gruvbox-red-dark      #cc241d;
+@define-color gruvbox-red-light     #fb4934;
+@define-color gruvbox-yellow-dark   #d79921;
+@define-color gruvbox-yellow-light  #fabd2f;
+@define-color gruvbox-gray          #a89984;
+
+@define-color background-color           @gruvbox-bg0;
+@define-color text-color                 @gruvbox-fg1;
+@define-color selbg                      @gruvbox-yellow-dark;
+@define-color actbg                      @gruvbox-bg3;
+@define-color urgbg                      @gruvbox-red-dark;
+@define-color winbg                      @gruvbox-fg0;
+@define-color border-color               @gruvbox-gray;
