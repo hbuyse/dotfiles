@@ -91,7 +91,7 @@ case "$DISTRIB" in
     ;;
 esac
 
-[ "$nbUpdates" -eq 0 ] && nbUpdates="" || nbUpdates=" $nbUpdates"
+[ "$nbUpdates" -eq 0 ] && nbUpdates="" || nbUpdates="  $nbUpdates"
 echo "{ \"text\": \"${nbUpdates}\", \"tooltip\": \"${tooltip}\"}"
 
 # vim: ft=sh
