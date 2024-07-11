@@ -54,7 +54,7 @@
   },
   "backlight": {
     "device": "intel_backlight",
-    "format": "{icon} {percent}%",
+    "format": "{icon}  {percent}%",
     "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
   },
   "pulseaudio": {
@@ -222,7 +222,7 @@
   },
   "cpu": {
     "interval": 5,
-    "format": " {usage}%",
+    "format": "  {usage}%",
     "states": {
       "warning": 70,
       "critical": 90
@@ -231,7 +231,7 @@
   },
   "memory": {
     "interval": 30,
-    "format": " {}%",
+    "format": "  {}%",
     "states": {
       "warning": 70,
       "critical": 90
@@ -297,6 +297,6 @@
     "format-disabled": "󰂲",
     "tooltip-format-disabled": "Bluetooth disabled",
     "on-click": "~/.config/waybar/scripts/bluetooth.sh toggle_power",
-    "on-click-right": "~/.config/waybar/scripts/bluetooth.sh toggle_status",
+    "on-click-right": "~/.config/waybar/scripts/bluetooth.sh toggle_status"
   }
 }
