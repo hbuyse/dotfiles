@@ -7,7 +7,7 @@ timestr=%R
 datestr=%d/%m/%Y
 
 #screenshots
-image=~/.config/wallpapers/locker.png
+image=~/.config/wallpapers/locker
 show-keyboard-layout
 #hide-keyboard-layout
 indicator-caps-lock
