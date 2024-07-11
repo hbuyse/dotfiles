@@ -19,6 +19,11 @@ diffFilter = delta --color-only
 features = fancy-gruvbox
 ; side-by-side = true
 navigate = true
+blame-timestamp-output-format = %d/%m/%Y %H:%M
+# timestamp left aligned - columns on 18 characters
+# author left aligned - columns on 20 characters but show only the first 18 characters
+# commit left aligned - columns on 13 characters
+blame-format = "{timestamp:<18} {author:<20.18} {commit:<13}"
 
 [color]
 ui = true
