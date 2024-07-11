@@ -9,5 +9,5 @@ cmd_exists() {
 
 # Reset the background
 if cmd_exists feh; then
-    feh --bg-fill "${HOME}/.config/wallpapers/wallpaper.png"
+    feh --bg-fill "${HOME}/.config/wallpapers/wallpaper"
 fi
