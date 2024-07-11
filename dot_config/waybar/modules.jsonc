@@ -54,12 +54,12 @@
   },
   "backlight": {
     "device": "intel_backlight",
-    "format": "{icon}  {percent}%",
+    "format": "{icon}  {percent:>2}%",
     "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
   },
   "pulseaudio": {
     "format": "{icon} {volume}% {format_source}",
-    "format-bluetooth": "{icon} {volume}%",
+    "format-bluetooth": "{icon} {volume:>2}%",
     "format-muted": " {format_source}",
     "format-source": "  {volume}%",
     "format-source-muted": "",
@@ -222,7 +222,7 @@
   },
   "cpu": {
     "interval": 5,
-    "format": "  {usage}%",
+    "format": "  {usage:>2}%",
     "states": {
       "warning": 70,
       "critical": 90
@@ -231,7 +231,7 @@
   },
   "memory": {
     "interval": 30,
-    "format": "  {}%",
+    "format": "  {percentage:>2}%",
     "states": {
       "warning": 70,
       "critical": 90
@@ -245,17 +245,17 @@
   "disk#home": {
     "interval": 30,
     "path": "/home",
-    "format": "<span color='#83a598'>{path}</span>: {percentage_used}%"
+    "format": "<span color='#83a598'>{path:>2}</span>: {percentage_used}%"
   },
   "disk#root": {
     "interval": 30,
     "path": "/",
-    "format": "<span color='#83a598'>{path}</span>: {percentage_used}%"
+    "format": "<span color='#83a598'>{path:>2}</span>: {percentage_used}%"
   },
   "disk#usr": {
     "interval": 30,
     "path": "/usr",
-    "format": "<span color='#83a598'>{path}</span>: {percentage_used}%"
+    "format": "<span color='#83a598'>{path:>2}</span>: {percentage_used}%"
   },
   "power-profiles-daemon": {
     "format": "{icon}",
