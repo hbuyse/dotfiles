@@ -8,12 +8,12 @@ return {
 
       -- create the highlight groups in the highlight setup hook, so they are reset
       -- every time the colorscheme changes
-      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        -- https://github.com/ellisonleao/gruvbox.nvim/blob/6e4027ae957cddf7b193adfaec4a8f9e03b4555f/lua/gruvbox.lua#L87C12-L87C21
-        vim.api.nvim_set_hl(0, 'IblScope', { fg = '#a89984', bold = true, nocombine = true })
-        -- https://github.com/ellisonleao/gruvbox.nvim/blob/6e4027ae957cddf7b193adfaec4a8f9e03b4555f/lua/gruvbox.lua#L80
-        vim.api.nvim_set_hl(0, 'IblIndent', { fg = '#7c6f64', bold = false, nocombine = true })
-      end)
+      -- hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+      --   -- https://github.com/ellisonleao/gruvbox.nvim/blob/6e4027ae957cddf7b193adfaec4a8f9e03b4555f/lua/gruvbox.lua#L87C12-L87C21
+      --   vim.api.nvim_set_hl(0, 'IblScope', { fg = '#a89984', bold = true, nocombine = true })
+      --   -- https://github.com/ellisonleao/gruvbox.nvim/blob/6e4027ae957cddf7b193adfaec4a8f9e03b4555f/lua/gruvbox.lua#L80
+      --   vim.api.nvim_set_hl(0, 'IblIndent', { fg = '#7c6f64', bold = false, nocombine = true })
+      -- end)
 
       require('ibl').setup({
         scope = {

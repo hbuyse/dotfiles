@@ -136,4 +136,4 @@ configuration {
   /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
 
-@theme "gruvbox"
+@theme "catppuccin-mocha"
