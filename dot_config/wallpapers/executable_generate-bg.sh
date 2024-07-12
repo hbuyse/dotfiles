@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-set -xu
+set -u
 
 export OUTLINE="$1"
 export INSIDE="$2"

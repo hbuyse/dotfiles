@@ -1,24 +1,17 @@
 return {
-  { ---- colorscheme.
-    'sainnhe/gruvbox-material',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
     config = function()
-      -- For dark version.
-      vim.o.background = 'dark'
-      -- This configuration option should be placed before `colorscheme gruvbox-material`.
-      -- Available values: 'hard', 'medium'(default), 'soft'
-      vim.g.gruvbox_material_background = 'medium'
-      vim.g.gruvbox_material_foreground = 'mix'
-      -- For better performance
-      vim.g.gruvbox_material_better_performance = 1
-      vim.g.gruvbox_material_enable_italic = 1
-
-      vim.g.gruvbox_material_diagnostic_text_highlight = 1
-      -- vim.g.gruvbox_material_diagnostic_line_highlight = 1
-      vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
-      vim.g.gruvbox_material_sign_column_background = 'none'
-      vim.cmd('colorscheme gruvbox-material')
+      require('catppuccin').setup({
+        flavour = 'auto',
+        background = {
+          light = 'latte',
+          dark = 'mocha',
+        },
+      })
+      vim.cmd.colorscheme('catppuccin-mocha')
     end,
   },
   {
@@ -78,7 +71,7 @@ return {
     },
     opts = {
       options = {
-        theme = 'gruvbox-material',
+        theme = 'catppuccin',
         section_separators = { left = '', right = '' },
         component_separators = { left = '', right = '' },
         icons_enabled = true,
@@ -152,16 +145,6 @@ return {
               text_align = 'left',
               separator = true,
             },
-          },
-        },
-        highlights = {
-          separator = {
-            -- https://github.com/ellisonleao/gruvbox.nvim/blob/6e4027ae957cddf7b193adfaec4a8f9e03b4555f/lua/gruvbox.lua#L77
-            fg = '#3c3836',
-          },
-          separator_selected = {
-            -- https://github.com/ellisonleao/gruvbox.nvim/blob/6e4027ae957cddf7b193adfaec4a8f9e03b4555f/lua/gruvbox.lua#L77
-            fg = '#3c3836',
           },
         },
       })

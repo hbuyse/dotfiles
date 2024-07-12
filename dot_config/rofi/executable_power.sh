@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 lock() {
-    xautolock -locknow
+    systemctl --user kill --signal USR1 --kill-who=main swayidle.service
     return 0
 }
 
@@ -35,10 +35,10 @@ list() {
     else
         echo -en "Caffeinate\0icon\x1f${icon_folder}/${size}x${size}/panel/caffeine-cup-full.svg\n"
     fi
-    if pgrep dunst > "/dev/null"; then
-        if [[ "$(dunstctl is-paused)" == "true" ]]; then
+    if pgrep mako > "/dev/null"; then
+        if makoctl mode | grep -qw do-not-disturb > /dev/null 2>&1; then
             echo -en "Do Disturb\0icon\x1f${icon_folder}/${size}x${size}/apps/bell.svg\n"
-        elif [[ "$(dunstctl is-paused)" == "false" ]]; then
+        else
             echo -en "Do Not Disturb\0icon\x1f${icon_folder}/${size}x${size}/apps/bell.svg\n"
         fi
     fi
@@ -60,7 +60,7 @@ if [[ -n "${1}" ]]; then
         lock && xset dpms force off
         ;;
     "Logout")
-        i3-msg exit
+        swaymsg exit
         ;;
     "Shutdown")
         lock && systemctl poweroff
@@ -75,11 +75,11 @@ if [[ -n "${1}" ]]; then
         lock && systemctl suspend
         ;;
     "Do Disturb")
-        dunstctl set-paused false
+        makoctl mode -r do-not-disturb > /dev/null 2>&1
         notify-send "Do Not Disturb" "Disabled"
         ;;
     "Do Not Disturb")
-        dunstctl set-paused true
+        makoctl mode -a do-not-disturb > /dev/null 2>&1
         ;;
     "Deactivate Redshift")
         pkill redshift

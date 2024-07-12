@@ -4,6 +4,7 @@ email = {{ .email | quote }}
 
 [include]
 path = themes/gruvbox.gitconfig
+path = themes/catppuccin.gitconfig
 # Should contain private information
 path = local ; find "local" relative to the current file
 
@@ -16,7 +17,7 @@ attributesFile = ~/.config/git/attributes
 diffFilter = delta --color-only
 
 [delta]
-features = fancy-gruvbox
+features = catppuccin-mocha
 ; side-by-side = true
 navigate = true
 blame-timestamp-output-format = %d/%m/%Y %H:%M
