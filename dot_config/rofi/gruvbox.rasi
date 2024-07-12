@@ -11,13 +11,13 @@
   gruvbox-yellow-light: #fabd2f;
   gruvbox-gray: #a89984;
 
-  background-color: @gruvbox-bg0;
-  text-color: @gruvbox-fg1;
-  selbg: @gruvbox-yellow-dark;
-  actbg: @gruvbox-bg3;
-  urgbg: @gruvbox-red-dark;
-  winbg: @gruvbox-fg0;
-  border-color: @gruvbox-gray;
+  background-color: var(gruvbox-bg0);
+  text-color: var(gruvbox-fg1);
+  selbg: var(gruvbox-yellow-dark);
+  actbg: var(gruvbox-bg3);
+  urgbg: var(gruvbox-red-dark);
+  winbg: var(gruvbox-fg0);
+  border-color: var(gruvbox-gray);
   scrollbar: false;
 }
 

@@ -10,13 +10,13 @@
   gray: #6c7086;
 
   /* Catppuccin Mocha colors */
-  background-color: @base;
-  text-color: @subtext1;
-  selbg: @yellow;
-  actbg: @surface0;
-  urgbg: @red;
-  winbg: @text;
-  border-color: @gray;
+  background-color: var(base);
+  text-color: var(subtext1);
+  selbg: var(yellow);
+  actbg: var(surface0);
+  urgbg: var(red);
+  winbg: var(text);
+  border-color: var(gray);
 }
 
 @import "common"

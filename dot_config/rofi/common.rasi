@@ -1,0 +1,176 @@
+* {
+  /* Theme settings */
+  highlight: bold italic;
+
+  selected-normal-foreground: var(winbg);
+  normal-foreground: var(text-color);
+  alternate-normal-foreground: var(text-color);
+  selected-normal-background: var(actbg);
+  normal-background: var(background-color);
+  alternate-normal-background: var(background-color);
+
+  selected-urgent-foreground: var(background-color);
+  urgent-foreground: var(text-color);
+  alternate-urgent-foreground: var(text-color);
+  selected-urgent-background: var(urgbg);
+  urgent-background: var(background-color);
+  alternate-urgent-background: var(background-color);
+
+  /* Theme colors */
+  background: var(background-color);
+  foreground: var(text-color);
+  separatorcolor: var(border-color);
+  scrollbar-handle: var(border-color);
+
+  selected-active-foreground: var(winbg);
+  active-foreground: var(text-color);
+  alternate-active-foreground: var(text-color);
+  selected-active-background: var(actbg);
+  active-background: var(selbg);
+  alternate-active-background: var(selbg);
+
+  line-margin: 2;
+  line-padding: 2;
+  separator-style: "none";
+  margin: 0;
+  padding: 5;
+}
+
+window {
+  location: west;
+  anchor: west;
+  height: 100%;
+  width: 30%;
+  background-color: var(background);
+  border: 0;
+  padding: 5px;
+}
+
+mainbox {
+  children:
+    [ inputbar,
+    listview,
+    mode-switcher];
+}
+
+message {
+  border: 2px 0 0;
+  border-color: var(separatorcolor);
+  padding: 1px;
+}
+
+textbox {
+  highlight: var(highlight);
+  text-color: var(foreground);
+}
+
+listview {
+  border: 0;
+  padding: 5px 2px 0 0;
+  border-color: var(separatorcolor);
+  spacing: 0.5em;
+  scrollbar: var(scrollbar);
+  dynamic: false;
+  cycle: true;
+}
+
+element {
+  spacing: 0.5em;
+  padding: 10px;
+}
+
+element normal.normal {
+  background-color: var(normal-background);
+  text-color: var(normal-foreground);
+}
+
+element normal.urgent {
+  background-color: var(urgent-background);
+  text-color: var(urgent-foreground);
+}
+
+element normal.active {
+  background-color: var(active-background);
+  text-color: var(active-foreground);
+}
+
+element selected.normal {
+  background-color: var(selected-normal-background);
+  text-color: var(selected-normal-foreground);
+  border: 0 5px solid 0 0;
+  border-color: var(active-background);
+}
+
+element selected.urgent {
+  background-color: var(selected-urgent-background);
+  text-color: var(selected-urgent-foreground);
+}
+
+element selected.active {
+  background-color: var(selected-active-background);
+  text-color: var(selected-active-foreground);
+}
+
+element alternate.normal {
+  background-color: var(alternate-normal-background);
+  text-color: var(alternate-normal-foreground);
+}
+
+element alternate.urgent {
+  background-color: var(alternate-urgent-background);
+  text-color: var(alternate-urgent-foreground);
+}
+
+element alternate.active {
+  background-color: var(alternate-active-background);
+  text-color: var(alternate-active-foreground);
+}
+
+scrollbar {
+  width: 0px;
+  border: 0;
+  handle-color: var(scrollbar-handle);
+  handle-width: 8px;
+  padding: 0;
+}
+
+inputbar {
+  spacing: 0;
+  text-color: var(urgbg);
+  padding: 0.5em;
+  children:
+    [ entry,
+    case-indicator];
+}
+
+case-indicator,
+entry,
+button {
+  spacing: 0;
+  padding: 5px 2px;
+  text-color: var(normal-foreground);
+}
+
+entry {
+  expand: false;
+  text-color: var(normal-background);
+  vertical-align: 1;
+  padding: 5px;
+}
+
+button selected {
+  background-color: var(active-background);
+  text-color: var(background-color);
+}
+
+element-text,
+element-icon {
+  background-color: inherit;
+  text-color: inherit;
+}
+
+element-icon {
+  size: 2.5ch;
+}
+
+/* vim: set ts=4 sw=4 tw=0 noet ft=css :*/
