@@ -5,9 +5,12 @@ cmd_exists() {
 }
 
 # Generate background
-"${HOME}/.config/wallpapers/generate-bg.sh" "#fbf1c7" "#d65d0e" "#282828"
+"${HOME}/.config/wallpapers/generate-bg.sh" "#f2cdcd" "#dd7878" "#1e1e2e"
+convert "${HOME}/.config/wallpapers/generated_coding.svg" "${HOME}/.config/wallpapers/generated_coding.png"
 
 # Reset the background
 if cmd_exists feh; then
+    ln -sf "${HOME}/.config/wallpapers/generated_coding.png" "${HOME}/.config/wallpapers/wallpaper"
+    ln -sf "${HOME}/.config/wallpapers/generated_coding.png" "${HOME}/.config/wallpapers/locker"
     feh --bg-fill "${HOME}/.config/wallpapers/wallpaper"
 fi

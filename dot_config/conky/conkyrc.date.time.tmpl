@@ -1,11 +1,11 @@
 conky.config = {
 	alignment = 'top_left',
 	background = false,
-	default_color = 'BDAE93',
-	color2 = 'EBDBB2',
+	default_color = 'A6ADC8',
+	color2 = 'CDD6F4',
 	cpu_avg_samples = 2,
 	double_buffer = true,
-	font = 'Iosevka Nerd Font Mono:size=9',
+	font = 'Iosevka Nerd Font Mono:size=10',
 	gap_x = 20,
 	gap_y = 50,
 	minimum_width = 300,
@@ -19,17 +19,17 @@ conky.config = {
 }
 conky.text = [[
 # Date and time
-${voffset 8}${color2}${font Iosevka Nerd Font Mono:size=16}${time %A}${font}\
-${voffset -8}${alignr}$color${font Iosevka Nerd Font Mono:size=38}${time %e}${font}
-${color}${voffset -30}$color${font Iosevka Nerd Font Mono:size=18}${time %b}${font}\
-${voffset -3} ${color}${font Iosevka Nerd Font Mono:size=20}${time %Y}${font}${color2}${hr}
+${voffset 8}${color2}${font Iosevka Nerd Font Mono:size=17}${time %A}${font}\
+${voffset -8}${alignr}$color${font Iosevka Nerd Font Mono:size=39}${time %e}${font}
+${color}${voffset -30}$color${font Iosevka Nerd Font Mono:size=19}${time %b}${font}\
+${voffset -3} ${color}${font Iosevka Nerd Font Mono:size=21}${time %Y}${font}${color2}${hr}
 #
-${voffset 15}${color}${font Iosevka Nerd Font Mono:bold:size=9}${execi 10000 lsb_release -ds | sed -e 's/"//g'}
-${color}${font Iosevka Nerd Font Mono:bold:size=9}Uptime: ${alignr}${color2}${font}${uptime_short}
-${color}${font Iosevka Nerd Font Mono:bold:size=9}Kernel: ${alignr}${color2}${font}${kernel}
+${voffset 15}${color}${font Iosevka Nerd Font Mono:bold:size=10}${execi 10000 lsb_release -ds | sed -e 's/"//g'}
+${color}${font Iosevka Nerd Font Mono:bold:size=10}Uptime: ${alignr}${color2}${font}${uptime_short}
+${color}${font Iosevka Nerd Font Mono:bold:size=10}Kernel: ${alignr}${color2}${font}${kernel}
 #
 # CPU
-${voffset 10}${color}${font Iosevka Nerd Font Mono:bold:size=9}CPU - ${freq_g}GHz - ${cpu cpu0}% ${hr}
+${voffset 10}${color}${font Iosevka Nerd Font Mono:bold:size=10}CPU - ${freq_g}GHz - ${cpu cpu0}% ${hr}
 ${cpugraph cpu0}
 ${cpubar cpu1 6,148}\
 $alignr${cpubar cpu2 6,148}
@@ -40,13 +40,13 @@ $alignr${cpubar cpu6 6,148}
 ${cpubar cpu7 6,148}\
 $alignr${cpubar cpu8 6,148}
 #
-${voffset 10}${color}${font Iosevka Nerd Font Mono:bold:size=9}Memory ${hr}
+${voffset 10}${color}${font Iosevka Nerd Font Mono:bold:size=10}Memory ${hr}
 ${font}${color}RAM:${alignr}${font}${color2}${mem} / ${memmax}
 ${font}${color}Swap:${alignr}${font}${color2}${swap} / ${swapmax}
 
 {{- if eq .chezmoi.hostname "hbuyse-latitude5400" }}
 
-${color}${font Iosevka Nerd Font Mono:bold:size=9}Temperature ${hr}
+${color}${font Iosevka Nerd Font Mono:bold:size=10}Temperature ${hr}
 ${font}${color}CPU 1: ${alignr}${font}${color2}${hwmon 7 temp 2} °C
 ${font}${color}CPU 2: ${alignr}${font}${color2}${hwmon 7 temp 3} °C
 ${font}${color}CPU 3: ${alignr}${font}${color2}${hwmon 7 temp 4} °C
@@ -54,6 +54,6 @@ ${font}${color}CPU 4: ${alignr}${font}${color2}${hwmon 7 temp 5} °C
 
 {{- end }}
 
-${color}${font Iosevka Nerd Font Mono:bold:size=9}File System ${hr}
+${color}${font Iosevka Nerd Font Mono:bold:size=10}File System ${hr}
 ]]
 -- vim: set ts=4 sw=4 tw=0 noet ft=lua :
