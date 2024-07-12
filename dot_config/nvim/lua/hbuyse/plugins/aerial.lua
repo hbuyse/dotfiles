@@ -1,7 +1,10 @@
 return {
   {
     'stevearc/aerial.nvim',
-    opts = {},
+    opts = {
+      backends = { 'treesitter', 'lsp', 'markdown', 'asciidoc', 'man' },
+      layout = { max_width = 0.3 },
+    },
     -- Optional dependencies
     dependencies = {
       'nvim-treesitter/nvim-treesitter',
