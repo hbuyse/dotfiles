@@ -45,6 +45,7 @@ local opts = {
 
   -- Disable mouse support
   mouse = '',
+  mousescroll = 'ver:0,hor:0',
 }
 
 -- Window options
@@ -98,7 +99,7 @@ local bopts = {
 }
 
 for opt, val in pairs(opts) do
-  vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
+  vim.api.nvim_set_option_value(opt, val, {})
 end
 
 for opt, val in pairs(wopts) do
@@ -116,12 +117,12 @@ for opt, val in pairs(wopts) do
   end
 
   vim.api.nvim_set_option_value(opt, val, { win = 0 })
-  vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
+  vim.api.nvim_set_option_value(opt, val, {})
 end
 
 for opt, val in pairs(bopts) do
   vim.api.nvim_set_option_value(opt, val, { buf = 0 })
-  vim.api.nvim_set_option_value(opt, val, { scope = 'global' })
+  vim.api.nvim_set_option_value(opt, val, {})
 end
 
 local gvars = {
