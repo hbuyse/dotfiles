@@ -113,7 +113,7 @@ window#waybar.hidden {
 
 #custom-idle_inhibitor.activated,
 #idle_inhibitor.activated {
-  background: @peach;
+  border: 1px solid @peach;
 }
 
 #battery,
