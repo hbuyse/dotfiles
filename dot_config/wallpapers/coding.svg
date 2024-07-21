@@ -21,6 +21,7 @@
      stroke="${OUTLINE}"
      stroke-width="20"
      stroke-opacity="1"
+     stroke-linejoin="round"
      paint-order="markers stroke fill" >
     <path
        id="left-arrow"
