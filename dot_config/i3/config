@@ -19,7 +19,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # start a terminal
-bindsym $mod+Return exec alacritty || urxvt || i3-sensible-terminal
+bindsym $mod+Return exec preferred-terminal
 
 # kill focused window
 bindsym $mod+q kill
