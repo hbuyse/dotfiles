@@ -143,9 +143,10 @@
     exact = true
 
 {{ if eq .session_type "x11" -}}
+{{ $betterlockscreenVersion := "bdfc4faf7142aa1d555528ab1a9a103be95a3f80" -}}
 [".local/bin/betterlockscreen"]
     type = "file"
-    url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/v4.3.0/betterlockscreen"
+    url = "https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/{{ $betterlockscreenVersion }}/betterlockscreen"
     executable = true
 {{- end }}{{/* env "XDG_SESSION_TYPE" "x11" */}}
 
