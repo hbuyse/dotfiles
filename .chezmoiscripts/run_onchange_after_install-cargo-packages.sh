@@ -39,7 +39,7 @@ case "${OS}-${ID}" in
             ["bottom"]="0.9.6"
             ["fd-find"]="10.1.0"
             ["stylua"]="0.20.0"
-            ["du-dust"]="0.9.0"
+            ["du-dust"]="1.1.1"
             ["git-delta"]="0.17.0"
             ["alacritty"]="0.13.2"
             ["zoxide"]="0.9.4"
