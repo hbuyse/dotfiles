@@ -23,7 +23,8 @@ case "${OS}-${ID}" in
         alacritty \
         texlab \
         zoxide \
-        gitui
+        gitui \
+        eza
     ;;
 
 "linux-ubuntu")
@@ -43,6 +44,7 @@ case "${OS}-${ID}" in
             ["alacritty"]="0.13.2"
             ["zoxide"]="0.9.4"
             ["gitui"]="0.26.3"
+            ["eza"]="0.18.22"
         )
 
         for pkg in "${!CARGO_PKGS[@]}"; do
