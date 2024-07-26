@@ -13,7 +13,7 @@ case "${OS}-${ID}" in
     ;;
 
 "linux-ubuntu")
-    NEOVIM_VERSION="0.10.0"
+    NEOVIM_VERSION="0.10.1"
     NEOVIM_TMP_FILE=$(mktemp /tmp/nvim-linux64-XXXXX.tar.gz)
 
     prompt "Downloading Neovim ${NEOVIM_VERSION} from GitHub"
