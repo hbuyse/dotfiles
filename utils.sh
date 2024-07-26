@@ -246,14 +246,14 @@ function cargo_git_install() {
         if cargo install --list | grep -q "${package}"; then
             prompt "Updating '${package}' to version '${version}' using cargo"
         else
-            prompt "Installing '${package} v${version}' using cargo"
+            prompt "Installing '${package} ${version}' using cargo"
         fi
 
         if [ -n "${features}" ]; then
             args=("--features" "${features}")
         fi
 
-        cargo install --quiet --locked --jobs=4 --tag="v${version}" "${args[@]}" --git "${git_uri}"
+        cargo install --quiet --locked --jobs=4 --tag="${version}" "${args[@]}" --git "${git_uri}"
         display_ko_ok ${?}
     fi
 }
