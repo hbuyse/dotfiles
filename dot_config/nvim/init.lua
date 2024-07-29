@@ -126,9 +126,6 @@ for opt, val in pairs(bopts) do
 end
 
 local gvars = {
-  -- Python programs
-  python3_host_prog = vim.env.HOME .. '/.pyenv/versions/py3nvim/bin/python',
-  python2_host_prog = vim.env.HOME .. '/.pyenv/versions/py2nvim/bin/python',
   -- Disable Perl support
   loaded_perl_provider = 0,
   -- Disable Ruby support
