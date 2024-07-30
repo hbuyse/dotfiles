@@ -1,9 +1,27 @@
 return {
   {
     -- Treesitter configurations and abstraction layer
+    -- Based on https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/plugins/treesitter.lua
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
-    lazy = false,
+    event = {
+      'BufReadPost', -- 'LazyFile',
+      'BufNewFile', -- 'LazyFile',
+      'BufWritePre', -- 'LazyFile',
+      'VeryLazy',
+    },
+    lazy = vim.fn.argc(-1) == 0, -- load treesitter early when opening a file from the cmdline
+    init = function(plugin)
+      -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
+      -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
+      -- no longer trigger the **nvim-treesitter** module to be loaded in time.
+      -- Luckily, the only things that those plugins need are the custom queries, which we make available
+      -- during startup.
+      require('lazy.core.loader').add_to_rtp(plugin)
+      require('nvim-treesitter.query_predicates')
+    end,
+    cmd = { 'TSUpdateSync', 'TSUpdate', 'TSInstall' },
+    opts_extend = { 'ensure_installed' },
     opts = {
       ensure_installed = {
         'arduino',
@@ -74,9 +92,13 @@ return {
           end
         end,
       },
-      lazy = false,
+      indent = {
+        enable = true,
+      },
     },
     keys = {
+      { '<c-space>', desc = 'Increment Selection' },
+      { '<bs>', desc = 'Decrement Selection', mode = 'x' },
       { '<leader>th', vim.show_pos, desc = '[T]reesitter [H]ighlight' },
       { '<leader>tp', vim.treesitter.inspect_tree, desc = '[T]reesitter [P]layground' },
       { '<leader>tq', vim.treesitter.query.edit, desc = '[T]reesitter [Q]uery Editor' },
