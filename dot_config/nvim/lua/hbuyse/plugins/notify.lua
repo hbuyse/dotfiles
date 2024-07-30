@@ -106,8 +106,17 @@ return {
       minimum_width = 50,
       render = 'default',
       stages = 'fade_in_slide_out',
-      timeout = 5000,
+      timeout = 3000,
       top_down = true,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.75)
+      end,
+      on_open = function(win)
+        vim.api.nvim_win_set_config(win, { zindex = 100 })
+      end,
     },
     init = function()
       vim.lsp.handlers['$/progress'] = lsp_progress_notification
@@ -118,5 +127,14 @@ return {
       -- Use the notification windowsas your default notify function
       vim.notify = require('notify')
     end,
+    keys = {
+      {
+        '<leader>un',
+        function()
+          require('notify').dismiss({ silent = true, pending = true })
+        end,
+        desc = 'Dismiss All Notifications',
+      },
+    },
   },
 }
