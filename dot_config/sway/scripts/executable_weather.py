@@ -192,16 +192,12 @@ def format_chances(hour: int) -> str:
 data["text"] = f"{weather['current_condition'][0][feels_like]}°{temperature}"
 data["alt"] = WWO_CODE[weather["current_condition"][0]["weatherCode"]]
 
-data["tooltip"] = (
-    f"Weather in <b>{weather['nearest_area'][0]['areaName'][0]['value']}</b>:\n"
-)
+data["tooltip"] = f"Weather in <b>{weather['nearest_area'][0]['areaName'][0]['value']}</b>:\n"
 data["tooltip"] += (
     f"<b>{weather['current_condition'][0]['weatherDesc'][0]['value']} "
     f"{weather['current_condition'][0][temp]}°{temperature}</b>\n"
 )
-data[
-    "tooltip"
-] += f"Feels like: {weather['current_condition'][0][feels_like]}°{temperature}\n"
+data["tooltip"] += f"Feels like: {weather['current_condition'][0][feels_like]}°{temperature}\n"
 data["tooltip"] += f"Wind: {weather['current_condition'][0][windspeed]}{distance}/h\n"
 data["tooltip"] += f"Humidity: {weather['current_condition'][0]['humidity']}%\n"
 for i, day in enumerate(weather["weather"]):
@@ -211,16 +207,10 @@ for i, day in enumerate(weather["weather"]):
     if i == 1:
         data["tooltip"] += "Tomorrow, "
     data["tooltip"] += f"{day['date']}</b>\n"
-    data[
-        "tooltip"
-    ] += f"⬆️ {day[max_temp]}°{temperature} ⬇️ {day[min_temp]}°{temperature} "
-    data[
-        "tooltip"
-    ] += f"🌅 {day['astronomy'][0]['sunrise']} 🌇 {day['astronomy'][0]['sunset']}\n"
+    data["tooltip"] += f"⬆️ {day[max_temp]}°{temperature} ⬇️ {day[min_temp]}°{temperature} "
+    data["tooltip"] += f"🌅 {day['astronomy'][0]['sunrise']} 🌇 {day['astronomy'][0]['sunset']}\n"
     for hour in day["hourly"]:
-        if (
-            i == 0 and int(format_time(hour["time"])) < datetime.now().hour - 2
-        ):  # noqa: DTZ005
+        if i == 0 and int(format_time(hour["time"])) < datetime.now().hour - 2:  # noqa: DTZ005
             continue
         data["tooltip"] += (
             f"{format_time(hour['time'])} "
@@ -228,6 +218,5 @@ for i, day in enumerate(weather["weather"]):
             f"{format_temp(hour[feels_like])} {hour['weatherDesc'][0]['value']}, "
             f"{format_chances(hour)}\n"
         )
-
 
 print(json.dumps(data))
