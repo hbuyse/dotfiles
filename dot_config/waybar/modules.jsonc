@@ -74,7 +74,7 @@
   },
   "network": {
     "format-wifi": "{icon}  {ipaddr}",
-    "format-ethernet": " {ipaddr}",
+    "format-ethernet": "  {ipaddr}",
     "format-disconnected": "",
     "tooltip-format-wifi": "{ifname} on {essid}",
     "tooltip-format": "󰩟  {ipaddr}\n󱀣  {netmask}\n󱂇  {gwaddr}",
@@ -133,7 +133,7 @@
   },
   "custom/weather": {
     "icon-size": 42,
-    "format": "{icon} {}",
+    "format": "{icon}  {}",
     "tooltip": true,
     "interval": 3600,
     "exec": "~/.config/waybar/scripts/weather.py --city=Paris",
