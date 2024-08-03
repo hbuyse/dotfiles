@@ -7,6 +7,9 @@ return {
       -- Conform will notify you when a formatter errors
       notify_on_error = true,
       formatters = {
+        black = {
+          prepend_args = { '--line-length', '120' },
+        },
         shfmt = {
           prepend_args = { '-i', '4', '-sr', '-bn' },
         },
