@@ -119,12 +119,14 @@ return {
           },
         },
       },
+      tabline = { lualine_a = { 'buffers' } },
     },
     config = true,
   },
   {
     -- bufferline (tabline)
     'akinsho/bufferline.nvim',
+    enabled = false,
     dependencies = 'nvim-tree/nvim-web-devicons',
     config = function()
       require('bufferline').setup({
