@@ -64,7 +64,8 @@ return {
       local builtin = require('telescope.builtin')
       local nkeymaps = {
         ['<C-p>'] = { cmd = builtin.find_files, desc = 'Search Files' },
-        ['<leader>sb'] = { cmd = builtin.buffers, desc = '[S]earch [B]uffers' },
+        ['<leader>b'] = { cmd = builtin.buffers, desc = '[B]uffers' },
+        ['<C-b>'] = { cmd = builtin.buffers, desc = '[B]uffers' },
         ['<leader>sd'] = { cmd = builtin.diagnostics, desc = '[S]earch [D]iagnostics' },
         ['<leader>sf'] = { cmd = builtin.find_files, desc = '[S]earch [F]iles' },
         ['<leader>sg'] = { cmd = builtin.live_grep, desc = '[S]earch by [G]rep' },
