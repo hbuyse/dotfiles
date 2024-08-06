@@ -101,6 +101,7 @@ window#waybar.hidden {
 #workspaces button {
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 1px;
   margin: 4px 3px;
   background: @theme_selected_bg_color;
   color: @theme_selected_fg_color;
