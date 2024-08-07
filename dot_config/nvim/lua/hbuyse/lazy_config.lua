@@ -13,11 +13,13 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('hbuyse.plugins', {
+require('lazy').setup({
+  spec = 'hbuyse.plugins',
   defaults = {
     lazy = false,
     -- version = '*', -- try installing the latest stable versions of plugins
   },
+  concurrency = 4,
 })
 
 -- vim: set ts=2 sw=2 tw=0 et ft=lua :
