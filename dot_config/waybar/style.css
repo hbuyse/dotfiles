@@ -57,6 +57,7 @@ window#waybar.hidden {
 
 #workspaces button.active, /* active in hyprland */
 #workspaces button.focused, /* active in sway */
+#workspaces button.visible, /* visible: on screen but not focused */
 #workspaces button.selected {
   /* border-color: @fg3; */
   border-bottom: 1px solid @peach;
