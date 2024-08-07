@@ -57,9 +57,6 @@ return {
       safe_output = true,
       lazy_update_context = false,
       click = false,
-      format_text = function(text)
-        return text
-      end,
     },
   },
   {
