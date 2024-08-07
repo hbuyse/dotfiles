@@ -195,12 +195,12 @@
     executable = true
     path = "fzf"
 
-{{ $fastfetchVersion := "2.13.1" -}}
+{{ $fastfetchVersion := "2.21.0" -}}
 [ ".local/bin/fastfetch" ]
     type = "archive-file"
-    url = "https://github.com/fastfetch-cli/fastfetch/releases/download/{{ $fastfetchVersion }}/fastfetch-linux-amd64.tar.gz"
+    url = "https://github.com/fastfetch-cli/fastfetch/releases/download/{{ $fastfetchVersion }}/fastfetch-{{ .chezmoi.os }}-{{ .chezmoi.arch }}.tar.gz"
     executable = true
-    path = "fastfetch-linux-amd64/usr/bin/fastfetch"
+    path = "fastfetch-{{ .chezmoi.os }}-{{ .chezmoi.arch }}/usr/bin/fastfetch"
 {{- end }}{{/* .chezmoi.osRelease.id "ubuntu" */}}
 
 {{ $yamlfmtVersion := "0.12.1" -}}
