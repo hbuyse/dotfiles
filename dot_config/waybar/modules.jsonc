@@ -83,7 +83,7 @@
   },
   "clock": {
     "format": "{:%d/%m %H:%M}",
-    "format-alt": "{:%e %b %Y %H:%M}",
+    "format-alt": "{:%e %b %Y %H:%M:%S}",
     "tooltip": true,
     "interval": 5,
     "tooltip-format": "<tt><span size='9pt'>{calendar}</span></tt>",
