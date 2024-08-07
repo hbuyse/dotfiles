@@ -149,14 +149,10 @@ return {
         },
       })
     end,
-    init = function()
-      local keymaps = {
-        H = { cmd = '<cmd>BufferLineCyclePrev<CR>', desc = 'Move to previous bufferline' },
-        L = { cmd = '<cmd>BufferLineCycleNext<CR>', desc = 'Move to next bufferline' },
-      }
-      for k, v in pairs(keymaps) do
-        vim.keymap.set('n', k, v.cmd, { remap = false, silent = true, desc = v.desc })
-      end
-    end,
+    lazy = false,
+    keys = {
+      { 'H', '<cmd>BufferLineCyclePrev<CR>', desc = 'Move to previous bufferline' },
+      { 'L', '<cmd>BufferLineCycleNext<CR>', desc = 'Move to next bufferline' },
+    },
   },
 }
