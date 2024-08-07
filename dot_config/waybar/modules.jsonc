@@ -128,7 +128,7 @@
     "signal": 5
   },
   "custom/power": {
-    "format": "",
+    "format": " ",
     "on-click": "~/.config/sway/scripts/powermenu.sh"
   },
   "custom/weather": {
