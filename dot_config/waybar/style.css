@@ -163,10 +163,16 @@ label:focus {
   padding-right: 10px;
 }
 
+#cpu,
 #memory {
-  border-bottom: 2px solid @green;
+  border-bottom-width: 2px;
+  border-bottom-style: solid;
+}
+
+#memory {
+  border-bottom-color: @green;
 }
 
 #cpu {
-  border-bottom: 2px solid @red;
+  border-bottom-color: @red;
 }
