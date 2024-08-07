@@ -61,48 +61,55 @@ return {
       },
     },
     init = function()
-      local builtin = require('telescope.builtin')
-      local nkeymaps = {
-        ['<C-p>'] = { cmd = builtin.find_files, desc = 'Search Files' },
-        ['<leader>b'] = { cmd = builtin.buffers, desc = '[B]uffers' },
-        ['<C-b>'] = { cmd = builtin.buffers, desc = '[B]uffers' },
-        ['<leader>sd'] = { cmd = builtin.diagnostics, desc = '[S]earch [D]iagnostics' },
-        ['<leader>sf'] = { cmd = builtin.find_files, desc = '[S]earch [F]iles' },
-        ['<leader>sg'] = { cmd = builtin.live_grep, desc = '[S]earch by [G]rep' },
-        ['<leader>sh'] = { cmd = builtin.help_tags, desc = '[S]earch [H]elp' },
-        ['<leader>sr'] = { cmd = builtin.lsp_references, desc = '[S]earch [R]eferences' },
-        ['<leader>sw'] = {
-          cmd = function()
-            builtin.grep_string({ word_match = '-w' })
-          end,
-          desc = '[S]earch current [W]ord',
-        },
-        ['<leader>dt'] = {
-          cmd = function()
-            builtin.git_files({ cwd = os.getenv('HOME') .. '/.local/share/chezmoi' })
-          end,
-          desc = 'Search in [D]o[T]files',
-        },
-      }
-
       -- Notify support
       local has_notify, _ = pcall(require, 'notify')
       if has_notify then
         require('telescope').load_extension('notify')
-        nkeymaps['<leader>sn'] =
-          { cmd = require('telescope').extensions.notify.notify, desc = '[S]earch [N]otifications' }
       end
 
       -- Aerial support
       local has_aerial, _ = pcall(require, 'aerial')
       if has_aerial then
         require('telescope').load_extension('aerial')
-        nkeymaps['<leader>ss'] = { cmd = require('telescope').extensions.aerial.aerial, desc = '[S]earch [S]ymbols' }
+      end
+    end,
+    keys = function(plugin, keys)
+      local nkeymaps = {
+        { '<C-p>', require('telescope.builtin').find_files, desc = 'Search Files' },
+        { '<leader>b', require('telescope.builtin').buffers, desc = '[B]uffers' },
+        { '<C-b>', require('telescope.builtin').buffers, desc = '[B]uffers' },
+        { '<leader>sd', require('telescope.builtin').diagnostics, desc = '[S]earch [D]iagnostics' },
+        { '<leader>sf', require('telescope.builtin').find_files, desc = '[S]earch [F]iles' },
+        { '<leader>sg', require('telescope.builtin').live_grep, desc = '[S]earch by [G]rep' },
+        { '<leader>sh', require('telescope.builtin').help_tags, desc = '[S]earch [H]elp' },
+        { '<leader>sr', require('telescope.builtin').lsp_references, desc = '[S]earch [R]eferences' },
+        {
+          '<leader>sw',
+          function()
+            require('telescope.builtin').grep_string({ word_match = '-w' })
+          end,
+          desc = '[S]earch current [W]ord',
+        },
+        {
+          '<leader>dt',
+          function()
+            require('telescope.builtin').git_files({ cwd = os.getenv('HOME') .. '/.dotfiles' })
+          end,
+          desc = 'Search in [D]o[T]files',
+        },
+      }
+
+      local notify = require('telescope').extensions.notify
+      if notify ~= nil then
+        table.insert(nkeymaps, { '<leader>sn', notify.notify, desc = '[S]earch [N]otifications' })
       end
 
-      for k, v in pairs(nkeymaps) do
-        vim.keymap.set('n', k, v.cmd, { noremap = true, silent = true, desc = v.desc })
+      local aerial = require('telescope').extensions.aerial
+      if aerial then
+        table.insert(nkeymaps, { '<leader>ss', aerial.aerial, desc = '[S]earch [S]ymbols' })
       end
+
+      return nkeymaps
     end,
   },
 }
