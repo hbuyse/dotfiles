@@ -163,10 +163,17 @@ label:focus {
   padding-right: 10px;
 }
 
+#clock,
 #cpu,
-#memory {
+#language,
+#memory,
+#network {
   border-bottom-width: 2px;
   border-bottom-style: solid;
+}
+
+#network {
+  border-bottom-color: @teal;
 }
 
 #memory {
@@ -175,4 +182,12 @@ label:focus {
 
 #cpu {
   border-bottom-color: @red;
+}
+
+#clock {
+  border-bottom-color: @blue;
+}
+
+#language {
+  border-bottom-color: @yellow;
 }
