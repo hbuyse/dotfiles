@@ -58,10 +58,10 @@
     "format-icons": ["󰹐", "󱩎", "󱩏", "󱩐", "󱩑", "󱩒", "󱩓", "󱩔", "󱩕", "󱩖", "󰛨"]
   },
   "pulseaudio": {
-    "format": "{icon} {volume}% {format_source}",
+    "format": "{icon} {volume:>3}% {format_source}",
     "format-bluetooth": "{icon} {volume:>3}%",
-    "format-muted": "  0% {format_source}",
-    "format-source": "  {volume}%",
+    "format-muted": "   0% {format_source}",
+    "format-source": "  {volume:>3}%",
     "format-source-muted": "",
     "format-icons": {
       "headphone": "",
