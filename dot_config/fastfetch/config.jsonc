@@ -71,6 +71,12 @@
       "format": "{1} ({4})"
     },
     {
+      "key": "│           │\u001b[11D\u001b[31m gpu",
+      "type": "gpu",
+      "hideType": "integrated",
+      "temp": true
+    },
+    {
       "key": "├───────────┤",
       "type": "custom"
     },
