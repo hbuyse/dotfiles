@@ -52,7 +52,8 @@
     },
     {
       "key": "│           │\u001b[11D\u001b[33m󰍛 cpu",
-      "type": "cpu"
+      "type": "cpu",
+      "temp": true
     },
     {
       "key": "│           │\u001b[11D\u001b[34m󰉉 disk",
