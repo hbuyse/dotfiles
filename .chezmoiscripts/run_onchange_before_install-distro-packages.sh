@@ -18,7 +18,6 @@ case "${OS}-${ID}" in
         base-devel openssl zlib xz tk \
         libnotify \
         bitwarden \
-        bat \
         shellcheck shfmt \
         nextcloud-client \
         direnv \

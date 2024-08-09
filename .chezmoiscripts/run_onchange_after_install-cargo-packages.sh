@@ -24,7 +24,8 @@ case "${OS}-${ID}" in
         texlab \
         zoxide \
         gitui \
-        eza
+        eza \
+        bat
     ;;
 
 "linux-ubuntu")
@@ -45,6 +46,7 @@ case "${OS}-${ID}" in
             ["zoxide"]="0.9.4"
             ["gitui"]="0.26.3"
             ["eza"]="0.19.0"
+            ["bat"]="0.24.0"
         )
 
         for pkg in "${!CARGO_PKGS[@]}"; do

@@ -157,13 +157,6 @@
     url = "https://github.com/LuaLS/lua-language-server/releases/download/{{ $luaLsVersion }}/lua-language-server-{{ $luaLsVersion }}-{{ .chezmoi.os }}-x64.tar.gz"
     exact = false
 
-{{ $batVersion := "0.24.0" -}}
-[ ".local/bin/bat" ]
-    type = "archive-file"
-    url = "https://github.com/sharkdp/bat/releases/download/v{{ $batVersion }}/bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu.tar.gz"
-    executable = true
-    path = "bat-v{{ $batVersion }}-x86_64-unknown-linux-gnu/bat"
-
 {{ $texlabVersion := "5.15.0" -}}
 [ ".local/bin/texlab" ]
     type = "archive-file"
