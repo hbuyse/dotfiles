@@ -17,6 +17,9 @@ image=~/.config/wallpapers/locker
 show-keyboard-layout
 #hide-keyboard-layout
 
+# Disable the Caps Lock text.
+disable-caps-lock-text
+
 # Make the lock screen fade in instead of just popping in.
 #fade-in=0.2
 
@@ -39,6 +42,9 @@ indicator-caps-lock
 # indicator-x-position=100
 # indicator-y-position=100
 
+# Turn the screen into the given color instead of white (if image is not provided)
+color=1e1e2eff
+
 # Sets the color of the lines that separate highlight segments.
 separator-color=00000000
 
@@ -48,23 +54,19 @@ separator-color=00000000
 # - when Caps Lock is active.
 # - when verifying.
 # - when invalid.
-inside-color=00000099
-inside-clear-color=ffd20400
-inside-caps-lock-color=009ddc00
-inside-ver-color=d9d8d800
-inside-wrong-color=ee2e2400
+inside-color=18182599
+inside-clear-color=18182599
+inside-caps-lock-color=18182599
+inside-ver-color=18182599
+inside-wrong-color=18182599
 
-# Sets the color of the ring of the indicator.
-# - normal
-# - when cleared.
-# - when Caps Lock is active.
-# - when verifying.
-# - when invalid.
-ring-color=231f20D9
-ring-clear-color=231f20D9
-ring-caps-lock-color=231f20D9
-ring-ver-color=231f20D9
-ring-wrong-color=231f20D9
+# Sets the color of the box containing the layout text.
+# - background
+# - border
+# - text
+layout-bg-color=00000000
+layout-border-color=00000000
+layout-text-color=bac2de7f
 
 # Sets the color of the line between the inside and ring.
 # - normal
@@ -73,32 +75,43 @@ ring-wrong-color=231f20D9
 # - when verifying.
 # - when invalid.
 line-color=00000000
-line-clear-color=ffd204FF
-line-caps-lock-color=009ddcFF
-line-ver-color=d9d8d8FF
-line-wrong-color=ee2e24FF
+line-clear-color=00000000
+line-caps-lock-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
 
-# Sets the color of the text.
+# Sets the color of the ring of the indicator.
+# - normal
 # - when cleared.
 # - when Caps Lock is active.
 # - when verifying.
 # - when invalid.
-text-clear-color=ffd20400
-text-caps-lock-color=009ddc
-text-ver-color=d9d8d800
-text-wrong-color=ee2e2400
+ring-color=b4befeff
+ring-clear-color=f5e0dcff
+ring-caps-lock-color=fab387ff
+ring-ver-color=89b4faff
+ring-wrong-color=eba0acff
+
+# Sets the color of the text.
+# - normal
+# - when cleared.
+# - when Caps Lock is active.
+# - when verifying.
+# - when invalid.
+text-color=cdd6f4ff
+text-clear-color=f5e0dc7f
+text-caps-lock-color=fab3877f
+text-ver-color=89b4fa7f
+text-wrong-color=eba0ac7f
 
 # Sets the color of backspace highlight segments.
 # - normal
 # - when Caps Lock is active.
-bs-hl-color=ee2e24FF
-caps-lock-bs-hl-color=ee2e24FF
+bs-hl-color=f5e0dcff
+caps-lock-bs-hl-color=f5e0dcff
 
 # Sets the color of the key press highlight segments.
 # - normal
 # - when Caps Lock is active.
-key-hl-color=880033
-caps-lock-key-hl-color=ffd204FF
-
-# Disable the Caps Lock text.
-#disable-caps-lock-text
+key-hl-color=880033ff
+caps-lock-key-hl-color=a6e3a1ff
