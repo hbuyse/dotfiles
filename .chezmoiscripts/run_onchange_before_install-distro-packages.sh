@@ -40,7 +40,6 @@ case "${OS}-${ID}" in
     install_packages \
         chezmoi age \
         firefox \
-        i3 feh autorandr rofi npm xautolock polybar picom \
         zsh fzf tmux npm \
         clang git curl htop \
         python311-pip python311-virtualenv python3-virtualenvwrapper \
@@ -55,6 +54,12 @@ case "${OS}-${ID}" in
         strace \
         fastfetch \
         lxsession
+
+    if [ "${XDG_SESSION_TYPE}" = "x11" ]; then
+        install_packages i3 feh autorandr rofi npm xautolock polybar picom
+    else
+        install_packages sway kanshi wofi waybar swayidle swaylock
+    fi
     ;;
 
 "linux-ubuntu")
