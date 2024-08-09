@@ -44,7 +44,7 @@
     "return-type": "json",
     "format": "{icon}",
     "format-icons": {
-      "activated": "󰌵",
+      "activated": "<span color='#eba0ac'>󰌵</span>",
       "deactivated": "󰌶"
     },
     "exec": "fallback_latitude=48.8 fallback_longitude=2.3 latitude= longitude= ~/.config/sway/scripts/sunset.sh",
