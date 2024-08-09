@@ -26,7 +26,8 @@ case "${OS}-${ID}" in
         fastfetch \
         lxsession-gtk3 \
         pacman-contrib \
-        power-profiles-daemon
+        power-profiles-daemon \
+        imagemagick
 
     if [ "${XDG_SESSION_TYPE}" = "x11" ]; then
         install_packages i3-wm feh autorandr rofi npm xautolock polybar picom
@@ -53,7 +54,8 @@ case "${OS}-${ID}" in
         lua51-luarocks \
         strace \
         fastfetch \
-        lxsession
+        lxsession \
+        envsubst ImageMagick
 
     if [ "${XDG_SESSION_TYPE}" = "x11" ]; then
         install_packages i3 feh autorandr rofi npm xautolock polybar picom
