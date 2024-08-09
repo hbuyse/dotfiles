@@ -11,7 +11,7 @@ case "${OS}-${ID}" in
     install_packages \
         chezmoi age \
         firefox \
-        i3-wm feh autorandr rofi npm xautolock polybar \
+        i3-wm feh autorandr rofi npm xautolock polybar picom \
         zsh fzf tmux npm \
         clang git curl htop \
         python-pip python-virtualenv python-virtualenvwrapper \
@@ -32,7 +32,7 @@ case "${OS}-${ID}" in
     install_packages \
         chezmoi age \
         firefox \
-        i3 feh autorandr rofi npm xautolock polybar \
+        i3 feh autorandr rofi npm xautolock polybar picom \
         zsh fzf tmux npm \
         clang git curl htop \
         python311-pip python311-virtualenv python3-virtualenvwrapper \
