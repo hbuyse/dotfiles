@@ -15,7 +15,7 @@ case "${OS}-${ID}" in
         zsh fzf tmux npm \
         clang git curl htop \
         python-pip python-virtualenv python-virtualenvwrapper \
-        base-devel openssl zlib xz tk \
+        base-devel openssl zlib xz tk ccache \
         libnotify \
         bitwarden \
         shellcheck shfmt \
@@ -37,7 +37,7 @@ case "${OS}-${ID}" in
         clang git curl htop \
         python311-pip python311-virtualenv python3-virtualenvwrapper \
         gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel readline-devel zlib-devel tk-devel \
-        libffi-devel sqlite3-devel gdbm-devel make findutils \
+        libffi-devel sqlite3-devel gdbm-devel make findutils ccache \
         libnotify \
         bitwarden \
         ShellCheck shfmt \
@@ -113,7 +113,8 @@ case "${OS}-${ID}" in
         curl \
         tshark \
         bsdmainutils \
-        lxpolkit
+        lxpolkit \
+        ccache
 
     # Install dunst
     DUNST_VERSION="1.11.0"
@@ -234,7 +235,8 @@ case "${OS}-${ID}" in
         gettext \
         npm \
         direnv \
-        fastfetch
+        fastfetch \
+        ccache
     ;;
 *)
     echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
