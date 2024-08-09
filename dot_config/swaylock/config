@@ -2,58 +2,103 @@ ignore-empty-password
 font=Iosevka Nerd Font
 #font-size=80
 
+# clock: Show time and date.
+# timestr: The format string for the time. Defaults to '%T'.
+# datestr: The format string for the date. Defaults to '%a, %x'.
 clock
 timestr=%R
 datestr=%d/%m/%Y
 
-#screenshots
+# Display the given image, optionally only on the given output.
+# image: [[<output>]:]<path>
 image=~/.config/wallpapers/locker
+
+# Display the current xkb layout while typing.
 show-keyboard-layout
 #hide-keyboard-layout
-indicator-caps-lock
 
+# Make the lock screen fade in instead of just popping in.
 #fade-in=0.2
 
+# Blur images.
 effect-blur=5x1
+# Make images greyscale.
 #effect-greyscale
+# Scale images.
 effect-scale=0.3
 
+# Always show the indicator
 indicator
+# Sets the indicator radius.
 indicator-radius=150
+# Sets the indicator thickness.
 indicator-thickness=10
+# Show the current Caps Lock state also on the indicator.
 indicator-caps-lock
+# Sets the horizontal and vertical positions of the indicator.
 # indicator-x-position=100
 # indicator-y-position=100
 
-key-hl-color=880033
-
+# Sets the color of the lines that separate highlight segments.
 separator-color=00000000
 
+# Sets the color of the inside of the indicator.
+# - normal
+# - when cleared.
+# - when Caps Lock is active.
+# - when verifying.
+# - when invalid.
 inside-color=00000099
 inside-clear-color=ffd20400
 inside-caps-lock-color=009ddc00
 inside-ver-color=d9d8d800
 inside-wrong-color=ee2e2400
 
+# Sets the color of the ring of the indicator.
+# - normal
+# - when cleared.
+# - when Caps Lock is active.
+# - when verifying.
+# - when invalid.
 ring-color=231f20D9
 ring-clear-color=231f20D9
 ring-caps-lock-color=231f20D9
 ring-ver-color=231f20D9
 ring-wrong-color=231f20D9
 
+# Sets the color of the line between the inside and ring.
+# - normal
+# - when cleared.
+# - when Caps Lock is active.
+# - when verifying.
+# - when invalid.
 line-color=00000000
 line-clear-color=ffd204FF
 line-caps-lock-color=009ddcFF
 line-ver-color=d9d8d8FF
 line-wrong-color=ee2e24FF
 
+# Sets the color of the text.
+# - when cleared.
+# - when Caps Lock is active.
+# - when verifying.
+# - when invalid.
 text-clear-color=ffd20400
+text-caps-lock-color=009ddc
 text-ver-color=d9d8d800
 text-wrong-color=ee2e2400
 
+# Sets the color of backspace highlight segments.
+# - normal
+# - when Caps Lock is active.
 bs-hl-color=ee2e24FF
-caps-lock-key-hl-color=ffd204FF
 caps-lock-bs-hl-color=ee2e24FF
+
+# Sets the color of the key press highlight segments.
+# - normal
+# - when Caps Lock is active.
+key-hl-color=880033
+caps-lock-key-hl-color=ffd204FF
+
+# Disable the Caps Lock text.
 #disable-caps-lock-text
-indicator-caps-lock
-text-caps-lock-color=009ddc
