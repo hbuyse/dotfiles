@@ -28,6 +28,22 @@ case "${OS}-${ID}" in
         bat
     ;;
 
+"linux-opensuse-tumbleweed")
+    install_packages \
+        ripgrep \
+        bottom \
+        fd \
+        StyLua \
+        dust \
+        git-delta \
+        alacritty \
+        texlab \
+        zoxide \
+        gitui \
+        eza \
+        bat
+    ;;
+
 "linux-ubuntu")
     # shellcheck source=/dev/null
     source "${HOME}/.cargo/env"

@@ -138,6 +138,17 @@ function install_packages() {
         done
         ;;
 
+    "linux-opensuse-tumbleweed")
+        install_cmd="zypper --quiet --non-interactive install"
+        # Check that package is installed
+        for pkg in "${packages_to_install[@]}"; do
+            # Check if already installed
+            if ! zypper --quiet search --installed-only --match-exact ${pkg} > /dev/null 2>&1; then
+                packages_not_installed+=("${pkg}")
+            fi
+        done
+        ;;
+
     *)
         echo "Unsupported distribution '${ID}' (based on OS '${OS}')"
         return

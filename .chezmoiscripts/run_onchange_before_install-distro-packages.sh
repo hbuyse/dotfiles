@@ -27,6 +27,28 @@ case "${OS}-${ID}" in
         lxsession-gtk3 # lxpolkit
     ;;
 
+"linux-opensuse-tumbleweed")
+    # Install my package
+    install_packages \
+        chezmoi age \
+        firefox \
+        i3 feh autorandr rofi npm xautolock polybar \
+        zsh fzf tmux npm \
+        clang git curl htop \
+        python311-pip python311-virtualenv python3-virtualenvwrapper \
+        gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel readline-devel zlib-devel tk-devel \
+        libffi-devel sqlite3-devel gdbm-devel make findutils \
+        libnotify \
+        bitwarden \
+        ShellCheck shfmt \
+        nextcloud-client \
+        direnv \
+        lua51-luarocks \
+        strace \
+        fastfetch \
+        lxsession
+    ;;
+
 "linux-ubuntu")
     check_sudo
 

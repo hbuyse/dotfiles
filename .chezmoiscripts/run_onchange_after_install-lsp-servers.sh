@@ -5,6 +5,12 @@
 
 display_info "${0}"
 
+# Install rust-analyzer
+install_rust_analyzer() {
+    curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
+    chmod +x "${HOME}/.local/bin/rust-analyzer"
+}
+
 LSP_SERVERS_AS_PKG=()
 declare -A LSP_SERVERS_AS_NPM=(
     ["vscode-markdown-languageserver"]="0.5.0-alpha.7"
@@ -24,7 +30,6 @@ case "${OS}-${ID}" in
     LSP_SERVERS_AS_PKG+=("vscode-json-languageserver")
     LSP_SERVERS_AS_PKG+=("yaml-language-server")
     LSP_SERVERS_AS_PKG+=("rust-analyzer")
-
     ;;
 "freebsd-freebsd")
     LSP_SERVERS_AS_PKG+=("llvm")
@@ -48,9 +53,19 @@ case "${OS}-${ID}" in
     LSP_SERVERS_AS_NPM["vscode-langservers-extracted"]="4.8.0"
     LSP_SERVERS_AS_NPM["yaml-language-server"]="1.14.0"
 
-    # Install rust-analyzer
-    curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > "${HOME}/.local/bin/rust-analyzer"
-    chmod +x "${HOME}/.local/bin/rust-analyzer"
+    install_rust_analyzer
+    ;;
+"linux-opensuse-tumbleweed")
+    LSP_SERVERS_AS_PKG+=("llvm")
+    LSP_SERVERS_AS_PKG+=("lua-language-server")
+    LSP_SERVERS_AS_PKG+=("texlab")
+    LSP_SERVERS_AS_NPM["bash-language-server"]="5.1.2"
+    LSP_SERVERS_AS_NPM["pyright"]="1.1.360"
+    LSP_SERVERS_AS_NPM["typescript-language-server"]="4.3.3"
+    LSP_SERVERS_AS_NPM["vscode-langservers-extracted"]="4.8.0"
+    LSP_SERVERS_AS_NPM["yaml-language-server"]="1.14.0"
+
+    install_rust_analyzer
     ;;
 *)
     echo "Unsupported distribution '${ID}' (based on OS '${OS}')"

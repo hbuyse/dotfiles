@@ -6,7 +6,7 @@
 display_info "${0}"
 
 case "${OS}-${ID}" in
-"linux-manjaro" | "linux-arch" | "freebsd-freebsd")
+"linux-manjaro" | "linux-arch" | "linux-opensuse-tumbleweed" | "freebsd-freebsd")
     prompt "Installing Neovim ${NEOVIM_VERSION} from package manager"
     install_packages neovim
     display_ko_ok $?

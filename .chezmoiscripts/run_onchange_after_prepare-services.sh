@@ -10,7 +10,7 @@ SERVICES=(
     "lxpolkit"
 )
 case "${OS}-${ID}" in
-"linux-manjaro")
+"linux-arch" | "linux-manjaro" | "linux-opensuse-tumbleweed")
     # No more services to add
     ;;
 "linux-ubuntu")
