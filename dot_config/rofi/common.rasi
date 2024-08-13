@@ -153,7 +153,6 @@ button {
 
 entry {
   expand: false;
-  text-color: var(normal-background);
   vertical-align: 1;
   padding: 5px;
 }
