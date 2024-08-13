@@ -17,17 +17,23 @@ Go check this excellent guide https://github.com/nanotee/nvim-lua-guide
 
 ## Requirements
 
-### Mandatory
-
-- [i3-gaps](https://github.com/Airblader/i3)
-- [polybar](https://github.com/polybar/polybar)
-- [feh](https://github.com/derf/feh)
-- [compton](https://github.com/chjj/compton)
-- [dunst](https://github.com/dunst-project/dunst)
-- [neovim](https://github.com/neovim/neovim)
-- [rofi](https://github.com/davatorium/rofi)
+- [alacritty](https://github.com/alacritty/alacritty)
+- [autorandr](https://github.com/phillipberndt/autorandr)
+- [bat](https://github.com/sharkdp/bat)
 - [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen)
-
-### Suggested
-
+- [bottom](https://github.com/ClementTsang/bottom)
+- [conky](https://github.com/brndnmtthws/conky)
+- [direnv](https://github.com/direnv/direnv)
+- [dunst](https://github.com/dunst-project/dunst)
+- [fastfetch](https://github.com/fastfetch-cli/fastfetch)
+- [feh](https://github.com/derf/feh)
+- [gitui](https://github.com/extrawurst/gitui)
+- [htop](https://github.com/hishamhm/htop)
+- [i3-gaps](https://github.com/Airblader/i3)
+- [neovim](https://github.com/neovim/neovim)
+- [picom](https://github.com/yshui/picom)
+- [polybar](https://github.com/polybar/polybar)
+- [rofi](https://github.com/davatorium/rofi)
 - [scrot](https://github.com/dreamer/scrot)
+- [tig](https://github.com/jonas/tig)
+- [tmux](https://github.com/tmux/tmux)
