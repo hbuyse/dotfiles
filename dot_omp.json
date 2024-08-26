@@ -1,5 +1,12 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "p10k_bg": "#313244",
+    "background": "p:p10k_bg",
+    "separator_fg": "#EEEEEE",
+    "session_fg": "#D7AF00",
+    "time_fg": "#A6ADC8"
+  },
   "blocks": [
     {
       "alignment": "left",
