@@ -48,11 +48,11 @@
             "fetch_status": true,
             "fetch_upstream_icon": true,
             "mapped_branches": {
-              "feature/*": "🚀 "
+              "feature/*": "🚀 ",
+              "feat/*": "🚀 "
             },
             "full_branch_path": true
           },
-
           "type": "git"
         },
         {
