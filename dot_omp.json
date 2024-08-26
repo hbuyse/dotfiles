@@ -35,7 +35,7 @@
           "foreground": "#26C6DA",
           "properties": {
             "style": "powerlevel",
-            "edge_format": "%s",
+            "edge_format": "<b>%s</b>",
             "max_width": 80
           },
           "style": "plain",
