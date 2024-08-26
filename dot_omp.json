@@ -12,14 +12,14 @@
       "alignment": "left",
       "segments": [
         {
-          "background": "#313244",
-          "foreground": "#EEEEEE",
+          "background": "p:background",
+          "foreground": "p:separator_fg",
           "style": "plain",
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} \ue0b1",
           "type": "os"
         },
         {
-          "background": "#313244",
+          "background": "p:background",
           "foreground": "#00AAFF",
           "style": "plain",
           "template": " \uf0e7 ",
@@ -27,7 +27,7 @@
           "comment": "Show when the current user is root or when in an elevated shell (Windows)"
         },
         {
-          "background": "#313244",
+          "background": "p:background",
           "foreground": "#26C6DA",
           "properties": {
             "style": "powerlevel",
@@ -39,7 +39,7 @@
           "type": "path"
         },
         {
-          "background": "#313244",
+          "background": "p:background",
           "foreground": "#D4E157",
           "foreground_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#c4a000{{ end }}",
@@ -76,7 +76,7 @@
       "alignment": "right",
       "segments": [
         {
-          "background": "#313244",
+          "background": "p:background",
           "foreground": "#D7AF00",
           "leading_diamond": "\ue0b2",
           "style": "diamond",
@@ -84,8 +84,8 @@
           "type": "session"
         },
         {
-          "background": "#313244",
-          "foreground": "#A6ADC8",
+          "background": "p:background",
+          "foreground": "p:time",
           "properties": {
             "time_format": "15:04:05"
           },
