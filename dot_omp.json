@@ -1,11 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
-    "p10k_bg": "#313244",
-    "background": "p:p10k_bg",
-    "separator_fg": "#EEEEEE",
-    "session_fg": "#D7AF00",
-    "time_fg": "#A6ADC8"
+    "p10k-bg": "#313244",
+    "background": "p:p10k-bg",
+    "separator-fg": "#EEEEEE",
+    "session-fg": "#D7AF00",
+    "time-fg": "#A6ADC8",
+    "git-fg": "#D4E157",
+    "status-bg": "transparent",
+    "status-fg-success": "#5faf00",
+    "status-fg-error": "#FF5252"
   },
   "blocks": [
     {
@@ -13,16 +17,16 @@
       "segments": [
         {
           "background": "p:background",
-          "foreground": "p:separator_fg",
+          "foreground": "p:separator-fg",
           "style": "plain",
-          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} \ue0b1",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
           "type": "os"
         },
         {
           "background": "p:background",
           "foreground": "#00AAFF",
           "style": "plain",
-          "template": " \uf0e7 ",
+          "template": "  ",
           "type": "root",
           "comment": "Show when the current user is root or when in an elevated shell (Windows)"
         },
@@ -35,12 +39,12 @@
             "max_width": 80
           },
           "style": "plain",
-          "template": " \uf07c {{ .Path }} ",
+          "template": "  {{ .Path }} ",
           "type": "path"
         },
         {
           "background": "p:background",
-          "foreground": "#D4E157",
+          "foreground": "p:git-fg",
           "foreground_templates": [
             "{{ if or (.Working.Changed) (.Staging.Changed) }}#c4a000{{ end }}",
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#f26d50{{ end }}",
@@ -48,7 +52,7 @@
             "{{ if gt .Behind 0 }}#4e9a06{{ end }}"
           ],
           "style": "plain",
-          "template": "<#EEEEEE></> {{ .UpstreamIcon }}{{ .HEAD }}{{ if .Working.Changed }}   {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }}{{ end }}{{ if .Staging.Changed }}   {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}   {{ .StashCount }}{{ end }} ",
+          "template": "<#EEEEEE></> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }}   {{ .Staging.String }}{{ end }}{{ if .Working.Changed }}   {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }}   {{ .StashCount }}{{ end }} ",
           "properties": {
             "branch_max_length": 0,
             "branch_icon": " ",
@@ -69,9 +73,9 @@
         },
         {
           "background": "transparent",
-          "foreground": "#313244",
+          "foreground": "p:p10k-bg",
           "style": "plain",
-          "template": "\ue0b0",
+          "template": "",
           "type": "text"
         }
       ],
@@ -81,11 +85,25 @@
       "alignment": "right",
       "segments": [
         {
+          "background": "transparent",
+          "foreground": "p:p10k-bg",
+          "style": "plain",
+          "template": "",
+          "type": "text"
+        },
+        {
+          "background": "p:background",
+          "foreground": "p:status-fg-success",
+          "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
+          "style": "plain",
+          "template": "{{ if ne .Code 0 }} {{ reason .Code }} {{ end }}<#eeeeee></>",
+          "type": "status"
+        },
+        {
           "background": "p:background",
           "foreground": "#D7AF00",
-          "leading_diamond": "\ue0b2",
-          "style": "diamond",
-          "template": " {{ .UserName }}@{{ .HostName }} <#ffffff>\ue0b3</> ",
+          "style": "plain",
+          "template": " {{ .UserName }}@{{ .HostName }} <#eeeeee></>",
           "type": "session"
         },
         {
@@ -95,7 +113,7 @@
             "time_format": "15:04:05"
           },
           "style": "plain",
-          "template": "{{ .CurrentDate | date .Format }} \uf017 ",
+          "template": " {{ .CurrentDate | date .Format }}  ",
           "type": "time"
         }
       ],
@@ -106,13 +124,13 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#D4E157",
-          "foreground_templates": ["{{ if gt .Code 0 }}#FF5252{{ end }}"],
+          "foreground": "p:status-fg-success",
+          "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
           "properties": {
             "always_enabled": true
           },
           "style": "plain",
-          "template": "\u276f ",
+          "template": "❯ ",
           "type": "status"
         }
       ],
