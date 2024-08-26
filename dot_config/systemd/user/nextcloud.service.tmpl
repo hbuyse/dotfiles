@@ -5,7 +5,11 @@ After=network-online.target
 Wants=network-online.target systemd-networkd-wait-online.service
 
 [Service]
+{{ if eq .chezmoi.osRelease.id "ubuntu" -}}
+ExecStart=%h/.local/bin/nextcloud --background
+{{ else -}}
 ExecStart=nextcloud --background
+{{- end }}{{/* .chezmoi.osRelease.id "ubuntu" */}}
 Restart=on-failure
 RestartSec=5s
 LimitNOFILE=65535:65535
