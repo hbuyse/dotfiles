@@ -83,6 +83,7 @@
     },
     {
       "alignment": "right",
+      "filler": "<#313244,transparent>·</>",
       "segments": [
         {
           "background": "transparent",
