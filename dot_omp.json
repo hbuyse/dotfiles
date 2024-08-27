@@ -99,7 +99,7 @@
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "  {{ .Full }} <#eeeeee></>"
+          "template": "  {{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }} <#eeeeee></>"
         },
         {
           "type": "rust",
