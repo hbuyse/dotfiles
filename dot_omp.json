@@ -9,7 +9,8 @@
     "git-fg": "76",
     "status-bg": "transparent",
     "status-fg-success": "#5faf00",
-    "status-fg-error": "#FF5252"
+    "status-fg-error": "#FF5252",
+    "project": "37"
   },
   "blocks": [
     {
@@ -89,21 +90,21 @@
         {
           "type": "cmake",
           "style": "plain",
-          "foreground": "37",
+          "foreground": "p:project",
           "background": "p:background",
           "template": "   {{ .Full }} <#eeeeee></>"
         },
         {
           "type": "python",
           "style": "plain",
-          "foreground": "37",
+          "foreground": "p:project",
           "background": "p:background",
           "template": "  {{ .Full }} <#eeeeee></>"
         },
         {
           "type": "rust",
           "style": "plain",
-          "foreground": "37",
+          "foreground": "p:project",
           "background": "p:background",
           "template": "  {{ .Full }} <#eeeeee></>"
         },
