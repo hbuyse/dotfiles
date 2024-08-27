@@ -176,10 +176,10 @@
     url = "https://github.com/direnv/direnv/releases/download/v{{ $direnvVersion }}/direnv.{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
     executable = true
 
-{{ $fzfVersion := "0.51.0" -}}
+{{ $fzfVersion := "0.54.3" -}}
 [ ".local/bin/fzf" ]
     type = "archive-file"
-    url = "https://github.com/junegunn/fzf/releases/download/{{ $fzfVersion }}/fzf-{{ $fzfVersion }}-{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
+    url = "https://github.com/junegunn/fzf/releases/download/v{{ $fzfVersion }}/fzf-{{ $fzfVersion }}-{{ .chezmoi.os }}_{{ .chezmoi.arch }}.tar.gz"
     executable = true
     path = "fzf"
 
