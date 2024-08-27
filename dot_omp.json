@@ -60,7 +60,9 @@
             "fetch_upstream_icon": true,
             "mapped_branches": {
               "feature/*": "🚀 ",
-              "feat/*": "🚀 "
+              "feat/*": "🚀 ",
+              "work/henri.buyse/*": "🔨 ",
+              "work/*": "🔨 "
             },
             "full_branch_path": true
           },
