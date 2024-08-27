@@ -2,15 +2,12 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "palette": {
     "p10k-bg": "#313244",
-    "background": "p:p10k-bg",
     "separator-fg": "#bac2de",
     "session-fg": "#D7AF00",
-    "time-fg": "#A6ADC8",
     "git-fg": "76",
     "status-bg": "transparent",
     "status-fg-success": "#5faf00",
     "status-fg-error": "#FF5252",
-    "project": "37",
     "catppuccin-rosewater": "#f5e0dc",
     "catppuccin-flamingo": "#f2cdcd",
     "catppuccin-pink": "#f5c2e7",
@@ -36,7 +33,14 @@
     "catppuccin-surface0": "#313244",
     "catppuccin-base": "#1e1e2e",
     "catppuccin-mantle": "#181825",
-    "catppuccin-crust": "#11111b"
+    "catppuccin-crust": "#11111b",
+    "background": "p:catppuccin-surface0",
+    "time": "p:catppuccin-subtext1",
+    "path": "p:catppuccin-sapphire",
+    "os": "p:catppuccin-text",
+    "session": "p:catppuccin-yellow",
+    "root": "p:catppuccin-red",
+    "project": "p:catppuccin-sky"
   },
   "blocks": [
     {
@@ -44,14 +48,14 @@
       "segments": [
         {
           "background": "p:background",
-          "foreground": "p:separator-fg",
+          "foreground": "p:os",
           "style": "plain",
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
           "type": "os"
         },
         {
           "background": "p:background",
-          "foreground": "#00AAFF",
+          "foreground": "p:catppuccin-red",
           "style": "plain",
           "template": "  <#bac2de></>",
           "type": "root",
@@ -59,7 +63,7 @@
         },
         {
           "background": "p:background",
-          "foreground": "#26C6DA",
+          "foreground": "p:path",
           "properties": {
             "style": "powerlevel",
             "edge_format": "<b>%s</b>",
@@ -71,7 +75,7 @@
         },
         {
           "background": "p:background",
-          "foreground": "p:git-fg",
+          "foreground": "p:catppuccin-green",
           "style": "plain",
           "template": "<#bac2de></> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }}   {{ .Staging.String }}{{ end }}{{ if .Working.Changed }}   {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }}   {{ .StashCount }}{{ end }} ",
           "properties": {
@@ -104,7 +108,7 @@
         },
         {
           "background": "transparent",
-          "foreground": "p:p10k-bg",
+          "foreground": "p:background",
           "style": "plain",
           "template": "",
           "type": "text"
@@ -118,7 +122,7 @@
       "segments": [
         {
           "background": "transparent",
-          "foreground": "p:p10k-bg",
+          "foreground": "p:background",
           "style": "plain",
           "template": "",
           "type": "text"
@@ -126,7 +130,7 @@
         {
           "type": "executiontime",
           "style": "plain",
-          "foreground": "248",
+          "foreground": "p:catppuccin-subtext0",
           "background": "p:background",
           "template": " 󱦟 {{ .FormattedMs }} <#bac2de></>",
           "properties": {
@@ -172,7 +176,7 @@
         },
         {
           "background": "p:background",
-          "foreground": "#D7AF00",
+          "foreground": "p:session",
           "style": "plain",
           "template": " {{ .UserName }}@{{ .HostName }} <#bac2de></>",
           "type": "session"
