@@ -3,7 +3,7 @@
   "palette": {
     "p10k-bg": "#313244",
     "background": "p:p10k-bg",
-    "separator-fg": "#EEEEEE",
+    "separator-fg": "#bac2de",
     "session-fg": "#D7AF00",
     "time-fg": "#A6ADC8",
     "git-fg": "76",
@@ -53,7 +53,7 @@
           "background": "p:background",
           "foreground": "#00AAFF",
           "style": "plain",
-          "template": "  ",
+          "template": "  <#bac2de></>",
           "type": "root",
           "comment": "Show when the current user is root or when in an elevated shell (Windows)"
         },
@@ -73,7 +73,7 @@
           "background": "p:background",
           "foreground": "p:git-fg",
           "style": "plain",
-          "template": "<#EEEEEE></> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }}   {{ .Staging.String }}{{ end }}{{ if .Working.Changed }}   {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }}   {{ .StashCount }}{{ end }} ",
+          "template": "<#bac2de></> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }}   {{ .Staging.String }}{{ end }}{{ if .Working.Changed }}   {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }}   {{ .StashCount }}{{ end }} ",
           "properties": {
             "branch_max_length": 0,
             "branch_icon": " ",
@@ -120,7 +120,7 @@
           "style": "plain",
           "foreground": "248",
           "background": "p:background",
-          "template": " 󱦟 {{ .FormattedMs }} <#eeeeee></>",
+          "template": " 󱦟 {{ .FormattedMs }} <#bac2de></>",
           "properties": {
             "threshold": 500,
             "style": "austin"
@@ -131,42 +131,42 @@
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "   {{ .Full }} <#eeeeee></>"
+          "template": "   {{ .Full }} <#bac2de></>"
         },
         {
           "type": "python",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "  {{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }} <#eeeeee></>"
+          "template": "  {{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }} <#bac2de></>"
         },
         {
           "type": "rust",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "  {{ .Full }} <#eeeeee></>"
+          "template": "  {{ .Full }} <#bac2de></>"
         },
         {
           "type": "lua",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "  {{ .Executable }} {{ .Full }} <#eeeeee></>"
+          "template": "  {{ .Executable }} {{ .Full }} <#bac2de></>"
         },
         {
           "background": "p:background",
           "foreground": "p:status-fg-success",
           "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
           "style": "plain",
-          "template": "{{ if ne .Code 0 }} {{ reason .Code }} {{ end }}<#eeeeee></>",
+          "template": "{{ if ne .Code 0 }} {{ reason .Code }} {{ end }}<#bac2de></>",
           "type": "status"
         },
         {
           "background": "p:background",
           "foreground": "#D7AF00",
           "style": "plain",
-          "template": " {{ .UserName }}@{{ .HostName }} <#eeeeee></>",
+          "template": " {{ .UserName }}@{{ .HostName }} <#bac2de></>",
           "type": "session"
         },
         {
