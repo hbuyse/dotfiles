@@ -90,6 +90,17 @@
           "type": "text"
         },
         {
+          "type": "executiontime",
+          "style": "plain",
+          "foreground": "248",
+          "background": "p:background",
+          "template": " <#fefefe></> {{ .FormattedMs }} <#eeeeee></>",
+          "properties": {
+            "threshold": 500,
+            "style": "austin"
+          }
+        },
+        {
           "type": "cmake",
           "style": "plain",
           "foreground": "p:project",
