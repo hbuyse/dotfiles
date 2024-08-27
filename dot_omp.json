@@ -87,6 +87,27 @@
           "type": "text"
         },
         {
+          "type": "cmake",
+          "style": "plain",
+          "foreground": "37",
+          "background": "p:background",
+          "template": "   {{ .Full }} <#eeeeee></>"
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "37",
+          "background": "p:background",
+          "template": "  {{ .Full }} <#eeeeee></>"
+        },
+        {
+          "type": "rust",
+          "style": "plain",
+          "foreground": "37",
+          "background": "p:background",
+          "template": "  {{ .Full }} <#eeeeee></>"
+        },
+        {
           "background": "p:background",
           "foreground": "p:status-fg-success",
           "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
