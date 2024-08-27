@@ -94,7 +94,7 @@
           "style": "plain",
           "foreground": "248",
           "background": "p:background",
-          "template": " <#fefefe></> {{ .FormattedMs }} <#eeeeee></>",
+          "template": " 󱦟 {{ .FormattedMs }} <#eeeeee></>",
           "properties": {
             "threshold": 500,
             "style": "austin"
