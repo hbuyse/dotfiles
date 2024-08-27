@@ -5,6 +5,10 @@
 
 display_info "${0}"
 
+if [ "${CHEZMOI_UID}" -eq 0 ]; then
+    exit 0
+fi
+
 SERVICES=(
     "nextcloud"
     "lxpolkit"
