@@ -90,6 +90,14 @@
               "work/henri.buyse/*": "🔨 ",
               "work/*": "🔨 "
             },
+            "tag_icon": " ",
+            "rebase_icon": " ",
+            "git_icon": " ",
+            "merge_icon": " ",
+            "commit_icon": " ",
+            "revert_icon": " ",
+            "no_commits_icon": " ",
+            "cherry_pick_icon": " ",
             "full_branch_path": true
           },
           "type": "git"
