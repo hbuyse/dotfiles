@@ -122,6 +122,13 @@
           "template": "  {{ .Full }} <#eeeeee></>"
         },
         {
+          "type": "lua",
+          "style": "plain",
+          "foreground": "p:project",
+          "background": "p:background",
+          "template": "  {{ .Executable }} {{ .Full }} <#eeeeee></>"
+        },
+        {
           "background": "p:background",
           "foreground": "p:status-fg-success",
           "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
