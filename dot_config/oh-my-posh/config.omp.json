@@ -170,7 +170,10 @@
           "foreground": "p:status-fg-success",
           "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
           "style": "plain",
-          "template": "{{ if ne .Code 0 }} {{ reason .Code }}  {{ end }}<#bac2de></>",
+          "template": "{{ if .Error }}{{ .String }} {{ end }}<#bac2de></>",
+          "properties": {
+            "status_template": " {{ reason .Code }} "
+          },
           "type": "status"
         },
         {
