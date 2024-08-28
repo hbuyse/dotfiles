@@ -142,28 +142,28 @@
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": " {{ .Full }}   <#bac2de></>"
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}   <#bac2de></>"
         },
         {
           "type": "python",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": " {{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }}  <#bac2de></>"
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}  <#bac2de></>"
         },
         {
           "type": "rust",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": " {{ .Full }}  <#bac2de></>"
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}  <#bac2de></>"
         },
         {
           "type": "lua",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": " {{ .Executable }} {{ .Full }}  <#bac2de></>"
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Executable }} {{ .Full }}{{ end }}  <#bac2de></>"
         },
         {
           "background": "p:background",
