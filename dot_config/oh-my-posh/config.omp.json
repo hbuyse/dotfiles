@@ -5,7 +5,6 @@
     "separator-fg": "#bac2de",
     "session-fg": "#D7AF00",
     "git-fg": "76",
-    "status-bg": "transparent",
     "status-fg-success": "#5faf00",
     "status-fg-error": "#FF5252",
     "catppuccin-rosewater": "#f5e0dc",
@@ -201,6 +200,7 @@
         {
           "foreground": "p:status-fg-success",
           "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
+          "background": "transparent",
           "properties": {
             "always_enabled": true
           },
