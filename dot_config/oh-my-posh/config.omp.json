@@ -132,6 +132,20 @@
           "type": "text"
         },
         {
+          "background": "p:background",
+          "foreground": "p:status-fg-success",
+          "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
+          "style": "plain",
+          "templates": [
+            "{{ if .Error }}{{ .String }} {{ end }}",
+            "<#bac2de></>"
+          ],
+          "properties": {
+            "status_template": " {{ reason .Code }} "
+          },
+          "type": "status"
+        },
+        {
           "type": "executiontime",
           "style": "plain",
           "foreground": "p:catppuccin-subtext0",
@@ -207,17 +221,6 @@
             " ",
             " <#bac2de></>"
           ]
-        },
-        {
-          "background": "p:background",
-          "foreground": "p:status-fg-success",
-          "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
-          "style": "plain",
-          "template": "{{ if .Error }}{{ .String }} {{ end }}<#bac2de></>",
-          "properties": {
-            "status_template": " {{ reason .Code }} "
-          },
-          "type": "status"
         },
         {
           "background": "p:background",
