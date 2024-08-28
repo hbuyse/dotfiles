@@ -163,7 +163,7 @@
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Executable }} {{ .Full }}{{ end }}  <#bac2de></>"
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}  <#bac2de></>"
         },
         {
           "type": "perl",
