@@ -173,6 +173,13 @@
           "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}  <#bac2de></>"
         },
         {
+          "type": "go",
+          "style": "plain",
+          "foreground": "p:project",
+          "background": "p:background",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}  <#bac2de></>"
+        },
+        {
           "background": "p:background",
           "foreground": "p:status-fg-success",
           "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
