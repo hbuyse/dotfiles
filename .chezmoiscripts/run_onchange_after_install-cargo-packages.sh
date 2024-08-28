@@ -12,7 +12,7 @@ if [[ "${HOSTNAME}" == "truenas" ]]; then
 fi
 
 case "${OS}-${ID}" in
-"linux-manjaro" | "linux-arch" | "freebsd-freebsd")
+"linux-endeavouros" | "linux-manjaro" | "linux-arch" | "freebsd-freebsd")
     install_packages \
         ripgrep \
         bottom \

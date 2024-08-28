@@ -10,7 +10,7 @@ SERVICES=(
     "lxpolkit"
 )
 case "${OS}-${ID}" in
-"linux-manjaro" | "linux-arch" | "linux-opensuse-tumbleweed")
+"linux-endeavouros" | "linux-manjaro" | "linux-arch" | "linux-opensuse-tumbleweed")
     SERVICES+=(
         "mako"
         "kanshi"

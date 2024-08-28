@@ -12,7 +12,7 @@ if [[ "${HOSTNAME}" == "truenas" ]]; then
 fi
 
 case "${OS}-${ID}" in
-"linux-manjaro" | "linux-arch" | "linux-opensuse-tumbleweed")
+"linux-endeavouros" | "linux-manjaro" | "linux-arch" | "linux-opensuse-tumbleweed")
     install_packages rustup
     exit 0
     ;;

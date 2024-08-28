@@ -18,7 +18,7 @@ declare -A LSP_SERVERS_AS_NPM=(
 )
 
 case "${OS}-${ID}" in
-"linux-manjaro" | "linux-arch")
+"linux-endeavouros" | "linux-manjaro" | "linux-arch")
     LSP_SERVERS_AS_PKG+=("clang") # clangd
     LSP_SERVERS_AS_PKG+=("lua-language-server")
     LSP_SERVERS_AS_PKG+=("bash-language-server")

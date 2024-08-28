@@ -68,7 +68,7 @@ function aur_install_packages() {
 
     # Get the command to install package and check that package is installed
     case "${OS}-${ID}" in
-    "linux-manjaro" | "linux-arch")
+    "linux-endeavouros" | "linux-manjaro" | "linux-arch")
         install_cmd="yay --sync --refresh --refresh --needed --answerclean NotInstalled --answerdiff NotInstalled"
         # Check that package is installed
         for pkg in "${packages_to_install[@]}"; do
@@ -105,7 +105,7 @@ function install_packages() {
 
     # Get the command to install package and check that package is installed
     case "${OS}-${ID}" in
-    "linux-manjaro" | "linux-arch")
+    "linux-endeavouros" | "linux-manjaro" | "linux-arch")
         install_cmd="pacman --sync --refresh --refresh --sysupgrade --needed --noconfirm"
         # Check that package is installed
         for pkg in "${packages_to_install[@]}"; do

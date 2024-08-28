@@ -6,7 +6,7 @@
 display_info "${0}"
 
 case "${OS}-${ID}" in
-"linux-manjaro" | "linux-arch")
+"linux-endeavouros" | "linux-manjaro" | "linux-arch")
     # Install my package
     install_packages \
         chezmoi age \

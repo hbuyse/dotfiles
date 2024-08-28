@@ -24,7 +24,7 @@ if cmdexists pip; then
     )
 
     case "${OS}-${ID}" in
-    "linux-arch" | "linux-manjaro")
+    "linux-endeavouros" | "linux-arch" | "linux-manjaro")
         install_packages codespell pre-commit
         ;;
     *)
