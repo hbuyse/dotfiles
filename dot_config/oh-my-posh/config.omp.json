@@ -201,7 +201,8 @@
           "type": "time"
         }
       ],
-      "type": "prompt"
+      "type": "prompt",
+      "overflow": "hide"
     },
     {
       "alignment": "left",
