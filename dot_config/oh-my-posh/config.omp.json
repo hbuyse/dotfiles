@@ -77,11 +77,11 @@
           "foreground": "p:catppuccin-green",
           "style": "plain",
           "templates": [
-            "<#bac2de></> {{ .HEAD }} ",
-            "{{ if .BranchStatus }}{{ .BranchStatus }}{{ end }}",
-            "{{ if .Staging.Changed }}   {{ .Staging.String }} {{ end }}",
-            "{{ if .Working.Changed }}   {{ .Working.String }} {{ end }}",
-            "{{ if gt .StashCount 0 }}   {{ .StashCount }} {{ end }}"
+            "<#bac2de></> {{ .HEAD }}",
+            "{{ if .BranchStatus }} {{ .BranchStatus }} {{ end }}",
+            "{{ if .Staging.Changed }}  {{ .Staging.String }} {{ end }}",
+            "{{ if .Working.Changed }}  {{ .Working.String }} {{ end }}",
+            "{{ if gt .StashCount 0 }}  {{ .StashCount }} {{ end }}"
           ],
           "properties": {
             "branch_max_length": 0,
@@ -96,7 +96,6 @@
             "mapped_branches": {
               "feature/*": "🚀 ",
               "feat/*": "🚀 ",
-              "work/henri.buyse/*": "🔨 ",
               "work/*": "🔨 "
             },
             "tag_icon": " ",
