@@ -132,7 +132,7 @@
           "style": "plain",
           "foreground": "p:catppuccin-subtext0",
           "background": "p:background",
-          "template": " 󱦟 {{ .FormattedMs }} <#bac2de></>",
+          "template": " {{ .FormattedMs }} 󱦟 <#bac2de></>",
           "properties": {
             "threshold": 500,
             "style": "austin"
@@ -143,42 +143,42 @@
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "   {{ .Full }} <#bac2de></>"
+          "template": " {{ .Full }}   <#bac2de></>"
         },
         {
           "type": "python",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "  {{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }} <#bac2de></>"
+          "template": " {{ if .Venv }}{{ .Venv }}{{ else }}{{ .Full }}{{ end }}  <#bac2de></>"
         },
         {
           "type": "rust",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "  {{ .Full }} <#bac2de></>"
+          "template": " {{ .Full }}  <#bac2de></>"
         },
         {
           "type": "lua",
           "style": "plain",
           "foreground": "p:project",
           "background": "p:background",
-          "template": "  {{ .Executable }} {{ .Full }} <#bac2de></>"
+          "template": " {{ .Executable }} {{ .Full }}  <#bac2de></>"
         },
         {
           "background": "p:background",
           "foreground": "p:status-fg-success",
           "foreground_templates": ["{{ if .Error }}p:status-fg-error{{ end }}"],
           "style": "plain",
-          "template": "{{ if ne .Code 0 }} {{ reason .Code }} {{ end }}<#bac2de></>",
+          "template": "{{ if ne .Code 0 }} {{ reason .Code }}  {{ end }}<#bac2de></>",
           "type": "status"
         },
         {
           "background": "p:background",
           "foreground": "p:session",
           "style": "plain",
-          "template": " {{ .UserName }}@{{ .HostName }} <#bac2de></>",
+          "template": " {{ .UserName }}@{{ .HostName }}  <#bac2de></>",
           "type": "session"
         },
         {
