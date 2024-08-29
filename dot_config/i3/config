@@ -197,9 +197,7 @@ bindsym $mod+r mode "resize"
 ############
 
 # Automatically move some applications to dedicated workspaces
-for_window [class="(?i)firefox"] move container to workspace $ws3
-for_window [class="(?i)chromium.*"] move container to workspace $ws3
-for_window [class="(?i)google-chrome.*"] move container to workspace $ws3
+for_window [window_role="(?i)browser"] move container to workspace $ws3
 for_window [class="(?i)spotify"] move container to workspace $ws6
 for_window [class="(?i)thunderbird"] move container to workspace $ws4
 for_window [class="(?i)evolution"] move container to workspace $ws4
