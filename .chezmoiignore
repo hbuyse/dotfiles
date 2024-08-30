@@ -36,3 +36,22 @@ utils.sh
 .local/share/fonts/.uuid
 .local/share/fonts/*/.uuid
 {{- end }}
+
+# Autorandr
+{{- if ne .chezmoi.hostname "hbuyse-latitude5400" }}
+.config/autorandr/l5400-onescreen
+.config/autorandr/l5400-threescreens-work-valentins
+.config/autorandr/l5400-threescreens-work
+.config/autorandr/l5400-twoscreens-home
+.config/autorandr/l5400-threescreens-work-tv
+{{- end }}
+
+{{- if ne .chezmoi.hostname "white-tower" }}
+.config/autorandr/white-tower
+{{- end }}
+
+{{- if ne .chezmoi.hostname "t480" }}
+.config/autorandr/t480-threescreens
+.config/autorandr/t480-threescreens-bis
+.config/autorandr/t480-onescreen
+{{- end }}
