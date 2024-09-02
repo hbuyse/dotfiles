@@ -210,7 +210,7 @@
     executable = true
 {{- end }}{{/* env "XDG_SESSION_TYPE" "wayland" */}}
 
-{{ $ohMyPoshVersion := "23.7.2" -}}
+{{ $ohMyPoshVersion := "23.10.1" -}}
 [".local/bin/oh-my-posh"]
     type = "file"
     url = "https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v{{ $ohMyPoshVersion }}/posh-{{ .chezmoi.os }}-{{ .chezmoi.arch }}"
