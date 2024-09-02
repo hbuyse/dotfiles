@@ -1,76 +1,137 @@
 ---
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
 palette:
-  p10k-bg: "#313244"
-  separator-fg: "#bac2de"
-  session-fg: "#D7AF00"
-  git-fg: "76"
+  white: "#ffffff"
   status-fg-success: "#5faf00"
   status-fg-error: "#FF5252"
-  catppuccin-mocha-rosewater: "#f5e0dc"
-  catppuccin-mocha-flamingo: "#f2cdcd"
-  catppuccin-mocha-pink: "#f5c2e7"
-  catppuccin-mocha-mauve: "#cba6f7"
-  catppuccin-mocha-red: "#f38ba8"
-  catppuccin-mocha-maroon: "#eba0ac"
-  catppuccin-mocha-peach: "#fab387"
-  catppuccin-mocha-yellow: "#f9e2af"
-  catppuccin-mocha-green: "#a6e3a1"
-  catppuccin-mocha-teal: "#94e2d5"
-  catppuccin-mocha-sky: "#89dceb"
-  catppuccin-mocha-sapphire: "#74c7ec"
-  catppuccin-mocha-blue: "#89b4fa"
-  catppuccin-mocha-lavender: "#b4befe"
-  catppuccin-mocha-text: "#cdd6f4"
-  catppuccin-mocha-subtext1: "#bac2de"
-  catppuccin-mocha-subtext0: "#a6adc8"
-  catppuccin-mocha-overlay2: "#9399b2"
-  catppuccin-mocha-overlay1: "#7f849c"
-  catppuccin-mocha-overlay0: "#6c7086"
-  catppuccin-mocha-surface2: "#585b70"
-  catppuccin-mocha-surface1: "#45475a"
-  catppuccin-mocha-surface0: "#313244"
-  catppuccin-mocha-base: "#1e1e2e"
-  catppuccin-mocha-mantle: "#181825"
-  catppuccin-mocha-crust: "#11111b"
-  catppuccin-latte-rosewater: "#dc8a78"
-  catppuccin-latte-flamingo: "#dd7878"
-  catppuccin-latte-pink: "#ea76cb"
-  catppuccin-latte-mauve: "#8839ef"
-  catppuccin-latte-red: "#d20f39"
-  catppuccin-latte-maroon: "#e64553"
-  catppuccin-latte-peach: "#fe640b"
-  catppuccin-latte-yellow: "#df8e1d"
-  catppuccin-latte-green: "#40a02b"
-  catppuccin-latte-teal: "#179299"
-  catppuccin-latte-sky: "#04a5e5"
-  catppuccin-latte-sapphire: "#209fb5"
-  catppuccin-latte-blue: "#1e66f5"
-  catppuccin-latte-lavender: "#7287fd"
-  catppuccin-latte-text: "#4c4f69"
-  catppuccin-latte-subtext1: "#5c5f77"
-  catppuccin-latte-subtext0: "#6c6f85"
-  catppuccin-latte-overlay2: "#7c7f93"
-  catppuccin-latte-overlay1: "#8c8fa1"
-  catppuccin-latte-overlay0: "#9ca0b0"
-  catppuccin-latte-surface2: "#acb0be"
-  catppuccin-latte-surface1: "#bcc0cc"
-  catppuccin-latte-surface0: "#ccd0da"
-  catppuccin-latte-base: "#eff1f5"
-  catppuccin-latte-mantle: "#e6e9ef"
-  catppuccin-latte-crust: "#dce0e8"
-  background: p:catppuccin-mocha-surface0
-  time: p:catppuccin-mocha-subtext1
-  path: p:catppuccin-mocha-sapphire
-  os: p:catppuccin-mocha-text
-  session: p:catppuccin-mocha-yellow
-  root: p:catppuccin-mocha-red
-  project: p:catppuccin-mocha-sky
+  background: p:surface0
+  session: p:yellow
+  project: p:sky
+
+palettes:
+  template: catppuccin-mocha
+  list:
+    catppuccin-mocha:
+      rosewater: "#f5e0dc"
+      flamingo: "#f2cdcd"
+      pink: "#f5c2e7"
+      mauve: "#cba6f7"
+      red: "#f38ba8"
+      maroon: "#eba0ac"
+      peach: "#fab387"
+      yellow: "#f9e2af"
+      green: "#a6e3a1"
+      teal: "#94e2d5"
+      sky: "#89dceb"
+      sapphire: "#74c7ec"
+      blue: "#89b4fa"
+      lavender: "#b4befe"
+      text: "#cdd6f4"
+      subtext1: "#bac2de"
+      subtext0: "#a6adc8"
+      overlay2: "#9399b2"
+      overlay1: "#7f849c"
+      overlay0: "#6c7086"
+      surface2: "#585b70"
+      surface1: "#45475a"
+      surface0: "#313244"
+      base: "#1e1e2e"
+      mantle: "#181825"
+      crust: "#11111b"
+    catppuccin-latte:
+      rosewater: "#dc8a78"
+      flamingo: "#dd7878"
+      pink: "#ea76cb"
+      mauve: "#8839ef"
+      red: "#d20f39"
+      maroon: "#e64553"
+      peach: "#fe640b"
+      yellow: "#df8e1d"
+      green: "#40a02b"
+      teal: "#179299"
+      sky: "#04a5e5"
+      sapphire: "#209fb5"
+      blue: "#1e66f5"
+      lavender: "#7287fd"
+      text: "#4c4f69"
+      subtext1: "#5c5f77"
+      subtext0: "#6c6f85"
+      overlay2: "#7c7f93"
+      overlay1: "#8c8fa1"
+      overlay0: "#9ca0b0"
+      surface2: "#acb0be"
+      surface1: "#bcc0cc"
+      surface0: "#ccd0da"
+      base: "#eff1f5"
+      mantle: "#e6e9ef"
+      crust: "#dce0e8"
+    catppuccin-macchiato:
+      rosewater: "#f4dbd6"
+      flamingo: "#f0c6c6"
+      pink: "#f5bde6"
+      mauve: "#c6a0f6"
+      red: "#ed8796"
+      maroon: "#ee99a0"
+      peach: "#f5a97f"
+      yellow: "#eed49f"
+      green: "#a6da95"
+      teal: "#8bd5ca"
+      sky: "#91d7e3"
+      sapphire: "#7dc4e4"
+      blue: "#8aadf4"
+      lavender: "#b7bdf8"
+      text: "#cad3f5"
+      subtext1: "#b8c0e0"
+      subtext0: "#a5adcb"
+      overlay2: "#939ab7"
+      overlay1: "#8087a2"
+      overlay0: "#6e738d"
+      surface2: "#5b6078"
+      surface1: "#494d64"
+      surface0: "#363a4f"
+      base: "#24273a"
+      mantle: "#1e2030"
+      crust: "#181926"
+    catppuccin-frappe:
+      rosewater: "#f2d5cf"
+      flamingo: "#eebebe"
+      pink: "#f4b8e4"
+      mauve: "#ca9ee6"
+      red: "#e78284"
+      maroon: "#ea999c"
+      peach: "#ef9f76"
+      yellow: "#e5c890"
+      green: "#a6d189"
+      teal: "#81c8be"
+      sky: "#99d1db"
+      sapphire: "#85c1dc"
+      blue: "#8caaee"
+      lavender: "#babbf1"
+      text: "#c6d0f5"
+      subtext1: "#b5bfe2"
+      subtext0: "#a5adce"
+      overlay2: "#949cbb"
+      overlay1: "#838ba7"
+      overlay0: "#737994"
+      surface2: "#626880"
+      surface1: "#51576d"
+      surface0: "#414559"
+      base: "#303446"
+      mantle: "#292c3c"
+      crust: "#232634"
 
 common:
   element: &element
-    style: plain
+    style: powerline
     background: p:background
+    foreground: p:surface1
+    powerline_symbol: ""
+  relement: &relement
+    style: diamond
+    background: p:background
+    foreground: p:surface1
+    leading_diamond: ""
   project: &project
     <<: *element
     foreground: p:project
@@ -78,27 +139,29 @@ common:
 blocks:
   - alignment: left
     segments:
-      - foreground: p:os
-        <<: *element
-        template: " {{ if .WSL }}WSL at {{ end }}{{.Icon}} "
+      - <<: *element
+        background: p:blue
+        foreground: p:white
+        template: " {{ if .WSL }}WSL at {{ end }}{{.Icon}} "
         type: os
-      - foreground: p:catppuccin-mocha-red
-        <<: *element
-        template: "  <#bac2de></>"
-        type: root
-        comment: Show when the current user is root or when in an elevated shell (Windows)
-      - foreground: p:path
-        <<: *element
+      - <<: *element
+        background: p:blue
+        foreground: p:white
+        template: "  "
+        type:
+        comment: Show when the current user is  or when in an elevated shell (Windows)
+      - <<: *element
+        background: p:pink
         properties:
           style: powerlevel
           edge_format: "<b>%s</b>"
           max_width: 80
         template: "  {{ .Path }} "
         type: path
-      - foreground: p:catppuccin-mocha-green
-        <<: *element
+      - <<: *element
+        background: p:lavender
         templates:
-          - "<#bac2de></> {{ .HEAD }}"
+          - " {{ .HEAD }}"
           - "{{ if .BranchStatus }} {{ .BranchStatus }} {{ end }}"
           - "{{ if .Staging.Changed }}  {{ .Staging.String }} {{ end }}"
           - "{{ if .Working.Changed }}  {{ .Working.String }} {{ end }}"
@@ -127,37 +190,23 @@ blocks:
           cherry_pick_icon: " "
           full_branch_path: true
         type: git
-      - background: transparent
-        foreground: p:background
-        style: plain
-        template: ""
-        type: text
     type: prompt
   - alignment: right
     filler: "<#313244,transparent>·</>"
     segments:
-      - foreground: p:background
-        background: transparent
-        style: plain
-        template: ""
-        type: text
-      - foreground: p:status-fg-success
-        <<: *element
-        foreground_templates:
-          - "{{ if .Error }}p:status-fg-error{{ end }}"
+      - <<: *relement
+        background: p:red
         templates:
           - "{{ if .Error }}{{ .String }} {{ end }}"
-          - "<#bac2de></>"
         properties:
           status_template: " {{ reason .Code }} "
         type: status
-      - foreground: p:catppuccin-mocha-subtext0
-        <<: *element
-        type: executiontime
+      - <<: *relement
+        background: p:pink
+        type: execution
         templates:
           - " {{ .FormattedMs }}"
-          - " 󱦟"
-          - " <#bac2de></>"
+          - " 󱦟 "
         properties:
           threshold: 500
           style: austin
@@ -165,47 +214,40 @@ blocks:
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - "  "
-          - " <#bac2de></>"
+          - "   "
       - type: python
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
       - type: rust
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
       - type: lua
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
       - type: perl
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
       - type: go
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
-      - foreground: p:session
-        <<: *element
+          - "  "
+      - <<: *relement
+        background: p:pink
         templates:
           - " {{ .UserName }}@{{ .HostName }}"
-          - " {{ if .SSHSession }}{{ else }}{{ end }}"
-          - " <#bac2de></>"
+          - " {{ if .SSHSession }}{{ else }}{{ end }} "
         type: session
-      - foreground: p:time
-        <<: *element
+      - <<: *relement
+        background: p:blue
         properties:
           time_format: "15:04:05"
         template: " {{ .CurrentDate | date .Format }}  "
