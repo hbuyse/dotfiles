@@ -184,6 +184,10 @@ blocks:
         properties:
           threshold: 500
           style: austin
+      - type: text
+        <<: *element
+        foreground: p:yellow
+        template: "{{ if .Env.DIRENV_FILE }}  <#bac2de></>{{ end }}"
       - type: cmake
         <<: *project
         templates:
