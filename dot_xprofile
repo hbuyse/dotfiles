@@ -1,4 +1,4 @@
-#! /usr/bin/bash
+#! /usr/bin/env bash
 
 # Load the Xresources if xrdb is found
 # Can not unset readonly variable
@@ -16,6 +16,6 @@ fi
 
 # set path so it includes cargo binaries (Rust) [for alacritty]
 if [ -f "$HOME/.cargo/env" ]; then
-	. "$HOME/.cargo/env"
+    . "$HOME/.cargo/env"
 fi
 # vim: set ts=4 sw=4 tw=0 et ft=sh :
