@@ -1,0 +1,132 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# order of modules in prompt
+format = """[](bg:#464347 fg:#4e8c63)\
+        $sudo\
+        $directory\
+        $git_branch\
+        $git_commit\
+        $git_status\
+        $git_state\
+        $golang\
+        $line_break\
+        $character\
+        """
+
+right_format = """$jobs\
+        $cmd_duration\
+        $username@$hostname\
+        $time\
+        """
+add_newline = false
+
+[sudo]
+disabled = false
+style = "bg:#ff3322 fg:#111111"
+format = "[[](bg:#ff3322 fg:#464347) [](bg:#464347 fg:#ff3322)]($style)"
+
+[time]
+disabled = false
+style = "bg:#2d5664 fg:#aaaaaa"
+use_12hr = false
+time_format = "%H:%M:%S"
+utc_time_offset = "local"
+format = "[[](bg:#2d5664 fg:#464347) $time [](bg:#464347 fg:#2d5664)]($style)"
+
+[battery]
+charging_symbol = ""
+discharging_symbol = ""
+format = "[[](bg:#ff3322 fg:#464347) $percentage [](bg:#464347 fg:#ff3322)]($style)"
+
+[[battery.display]]
+threshold = 25
+style = "bg:#ff3322 fg:#111111"
+
+[username]
+disabled = false
+show_always = true
+style_root = "bg:#66858F fg:#FF5511"
+style_user = "bg:#66858F fg:#111111"
+format = "[[](bg:#66858F fg:#464347) $user [](bg:#464347 fg:#66858F)]($style)"
+
+[hostname]
+style = "bg:#456B78 fg:#111111"
+ssh_only = false
+trim_at = "."
+format = "[[](bg:#456B78 fg:#464347)($style) $hostname [](bg:#464347 fg:#456B78)]($style)"
+
+[directory]
+style = "bg:#c0976b fg:#111111"
+read_only = " "
+read_only_style = "bg:#ff3322 fg:#111111"
+truncation_length = 4
+truncate_to_repo = false
+truncation_symbol = "…/"
+format = "([[](bg:#ff3322 fg:#464347)$read_only[](bg:#464347 fg:#ff3322)]($read_only_style))[[](bg:#c0976b fg:#464347) $path [](bg:#464347 fg:#c0976b)]($style)"
+
+[git_branch]
+symbol = ""
+style = "bg:#A05345 fg:#111111"
+format = "[[](bg:#A05345 fg:#464347) $symbol$branch [](bg:#464347 fg:#A05345)]($style)"
+
+[git_commit]
+style = "bg:#A05345 fg:#111111"
+commit_hash_length = 4
+format = "[[](bg:#A05345 fg:#464347) #$hash [](bg:#464347 fg:#A05345)]($style)"
+
+[git_status]
+style = "bg:#A05345 fg:#000000"
+stashed = "${count}S "
+staged = "${count}+ "
+modified = "${count}* "
+renamed = "${count}» "
+untracked = "${count}? "
+deleted = "${count}- "
+conflicted = "${count}! "
+ahead = "${count}⇡ "
+behind = "${count}⇣ "
+diverged = "⇕⇡${ahead_count}⇣${behind_count} "
+format = "([[](bg:#A05345 fg:#464347) $stashed$staged$modified$renamed$untracked$deleted$conflicted$ahead_behind$diverged[](bg:#464347 fg:#A05345)]($style))"
+
+[git_state]
+style = "bg:#A05345 fg:#000000"
+rebase = "rebasing"
+merge = "merging"
+revert = "reverting"
+cherry_pick = "cherry picking"
+bisect = "bisecting"
+am = "am'ing"
+am_or_rebase = "am/rebase"
+format = '[[](bg:#A05345 fg:#464347) $state($progress_current/$progress_total) [](bg:#464347 fg:#A05345)]($style)'
+
+[golang]
+disabled = true
+symbol = "Go "
+style = "bg:#95aab1 fg:#111111"
+format = "[[](bg:#95aab1 fg:#464347) $symbol$version [](bg:#464347 fg:#95aab1)]($style)"
+
+[line_break]
+disabled = true
+
+[jobs]
+symbol = "jobs:"
+style = "bg:#ff3322 fg:#111111"
+number_threshold = 1
+format = "[[](bg:#ff3322 fg:#464347) $symbol$number [](bg:#464347 fg:#ff3322)]($style)"
+
+[cmd_duration]
+disabled = false
+style = "bg:#464347 fg:#EEEEEE"
+min_time = 2_000
+show_milliseconds = false
+show_notifications = false
+min_time_to_notify = 50_000
+format = "[ $duration ]($style)"
+
+[character]
+success_symbol = "[[](bg:#4e8c63 fg:#464347)](fg:#4e8c63)"
+error_symbol = "[[](bg:#ff3322 fg:#464347)](fg:#ff3322)"
+vicmd_symbol = "[[](bg:#c0976b fg:#464347)[](bg:#464347 fg:#c0976b)](bold bg:#c0976b fg:#ff3322)"
+format = "$symbol "
+

@@ -25,7 +25,8 @@ case "${OS}-${ID}" in
         zoxide \
         gitui \
         eza \
-        bat
+        bat \
+        starship
     ;;
 
 "linux-opensuse-tumbleweed")
@@ -63,6 +64,7 @@ case "${OS}-${ID}" in
             ["gitui"]="0.26.3"
             ["eza"]="0.19.0"
             ["bat"]="0.24.0"
+            ["starship"]="1.20.1"
         )
 
         for pkg in "${!CARGO_PKGS[@]}"; do
