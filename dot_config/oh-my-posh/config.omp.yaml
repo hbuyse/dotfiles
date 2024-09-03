@@ -188,6 +188,11 @@ blocks:
         <<: *element
         foreground: p:yellow
         template: "{{ if .Env.DIRENV_FILE }}  <#bac2de></>{{ end }}"
+      - type: project
+        <<: *project
+        templates:
+          - " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}{{ .Name }}{{ end }} {{ if .Version }}{{.Version}} {{ end }}{{ end }}"
+          - " <#bac2de></>"
       - type: cmake
         <<: *project
         templates:
