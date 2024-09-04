@@ -202,6 +202,11 @@ blocks:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
           - "  "
           - " <#bac2de></>"
+        properties:
+          extensions:
+            - "*.cmake"
+            - "CMakeLists.txt"
+            - "CMakeCache.txt"
       - type: python
         <<: *project
         templates:
