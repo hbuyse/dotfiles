@@ -241,7 +241,7 @@ blocks:
         <<: *element
         templates:
           - " {{ .UserName }}@{{ .HostName }}"
-          - " {{ if .SSHSession }}{{ else }}{{ end }}"
+          - " {{ if .SSHSession }}{{ else if .Root }}{{ else }}{{ end }}"
           - " <#bac2de></>"
         type: session
       - foreground: p:subtext1
