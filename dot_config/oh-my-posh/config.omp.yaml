@@ -113,7 +113,7 @@ blocks:
       - foreground: p:sapphire
         <<: *element
         properties:
-          style: powerlevel
+          style: full
           edge_format: "<b>%s</b>"
           max_width: 80
         template: "  {{ .Path }} "
