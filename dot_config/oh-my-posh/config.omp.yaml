@@ -119,6 +119,7 @@ blocks:
         templates:
           - "  "
           - "{{ .Path }} "
+          - "{{ if not .Writable }} {{ end }}"
         type: path
       - foreground: p:green
         <<: *element
