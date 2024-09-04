@@ -116,7 +116,9 @@ blocks:
           style: full
           edge_format: "<b>%s</b>"
           max_width: 80
-        template: "  {{ .Path }} "
+        templates:
+          - "  "
+          - "{{ .Path }} "
         type: path
       - foreground: p:green
         <<: *element
