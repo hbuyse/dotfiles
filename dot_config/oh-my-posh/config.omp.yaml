@@ -172,10 +172,10 @@ blocks:
         foreground_templates:
           - "{{ if .Error }}p:red{{ end }}"
         templates:
-          - "{{ if .Error }}{{ .String }} {{ end }}"
+          - "{{ if .Error }} {{ .String }}  {{ end }}"
           - "<#bac2de></>"
         properties:
-          status_template: " {{ reason .Code }} "
+          status_template: "{{ reason .Code }}"
         type: status
       - foreground: p:subtext0
         <<: *element
