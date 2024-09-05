@@ -8,6 +8,26 @@ PYENV_PATH="${PYENV_ROOT:-${HOME}/.pyenv}/bin/pyenv"
 
 display_info "${0}"
 
+prompt "Install Pyenv prerequisites"
+case "${OS}-${ID}" in
+"linux-endeavouros" | "linux-arch" | "linux-manjaro")
+    install_packages base-devel openssl zlib xz tk
+    ;;
+"linux-ubuntu")
+    install_packages \
+        build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl git libncursesw5-dev \
+        xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+    ;;
+"linux-opensuse-tumbleweed")
+    install_packages \
+        gcc automake bzip2 libbz2-devel xz xz-devel openssl-devel ncurses-devel readline-devel zlib-devel tk-devel \
+        libffi-devel sqlite3-devel gdbm-devel make findutils patch
+    ;;
+*) ;;
+
+esac
+display_ko_ok ${?}
+
 PYTHON_VERSION="3.12"
 prompt "Install Python ${PYTHON_VERSION}"
 "${PYENV_PATH}" install -s "${PYTHON_VERSION}"
