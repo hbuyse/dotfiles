@@ -126,15 +126,17 @@ function install_theme_colloid {
         aur_install_packages colloid-gtk-theme-git
         ;;
     "linux-ubuntu" | "linux-opensuse-tumbleweed")
-        local colloid_version="2024-05-13"
+        local colloid_version="2024-06-18"
         prompt "Downloading Colloid-gtk-theme in version '${colloid_version}'"
         wget -qO- "https://github.com/vinceliuice/Colloid-gtk-theme/archive/refs/tags/${colloid_version}.tar.gz" | tar -C "/tmp" -xz -f-
         display_ko_ok $?
 
+        install_packages sassc
+
         prompt "Installing Colloid-gtk-theme"
         (
             cd "/tmp/Colloid-gtk-theme-${colloid_version}" || return
-            ./install.sh -l > /dev/null 2>&1
+            ./install.sh --libadwaita --dest "${HOME}/.local/share/themes" --theme all --color all --tweaks all > /dev/null 2>&1
         )
         display_ko_ok $?
 
