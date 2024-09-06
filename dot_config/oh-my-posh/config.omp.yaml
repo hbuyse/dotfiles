@@ -255,9 +255,9 @@ blocks:
   - alignment: left
     newline: true
     segments:
-      - foreground: p:status-fg-success
+      - foreground: p:green
         foreground_templates:
-          - "{{ if .Error }}p:status-fg-error{{ end }}"
+          - "{{ if .Error }}p:red{{ end }}"
         background: transparent
         properties:
           always_enabled: true
