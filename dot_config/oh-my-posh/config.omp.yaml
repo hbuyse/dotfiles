@@ -140,9 +140,9 @@ blocks:
           fetch_status: true
           fetch_upstream_icon: true
           mapped_branches:
-            feature/*: "🚀 "
-            feat/*: "🚀 "
-            work/*: "🔨 "
+            feature/*: " "
+            feat/*: " "
+            work/*: " "
           tag_icon: " "
           rebase_icon: " "
           git_icon: " "
