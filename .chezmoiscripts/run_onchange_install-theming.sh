@@ -150,8 +150,17 @@ function install_theme_colloid {
     esac
 }
 
+function install_theme_bat {
+    mkdir -p "$(bat --config-dir)/themes"
+    for i in "Latte" "Frappe" "Macchiato" "Mocha"; do
+        wget -P "$(bat --config-dir)/themes" "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20${i}.tmTheme"
+    done
+    bat cache --build
+}
+
 install_icons_papirus
 install_cursor_icons_vimix
 install_cursor_icons_breeze
 install_theme_matcha
 install_theme_colloid
+install_theme_bat
