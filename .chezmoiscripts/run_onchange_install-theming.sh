@@ -10,7 +10,7 @@ function install_icons_papirus {
     "linux-manjaro")
         install_packages papirus-icon-theme papirus-maia-icon-theme
         ;;
-    "linux-arch")
+    "linux-arch" | "linux-opensuse-tumbleweed")
         install_packages papirus-icon-theme
         ;;
     "linux-ubuntu")
@@ -43,7 +43,7 @@ function install_cursor_icons_vimix {
     "linux-manjaro" | "linux-arch")
         aur_install_packages vimix-cursors
         ;;
-    "linux-ubuntu")
+    "linux-ubuntu" | "linux-opensuse-tumbleweed")
         local vimix_version="2020-02-24"
         prompt "Downloading Vimix vursors in version '${vimix_version}'"
         wget -qO- "https://github.com/vinceliuice/Vimix-cursors/archive/refs/tags/${vimix_version}.tar.gz" | tar -C "/tmp" -xz -f-
@@ -77,6 +77,9 @@ function install_cursor_icons_breeze {
     "linux-ubuntu")
         install_packages breeze-cursor-theme
         ;;
+    "linux-opensuse-tumbleweed")
+        install_packages breeze6-cursors
+        ;;
     *)
         return
         ;;
@@ -90,6 +93,9 @@ function install_theme_matcha {
         ;;
     "linux-arch")
         aur_install_packages matcha-gtk-theme
+        ;;
+    "linux-opensuse-tumbleweed")
+        install_packages gtk2-metatheme-matcha gtk3-metatheme-matcha gtk4-metatheme-matcha
         ;;
     "linux-ubuntu")
         local matcha_version="2024-05-01"
@@ -119,7 +125,7 @@ function install_theme_colloid {
     "linux-arch" | "linux-manjaro")
         aur_install_packages colloid-gtk-theme-git
         ;;
-    "linux-ubuntu")
+    "linux-ubuntu" | "linux-opensuse-tumbleweed")
         local colloid_version="2024-05-13"
         prompt "Downloading Colloid-gtk-theme in version '${colloid_version}'"
         wget -qO- "https://github.com/vinceliuice/Colloid-gtk-theme/archive/refs/tags/${colloid_version}.tar.gz" | tar -C "/tmp" -xz -f-
