@@ -117,9 +117,8 @@ blocks:
           edge_format: "<b>%s</b>"
           max_width: 80
         templates:
-          - "  "
+          - " {{ if not .Writable }}{{ else }}{{ end }} "
           - "{{ .Path }} "
-          - "{{ if not .Writable }} {{ end }}"
         type: path
       - foreground: p:green
         <<: *element
