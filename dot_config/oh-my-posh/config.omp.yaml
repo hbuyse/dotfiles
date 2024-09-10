@@ -39,33 +39,6 @@ palettes:
       base: "#1e1e2e"
       mantle: "#181825"
       crust: "#11111b"
-    catppuccin-latte:
-      rosewater: "#dc8a78"
-      flamingo: "#dd7878"
-      pink: "#ea76cb"
-      mauve: "#8839ef"
-      red: "#d20f39"
-      maroon: "#e64553"
-      peach: "#fe640b"
-      yellow: "#df8e1d"
-      green: "#40a02b"
-      teal: "#179299"
-      sky: "#04a5e5"
-      sapphire: "#209fb5"
-      blue: "#1e66f5"
-      lavender: "#7287fd"
-      text: "#4c4f69"
-      subtext1: "#5c5f77"
-      subtext0: "#6c6f85"
-      overlay2: "#7c7f93"
-      overlay1: "#8c8fa1"
-      overlay0: "#9ca0b0"
-      surface2: "#acb0be"
-      surface1: "#bcc0cc"
-      surface0: "#ccd0da"
-      base: "#eff1f5"
-      mantle: "#e6e9ef"
-      crust: "#dce0e8"
     catppuccin-macchiato:
       rosewater: "#f4dbd6"
       flamingo: "#f0c6c6"
@@ -122,15 +95,16 @@ palettes:
       crust: "#232634"
 
 common:
-  element: &element
-    style: powerline
+  base: &base
     background: p:background
     foreground: p:surface1
+  element: &element
+    <<: *base
+    style: powerline
     powerline_symbol: ""
   relement: &relement
+    <<: *base
     style: diamond
-    background: p:background
-    foreground: p:surface1
     leading_diamond: ""
   project: &project
     <<: *element
@@ -148,15 +122,17 @@ blocks:
         background: p:blue
         foreground: p:white
         template: "  "
-        type:
-        comment: Show when the current user is  or when in an elevated shell (Windows)
+        type: root
+        comment: Show when the current user is or when in an elevated shell (Windows)
       - <<: *element
         background: p:pink
         properties:
-          style: powerlevel
+          style: full
           edge_format: "<b>%s</b>"
           max_width: 80
-        template: "  {{ .Path }} "
+        templates:
+          - " {{ if not .Writable }}{{ else }}{{ end }} "
+          - "{{ .Path }} "
         type: path
       - <<: *element
         background: p:lavender
@@ -177,9 +153,9 @@ blocks:
           fetch_status: true
           fetch_upstream_icon: true
           mapped_branches:
-            feature/*: "🚀 "
-            feat/*: "🚀 "
-            work/*: "🔨 "
+            feature/*: " "
+            feat/*: " "
+            work/*: " "
           tag_icon: " "
           rebase_icon: " "
           git_icon: " "
@@ -197,24 +173,38 @@ blocks:
       - <<: *relement
         background: p:red
         templates:
-          - "{{ if .Error }}{{ .String }} {{ end }}"
+          - "{{ if .Error }} {{ .String }}  {{ end }}"
         properties:
-          status_template: " {{ reason .Code }} "
+          status_template: "{{ reason .Code }}"
         type: status
       - <<: *relement
         background: p:pink
-        type: execution
+        type: executiontime
         templates:
           - " {{ .FormattedMs }}"
           - " 󱦟 "
         properties:
           threshold: 500
           style: austin
+      - <<: *relement
+        background: p:pink
+        type: text
+        templates:
+          - "{{ if .Env.DIRENV_FILE }}  {{ end }}"
+      - type: project
+        <<: *project
+        templates:
+          - " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}{{ .Name }}{{ end }} {{ if .Version }}{{.Version}}  {{ end }}{{ end }}"
       - type: cmake
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
           - "   "
+        properties:
+          extensions:
+            - "*.cmake"
+            - "CMakeLists.txt"
+            - "CMakeCache.txt"
       - type: python
         <<: *project
         templates:
@@ -244,7 +234,7 @@ blocks:
         background: p:pink
         templates:
           - " {{ .UserName }}@{{ .HostName }}"
-          - " {{ if .SSHSession }}{{ else }}{{ end }} "
+          - " {{ if .SSHSession }}{{ else if .Root }}{{ else }}{{ end }}"
         type: session
       - <<: *relement
         background: p:blue
@@ -257,9 +247,9 @@ blocks:
   - alignment: left
     newline: true
     segments:
-      - foreground: p:status-fg-success
+      - foreground: p:green
         foreground_templates:
-          - "{{ if .Error }}p:status-fg-error{{ end }}"
+          - "{{ if .Error }}p:red{{ end }}"
         background: transparent
         properties:
           always_enabled: true
