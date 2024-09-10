@@ -181,26 +181,28 @@ blocks:
         type: executiontime
         templates:
           - " {{ .FormattedMs }}"
-          - " 󱦟"
-          - " <#bac2de></>"
+          - " 󱦟 "
+          - "<#bac2de></>"
         properties:
           threshold: 500
           style: austin
       - type: text
         <<: *element
         foreground: p:yellow
-        template: "{{ if .Env.DIRENV_FILE }}  <#bac2de></>{{ end }}"
+        templates:
+          - "{{ if .Env.DIRENV_FILE }}  {{ end }}"
+          - "<#bac2de></>"
       - type: project
         <<: *project
         templates:
-          - " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}{{ .Name }}{{ end }} {{ if .Version }}{{.Version}} {{ end }}{{ end }}"
-          - " <#bac2de></>"
+          - " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Name }}{{ .Name }}{{ end }} {{ if .Version }}{{.Version}}  {{ end }}{{ end }}"
+          - "<#bac2de></>"
       - type: cmake
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - "  "
-          - " <#bac2de></>"
+          - "   "
+          - "<#bac2de></>"
         properties:
           extensions:
             - "*.cmake"
@@ -210,38 +212,38 @@ blocks:
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
+          - "<#bac2de></>"
       - type: rust
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
+          - "<#bac2de></>"
       - type: lua
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
+          - "<#bac2de></>"
       - type: perl
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
+          - "<#bac2de></>"
       - type: go
         <<: *project
         templates:
           - " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}"
-          - " "
-          - " <#bac2de></>"
+          - "  "
+          - "<#bac2de></>"
       - foreground: p:yellow
         <<: *element
         templates:
           - " {{ .UserName }}@{{ .HostName }}"
-          - " {{ if .SSHSession }}{{ else if .Root }}{{ else }}{{ end }}"
-          - " <#bac2de></>"
+          - " {{ if .SSHSession }}{{ else if .Root }}{{ else }}{{ end }} "
+          - "<#bac2de></>"
         type: session
       - foreground: p:subtext1
         <<: *element
