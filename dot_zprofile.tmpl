@@ -1,36 +1,36 @@
 in_chroot() {
-	[ "$(awk '$5=="/" {print $1}' </proc/1/mountinfo)" != "$(awk '$5=="/" {print $1}' </proc/$$/mountinfo)" ] && return 0 || return 1;
+    [ "$(awk '$5=="/" {print $1}' < /proc/1/mountinfo)" != "$(awk '$5=="/" {print $1}' < /proc/$$/mountinfo)" ] && return 0 || return 1
 }
 
 if [ -d "$HOME/.local/bin" ]; then
-	PATH="$HOME/.local/bin:$PATH"
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 # set path so it includes pyenv
 if [ -d "$HOME/.pyenv" ] && ! in_chroot; then
-	PATH="$HOME/.pyenv/bin:$PATH"
-	eval "$(pyenv init --path)"
+    PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init --path)"
 fi
 
 # set path so it includes npm
 if [ -d "$HOME/.npm-packages/bin" ]; then
-	PATH="$HOME/.npm-packages/bin:$PATH"
+    PATH="$HOME/.npm-packages/bin:$PATH"
 fi
 
 # set path so it includes cargo binaries (Rust)
 if [ -f "$HOME/.cargo/env" ]; then
-	. "$HOME/.cargo/env"
+    . "$HOME/.cargo/env"
 fi
 
 {{ if eq .chezmoi.os "freebsd" -}}
 # Arcanist
 if [ -d "$HOME/.local/arcanist/" ]; then
-	PATH="$PATH:$HOME/.local/arcanist/bin/"
+    PATH="$PATH:$HOME/.local/arcanist/bin/"
 fi
 
 # Coverity
 if [ -d "$HOME/.local/coverity/" ]; then
-	PATH="$PATH:$HOME/.local/coverity/bin/"
+    PATH="$PATH:$HOME/.local/coverity/bin/"
 fi
 {{ else if eq .chezmoi.os "linux" -}}
 # Docker socket
