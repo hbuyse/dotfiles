@@ -189,9 +189,7 @@ blocks:
       - type: text
         <<: *element
         foreground: p:yellow
-        templates:
-          - "{{ if .Env.DIRENV_FILE }}  {{ end }}"
-          - "<#bac2de></>"
+        template: "{{ if .Env.DIRENV_FILE }}  <#bac2de></>{{ end }}"
       - type: project
         <<: *project
         templates:
