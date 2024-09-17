@@ -59,7 +59,7 @@ case "${OS}-${ID}" in
             ["du-dust"]="1.1.1"
             ["git-delta"]="0.17.0"
             ["alacritty"]="0.13.2"
-            ["zoxide"]="0.9.4"
+            ["zoxide"]="0.9.5"
             ["gitui"]="0.26.3"
             ["eza"]="0.19.0"
             ["bat"]="0.24.0"
