@@ -52,7 +52,7 @@ case "${OS}-${ID}" in
     if cmdexists cargo; then
         declare -A CARGO_GIT_PKGS=()
         declare -A CARGO_PKGS=(
-            ["ripgrep"]="14.1.0"
+            ["ripgrep"]="14.1.1"
             ["bottom"]="0.9.6"
             ["fd-find"]="10.1.0"
             ["stylua"]="0.20.0"
